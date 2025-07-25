@@ -51,6 +51,10 @@
 		  	<param-name>encoding</param-name>
 		  	<param-value>UTF-8</param-value>
 	 	</init-param>
+	 	<init-param>
+        	<param-name>forceEncoding</param-name>
+        	<param-value>true</param-value>   <!-- 이게 빠져있으면 문제 날 수 있음 -->
+    	</init-param>
   </filter>
   
   <!-- EncodingFilter 맵핑하기(어떤 pattern의 요청이 왔을 때 동작하게 할 것인지 -->
@@ -58,5 +62,8 @@
   	<filter-name>EncodingFilter</filter-name>
   	<url-pattern>/*</url-pattern><!-- context하위의 모든 요청에 대해 수행-->
   </filter-mapping>
+	
+	
+\
 	
 </web-app>

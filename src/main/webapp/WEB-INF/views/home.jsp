@@ -5,10 +5,8 @@
 
 	<head>
 		<title>Main</title>
-		
-		<link href="${pageContext.request.contextPath }/resources/css/main_slider.css" rel="stylesheet">
-		
-		
+		<meta charset="UTF-8">
+		<link href="${pageContext.request.contextPath }/resources/css/main_slider.css" rel="stylesheet">		
 	</head>
 	
 	
