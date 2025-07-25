@@ -5,10 +5,10 @@ drop table playlist_item;
 
 create table playlist_item(
 	item_idx int primary key auto_increment,
-	episode_idx int,
-	playlist_order int
+	video_idx int,
+	play_order int,
     
-    -- foreign key(episode_idx) references class_episode(episode_idx)
+    foreign key(video_idx) references video_library(video_idx)
 );
 
 -- 데이터 설명충
@@ -21,9 +21,7 @@ select * from playlist_item;
 delete from playlist_item;
 
 insert into playlist_item(
-	episode_idx,
-	playlist_order
-)values(
-	1,
-    1
-);
+	video_idx,
+	play_order
+)
+values(1, 1);

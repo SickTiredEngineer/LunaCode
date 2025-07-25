@@ -7,10 +7,10 @@ create table class_memo(
 	memo_idx int primary key auto_increment,
 	session_idx int,
     user_idx int,
-	memo text
+	memo text,
     
-    -- foreign key(user_idx) references member(idx)
-    -- foreign key(session_idx) references class_session(session_idx)
+    foreign key(user_idx) references member(idx),
+    foreign key(session_idx) references class_session(session_idx)
 );
 
 -- 설명충
@@ -26,8 +26,8 @@ insert into class_memo(
 	session_idx ,
     user_idx,
 	memo
-)values(
-	1,
-    1,
-    'Something Memo'
-);
+)values
+(5,1,'Something Memo'),
+(6,1,'Something Memo'),
+(7,3,'Something Memo'),
+(7,3,'Something Memo');

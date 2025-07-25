@@ -9,9 +9,9 @@ create table faq(
 	attachment varchar(300),
 	faq_subject varchar(100),
 	faq_content text,
-	faq_date datetime default now()
+	faq_date datetime default now(),
     
-    -- foreign key(admin_idx) references member(idx)
+    foreign key(admin_idx) references member(idx)
 );
 
 -- 설명충
@@ -29,10 +29,5 @@ insert into faq(
 	faq_subject,
 	faq_content,
 	faq_date
-)values(
-	1,
-    'Something file path',
-    '여러분께 알립니다.',
-    '뻥입니다.',
-    default
-);
+)values
+(1,'Something file path','여러분께 알립니다.','뻥입니다.',default);

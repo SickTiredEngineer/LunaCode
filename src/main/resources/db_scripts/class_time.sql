@@ -6,9 +6,9 @@ drop table class_time;
 create table class_time(
 	time_idx int primary key auto_increment,
     class_idx int,
-    class_time datetime
+    class_time datetime,
 
-    -- foreign key(class_idx) references class(class_idx)    
+    foreign key(class_idx) references class(class_idx)    
 );
 
 -- 설명충
@@ -23,7 +23,5 @@ select * from class_time;
 insert into class_time(
 class_idx,
 class_time)
-values(
-	1,
-    now()
-);
+values
+(1,now());

@@ -7,9 +7,9 @@ create table class_session(
 	session_idx int primary key auto_increment,
 	class_idx int,
 	session_name varchar(100),
-	session_index int default 0
+	session_index int default 0,
     
-    -- foreign key(class_idx) references class(class_idx)
+    foreign key(class_idx) references class(class_idx)
 );
 
 -- 데이터 설명충
@@ -25,8 +25,7 @@ insert into class_session(
 	class_idx,
 	session_name,
 	session_index
-)values(
-	1,
-    'First Session',
-    1
-);
+)values
+(1,'First Session',1),
+(1,'Second Session',2),
+(1,'Third Session',3)

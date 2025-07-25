@@ -6,7 +6,8 @@ drop table group_code;
 
 create table group_code(
 	group_idx int primary key auto_increment,
-    group_name varchar(30) unique,
+    group_code varchar(30) unique,
+    -- group_name varchar(30) unique,
     group_desc varchar(300),
     is_using boolean default true,
     create_date datetime default now(),
@@ -32,7 +33,7 @@ delete from group_code;
 
 -- insert example group
 insert into group_code(
-	group_name, group_desc, is_using, create_date, creater_idx
+	group_code, group_desc, is_using, create_date, creater_idx
 ) values
 ("MEMBER_TYPE", "멤버 타입을 모아두는 그룹입니다.", true, now(), null),
 ("CLASS_TYPE", "강의 방식을 모아두는 그룹입니다.", true, now(), null),
@@ -46,7 +47,10 @@ insert into group_code(
 ("ADMIN_CATEGORY", "관리자 페이지 카테고리를 모아두는 그룹입니다.", true, now(), null),
 ("MEMBER_STATE", "회원 계정 상태를 모아두는 그룹입니다.", true, now(), null);
 
-
+insert into group_code(
+	group_code, group_desc, is_using, create_date, creater_idx
+) values
+("QUIZE_RESULT", "퀴즈 정답 결과 상태를 저장하는 그룹입니다.", true, now(), null);
 
 
 

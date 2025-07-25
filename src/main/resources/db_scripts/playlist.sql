@@ -7,10 +7,10 @@ create table playlist(
 	playlist_idx int primary key auto_increment,
 	user_idx int, 
 	playlist_name varchar(100),
-	playlist_create datetime default now(),
-	playlist_update datetime
+	create_date datetime default now(),
+	update_date datetime default null,
 	
-    -- foreign key(user_idx) references member(idx)
+    foreign key(user_idx) references member(idx)
 );
 
 -- 데이터 설명충
@@ -25,11 +25,7 @@ delete from playlist;
 insert into playlist(
 	user_idx,
 	playlist_name,
-	playlist_create,
-	playlist_update
-)values(
-	1,
-    'my playlist',
-    now(),
-    null
-);
+	create_date
+)values
+(1, 'my playlist', now()),
+(3, 'YOUR playlist', now());

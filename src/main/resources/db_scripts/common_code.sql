@@ -81,3 +81,9 @@ INSERT INTO common_code (group_idx, code, code_label, code_desc, is_using, creat
 (11, 'MS02', '탈퇴', '탈퇴에 대한 코드입니다.', 1, 1, now()),
 (11, 'MS03', '정지', '정지에 대한 코드입니다.', 1, 1, now());
 
+
+INSERT INTO common_code (group_idx, code, code_label, code_desc, is_using, creater_idx, create_date) VALUES
+(12, 'QR01', '정답', '퀴즈 정답 맞추면 쓰는 코드', 1, 1, now()),
+(12, 'QR02', '오답', '퀴즈 정답 틀리면 쓰는 코드', 1, 1, now()),
+(12, 'QR03', '채점 전', '채점전', 1, 1, now());
+

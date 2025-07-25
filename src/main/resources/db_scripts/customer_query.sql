@@ -11,9 +11,9 @@ create table customer_query(
 	answer_status boolean default false,
 	query_subject varchar(100),
 	query_content text,
-	query_date datetime default now()
+	query_date datetime default now(),
     
-    -- foreign key(user_idx) references member(idx)
+    foreign key(user_idx) references member(idx)
     
 );
 
@@ -43,3 +43,5 @@ insert into customer_query(
     '뻥인데 호호홍',
 	default
 );
+
+

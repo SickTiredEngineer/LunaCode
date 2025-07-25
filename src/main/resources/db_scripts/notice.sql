@@ -10,9 +10,9 @@ create table notice(
 	attachment varchar(300),
 	notice_subject varchar(100),
 	notice_content text,
-	notice_date datetime default now()
+	notice_date datetime default now(),
     
-    -- foreign key(admin_idx) references member(idx)
+    foreign key(admin_idx) references member(idx)
 );
 
 -- 설명충
@@ -30,10 +30,5 @@ insert into notice(
 	notice_subject,
 	notice_content,
 	notice_date
-)values(
-	1,
-    'Something file path',
-    '여러분께 알립니다.',
-    '뻥입니다.',
-    default
-);
+)values
+(1,'Something file path','여러분께 알립니다.','뻥입니다.',default);

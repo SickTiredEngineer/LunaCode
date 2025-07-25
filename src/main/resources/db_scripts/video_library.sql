@@ -7,9 +7,9 @@ create table video_library(
 	video_idx int primary key auto_increment,
 	uploader_idx int,
 	video_name varchar(100),
-	video_path varchar(300)
+	video_path varchar(300),
     
-    -- foreign key(uploader_idx) references member(idx)-- 
+    foreign key(uploader_idx) references member(idx)
 );
 
 -- 데이터 설명충
@@ -25,8 +25,7 @@ insert into video_library(
 	uploader_idx,
 	video_name,
 	video_path
-)values(
-	1,
-    'Something Name',
-    'Video/Videos/Molu'
-);
+)values
+(1,'Something Name','Video/Videos/Molu'),
+(1,'Something Name 2','Video/Videos/Molu2'),
+(1,'Something Name 3','Video/Videos/Molu3');

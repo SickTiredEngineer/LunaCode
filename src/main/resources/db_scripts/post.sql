@@ -10,11 +10,13 @@ create table post(
     content text,
 	author_id int,
     created_date datetime default NOW(),
-    update_date datetime,
+    update_date datetime default null,
     is_update boolean default false,
-    attachment varchar(500),
     like_count int not null default 0,
-    view_count int not null default 0
+    view_count int not null default 0,
+    
+    foreign key(board_idx) references common_code(common_idx),
+    foreign key(author_id) references member(idx)
 );
 
 -- 데이터 설명충
@@ -25,3 +27,17 @@ select * from post;
 
 -- 데이터 초기화용
 delete from post;
+
+
+insert into post(
+	board_idx,
+	title,
+	content,
+	author_id,
+	created_date,
+    like_count,
+	view_count
+)values
+(7, '게시글 1', '게시글 내용1', 1, default, 10, 0),
+(8, '게시글 2', '게시글 내용2', 2, default, 0, 0),
+(9, '게시글 3', '게시글 내용3', 3, default, 0, 0)
