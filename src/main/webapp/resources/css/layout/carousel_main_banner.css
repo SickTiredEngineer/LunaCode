@@ -1,0 +1,30 @@
+/* layout/carousel_main_banner.css */
+
+
+.carousel-inner,
+.carousel-item {
+	background-color: transparent !important;
+	margin-top: 10px;
+}
+
+
+article {
+	background-color: transparent !important;
+}
+
+
+.carousel-item {
+	background-color: transparent !important;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+}
+
+.carousel-item img {
+	background-color: transparent;
+	width: auto;
+	height: 300px; 
+	object-fit: contain; 
+}

@@ -5,41 +5,48 @@
 <html>
 
 	<head>
-		<meta charset="UTF-8">
-		<title>Insert title here</title>
-		
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/layout/footer.css" rel="stylesheet">
 		
 	</head>
-	
+
 	<body>
 	
-		<div class="container">
-			<footer
-				class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-				<div class="col-md-4 d-flex align-items-center">
-					<a href="/"
-						class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
-						aria-label="Bootstrap"> <svg class="bi" width="30" height="24"
-							aria-hidden="true">
-							<use xlink:href="#bootstrap"></use></svg>
-					</a> <span class="mb-3 mb-md-0 text-body-secondary">© 2025
-						Company, Inc</span>
-				</div>
-				<ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-					<li class="ms-3"><a class="text-body-secondary" href="#"
-						aria-label="Instagram"><svg class="bi" width="24" height="24"
-								aria-hidden="true">
-								<use xlink:href="#instagram"></use></svg></a></li>
-					<li class="ms-3"><a class="text-body-secondary" href="#"
-						aria-label="Facebook"><svg class="bi" width="24" height="24">
-								<use xlink:href="#facebook"></use></svg></a></li>
-				</ul>
-			</footer>
-		</div>
+		<footer class="footer">
+			<div class="container">
+	  
+				<div class="footer-row d-flex justify-content-between align-items-center">
+	  
+					<div class="footer-left">
+						<h5 class="footer-logo">LunaCode</h5>
+						<p class="company-info">(주) 루나코드 | 대표</p>
+					</div>
 	
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+					<div class="footer-links">
+						<a href="#">루나코드 소개</a>
+						<a href="#">멤버십 소개</a>
+						<a href="#">사용자 이용약관</a>
+						<a href="#">FAQ</a>
+					</div>
+				</div>
+	
+				<hr class="footer-divider">
+	
+				<div class="footer-icons text-end">
+					<i class="bi bi-instagram"></i>
+					<i class="bi bi-youtube"></i>
+					<i class="bi bi-envelope-fill"></i>
+					<i class="bi bi-telephone-fill"></i>
+				</div>
+		
+			</div>
+		  
+		</footer>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 	</body>
 	
 </html>

@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+.footer {
+	margin-top:20px;
+	background-color: #f3f6fb;
+	padding: 20px 40px;
+	color: #839FD1;
+	font-size: 14px;
+}
+
+.footer-logo {
+	font-weight: bold;
+	color: #839FD1;
+	margin-bottom: 8px;
+}
+
+.footer-divider {
+	border-top: 3px dashed #839FD1;
+	width: 100%;
+	margin: 8px 0;
+}
+
+.company-info {
+	 margin: 0;
+}
+
+.footer-links a {
+	margin-left: 12px;
+	color: #839FD1;
+	text-decoration: none;
+}
+
+.footer-links a:first-child {
+	margin-left: 0;
+}
+
+.footer-icons i {
+	font-size: 20px;
+	margin-left: 12px;
+	cursor: pointer;
+}

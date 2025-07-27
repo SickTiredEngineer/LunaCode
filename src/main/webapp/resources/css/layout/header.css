@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.icon-size {
+	 width: 40px;
+	 height: 40px;
+	 display: block;
+	 margin: 0 auto;
+}
+
+.main_bannder {
+  	width: 150px;
+	height: auto;
+
+}
+
+.nav-link {
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
+	 padding: 0 12px;
+	 color: #839FD1 !important;
+	 font-size: 10px;
+	 font-weight: bold;
+}
+
+.header_icons {
+	 vertical-align: center;
+}
+
+.header {
+	 position: relative;
+	 border-bottom: 1px solid #e5e5e5;
+	 background-color: #fff;
+	 padding: 20px 20px;   
+	 min-height: 100px;    
+}
+
+
+.logo-text {
+	 color: #839FD1;
+	 font-weight: bold;
+	 font-size: 18px;
+	 text-decoration: none;
+}
+
+.icon-btn {
+	 font-size: 18px;
+	 color: #839FD1;
+}
+
+.logo-area,
+.logo-center {
+	 position: absolute;
+	 left: 50%;
+	 transform: translateX(-50%);
+}

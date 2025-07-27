@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+
+.page-base{
+	min-width: 1000px;       
+	overflow-x: auto;       
+	white-space: normal;    
+}
+
+.page-wrapper {
+	min-width: 1000px; 
+	overflow-x: auto;
+	white-space: nowrap; 
+}
+
+.icon-link {
+	display: inline-flex;
+	flex-shrink: 0;
+	overflow: hidden;
+}
+
+.icon-size {
+	width: 30px;
+	height: 30px;
+	flex-shrink: 0;
+}
+
+
+
