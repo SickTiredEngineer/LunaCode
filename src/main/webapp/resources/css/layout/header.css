@@ -32,7 +32,8 @@
 	 border-bottom: 1px solid var(--color-board);
 	 background-color: #fff;
 	 padding: 20px 20px;   
-	 min-height: 100px;    
+	 min-height: 100px;   
+	 margin-bottom: 20px; 
 }
 
 

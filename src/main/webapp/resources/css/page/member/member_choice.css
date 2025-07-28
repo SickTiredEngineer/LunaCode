@@ -26,7 +26,7 @@
 .vertical-line {
 	width: 2px;
 	height: 600px; /* 원하는 높이로 고정 */
-	background-color: #C1C7CD;
+	background-color: var(--color-board);
 	border: none;
 	margin: 15px 15px;
 }
