@@ -85,7 +85,20 @@
 		    <scope>test</scope>
 		</dependency>
 		
+		<!-- 파일 처리(업로드 등) 라이브러리 -->
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.18.0</version>
+		</dependency>
 		
+		<!-- https://mvnrepository.com/artifact/commons-fileupload/commons-fileupload -->
+		<dependency>
+		    <groupId>commons-fileupload</groupId>
+		    <artifactId>commons-fileupload</artifactId>
+		    <version>1.6.0</version>
+		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/javax.activation/activation -->
 		<dependency>

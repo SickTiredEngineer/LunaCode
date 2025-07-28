@@ -31,7 +31,9 @@
 				<a href="#" class="nav-link">수강후기</a>
 				<a href="#"><img class="icon-size" alt="장바구니" src="${pageContext.request.contextPath}/resources/icons/icon_cart.png"></a>
 				<a href="#"><img class="icon-size" alt="알림" src="${pageContext.request.contextPath}/resources/icons/icon_alarm.png"></a>
-				<a href="#"><img class="icon-size" alt="프로필" src="${pageContext.request.contextPath}/resources/icons/icon_profile.png"></a>
+				<a href="#" class="nav-link">로그인</a>
+				<a href="#" class="nav-link">회원가입</a>
+<%-- 				<a href="#"><img class="icon-size" alt="프로필" src="${pageContext.request.contextPath}/resources/icons/icon_profile.png"></a> --%>
 			</div>
 		
 		</header>
