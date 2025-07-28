@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MemberJoinController {
 
 	
-	@GetMapping("MemberJoinForm")
+	@GetMapping("MemberChoice")
 	public String memberJoinForm() {
 		
-		return "member/join_form";
+		return "member/join_choice";
 	}
 	
 	

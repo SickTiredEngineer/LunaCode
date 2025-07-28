@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+
+.body{
+	font-family: var(--font-main);
+}
+
 .footer {
 	margin-top:20px;
 	background-color: #f3f6fb;
@@ -10,7 +15,7 @@
 
 .footer-logo {
 	font-weight: bold;
-	color: #839FD1;
+	color: var(--color-main);
 	margin-bottom: 8px;
 }
 

@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+
+
+
+.member-base-layout{
+	min-width: 500px;
+	min-height: 800px;
+}
+
+.member-sub-layout{
+	min-width: 40%;
+	min-height: 40%;
+	
+}
+
+
+.member-icon-size{
+	width: 70%;
+	height: auto;
+	flex-shrink: 0; /* 줄어들지 않게 */
+}
+
+
+
+.vertical-line {
+	width: 2px;
+	height: 600px; /* 원하는 높이로 고정 */
+	background-color: #C1C7CD;
+	border: none;
+	margin: 15px 15px;
+}
+
+
+.member-font{
+	font-size: 28px;
+	color: #444444;
+}
+
+
+.member-choice-bt{
+	margin: 20px 20px;	
+	border: 1px solid #C1C7CD;
+	border-radius: 20px;
+}
+
+.member-choice-bt:hover{
+	margin: 20px 20px;	
+	background-color: F2F4F8;
+	border: 1px solid #839FD1;
+	border-radius: 20px;
+}
+
+
+

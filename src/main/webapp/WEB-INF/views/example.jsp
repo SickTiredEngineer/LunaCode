@@ -8,6 +8,7 @@
 	<head>
 		<title>Main</title>
 		<meta charset="UTF-8">
+		<link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath }/resources/css/layout/carousel_main_banner.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">		
 	</head>
