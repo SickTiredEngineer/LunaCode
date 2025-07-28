@@ -4,9 +4,12 @@
 	
 	  --color-main: #839FD1;
 	  --color-sub: #F2F4F8;
+	  
+	  
 	  --color-font: #444444;
-	  --color-board: #C1C7CD
+	  --color-board: #C1C7CD;
 	  
 	  --font-main: 'Noto Sans KR', sans-serif;
+	  
 	  --radius-lg: 20px;
 }
