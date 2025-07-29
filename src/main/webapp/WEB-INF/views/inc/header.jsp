@@ -11,16 +11,23 @@
 		<link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
 		<!-- Bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
-		
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 	</head>
 
 	<body>
 	
 		<header class="header d-flex justify-content-between align-items-center">
-		  
-		  	  <!-- 네비게이션 아이콘 -->
+		<!-- 로그인 모달 연결 -->
+		<jsp:include page="/WEB-INF/views/member/login_modal.jsp"/>
+		    
+<!-- 			<div class="d-flex align-items-center"> -->
+<!-- 				<a href=GoMenu class="logo-menu"> -->
+<%-- 					<img alt="메뉴" class="main_menu" src="${pageContext.request.contextPath}/resources/image/menu_icon.png"> --%>
+<!-- 				</a> -->
+<!-- 			</div> -->
+			
+			<!-- 네비게이션 아이콘 -->
 			  <div class="sidebar-container">
 			   <!-- 네모 4개 버튼 -->
 				<button id="navBoxBtn" class="nav-box-btn" type="button" aria-label="메뉴 열기">
@@ -31,8 +38,8 @@
 				    <span class="square gray special"></span> <!-- 회색 네모 -->
 				  </span>
 				</button>
-		  
-				<!-- 내비게이션 메뉴 -->
+			
+			    <!-- 내비게이션 메뉴 -->
 			    <nav id="side-nav" class="side-nav" aria-hidden="true">
 			      <a href="#">IT 자격증</a>
 			      <a href="#">기초 코딩</a>
@@ -44,10 +51,10 @@
 			      <a href="#">임베디드</a>
 			      <a href="#">풀스텍</a>
 			      <!-- 필요 메뉴 추가 -->
-			   </nav>
-			</div>		  
-		    
-			<script>
+			    </nav>
+			  </div>
+			
+			  <script>
 			    // 네모 버튼, 메뉴 요소 선택
 			    const menuBtn = document.getElementById('navBoxBtn');
 			    const navMenu = document.getElementById('side-nav');
@@ -66,11 +73,11 @@
 			        menuBtn.classList.remove('open');
 			      }
 			    });
-			</script>
+			  </script>
 			
 			<div class="logo-center">
 				<a href=GoHome class="logo-text">
-					<img alt="로고" class="main_bannder" src="${pageContext.request.contextPath}/resources/image/luna_main_logo.png">
+					<img alt="로고" class="main_bannder" src="${pageContext.request.contextPath}/resources/image/LunaCode_header.png">
 				</a>
 			</div>
 			
@@ -87,7 +94,7 @@
 				
 <%-- 				<a href="#"><img class="icon-size" alt="장바구니" src="${pageContext.request.contextPath}/resources/icons/icon_cart.png"></a> --%>
 <%-- 				<a href="#"><img class="icon-size" alt="알림" src="${pageContext.request.contextPath}/resources/icons/icon_alarm.png"></a> --%>
-				<a href="#" class="nav-link">로그인</a>
+				<a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
 				<a href="MemberChoice" class="nav-link">회원가입</a>
 <%-- 				<a href="#"><img class="icon-size" alt="프로필" src="${pageContext.request.contextPath}/resources/icons/icon_profile.png"></a> --%>
 			</div>

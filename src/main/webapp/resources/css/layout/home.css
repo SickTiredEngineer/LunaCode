@@ -18,7 +18,7 @@
 
 .carousel-item img {
   width: 100%;
-  height: auto;
+  height: 300;
   display: block;
   object-fit: cover;
   max-height: 500px;           /* 필요시 배너 높이 제한 */
