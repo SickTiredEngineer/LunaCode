@@ -1,22 +1,15 @@
 @charset "UTF-8";
 
-
-
-
-
-
 .terms-box {
 	max-height: 350px;
 	overflow-y: scroll;
 	padding: 15px;
-	border: 1px solid var(--color-board);
+	border: 1px solid var(--color-border);
 	background-color: var(--color-white);
 	font-size: 14px;
 	line-height: 1.6;
 	color: var(--color-font);
-	margin: var(--common-margin) 0;
 }
-
 
 #agree-check-box{
 	border: 1px solid var(--color-main);
@@ -29,10 +22,8 @@
 	margin-right: 20px;
 }
 
-
-
-
 .notice-msg{
+	margin: var(--common-margin) 0px;
 	font-family: var(--font-main);
 	font-weight: bold;
 	color: var(--color-main);
@@ -48,23 +39,9 @@
 .button-agree{
 	width: 300px;
 	height: 50px;
-	color: var(--color-font-white);
-	background-color: var(--color-white);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
-	font-weight: bold;
-}
-
-.button-agree:hover{
-	background-color: var(--color-main);
 }
 
 
-
-
-
-
-#term_box > h3{
-	
+#term_box > h3{	
 	align-items: center;
 }

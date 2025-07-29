@@ -4,16 +4,24 @@
 .horizontal-line {
 	width: 600px;
 	height: 1px; /* 원하는 높이로 고정 */
-	background-color: var(--color-board);
+	background-color: var(--color-border);
 	border: none;
-	margin: 10px 0px;
+}
+
+
+.main-msg{
+	margin-top: 10px;
+	color: var(--color-main);
+	font-weight: bold;
+	font-family: var(--font-main);
+	
 }
 
 
 .input-form-layout{
 	height: 30px;
 	width: 600px;
-	margin: 5px 0px;
+	margin: 10px 0px 0px 10px;
 }
 
 
@@ -31,91 +39,44 @@
 
 
 .info-text {
-	text-align: left;
+	text-align: center;
 	margin-right: 30px;
 	font-weight: bold;
-	height: 60%;
+	height: 100%;
 	width:100px;
-	font-size: 16px;
+	font-size: 15px;
 	color: var(--color-main);
 	font-family: var(--font-main);
-}
-
-
-.input-form{
-	
-	padding-left:20px;
-	
-	width: 50%;
-	height: 100%;
-	
 	background-color: var(--color-sub);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
-	
+	vertical-align: middle;
 }
 
+
+.input-form-size{
+	width: 300px;
+	height: 100%;
+}
 
 .icon{
 	align-content:center;
 	width: 30px;
 	height: 100%;
 	margin-left: 30px;
-	
 }
 
 
+.email-mark{
+	width:20px;
+	text-align: center;
+}
 
-.input-form-email{
-	
-	width: 24%;
+
+.input-form-email-size{
+	width: 140px;
 	height: 100%;
-	
-	background-color: var(--color-sub);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
-	
 }
-
-
-.form-check-button{
-	height: 100%;
-	width: 100px;
-	margin-left: 30px;
-	
-	color: var(--color-font-white);
-	background-color: var(--color-main);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
-	
-}
-
-.positive-button{
-	height: 100%;
-	width: 100px;
-	margin-left: 30px;
-	
-	color: var(--color-font-white) !important;
-	background-color: var(--color-main);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
-}
-
-.negative-button{
-	height: 100%;
-	width: 100px;
-	margin-left: 30px;
-	
-	color: var(--color-font-white) !important;
-	background-color: var(--color-sub);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
-}
-
-
 
 .info-span {
-	
 	width:100%;
 	text-align:left;
 	font-size: 9px;

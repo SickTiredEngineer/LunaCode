@@ -1,55 +1,44 @@
 @charset "UTF-8";
 
-
-
-
 .member-base-layout{
-	min-width: 500px;
-	min-height: 800px;
+	width: 100%;
+	height: 500px;
 }
 
 .member-sub-layout{
-	min-width: 40%;
-	min-height: 40%;
-	
+	width: 300px;
+	height: 50%;
+	margin: 0px 35px;
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
 }
 
+.member-sub-layout:hover{
+	background-color: F2F4F8;
+	border: 1px solid var(--color-main);
+}
 
 .member-icon-size{
 	width: 70%;
-	height: auto;
-	flex-shrink: 0; /* 줄어들지 않게 */
+	height: 70%;
+	flex-shrink: 0; 
 }
-
-
 
 .vertical-line {
 	width: 2px;
 	height: 600px; /* 원하는 높이로 고정 */
-	background-color: var(--color-board);
+	background-color: var(--color-border);
 	border: none;
 	margin: 15px 15px;
 }
 
-
 .member-font{
-	font-size: 28px;
-	color: #444444;
+	font-size: 24px;
+	color: var(--color-font);
 }
 
 
-.member-choice-bt{
-	margin: 20px 20px;	
-	border: 1px solid #C1C7CD;
-	border-radius: 20px;
-}
 
-.member-choice-bt:hover{
-	margin: 20px 20px;	
-	background-color: F2F4F8;
-	border: 1px solid #839FD1;
-	border-radius: 20px;
-}
 
 
 

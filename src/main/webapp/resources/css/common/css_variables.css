@@ -2,19 +2,62 @@
 
 :root{
 	
-		--color-main: #839FD1;
-		--color-sub: #F2F4F8;
-		--color-white: #F2F4F8;
-		--color-black: #444444;
+		/* ================================ */
+		/* Our Colors */
+		/* ================================ */
 		
-		--color-font-white:: #F2F4F8;
-		--color-font-gray: #C1C7CD;
+		/* 메인 컬러 */
+		--color-main: #8baee7;
+		/* 서브 컬러 */
+		--color-sub: #F2F4F8;
+		/* 페이지 흰색 */
+		--color-white: #F2F4F8;
+		/* 페이지 검은색 */
+		--color-black: #444444;
+		/* 페이지 회색 */
+		--color-gray: #C1C7CD;
+		
+		/* ================================ */
+		/* 테두리 */
+		/* ================================ */
+		
+		/* 테두리 기본 색 */
+		--color-border: #C1C7CD;
+		
+		/* ================================ */
+		/* 폰트 */
+		/* ================================ */
+		
+		/* 메인 폰트 */
+		--font-main: 'Noto Sans KR', sans-serif;
+		/* 일반 폰트 크기 */
+		--font-size-normal: 13px;
+		/* 안내 문구 폰트 크기 */
+		--font-size-info: 15px;
+		/* 기본 폰트 색상 */
 		--color-font: #444444;
 		
-		--color-board: #C1C7CD;
+		--color-font-main: #8baee7;
+		/* 흰색 폰트 */
+		--color-font-white: #F2F4F8;
+		/* 회색 폰트 */
+		--color-font-gray: #C1C7CD;
 		
-		--font-main: 'Noto Sans KR', sans-serif;
+		/* ================================ */
 		
+		/* ================================ */
+		
+		/* 공용 마진 */
 		--common-margin: 20px;
-		--common-radius: 20px;
+		/* 공용 패딩 */
+		--common-padding: 20px;
+		/* 공용 Radius */
+		--common-radius: 10px;
+		/* 공용 Radius / 2 */
+		--common-radius-half: 5px;
+		
+		
+		/* 검색창용 Radius */
+		--search-radius: 20px;
+		
 }
