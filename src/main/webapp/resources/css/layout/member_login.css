@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+/* ---------------------------------------
+   로그인 모달 (배경, 크기, 둥근 모서리 등)
+----------------------------------------- */
+.custom-login-modal .modal-dialog {
+  max-width: 370px;
+  margin: 0 auto;
+}
+
+.custom-login-modal .modal-content {
+  background-color: #F2F4F8;          /* 연한 회색 배경 */
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+  padding: 24px 28px 32px 28px;       /* 모달 내부 여백 */
+  min-height: 500px;                  /* 최소 높이 */
+}
+
+.custom-login-modal .modal-logo {
+  display: block;
+  margin: 10px auto 0 auto;           /* 위쪽 여백/가운데 정렬 */
+  width: 210px; 
+  height: 80px;
+  object-fit: contain;
+}
+
+.custom-login-modal .modal-header {
+  border-bottom: none;
+  padding: 12px 0 0 0;
+}
+
+.custom-login-modal .modal-body {
+  padding-top: 14px;
+  padding-bottom: 0;
+}
+
+.custom-login-modal .form-control {
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* 로그인 버튼 색상 (파란빛) */
+.custom-login-modal .btn-primary {
+  margin-top: 8px;
+  border-radius: 8px;
+  background-color: #839FD1;
+  border-color: #839FD1;
+  color: #fff;
+}
+
+.custom-login-modal .btn-primary:hover,
+.custom-login-modal .btn-primary:focus,
+.custom-login-modal .btn-primary:active,
+.custom-login-modal .btn-primary.active {
+  background-color: #5F9FD5 !important;   /* 선택/호버/활성화 시 배경색 */
+  border-color: #5F9FD5 !important;
+  color: #fff;
+}
+
+/* 체크박스: 체크됐을 때 색상 */
+.custom-login-modal .form-check-input:checked {
+  background-color: #839FD1 !important;
+  border-color: #839FD1 !important;
+}
+
+/* 모달 하단(footer): 중앙정렬, 투명 배경, 위/아래 간격 조정 */
+.custom-login-modal .modal-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: none;
+  background: transparent;
+  padding-top: 10px;
+  padding-bottom: 6px;
+  gap: 6px;
+}
+
+/* 하단 링크 그룹(회원가입/아이디찾기/비번): 한줄 중앙 */
+.custom-login-modal .modal-link-group {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  margin: 0 auto 2px auto;
+  font-size: 12px;
+  white-space: nowrap;           /* 항상 한 줄로 나오게 */
+}
+
+/* 하단 각 링크 */
+.custom-login-modal .footer-link {
+  color: #444444;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;        
+  background: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.18s;
+  line-height: 1.35;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.custom-login-modal .footer-link:hover,
+.custom-login-modal .footer-link:focus {
+  color: #5F9FD5;
+  text-decoration: none;
+}
+
+/* 구분선(|)  */
+.custom-login-modal .footer-divider {
+  color: #C1C7CD;
+  font-size: 13px;
+  vertical-align: middle;
+  padding: 0 1px;
+  line-height: 1.35;
+  display: inline-block;
+  user-select: none;
+}
+
+/* ---------------- 소셜 로그인 ------------------- */
+.custom-login-modal .social-login-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0 2px 0;
+}
+
+/* SNS 아이콘 */
+.custom-login-modal .social-login-group .social-icon img {
+  width: 37px;
+  height: 37px;
+  border-radius: 30%;              
+  box-shadow: 0 1.5px 6px rgba(0,0,0,0.10);
+  object-fit: cover;
+  padding: 1px;
+  transition: none;
+}
+
+.custom-login-modal .easy-login-text {
+  font-size: 12px;
+  color: #444444;
+  margin-bottom: 8px;
+  text-align: center;
+  font-weight: 500;
+}
+
+@media (max-width: 400px) {
+  .custom-login-modal .modal-dialog {
+    max-width: 96vw;
+  }
+  .custom-login-modal .modal-link-group,
+  .custom-login-modal .footer-link,
+  .custom-login-modal .footer-divider {
+    font-size: 10px;
+  }
+  .custom-login-modal .social-login-group .social-icon img {
+    width: 30px;
+    height: 30px;
+  }
+}

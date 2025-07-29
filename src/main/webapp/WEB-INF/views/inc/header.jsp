@@ -19,10 +19,54 @@
 	<body>
 	
 		<header class="header d-flex justify-content-between align-items-center">
+		  
+		  	  <!-- 네비게이션 아이콘 -->
+			  <div class="sidebar-container">
+			   <!-- 네모 4개 버튼 -->
+				<button id="navBoxBtn" class="nav-box-btn" type="button" aria-label="메뉴 열기">
+				  <span class="square-grid">
+				    <span class="square blue"></span>
+				    <span class="square blue"></span>
+				    <span class="square blue"></span>
+				    <span class="square gray special"></span> <!-- 회색 네모 -->
+				  </span>
+				</button>
+		  
+				<!-- 내비게이션 메뉴 -->
+			    <nav id="side-nav" class="side-nav" aria-hidden="true">
+			      <a href="#">IT 자격증</a>
+			      <a href="#">기초 코딩</a>
+			      <a href="#">컴퓨터 활용</a>
+			      <a href="#">게임 개발</a>
+			      <a href="#">컴퓨터 그래픽</a>
+			      <a href="#">AI</a>
+			      <a href="#">컴퓨터 비전</a>
+			      <a href="#">임베디드</a>
+			      <a href="#">풀스텍</a>
+			      <!-- 필요 메뉴 추가 -->
+			   </nav>
+			</div>		  
 		    
-			<div class="d-flex align-items-center">
-				<i class="bi bi-grid-3x3-gap-fill icon-btn"></i>
-			</div>
+			<script>
+			    // 네모 버튼, 메뉴 요소 선택
+			    const menuBtn = document.getElementById('navBoxBtn');
+			    const navMenu = document.getElementById('side-nav');
+			
+			    // 버튼 클릭 시 메뉴 토글 (슬라이드 애니메이션)
+			    menuBtn.addEventListener('click', function(e) {
+			      e.stopPropagation();
+			      navMenu.classList.toggle('open');
+			      menuBtn.classList.toggle('open');
+			    });
+			
+			    // 문서 전체 클릭 시 메뉴 닫기
+			    document.addEventListener('click', function(e) {
+			      if (!navMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+			        navMenu.classList.remove('open');
+			        menuBtn.classList.remove('open');
+			      }
+			    });
+			</script>
 			
 			<div class="logo-center">
 				<a href=GoHome class="logo-text">

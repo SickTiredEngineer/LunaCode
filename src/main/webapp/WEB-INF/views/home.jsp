@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 
@@ -6,12 +7,11 @@
 	<head>
 		<title>Main</title>
 		<meta charset="UTF-8">
-		
 		<link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath }/resources/css/layout/carousel_main_banner.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">		
+		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">	
+		<link href="bootstrap.min.css" rel="stylesheet">	
+		<link href="${pageContext.request.contextPath}/resources/css/layout/home.css" rel="stylesheet">
 	</head>
 	
 	
@@ -21,6 +21,8 @@
 		
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+				<!-- 로그인 모달 연결 -->
+				<jsp:include page="/WEB-INF/views/member/login_modal.jsp"/>
 			</header>
 
 		
@@ -29,11 +31,11 @@
 	
 					<div class="carousel-inner align-self-center">
 				    	<div class="carousel-item active">
-				      		<img src="${pageContext.request.contextPath }/resources/image/luna_main_logo.png" id="banner_1" class="d-block w-100 img-fluid" alt="...">
+				      		<img src="${pageContext.request.contextPath }/resources/image/banner1.png" id="banner_1" class="d-block w-100 img-fluid" alt="...">
 				    	</div>
 				    	<div class="carousel-item align-self-center">
-				        	<img src="${pageContext.request.contextPath }/resources/image/luna_logo_2.png" id="banner_2" class="d-block w-100 img-fluid" alt="...">
-				    	</div>
+				        	<img src="${pageContext.request.contextPath }/resources/image/banner2.jpg" id="banner_2" class="d-block w-100 img-fluid" alt="...">
+					    </div>
 				    	<div class="carousel-item align-self-center">
 				      		<img src="${pageContext.request.contextPath }/resources/image/luna_logo_3.png" id="banner_3" class="d-block w-100 img-fluid" alt="...">
 				    	</div>
@@ -48,12 +50,45 @@
 				    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
 				    	<span class="visually-hidden">Next</span>
 					</button>
+					
 				</div>
+	
+					
 			</article>
+			
+			<div class="card-container">
+				  <div class="card" style="width: 18rem;">
+				    <img src="${pageContext.request.contextPath }/resources/image/banner1.png" class="card-img-top" alt="카드 광고 1">
+				    <div class="card-body">
+				      <h5 class="card-title">JAVA 단기간 완성</h5>
+				      <p class="card-text">3개월 500,000원</p>
+				      <a href="#" class="btn btn-primary">신청하기</a>
+				    </div>
+				  </div>
+				  <div class="card" style="width: 18rem;">
+				    <img src="${pageContext.request.contextPath }/resources/image/banner1.png" class="card-img-top" alt="카드 광고 2">
+				    <div class="card-body">
+				      <h5 class="card-title">JAVA 단기간 완성</h5>
+				      <p class="card-text">3개월 500,000원</p>
+				      <a href="#" class="btn btn-primary">신청하기</a>
+				    </div>
+				  </div>
+				  <div class="card" style="width: 18rem;">
+				    <img src="${pageContext.request.contextPath }/resources/image/banner1.png" class="card-img-top" alt="카드 광고 3">
+				    <div class="card-body">
+				      <h5 class="card-title">JAVA 단기간 완성</h5>
+				      <p class="card-text">3개월 500,000원</p>
+				      <a href="#" class="btn btn-primary">신청하기</a>
+				    </div>
+				  </div>
+			</div>
+
 			
 			<footer>
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 		
 		</div>
 	
@@ -61,3 +96,5 @@
 	
 	
 </html>
+
+
