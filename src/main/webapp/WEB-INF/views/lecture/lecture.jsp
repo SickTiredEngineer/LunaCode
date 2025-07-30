@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/resources/css/lecture.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/page/lecture/lecture.css" rel="stylesheet">
 </head>
 <body>
 <header>
@@ -42,6 +42,8 @@
                         <img src="${pageContext.request.contextPath}/resources/image/lecture_image1.png" alt="추천 강의 이미지" class="responsive-image">
                     </div>
                     <h6 class="sidebar-section-title">자격증 특강</h6>
+            <a href="${pageContext.request.contextPath}/lecture/realtime"><button>실시간 강의</button></a>
+        	<a href="${pageContext.request.contextPath}/lecture/offline"><button>현장 강의</button></a>
                 </div>
             </div>
         </div>

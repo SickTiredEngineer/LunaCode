@@ -23,4 +23,19 @@ public class LectureController {
     public String showOfflineLecture() {
         return "lecture/lecture_offline";
     }
+    
+    @GetMapping("/lecture/online")
+    public String onlineLecturePage() {
+        return "lecture/lecture"; // JSP 경로
+    }
+
+    @GetMapping("/lecture/offline")
+    public String offlineLecturePage() {
+        return "lecture/lecture_offline";
+    }
+
+    @GetMapping("/lecture/realtime")
+    public String realtimeLecturePage() {
+        return "lecture/lecture_realtime";
+    }
 }
