@@ -9,10 +9,6 @@
 		<meta charset="UTF-8">
 		<link href="bootstrap.min.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath}/resources/css/layout/member_login.css" rel="stylesheet">
-		
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-     	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	</head>
 	
 	
