@@ -37,40 +37,53 @@
 				</aside>
 				
 				<article>
+				
 					<form>
+					
 						<div class="row profile">
+						
 							<label class="photobox">
 								<span>사진</span>
 								<input type="file" style="display: none">
 							</label>
+							
 							<div class="nickname">
 								<input type="text" placeholder="닉네임">
 								<button class="positive-button">중복 체크</button>
 							</div>
+							
 						</div>
+						
 						<div class="row">
 							<label>이메일</label>
 							<input type="email">
 						</div>
+						
 						<div class="row">
 							<label>자기소개</label>
 							<textarea></textarea>
 						</div>
+						
 						<div class="row">
 							<label>휴대폰 번호</label>
 							<input type="tel">
 							<button class="positive-button">인증</button>
 						</div>
+						
 						<div class="row">
 							<label>깃허브</label>
 							<input type="text">
 						</div>
+						
 						<div class="actionbuttons">
-							<button type="submit" class="positive-button">취소</button>
-							<button type="submit" class="negative-button">완료</button>
+							<button class="negative-button">취소</button>
+							<button class="positive-button">완료</button>
 						</div>
+						
 					</form>
+					
 				</article>
+				
 			</div>
 			
 			<footer>

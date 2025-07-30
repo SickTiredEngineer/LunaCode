@@ -26,45 +26,50 @@
 			
 			<div class="profile-main">
 			
-			<aside class="sidebar">
-			
-				<h3>계정 설정</h3>
-				<ul>
-					<li>프로필 설정</li>
-					<li>비밀번호 설정</li>
-					<li>결제 내역</li>
-					<li><strong>계정 탈퇴</strong></li>
-				</ul>
+				<aside class="sidebar">
+					<h3>계정 설정</h3>
+					<ul>
+						<li>프로필 설정</li>
+						<li>비밀번호 설정</li>
+						<li>결제 내역</li>
+						<li><strong>계정 탈퇴</strong></li>
+					</ul>
+				</aside>
 				
-			</aside>
+				<article>
 				
-			<article>
-				<form>
-					<div class="row">
-						<label>현재 비밀번호</label>
-						<input type="password">
-					</div>
-					<div class="row">
-						<label>비밀번호 확인</label>
-						<input type="password">
-					</div>
-					<div class="row">
-						<label>전화번호 인증</label>
-						<input type="tel">
-					</div>
-					<div class="notice-box">
-						<p class="notice-title">유의사항</p>
-						<label class="notice-content">
-							<input type="checkbox">
-							계정 탈퇴를 진행하여 모든 정보를 삭제하는 데 동의합니다.
-						</label>
-					</div>
-					<div class="actionbuttons">					
-						<button type="submit" class="positive-button">회원 탈퇴</button>
-					</div>
+					<form>
 					
-				</form>
-			</article>
+						<div class="row">
+							<label>현재 비밀번호</label>
+							<input type="password">
+						</div>
+						
+						<div class="row">
+							<label>비밀번호 확인</label>
+							<input type="password">
+						</div>
+						
+						<div class="row">
+							<label>전화번호 인증</label>
+							<input type="tel">
+						</div>
+						
+						<div class="notice-box">
+							<p class="notice-title">유의사항</p>
+							<label class="notice-content">
+								<input type="checkbox">
+								계정 탈퇴를 진행하여 모든 정보를 삭제하는 데 동의합니다.
+							</label>
+						</div>
+						
+						<div class="actionbuttons">					
+							<button type="submit" class="positive-button">회원 탈퇴</button>
+						</div>
+						
+					</form>
+					
+				</article>
 			
 			</div>
 			

@@ -37,24 +37,31 @@
 				</aside>
 				
 				<article>
+				
 					<form>
+					
 						<div class="row">
 							<label>현재 비밀번호</label>
 							<input type="password">
 						</div>
+						
 						<div class="row">
 							<label>새 비밀번호</label>
 							<input type="password">
 						</div>
+						
 						<div class="row">
 							<label>새 비밀번호 확인</label>
 							<input type="password">
 						</div>
+						
 						<div class="actionbuttons">
 							<button type="submit" class="negative-button">취소</button>
 							<button type="submit" class="positive-button">완료</button>
 						</div>
+						
 					</form>
+					
 				</article>
 			
 			</div>

@@ -26,13 +26,14 @@ article {
 	flex-wrap: wrap;
 	margin-bottom: var(--common-margin);
 	font-weight: bold;
+	
 }
 
 /* 사진 업로드 */
 .photobox {
 	display: flex;
-	width: 150px;
-	height: 150px;
+	width: 175px;
+	height: 175px;
 	background-color: var(--color-sub);
 	color: var(--color-font);
 	opacity: 0.5;
@@ -44,7 +45,7 @@ article {
 	border: 1px solid var(--color-main);
 	flex-shrink: 0;
 	flex-grow: 0;
-	flex-basis: 150px;
+	flex-basis: 175px;
 	overflow: hidden;
 	margin-right: 30px;
 }
@@ -61,12 +62,8 @@ article {
 }
 
 .nickname input[type="text"] {
-	width: 25%;
-	margin-right: var(--common-margin);
-}
-
-input[type="tel"] {
-	margin-right: var(--common-margin);
+	width: 175px;
+	height: 40px;
 }
 
 /* 입력창 공통 */
@@ -80,14 +77,15 @@ textarea {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 	font-size: var(--font-size-normal);
 	box-sizing: border-box;
-	width: 50%;
+	width: 400px;
+	height: 40px;
 	flex-shrink: 0;
 }
 
 textarea {
 	height: 100px;
 	resize: none !important;
-	width: 50% !important;
+	width: 400px !important;
 	margin-bottom: var(--common-margin);
 }
 
@@ -95,6 +93,9 @@ textarea {
 .actionbuttons {
 	display: flex;
 	justify-content: center;
-	gap: 25px;
 	margin-top: 50px;
+}
+
+.positive-button {
+	width: 100px !important;
 }

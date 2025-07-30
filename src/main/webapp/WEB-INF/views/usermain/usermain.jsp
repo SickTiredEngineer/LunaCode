@@ -23,18 +23,21 @@
 			</header>
 				
 				<article>
-					<div>
+				
 					<div class="search-area">
+					
 						<div class="search-box">
 							<span class="search-icon">▼</span>
 							<input type="text" placeholder="검색어를 입력하세요">
 						</div>
+						
 						<div class="tag-list">	
 							<span class="tag">#JAVA</span>
 							<span class="tag">#DATABASE</span>
 							<span class="tag">#BACK-END</span>
 							<span class="tag">#FRONT-END</span>
 						</div>
+						
 					</div>
 				
 					<div class="top-section">
@@ -80,7 +83,7 @@
 						</div>
 						
 					</div>
-					</div>
+					
 				</article>
 
 			<footer>

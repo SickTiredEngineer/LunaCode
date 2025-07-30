@@ -27,38 +27,43 @@
 			<div class="profile-main">
 			
 				<aside class="sidebar">
-			
 					<h3>계정 설정</h3>
-						<ul>
-							<li>프로필 설정</li>
-							<li>비밀번호 설정</li>
-							<li><strong>결제 내역</strong></li>
-							<li>계정 탈퇴</li>
-						</ul>
+					<ul>
+						<li>프로필 설정</li>
+						<li>비밀번호 설정</li>
+						<li><strong>결제 내역</strong></li>
+						<li>계정 탈퇴</li>
+					</ul>
 				</aside>
 				
 				<article>
 				
 					<div class="order-box">
+					
 						<div class="order-info">
 							<div class="order-number">주문 번호 456456456</div>
 							오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선
 						</div>
+						
 						<div class="status-box">
 							<div class="status paid">결제완료</div>
 							<div class="date">2025.07.21 결제</div>
 						</div>
+						
 					</div>
 				
 					<div class="order-box">
+					
 						<div class="order-info">
 							<div class="order-number">주문 번호 456456456</div>
 							쉽지 않다. figma를 쉽게 이용해보자
 						</div>
+						
 						<div class="status-box">
 							<div class="status refunded">환불</div>
 							<div class="date">2025.07.21 결제</div>
 						</div>
+						
 					</div>
 					
 				</article>
