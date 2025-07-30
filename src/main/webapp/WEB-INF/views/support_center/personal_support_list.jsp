@@ -200,7 +200,7 @@
 								<h3 class="text-date">2025-07-30</h3>
 								<h3 class="text-category">강의</h3>
 								<h3 class="text-answer-state">Y</h3>
-								*-
+
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
 							</div>
