@@ -12,6 +12,9 @@
 		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">	
 		<link href="bootstrap.min.css" rel="stylesheet">	
 		<link href="${pageContext.request.contextPath}/resources/css/layout/home.css" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 	</head>
 	
 	
@@ -23,65 +26,32 @@
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 			</header>
 
-		
-			<article >
-				<div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false" data-bs-ride="carousel" data-bs-interval="2000">
+	<!-- 메인 중심 배너(메세지) 영역 -->
+	<div class="main-promo-section">
+	  <div class="promo-message">
+	    <p class="pre-title">루나코드</p>
+	    <h1 class="main-title">
+			내일을 바꾸는 당신의 첫 번째 클릭
+	    </h1>
+	    <p class="main-text">
+	      모든 IT, 단 하나의 루트에서 시작된다!
+	    </p>
+	  </div>
+	</div>
 	
-					<div class="carousel-inner align-self-center">
-				    	<div class="carousel-item active">
-				      		<img src="${pageContext.request.contextPath }/resources/image/banner1.png" id="banner_1" class="d-block w-100 img-fluid" alt="...">
-				    	</div>
-				    	<div class="carousel-item align-self-center">
-				        	<img src="${pageContext.request.contextPath }/resources/image/banner2.jpg" id="banner_2" class="d-block w-100 img-fluid" alt="...">
-					    </div>
-				    	<div class="carousel-item align-self-center">
-				      		<img src="${pageContext.request.contextPath }/resources/image/luna_logo_3.png" id="banner_3" class="d-block w-100 img-fluid" alt="...">
-				    	</div>
-					</div>
-					
-				  	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    	<span class="visually-hidden">Previous</span>
-				  	</button>
-				  	
-				  	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlsNoTouching" data-bs-slide="next">
-				    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    	<span class="visually-hidden">Next</span>
-					</button>
-					
-				</div>
+	<div class="scroll-menu">
+	  <a href="#" class="scroll-link">IT 자격증</a>
+	  <a href="#" class="scroll-link">기초 코딩</a>
+	  <a href="#" class="scroll-link">컴퓨터 활용</a>
+	  <a href="#" class="scroll-link">게임 개발</a>
+	  <a href="#" class="scroll-link">컴퓨터 그래픽</a>
+	  <a href="#" class="scroll-link">AI</a>
+	  <a href="#" class="scroll-link">컴퓨터 비전</a>
+	  <a href="#" class="scroll-link">임베디드</a>
+	  <a href="#" class="scroll-link">풀스택</a>
+	</div>
 	
-					
-			</article>
-			
-			<div class="card-container">
-				  <div class="card" style="width: 18rem;">
-				    <img src="${pageContext.request.contextPath }/resources/image/banner1.png" class="card-img-top" alt="카드 광고 1">
-				    <div class="card-body">
-				      <h5 class="card-title">JAVA 단기간 완성</h5>
-				      <p class="card-text">3개월 500,000원</p>
-				      <a href="#" class="btn btn-primary">신청하기</a>
-				    </div>
-				  </div>
-				  <div class="card" style="width: 18rem;">
-				    <img src="${pageContext.request.contextPath }/resources/image/banner1.png" class="card-img-top" alt="카드 광고 2">
-				    <div class="card-body">
-				      <h5 class="card-title">JAVA 단기간 완성</h5>
-				      <p class="card-text">3개월 500,000원</p>
-				      <a href="#" class="btn btn-primary">신청하기</a>
-				    </div>
-				  </div>
-				  <div class="card" style="width: 18rem;">
-				    <img src="${pageContext.request.contextPath }/resources/image/banner1.png" class="card-img-top" alt="카드 광고 3">
-				    <div class="card-body">
-				      <h5 class="card-title">JAVA 단기간 완성</h5>
-				      <p class="card-text">3개월 500,000원</p>
-				      <a href="#" class="btn btn-primary">신청하기</a>
-				    </div>
-				  </div>
-			</div>
-
-			
+	
 			<footer>
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
