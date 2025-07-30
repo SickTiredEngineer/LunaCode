@@ -1,82 +1,87 @@
-@charset "UTF-8";
-
-.main-banner-area {
-  width: 100vw;                /* 브라우저 전체 너비 */
-  max-width: 100vw;
-  overflow: hidden;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  background: #C1C7CD;         
-}
-
-.carousel-inner {
-  width: 100%;                 
-}
-
-.carousel-item img {
+/* 메인 프로모션 영역 */
+.main-promo-section {
   width: 100%;
-  height: 300;
-  display: block;
-  object-fit: cover;
-  max-height: 500px;           /* 필요시 배너 높이 제한 */
+  min-height: 340px;
+  padding: 80px 0 60px 0;
+  background: #F2F4F8; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 전체 글자 관리 */
+.promo-message {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 루나 코드 */
+.pre-title {
+  color: #444444;
+  font-size: 24px;
+  font-weight: 900;
+  margin-bottom: 16px;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+/* 내일을 바꾸는 당신의 첫 번째 클릭 */
+.main-title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #8baee7;
+  margin: 0 0 18px 0;
+  text-shadow: 0 2px 5px rgba(68, 68, 68, 0.28);
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+/* 모든 IT, 단 하나의 루트에서 시작된다! */
+.main-text {
+  display: inline-block;
+  color: #444444;  
+  font-size: 24px;
+  text-decoration: none;
+  margin-top: 10px;
+  font-weight: 900;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 }
 
 
 
-/* 카드 전체 감싸는 영역 */
-.card-container {
-  display: flex !important;      
-  gap: 100px;                    
-  flex-wrap: wrap;               
-  justify-content: center;       
-  padding: 20px 0;
-}
-
-
-/* 각 카드 개별 스타일 */
-.card-container .card {
-  width: 18rem;
-  margin-bottom: 24px;
-  border-radius: 14px;
-  box-shadow: 5px 4px 4px 0 rgba(0, 0, 0, 0.25);
+.scroll-menu {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 12px 6px;
   background: #fff;
-  transition: transform 0.18s;
-}
-
-
-.card-title {
-  font-weight: bold;
-  font-size: 20;
-  color: #444444;
-  margin-bottom: 10px;
-  text-align: center;
-  align-items: center;  
+  white-space: nowrap;
   justify-content: center;
+  margin-top: 30;
 }
 
-
-.card-text {
-  color: #444444;
-  font-size: 13;
-  margin-bottom: 10px;    
-  text-align: center;
-  align-items: center;  
-  justify-content: center;
-}
-
-
-.card .btn-primary {
-  width: 100%;
-  background: #8baee7 !important;
+.scroll-link {
+  min-width: 110px;
+  height: 60px;
+  border-radius: 13px;
+  background: #bfc8de;
   border: none;
+  color: #fff;
+  font-size: 18px;
   font-weight: bold;
-  transition: background 0.2s;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background 0.22s, transform 0.35s;
+}
+
+.scroll-link:hover,
+.scroll-link.active {
+  background: #4684d7;
+  transform: translateY(-12px);
+  box-shadow: 0 6px 24px rgba(100,100,150,0.13);
 }
 
 
-.card .btn-primary:hover {
-  background: #839FD1 !important;
-}
