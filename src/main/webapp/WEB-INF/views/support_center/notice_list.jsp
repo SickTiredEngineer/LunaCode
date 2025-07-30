@@ -6,7 +6,7 @@
 <html>
 
 	<head>
-		<title>고객 지원 센터 - 1:1 문의</title>
+		<title>고객 지원 센터 - 공지사항</title>
 		<meta charset="UTF-8">
 		
 		<!-- 필요 css 임포트 -->
