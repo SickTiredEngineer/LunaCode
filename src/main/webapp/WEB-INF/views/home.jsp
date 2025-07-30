@@ -24,6 +24,8 @@
 		
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+				<!-- 로그인 모달 연결 -->
+				<jsp:include page="/WEB-INF/views/member/login_modal.jsp"/>
 			</header>
 
 	<!-- 메인 중심 배너(메세지) 영역 -->

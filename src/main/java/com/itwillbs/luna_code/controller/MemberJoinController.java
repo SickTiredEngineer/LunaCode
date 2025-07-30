@@ -42,4 +42,21 @@ public class MemberJoinController {
 	}
 	
 	
+	
+	@GetMapping("FAQList")
+	public String faqList() {
+		return "support_center/faq_list";
+	}
+	
+	@GetMapping("NoticeList")
+	public String noticeList() {
+		return "support_center/notice_list";
+	}
+	
+	
+	
+	
+	
+	
+	
 }
