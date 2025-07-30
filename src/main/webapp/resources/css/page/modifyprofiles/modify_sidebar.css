@@ -1,0 +1,44 @@
+@charset "UTF-8";
+body{
+	font-family: var(--font-main);
+}
+.profile-main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+/* 	gap: 20px; */
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.sidebar {
+	width: 160px;
+	background-color: #dbe5f3;
+	border-radius: 30px;
+	padding: 30px 20px;
+	flex-shrink: 0;
+	text-align: center;
+}
+
+.sidebar h3 {
+	font-weight: bold;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+
+.sidebar ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}   
+
+.sidebar li {
+	margin-bottom: 15px;
+	cursor: pointer;
+	color: #183B7A;
+}
+
+.sidebar li strong {
+	color: var(--color-white);
+	font-weight: bold;
+}
