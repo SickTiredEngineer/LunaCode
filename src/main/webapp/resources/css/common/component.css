@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* ================================== */
 /* 공용 긍정 버튼 */
 .positive-button{
 	width: 100px;
@@ -14,6 +15,12 @@
 	border-radius: var(--common-radius);
 }
 
+.positive-button:active{
+	transform: scale(0.95);
+	background-position: 100% 0%;
+}
+
+/* ================================== */
 /* 공용 일반(부정) 버튼 */
 .negative-button{
 	width: 100px;
@@ -28,13 +35,21 @@
 	border-radius: var(--common-radius);
 }
 
+.negative-button:active{
+	transform: scale(0.95);
+	background-position: 100% 0%;
+}
+
+
+
+/* ================================== */
 /* 사용자 입력 폼 기본 : 테두리 갈색 */
 .common-input-form{
 	padding-left:var(--common-padding);
 	background-color: var(--color-sub);
 	border: 1px solid var(--color-border);
 	border-radius: var(--common-radius);
-	
+	font-family: var(--font-main);
 }
 
 /* 사용자 입력 폼 기본 : 테두리 메인색 */
@@ -43,37 +58,69 @@
 	background-color: var(--color-sub);
 	border: 1px solid var(--color-main);
 	border-radius: var(--common-radius);
+	font-family: var(--font-main);
 }
 
 
 /* ================================== */
 /* 좌측 공통 카테고리 css */
 .common-category{
+	display: block;
 	width: 200px;
 	height: 400px;
 	align-items: center;
-	border: 1px solid var(--color-main);
+	border-bottom: 2px solid var(--color-main); 
+	border-top: 2px solid var(--color-main);
 	border-radius: var(--common-radius);
-	padding: var(--common-padding);	
-	background-color: var(--color-main);
 }
 
-/* 카테고리 내부 요소에 대한 css */
+/* 카테고리 내부 요소에 적용하세요 */
 .common-category-element{
+	min-width: 150px;
 	width: 100%;
-	margin: 20px 0px;
+	height: 40px;
+	align-content:center;
+	margin: 10px 0px;
 	text-decoration: none;
+	font-family: var(--font-main);
 	font-weight: bold;
-	color: var(--color-font-white);
+	color: var(--color-font);
 	text-align: center;
 }
 
+/* 마우스 올라갔을 때 효과 */
+.common-category-element:hover{
+/* 	min-width: 150px; */
+	text-decoration: none;
+	font-weight: bold;
+	color: var(--color-font-main);
+	text-align: center;
+	background-color: var(--color-sub);
+	border-radius: var(--common-radius);
+}
+
+
 /* ================================== */
 
+.search-form-layout{
+	align-content: center;
+	justify-content: center;
+	border: 2px solid var(--color-main);
+	border-radius: var(--common-radius);
+	background-color: var(--color-sub);
+	padding: 0px var(--common-padding);
+	margin-bottom: var(--common-margin);
+	align-self: center;
+}
 
 
-
-
+.search-form-input{
+	font-family: var(--font-main);
+	outline: none !important;
+	width:80%;
+	background-color:transparent;
+	border:none;
+}
 
 
 

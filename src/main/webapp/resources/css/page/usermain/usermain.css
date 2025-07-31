@@ -1,0 +1,156 @@
+@charset "UTF-8";
+body {
+	font-family: 'Arial', sans-serif;
+	padding: var(--common-padding);
+}
+
+/* 검색창 바깥 영역 (가운데 정렬, 상단 여백 포함) */
+.search-area {
+	max-width: 800px;
+	margin: 30px auto 20px;
+	text-align: center;
+}
+
+/* 검색 입력창과 아이콘을 묶는 컨테이너 */
+.search-box {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+	max-width: 600px;
+}
+
+/* 검색창 input 스타일 */
+.search-box input {
+	width: 100%;
+	padding: 10px 15px 10px 35px; /* 왼쪽은 아이콘 때문에 여유 */
+	border: 2px solid var(--color-font-main);
+	border-radius: var(--search-radius);
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	outline: none;
+	box-sizing: border-box;
+}
+/* 검색창 아이콘 */
+.search-icon {
+	position: absolute;
+	left: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: var(--font-size-normal);
+	color: var(--color-font-main);
+}
+
+/* 해시태그 영역 (검색창 아래) */
+.tag-list {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+	flex-wrap: wrap; /* 태그가 넘치면 줄 바꿈 */
+}
+
+/* 개별 해시태그 스타일 */
+.tag {
+	color: var(--color-font-main);
+	font-weight: bold;
+	font-size: var(--font-size-normal);
+	cursor: pointer;
+	margin-bottom: var(--common-margin);
+}
+
+
+/* 출석 & 재생목록 전체 묶는 상단 박스 */
+.top-section {
+	display: flex;
+	justify-content: space-between;
+	max-width: 650px;
+	margin: 0 auto;
+}
+
+/* 출석, 재생목록 개별 박스 */
+.box {
+	flex: 1;
+	color: var(--color-font);
+	background-color: var(--color-font-white);
+	border: 3px solid var(--color-main);
+	border-radius: var(--common-radius);
+	padding: var(--common-padding);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+	max-width: 300px;
+	height: 350px;
+	margin: 0 auto;
+}
+
+/* 박스 상단 제목 (출석, 재생목록 등) */
+.box-header {
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: var(--common-margin);
+	cursor: pointer;
+}
+
+/* 박스 안의 항목 줄들 */
+.box-item {
+	font-size: 16px;
+	margin: 40px 0;
+	display: flex;
+	justify-content: space-between;
+	border-bottom: 1px solid var(--color-font-main);
+	padding: 10px;
+}
+
+/* 재생목록의 + 아이콘 */
+.plus-icon {
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	color: var(--color-font-gray);
+	cursor: pointer;
+}
+
+.weektitle {
+	text-align: center;
+	color: var(--color-font-main);
+	font-weight: bold;
+	margin-top: 50px;
+	margin-bottom: var(--common-margin);
+}
+
+.box2 {
+	flex: 1;
+	color: var(--color-font);
+	background-color: var(--color-font-white);
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	padding: 0;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+	max-width: 300px;
+	margin: 0 auto;
+	cursor: pointer;
+}
+
+.box2:hover {
+	transform: scale(1.03);
+}
+
+.middle-section {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+.thumbnail-link {
+	display: block;
+	text-align: center;
+}
+
+.thumbnail {
+	width: 100%;
+	max-width: 300px;
+	height: 300px;
+	border-radius: var(--common-radius);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+	cursor: pointer;
+	transition: transform 0.2s ease;
+}

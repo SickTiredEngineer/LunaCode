@@ -1,0 +1,101 @@
+@charset "UTF-8";
+body{
+	font-family: var(--font-main);
+}
+
+.profiletitle {
+	text-align: center;
+	color: #5F9FD5;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+article {
+	background-color: var(--color-sub);
+	padding: 50px;
+	border-radius: 50px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	width: 800px;
+	margin: 0 auto;
+}
+
+/* 각 입력 행 */
+.row {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	margin-bottom: var(--common-margin);
+	font-weight: bold;
+	
+}
+
+/* 사진 업로드 */
+.photobox {
+	display: flex;
+	width: 175px;
+	height: 175px;
+	background-color: var(--color-sub);
+	color: var(--color-font);
+	opacity: 0.5;
+	font-size: 20px;
+	border-radius: var(--common-radius);
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	border: 1px solid var(--color-main);
+	flex-shrink: 0;
+	flex-grow: 0;
+	flex-basis: 175px;
+	overflow: hidden;
+	margin-right: 30px;
+}
+
+.row.profile {
+	display: flex;
+	align-items: flex-end;
+	flex-wrap: nowrap;
+}
+
+.nickname {
+	display: flex;
+	align-items: center;
+}
+
+.nickname input[type="text"] {
+	width: 175px;
+	height: 40px;
+}
+
+/* 입력창 공통 */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea {
+	padding: 10px 14px;
+	border: 1px solid var(--color-black);
+	border-radius: var(--common-radius);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+	font-size: var(--font-size-normal);
+	box-sizing: border-box;
+	width: 400px;
+	height: 40px;
+	flex-shrink: 0;
+}
+
+textarea {
+	height: 100px;
+	resize: none !important;
+	width: 400px !important;
+	margin-bottom: var(--common-margin);
+}
+
+/* 하단 버튼 영역 */
+.actionbuttons {
+	display: flex;
+	justify-content: center;
+	margin-top: 50px;
+}
+
+.positive-button {
+	width: 100px !important;
+}

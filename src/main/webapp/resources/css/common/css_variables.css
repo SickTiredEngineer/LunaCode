@@ -8,6 +8,8 @@
 		
 		/* 메인 컬러 */
 		--color-main: #8baee7;
+		
+		--color-blue: #4492FE;
 		/* 서브 컬러 */
 		--color-sub: #F2F4F8;
 		/* 페이지 흰색 */
@@ -27,9 +29,9 @@
 		/* ================================ */
 		/* 폰트 */
 		/* ================================ */
-		
+		--font-main: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
 		/* 메인 폰트 */
-		--font-main: 'Noto Sans KR', sans-serif;
+/* 		--font-main: 'Noto Sans KR', sans-serif; */
 		/* 일반 폰트 크기 */
 		--font-size-normal: 13px;
 		/* 안내 문구 폰트 크기 */
@@ -49,6 +51,9 @@
 		
 		/* 공용 마진 */
 		--common-margin: 20px;
+		--common-margin-half: 10px;
+		
+		
 		/* 공용 패딩 */
 		--common-padding: 20px;
 		/* 공용 Radius */
