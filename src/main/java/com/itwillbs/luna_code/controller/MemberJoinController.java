@@ -30,7 +30,6 @@ public class MemberJoinController {
 	}
 	
 	
-	
 	@GetMapping("AdminDashboard")
 	public String adminDashBoard() {
 		return "admin/admin_dashboard";
@@ -42,4 +41,8 @@ public class MemberJoinController {
 	}
 	
 	
+	@GetMapping("Review")
+	public String Review() {
+		return "review/review";
+	}
 }
