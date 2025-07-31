@@ -6,10 +6,11 @@
 <html>
 
 	<head>
-		<title>Main</title>
+		<title>Welcome Page</title>
 		<meta charset="UTF-8">
 		
-		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>	
+		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
+		<link href="${pageContext.request.contextPath}/resources/css/page/member/welcome_page.css" rel="stylesheet">	
 	</head>
 	
 	
@@ -23,14 +24,13 @@
 
 		
 			<article>
-				<div class="d-flex flex-column align-items-center">
+				<div class="d-flex flex-column align-items-center ">
 				
-					<img src="${pageContext.request.contextPath }/resources/image/welcome_image.png" id="" alt="...">	
+					<img src="${pageContext.request.contextPath }/resources/image/welcome_image.png" class="welcome-image-size" alt="...">	
 					
+
 					<form action="GoHome" method="get">
-					
-						<button type="submit">홈으로</button>
-					
+						<button type="submit" class="positive-button">홈으로</button>
 					</form>
 				
 				</div>

@@ -25,19 +25,18 @@
 
 			<article>
 				
-				<div class="d-flex flex-column justify-content-center">
-					<h2 class="main-text">1:1 문의</h2>
-				</div>
+				<div class="d-flex flex-row justify-content-between top-layout">
 				
-				
-				<div class="d-flex flex-row justify-content-between">
+					<div class="d-flex flex-column justify-content-center">
+						<h2 class="main-text">1:1 문의</h2>
+					</div>
+					
 				
 					<div class="d-flex flex-row">
 						<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
 							<input type="text" class="search-form-input" maxlength="10">
+							<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
 						</div>
-					
-						<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">	
 					</div>
 				
 					<button class="positive-button write-button-size">문의 작성</button>
@@ -207,6 +206,7 @@
 							<a class="page-selector">2</a>
 							<a class="page-selector">3</a>
 							<a class="page-selector">4</a>
+							<a class="page-selector">5</a>
 							
 							<a class="page-selector">&gt;</a>
 					

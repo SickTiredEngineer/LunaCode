@@ -3,11 +3,12 @@
 /* ========================================= */
 /* 카테고리에 해당되는 게시판 이름 출력 H2에 적용 */
 .main-text{
+	width: 200px;
+	text-align: center;
 	font-family: var(--font-main);
 	color: var(--color-main)  !important;
 	font-weight: bold;
 	margin-top: 20px;
-	text-align: left;
 }
 
 /* ========================================= */
@@ -114,7 +115,18 @@ list-main-layout{
 	text-align: center;
 	font-size: var(--font-size-normal);
 	color: var(--color-font);
-	width: 100px;
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
+.text-view-count{
+	font-family: var(--font-main);
+	font-size: var(--font-size-info);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
 	margin-right: var(--common-margin-half);
 }
 
@@ -152,11 +164,10 @@ list-main-layout{
 /* 검색창 */
 .search-icon{
 	width: 40px;
-	height: 40px;
+	height: 100%;
 /* 	border: 1px solid var(--color-main); */
 /* 	border-radius: var(--common-radius); */
 	align-content: center;
-	margin-left: var(--common-margin--half);
 }
 
 /* 검색창 사이즈 */
@@ -169,7 +180,7 @@ list-main-layout{
 /* 문의 작성 버튼 */
 .write-button-size{
 	height: 40px;
-	margin-right: 10px;
+	align-self: center;
 }
 
 /* 페이지 번호 이동 기능 레이아웃 */
@@ -178,6 +189,7 @@ list-main-layout{
 }
 
 .page-selector{
+	font-weight: bold;
 	font-family: var(--font-main);	
 	text-decoration: none;
 	margin-right: 2em;	
@@ -189,5 +201,9 @@ list-main-layout{
 	height: fit-content !important;
 }
 
+
+.top-layout{
+	margin: 40px 0px;
+}
 
 

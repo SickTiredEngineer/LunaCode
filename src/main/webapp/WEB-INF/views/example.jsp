@@ -13,6 +13,9 @@
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
+		
+		
+		
 	</head>
 	
 	

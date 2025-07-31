@@ -27,23 +27,20 @@
 
 			<article>
 				
+				<div class="d-flex flex-row justify-content-between top-layout">
 				
-				<div class="d-flex flex-column justify-content-center">
-					<h2 class="main-text">F A Q</h2>
-				</div>
-				
-				
-				<div class="d-flex flex-row justify-content-between">
+					<div class="d-flex flex-column justify-content-center">
+						<h2 class="main-text">FAQ</h2>
+					</div>
+					
 				
 					<div class="d-flex flex-row">
 						<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
 							<input type="text" class="search-form-input" maxlength="10">
+							<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
 						</div>
-					
-						<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">	
 					</div>
 				
-					<!-- 관리자용 -->
 					<button class="positive-button write-button-size">FAQ 작성</button>
 					
 				</div>
