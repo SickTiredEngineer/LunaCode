@@ -1,0 +1,405 @@
+@charset "UTF-8";
+
+.rev_tit {
+    margin-bottom: 50px;
+    font-size: 35px;
+    color: #444444;
+    text-align: center;
+    letter-spacing: -0.88px;
+}
+.rev__tit {
+    margin-bottom: 50px;
+    font-size: 35px;
+    color: #839FD1;
+    text-align: center;
+    letter-spacing: -0.88px;
+}
+
+.sec_best {
+    margin-bottom: 60px;
+    padding-top: 20px;
+}
+
+.w1100 {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.sec_tit {
+    margin-bottom: 50px;
+    font-weight: 600;
+    font-size: 35px;
+    color: #000;
+    text-align: center;
+    letter-spacing: -0.88px;
+}
+
+.best_wrap {
+    display: flex;
+    justify-content: space-between;
+}
+
+ol, ul, dl {
+    list-style: none;
+}
+
+.best_wrap .best {
+    width: 350px;
+    height: 440px;
+    padding: 40px;
+    border-radius: 10px;
+    border:rgb(131, 159, 209)lid #ddd;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.position {
+    position: relative;
+}
+
+.card {
+  border: 1px solid #000; /* 검정색 1px 실선 */
+  border-radius: 10px;    /* 모서리를 둥글게 (옵션) */
+  padding: 20px;          /* 안쪽 여백 */
+  background: #fff;       /* 배경색 (흰색) */
+  box-sizing: border-box; /* padding 포함한 전체 크기 계산 */
+}
+
+.profile {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 35px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    width: 84%;
+}
+
+.lec_name {
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 18px;
+    color: #254fef;
+}
+
+.info span {
+    font-size: 13px;
+    color: #666;
+}
+
+.avata {
+    display: block;
+    width: 45px;
+    height: 41px;
+    background: url(//siwon-cdn.siwonschool.com/www/v5/review/thumb1_n.png) 0 0 no-repeat;
+    background-size: cover;
+}
+
+.best_tit {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 50px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 17px;
+    color: #111115;
+    line-height: 24px;
+    overflow: hidden;
+    white-space: normal;
+    letter-spacing: -0.43px;
+}
+
+.best_txt {
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    height: 110px;
+    font-size: 14px;
+    color: #666;
+    line-height: 22px;
+    overflow: hidden;
+    white-space: normal;
+    letter-spacing: -0.35px;
+    overflow: hidden;
+}
+
+.img_wrap {
+    position: absolute;
+    bottom: 35px;
+    left: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 220px;
+    overflow: hidden;
+}
+
+.btn_more {
+    text-decoration: none;
+    z-index: 10;
+    position: absolute;
+    bottom: -1px;
+    right: -1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    border: 1px solid #ddd;
+    background: #fff;
+    font-weight: 600;
+    font-size: 25px;
+    color: #666;
+}
+
+.img_area:not(:last-child) {
+    margin-right: 5px;
+}
+
+.img_area {
+    position: relative;
+    width: 70spx;
+    height: 70px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.img_area img {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    vertical-align: top;
+}
+
+.ii {
+    font-style: normal;
+    font-weight: normal;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.6);
+    z-index: 9999;
+}
+
+.modal-content {
+    background: #fff;
+    /* === 수정된 부분 1 : 모달 가로 폭을 900px에서 720px로 줄였습니다 === */
+    width: 720px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.modal-body {
+    display: flex;
+    /* === 수정된 부분 2 : 좌우 컨텐츠 간격을 20px에서 18px로 약간 줄였습니다 === */
+    gap: 18px;
+}
+
+/* 왼쪽 (이미지 영역) */
+.left {
+    /* === 수정된 부분 3 : 왼쪽 영역의 너비를 280px로 고정합니다 === */
+    width: 280px;
+    flex-shrink: 0; /* 컨테이너 너비가 줄어들지 않도록 설정 */
+}
+
+.left #modalMainImg {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.thumbnails {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.thumbnails img {
+    /* === 수정된 부분 4 : 썸네일 이미지 크기를 조정했습니다 === */
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    object-fit: cover;
+    border-radius: 4px;
+}
+.thumbnails img:hover {
+    border-color: #333;
+}
+
+/* 오른쪽 (텍스트 정보 영역) */
+.right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.rating {
+    font-size: 20px;
+    color: #f5c518;
+}
+
+.info-top h3 {
+    margin: 10px 0 5px;
+    font-size: 18px;
+}
+
+.meta {
+    color: #888;
+    font-size: 14px;
+}
+
+.info-tags {
+    display: flex;
+    flex-wrap: wrap; /* 태그가 많아지면 줄바꿈 처리 */
+    gap: 15px;
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.info-tags span {
+  background-color: #f2f2f2;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.review-scroll {
+    max-height: 220px;
+    overflow-y: auto;
+    padding-right: 10px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.6;
+}
+
+.sec_graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 270px;
+    margin-bottom: 60px;
+    padding: 55px 0;
+    background: #f4f7fc;
+    box-sizing: border-box;
+}
+
+.scope {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-right: 95px;
+    padding-right: 150px;
+    border-right: 1px solid #ddd;
+    box-sizing: border-box;
+}
+
+.scope_num {
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-size: 40px;
+    color: #0d1720;
+    text-align: center;
+}
+
+.position {
+    position: relative;
+}
+
+.star_rating_m {
+    width: 176px;
+    height: 31.5px;
+    background: url(//siwon-cdn.siwonschool.com/www/community/v2/stars_M.png) no-repeat;
+    overflow: hidden;
+}
+
+.star_on {
+    background-position: left bottom;
+}
+
+.desc {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #333;
+}
+
+.desc span {
+    font-weight: 600;
+    font-size: 18px;
+    color: #254fef;
+}
+
+.score_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.score .score_tit {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #999;
+    letter-spacing: -0.4px;
+}
+
+.high_score .score_tit {
+    font-weight: 600;
+    color: #254fef;
+}
+
+.progress {
+    width: 285px;
+    height: 7px;
+    border-radius: 10px;
+    background: #ddd;
+    overflow: hidden;
+}
+
+.position {
+    position: relative;
+}
+
+.bar {
+    position: absolute;
+    height: 16px;
+    border-radius: 20px;
+    background: #254fef;
+}
+
+.high_score .score_percent {
+    font-weight: 600;
+    color: #254fef;
+}
+
+.score .score_percent {
+    width: 40px;
+    font-size: 16px;
+    color: #999;
+    text-align: right;
+    letter-spacing: -0.4px;
+}
