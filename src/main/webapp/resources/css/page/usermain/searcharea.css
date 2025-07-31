@@ -1,0 +1,50 @@
+@charset "UTF-8";
+body {
+	font-family: 'Arial', sans-serif;
+	padding: var(--common-padding);
+}
+
+/* 검색 영역: 가운데 정렬 및 상단 여백 */
+.search-area {
+	max-width: 400px;
+	margin: 30px auto 20px;
+	text-align: center;
+}
+
+/* 검색창과 드롭다운 버튼을 감싸는 컨테이너 */
+.search-box {
+	position: relative;            /* 드롭다운 버튼을 절대 위치로 배치하기 위한 기준 */
+	display: inline-block;
+	width: 100%;
+	max-width: 400px;
+}
+
+/* 드롭다운 버튼 위치 설정: input 왼쪽에 고정 */
+.search-box .dropdown {
+	position: absolute;            /* 부모(search-box)를 기준으로 절대 위치 */
+	left: 15px;
+	top: 50%;
+	transform: translateY(-50%);   /* 정확한 세로 중앙 정렬 */
+	z-index: 10;                   /* input 위에 표시되도록 z-index 설정 */
+}
+
+/* 드롭다운 버튼 자체의 스타일 */
+.search-box .dropdown > button {
+	border: none;
+	background: transparent;
+	padding: 0 15px;
+	font-weight: 600;              /* 글씨 굵게 */
+	cursor: pointer;
+}
+
+/* 검색 input 스타일 */
+.search-box input {
+	width: 100%;
+	padding: 10px 15px 10px 100px; /* 왼쪽 여백은 드롭다운 버튼 공간 확보 */
+	border: 2px solid var(--color-font-main);
+	border-radius: var(--search-radius);
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	outline: none;
+	box-sizing: border-box;
+}

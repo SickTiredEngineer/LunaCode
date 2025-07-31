@@ -12,7 +12,7 @@
 		<link href="${pageContext.request.contextPath }/resources/css/common/component.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_passwd.css" rel="stylesheet">      
-		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_sidebar.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_category.css" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -26,14 +26,11 @@
 			
 			<div class="profile-main">
 			
-				<aside class="sidebar">
-					<h3>계정 설정</h3>
-					<ul>
-						<li>프로필 설정</li>
-						<li><strong>비밀번호 설정</strong></li>
-						<li>결제 내역</li>
-						<li>계정 탈퇴</li>
-					</ul>
+				<aside class="common-category">
+					<a href="ModifyProfile" class="common-category-element">프로필 설정</a>
+					<a href="ModifyPasswd" class="common-category-element">비밀번호 설정</a>
+					<a href="MyPayment" class="common-category-element">결제 내역</a>
+					<a href="ModifyDelete" class="common-category-element">계정 탈퇴</a>
 				</aside>
 				
 				<article>

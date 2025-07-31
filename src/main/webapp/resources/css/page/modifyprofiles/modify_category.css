@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.profile-main {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+/* 	gap: 20px; */
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.common-category a {
+	cursor: pointer;
+}
+
+/* 공통 항목 기본 상태는 그대로 두되 여백 조정 */
+.common-category .common-category-element {
+  display: block;
+/*   margin: 10px auto; */
+}
+
+.common-category{
+	height: 250px;
+}

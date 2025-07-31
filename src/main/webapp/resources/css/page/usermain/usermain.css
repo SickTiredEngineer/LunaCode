@@ -120,8 +120,8 @@ body {
 	flex: 1;
 	color: var(--color-font);
 	background-color: var(--color-font-white);
-	border: 1px solid var(--color-main);
-	border-radius: var(--common-radius);
+/* 	border: 1px solid var(--color-main); */
+/* 	border-radius: var(--common-radius); */
 	padding: 0;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
 	max-width: 300px;
@@ -154,3 +154,10 @@ body {
 	cursor: pointer;
 	transition: transform 0.2s ease;
 }
+
+.carousel-item img {
+    border-radius: var(--common-radius);
+}
+
+
+
