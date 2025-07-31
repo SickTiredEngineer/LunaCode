@@ -29,16 +29,11 @@ public class MemberJoinController {
 		return "member/welcome_page";
 	}
 	
-	
 	@GetMapping("AdminDashboard")
 	public String adminDashBoard() {
 		return "admin/admin_dashboard";
 	}
 	
-	@GetMapping("PersonalSupport")
-	public String supportCenter() {
-		return "support_center/personal_support_list";
-	}
 	
 	
 	@GetMapping("Review")

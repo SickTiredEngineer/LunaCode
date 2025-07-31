@@ -8,15 +8,7 @@
 	<head>
 		<title>사용자 정보 입력</title>
 		<meta charset="UTF-8">
-		
-		<link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-     	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/css/common/component.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">		
+		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>		
 		<link href="${pageContext.request.contextPath }/resources/css/page/member/join_form.css" rel="stylesheet">
 	</head>
 	
@@ -41,34 +33,34 @@
 					<!-- =================================================== -->
 					<div class="d-flex flex-row input-form-layout">
 						<p class="info-text">아이디</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="집가고싶당">
-						<button class="positive-button">확인</button>
+						<input type="text" class="input-form-size common-input-form" placeholder="집가고싶당" id="input_id">
+						<button class="positive-button" id="bt_check_id">확인</button>
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span">●Test Span (1)</span>
+						<span class="info-span" id="span_id">●Test Span (1)</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
 					<!-- =================================================== -->
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">비밀번호</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
+						<input type="text" class="input-form-size common-input-form" placeholder="" id="input_pass">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span">●Test Span (2)</span>
+						<span class="info-span" id="span_pass">●Test Span (2)</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
 					<!-- =================================================== -->	
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">비밀번호 확인</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
+						<input type="text" class="input-form-size common-input-form" placeholder="" id="input_pass_check">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span">●Test Span (3)</span>
+						<span class="info-span" id="span_pass_check">●Test Span (3)</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
@@ -139,6 +131,8 @@
 			</footer>
 		
 		</div>
+		
+		<script src="${pageContext.request.contextPath }/resources/js/member_join/join_form.js"></script>
 	
 	</body>
 	
