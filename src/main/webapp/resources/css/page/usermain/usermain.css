@@ -4,6 +4,35 @@ body {
 	padding: var(--common-padding);
 }
 
+.page-base {
+	overflow-x: visible !important;
+}
+
+/* ✅ 캐러셀 전체 너비로 확장 */
+.carousel-outer {
+	position: relative;
+	width: 100vw;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	overflow: hidden;
+	z-index: 0;
+}
+
+/* ✅ 캐러셀 이미지 스타일 */
+.carousel-img {
+	width: 100vw;
+	height: 500px;
+	object-fit: cover;
+	display: block;
+}
+
+/* ✅ 버튼 크기 조정 */
+.carousel-control-prev,
+.carousel-control-next {
+	width: 5%;
+}
 /* 검색창 바깥 영역 (가운데 정렬, 상단 여백 포함) */
 .search-area {
 	max-width: 800px;
@@ -65,6 +94,7 @@ body {
 	justify-content: space-between;
 	max-width: 1000px;
 	margin: 0 auto;
+	margin-top: 50px;
 }
 
 /* 출석, 재생목록 개별 박스 */
@@ -89,20 +119,28 @@ body {
 	cursor: pointer;
 }
 
-.class-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--color-font-dark, #333);
-  margin-bottom: 8px;
-  line-height: 1.4;
+/* ✅ 좌우 배치 컨테이너 추가 */
+.class-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
 }
 
-/* 레슨 완료 카운트 */
+/* ✅ 강의 제목 (왼쪽) */
+.class-title {
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--color-font);
+	line-height: 1.4;
+}
+
+/* ✅ 레슨 완료 카운트 (오른쪽) */
 .class-count {
-  font-size: 14px;
-  color: var(--color-font-light, #666);
-  margin-bottom: 10px;
-  line-height: 1.4;
+	width: 100px;           /* ✅ 오른쪽 너비 지정 */
+	text-align: right;      /* ✅ 텍스트 우측 정렬 */
+	font-size: 14px;
+	color: var(--color-font);
+	line-height: 1.4;
 }
 
 /* 박스 안의 항목 줄들 */
@@ -124,59 +162,7 @@ body {
 	cursor: pointer;
 }
 
-.weektitle {
-	text-align: center;
-	color: var(--color-font-main);
-	font-weight: bold;
-	margin-top: 50px;
-	margin-bottom: var(--common-margin);
-}
-
-.box2 {
-	flex: 1;
-	color: var(--color-font);
-	background-color: var(--color-font-white);
-/* 	border: 1px solid var(--color-main); */
-/* 	border-radius: var(--common-radius); */
-	padding: 0;
-	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-	max-width: 300px;
-	margin: 0 auto;
-	cursor: pointer;
-}
-
-.box2:hover {
-	transform: scale(1.03);
-}
-
-.middle-section {
-	display: flex;
-	justify-content: space-between;
-	max-width: 1000px;
-	margin: 0 auto;
-}
-
-.thumbnail-link {
-	display: block;
-	text-align: center;
-}
-
-.thumbnail {
-	width: 100%;
-	max-width: 300px;
-	height: 300px;
-	border-radius: var(--common-radius);
-	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-	cursor: pointer;
-	transition: transform 0.2s ease;
-}
-
-.carousel-item img {
-    border-radius: var(--common-radius);
-}
-
 .progress-bar {
 	background-color: var(--color-main) !important;
+	color: var(--color-font-white) !important;
 }
-
-
