@@ -1,87 +1,136 @@
-/* 메인 프로모션 영역 */
-.main-promo-section {
+/* ===== 상단 배너 전체 컨테이너 ===== */
+.banner-visual {
+  position: relative;
   width: 100%;
-  min-height: 340px;
-  padding: 80px 0 60px 0;
-  background: #F2F4F8; 
+  height: 550px; 
+  overflow: hidden;
   display: flex;
-  align-items: center;
   justify-content: center;
-}
-
-/* 전체 글자 관리 */
-.promo-message {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
   align-items: center;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 }
 
-/* 루나 코드 */
-.pre-title {
+/* 배경 이미지 */
+.banner-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+/*   object-fit: contain;   늘어남 없이 중앙에 맞추고 싶으면 주석 풀기 */
+  object-fit: fill;
+  user-select: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+
+/* 슬라이드 텍스트 영역 (배경 위) */
+.banner-slide-text {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
   color: #444444;
-  font-size: 24px;
-  font-weight: 900;
-  margin-bottom: 16px;
+  text-shadow:    0 2px 6px rgba(0,0,0,0.12);
+  font-size: 2.3rem;
+  font-weight: 700;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  transition: opacity 0.5s ease;
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
 }
 
-/* 내일을 바꾸는 당신의 첫 번째 클릭 */
-.main-title {
-  font-size: 50px;
-  font-weight: bold;
-  color: #8baee7;
-  margin: 0 0 18px 0;
-  text-shadow: 0 2px 5px rgba(68, 68, 68, 0.28);
-  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+/* 슬라이드 텍스트 페이드 클래스 */
+#slide-text {
+  opacity: 1;
+  transition: opacity 0.5s ease;
 }
 
-/* 모든 IT, 단 하나의 루트에서 시작된다! */
-.main-text {
-  display: inline-block;
-  color: #444444;  
-  font-size: 24px;
-  text-decoration: none;
-  margin-top: 10px;
-  font-weight: 900;
-  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+.slide-enter {
+  opacity: 0;
 }
 
 
-
+/* ==================================== */
+/* 아이콘 메뉴 영역 */
 .scroll-menu {
   display: flex;
-  gap: 12px;
-  overflow-x: auto;
-  padding: 12px 6px;
+  gap: 10px;
+  padding: 10px 6px 20px 6px;
   background: #fff;
   white-space: nowrap;
   justify-content: center;
-  margin-top: 30;
-}
-
-.scroll-link {
-  min-width: 110px;
-  height: 60px;
-  border-radius: 13px;
-  background: #bfc8de;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 0 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: background 0.22s, transform 0.35s;
-}
-
-.scroll-link:hover,
-.scroll-link.active {
-  background: #4684d7;
-  transform: translateY(-12px);
-  box-shadow: 0 6px 24px rgba(100,100,150,0.13);
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  overflow-x: visible;
 }
 
 
+/* 아이콘 이미지 스타일 */
+.scroll-menu img {
+  width: 120px;
+  height: 150px;
+  border-radius: 10px;
+  transition: filter 0.2s, transform 0.3s;
+}
+
+/* 아이콘 효과 조절 */
+@keyframes bounce-main {
+  0%   { transform: translateY(0) scale(1); }
+  100%  { transform: translateY(-15px) scale(1.32); } /* 올라오는 이미지 크기 조절은 scale 조절 translateY은 높이 조절 */
+}
+
+.scroll-menu img:hover {
+  position: relative;
+  animation: bounce-main 0.8s forwards; /* 올라오는 효과 속도 조절은 s앞 숫자로 조절 */
+  z-index: 10}
+
+/* ==================================== */
+/* 베너 1 원숭이 */
+.banner-bg1 {
+  margin-top: 10px;
+  width: 100%;       
+  max-width: 100%;    
+  height: auto;       
+  display: block;
+  border-radius: 20px; 
+}	
+
+.banner-bg2 {
+  margin-top: 10px;
+  width: 100%;       
+  max-width: 100%;   
+  margin: 0px; 
+  height: auto;       
+  display: block;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
+  border-radius: 10px;
+}	
+
+.banner-bg2-text {
+  position: absolute;
+  top: 50%; /* 세로 중앙 */
+  left: 50%; /* 가로 중앙 */
+  transform: translate(-50%, -50%); /* 중앙정렬 */
+  width: 90%;         
+  text-shadow: 0 2px 6px rgba(0,0,0,0.18), 0 6px 18px rgba(0,0,0,0.10); 
+  font-size: 2.2rem;  
+  font-weight: 700;
+  text-align: center;
+  pointer-events: none; 
+  margin-top: 38px;
+}
+
+
+
+/* .fade-section2 { */
+/*   padding: 60px 30px; */
+/*   max-width: 100%; */
+/*   height: 800px; */
+/*   background-color: #ffc0cb; */
+/*   border-radius: 10px; */
+/*   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; */
+/* } */

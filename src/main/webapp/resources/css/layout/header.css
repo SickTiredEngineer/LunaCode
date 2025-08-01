@@ -152,7 +152,7 @@
 
 
 .side-nav.open {
-  max-height: 500px; /* 메뉴 개수에 맞게 늘리기 */
+  max-height: 650px; /* 메뉴 개수에 맞게 늘리기 */
   padding: 20px 18px;
 }
 
