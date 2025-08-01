@@ -38,8 +38,12 @@
 							<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
 						</div>
 					</div>
-				
-					<button class="positive-button write-button-size">문의 작성</button>
+					
+<!-- 					<a href="SupportWrite"> -->
+<!-- 						<button class="positive-button write-button-size">문의 작성</button> -->
+<!-- 					</a> -->
+					
+					<a href="SupportWrite" class="positive-button write-button-size">문의 작성</a>
 					
 				</div>
 				
@@ -65,136 +69,53 @@
 							
 							
 						<div class="list-layout">
+						
+							<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="SupportDetail" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">1</h3>
+										<h3 class="text-subject">DDOS 공격 당함?</h3>
+										<h3 class="text-date">2025-07-30</h3>
+										<h3 class="text-category">기타</h3>
+										<h3 class="text-answer-state">N</h3>
+									</a>
+									
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+							</div>
+							
+							<div class="horizontal-line"></div>
 	
-							<!-- ============================== -->
-							<!-- Example Start -->
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">1</h3>
-								<h3 class="text-subject">집에 가고 싶어요.</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">기타</h3>
-								<h3 class="text-answer-state">N</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+							
+							<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="SupportDetail" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">2</h3>
+										<h3 class="text-subject">강사가 왜이럼;</h3>
+										<h3 class="text-date">2025-07-30</h3>
+										<h3 class="text-category">강의</h3>
+										<h3 class="text-answer-state">Y</h3>
+									</a>
+									
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+							</div>
+							
+							<div class="horizontal-line"></div>
+	
+							<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="SupportDetail" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">3</h3>
+										<h3 class="text-subject">환불해주셈</h3>
+										<h3 class="text-date">2025-07-30</h3>
+										<h3 class="text-category">환불</h3>
+										<h3 class="text-answer-state">Y</h3>
+									</a>
+									
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
 							</div>
 							
 							<div class="horizontal-line"></div>
 							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">2</h3>
-								<h3 class="text-subject">내 돈 돌리도.</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">환불</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">3</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">4</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">5</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">6</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">7</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">8</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">9</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">10</h3>
-								<h3 class="text-subject">이 강사 꼬라지 왜이래요</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-category">강의</h3>
-								<h3 class="text-answer-state">Y</h3>
-
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
 							
 						</div>
 						
@@ -213,14 +134,8 @@
 						</div>
 					
 					
-					
 					</div>
-					
-<!-- 					<div class="d-flex flex-column list-layout"> -->
-					
-				
-					
-				
+
 				</div>
 				
 			

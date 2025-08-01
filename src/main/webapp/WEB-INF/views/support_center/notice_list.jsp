@@ -62,46 +62,56 @@
 							</div>
 							
 							
-						<div class="list-layout">
+						<div class="d-flex flex-column list-layout">
 	
 							<!-- ============================== -->
 							<!-- Example Start -->
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">1</h3>
-								<h3 class="text-subject">저희 DDOS 공격 당함;.</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-view-count">13000</h3>
+							
+							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="NoticeDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">1</h3>
+									<h3 class="text-subject">저희 DDOS 공격 당함;.</h3>
+									<h3 class="text-date">2025-07-30</h3>
+									<h3 class="text-view-count">13000</h3>
+								</a>
 								
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+
 							</div>
+							
+							
 							
 							<div class="horizontal-line"></div>
 							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">2</h3>
-								<h3 class="text-subject">환불 규정 변경 알림</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-view-count">3000</h3>
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="NoticeDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">2</h3>
+									<h3 class="text-subject">공지 적기 귀찮은데?</h3>
+									<h3 class="text-date">2025-07-30</h3>
+									<h3 class="text-view-count">5000</h3>
+								</a>
 								
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row align-items-center list-item-layout">
-								<h3 class="text-no">3</h3>
-								<h3 class="text-subject">심심해서 쓰는 공지</h3>
-								<h3 class="text-date">2025-07-30</h3>
-								<h3 class="text-view-count">5000</h3>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+
 							</div>
 							
 							<div class="horizontal-line"></div>	
 							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="NoticeDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">3</h3>
+									<h3 class="text-subject">아 집가고싶다</h3>
+									<h3 class="text-date">2025-07-30</h3>
+									<h3 class="text-view-count">300</h3>
+								</a>
+								
+								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+
+							</div>
 						
 							
 						</div>

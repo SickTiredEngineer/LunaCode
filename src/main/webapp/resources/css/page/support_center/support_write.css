@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+
+body{
+	font-family: var(--font-main);
+}
+
+.top-layout{
+	margin: 40px 0px;
+}
+
+.main-text{
+	width: 200px;
+	text-align: center;
+	color: var(--color-main)  !important;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.write_main_layout{
+	margin-left: var(--common-margin);
+	background-color: var(--color-sub);
+	width: 1050px;
+	height: fit-content !important;
+	border-radius: var(--common-radius);
+}
+
+.write-layout{
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+	align-content: center;
+/* 	justify-content: center; */
+}
+
+
+.write-layout-content{
+	
+	margin: var(--common-margin) 0 var(--common-margin) var(--common-margin);
+	
+/* 	margin-top: var(--common-margin); */
+/* 	margin-left: var(--common-margin); */
+/* 	margin-bottom: var(--common-margin); */
+/* 	justify-content: center; */
+}
+
+
+/* 설명 텍스트 규격 */
+.info-text{
+	align-content:center;
+	color: var(--color-font) !important;
+	width: 200px;
+	height: 30px;
+	font-weight: bold;
+}
+
+.info-text-content{
+	align-content:center;
+	color: var(--color-font) !important;
+	width: 200px;
+	height: auto;
+	font-weight: bold;
+}
+
+/* 카테고리 사이즈 = 의미없음 */
+.category-size{
+	height: fit-content !important;
+}
+
+
+.form-size{
+	width: 200px;
+	height: 30px;	
+}
+
+/* 문의 작성 버튼 */
+.button-detail{
+	height: 30px;
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+

@@ -23,6 +23,23 @@ public class SupportCenterController {
 	}
 	
 	
+	@GetMapping("SupportDetail")
+	public String supoortDetail() {
+		return "support_center/support_detail";
+	}
+	
+	@GetMapping("NoticeDetail")
+	public String noticeDetail() {
+		return "support_center/notice_detail";
+	}
+	
+	@GetMapping("SupportWrite")
+	public String supportWrite() {
+		return "support_center/support_write";
+	}
+	
+	
+	
 	
 	
 }

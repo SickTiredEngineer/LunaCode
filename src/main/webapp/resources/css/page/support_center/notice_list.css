@@ -74,6 +74,7 @@ list-main-layout{
 /* ========================================= */
 /* 각 항목들의 텍스트 규격 */
 .text-no{
+	text-decoration: none;
 	font-family: var(--font-main);
 	font-size: var(--font-size-info);
 	font-weight: bold;

@@ -69,14 +69,14 @@
 	
 							<!-- FAQ 항목 하나 -->
 							<div class="faq-item">
-								<div class="d-flex flex-row align-items-center list-item-layout faq-toggle">
+								<div class="d-flex flex-row align-items-center list-item-layout list-item-root faq-toggle">
 									<h3 class="text-no">1</h3>
 									<h3 class="text-subject">결제 취소 방법</h3>
 									<h3 class="text-date">2025-07-30</h3>
 									<h3 class="text-category">결제</h3>
 								
-									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+<%-- 									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a> --%>
+<%-- 									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a> --%>
 								</div>
 								
 								<!-- 답변 내용 -->
@@ -91,14 +91,14 @@
 
 							<!-- FAQ 항목 하나 -->
 							<div class="faq-item">
-								<div class="d-flex flex-row align-items-center list-item-layout faq-toggle">
+								<div class="d-flex flex-row align-items-center list-item-layout list-item-root faq-toggle ">
 									<h3 class="text-no">2</h3>
 									<h3 class="text-subject">강사랑 다이까고 싶어요</h3>
 									<h3 class="text-date">2025-07-30</h3>
 									<h3 class="text-category">강사</h3>
 								
-									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+<%-- 									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a> --%>
+<%-- 									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a> --%>
 								</div>
 								
 								<!-- 답변 내용 -->

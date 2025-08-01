@@ -25,13 +25,15 @@
 /* 목록이 담길 레이아웃 큰 틀 */
 .list-layout{
 	margin-left: var(--common-margin);
-	width: 1050px;
+	width: 1000px;
 	height: 500px;
+	min-width: 600px;
 /* 	border: 1px solid var(--color-border); */
 /* 	border-radius: var(--common-radius); */
-	overflow: scroll;
-	overflow-x: hidden;
+/* 	overflow: scroll; */
+/* 	overflow-x: hidden; */
 }
+
 
 /* ========================================= */
 /* 목록이 실질적으로 담기는 틀 */
@@ -40,6 +42,7 @@ list-main-layout{
 	width: 100%;
 	height: 600px;
 }
+
 
 /* ========================================= */
 /* 항목 설명하는 텍스트들이 들어가는 레이아웃 */
@@ -56,21 +59,26 @@ list-main-layout{
 /* 설명 텍스트 규격 */
 .info-text{
 	color: var(--color-font-white) !important;
+	width: auto;
 }
 
 /* ========================================= */
-/* 목록 아이템이 담기는 레이아웃 */
-.list-item-layout:hover{
+.list-item-root:hover{
 	background-color: var(--color-sub);
 }
 
+
 /* 목록 아이템들에 대한 스타일 */
 .list-item-layout{
-	width:100%;
+	display: inline-block;
+	text-decoration: none;
+/* 	width:100%; */
 	height: 50px;
 	padding-left: var(--common-padding);
 /* 	padding-top: var(--common-padding); */
 }
+
+
 
 /* ========================================= */
 /* 각 항목들의 텍스트 규격 */
@@ -127,7 +135,6 @@ list-main-layout{
 	font-size: var(--font-size-normal);
 	color: var(--color-font);
 	width: 150px;
-	margin-right: var(--common-margin-half);
 }
 
 .text-answer-state{
@@ -145,7 +152,7 @@ list-main-layout{
 .edit-icon{
 	width: 30px;
 	height: 30px;
-	margin-right: var(--common-margin);
+	margin-left: var(--common-margin);
 	border: 1px solid var(--color-border);
 	border-radius: var(--common-radius);
 	background-color: var(--color-sub);
@@ -181,6 +188,9 @@ list-main-layout{
 .write-button-size{
 	height: 40px;
 	align-self: center;
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
 }
 
 /* 페이지 번호 이동 기능 레이아웃 */
