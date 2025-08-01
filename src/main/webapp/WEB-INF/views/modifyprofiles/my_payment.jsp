@@ -8,9 +8,7 @@
 	<head>
 		<title>MyPayment</title>
 		<meta charset="UTF-8">
-		<link href="${pageContext.request.contextPath }/resources/css/common/css_variables.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/common/component.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">
+		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/my_payment.css" rel="stylesheet">      
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_category.css" rel="stylesheet">
 	</head>

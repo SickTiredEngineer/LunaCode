@@ -8,9 +8,7 @@
 	<head>
 		<title>UserMain</title>
 		<meta charset="UTF-8">
-		<link href="${pageContext.request.contextPath }/resources/css/common/css_variables.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/common/component.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/common/base.css" rel="stylesheet">
+		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/usermain.css" rel="stylesheet">      
 	</head>
 	
@@ -41,6 +39,15 @@
 					</div>
 				
 					<div class="top-section">
+						
+						<div class="box">
+							<div class="box-header">내 강의</div>
+							<div class="class-title">자바 스크립트 기초</div>
+							<div class="class-count">5/20<br>레슨 완료</div>
+							<div class="progress" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+							<div class="progress-bar" style="width: 25%">25%</div>
+							</div>
+						</div>
 						
 						<div class="box">
 							<div class="box-header">출석</div>

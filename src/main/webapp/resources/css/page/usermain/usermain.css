@@ -63,7 +63,7 @@ body {
 .top-section {
 	display: flex;
 	justify-content: space-between;
-	max-width: 650px;
+	max-width: 1000px;
 	margin: 0 auto;
 }
 
@@ -72,10 +72,10 @@ body {
 	flex: 1;
 	color: var(--color-font);
 	background-color: var(--color-font-white);
-	border: 3px solid var(--color-main);
+	border: 1px solid var(--color-main);
 	border-radius: var(--common-radius);
 	padding: var(--common-padding);
-	box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+	box-shadow: 0 2px 5px rgba(0,0,0,0.4);
 	max-width: 300px;
 	height: 350px;
 	margin: 0 auto;
@@ -87,6 +87,22 @@ body {
 	font-weight: bold;
 	margin-bottom: var(--common-margin);
 	cursor: pointer;
+}
+
+.class-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--color-font-dark, #333);
+  margin-bottom: 8px;
+  line-height: 1.4;
+}
+
+/* 레슨 완료 카운트 */
+.class-count {
+  font-size: 14px;
+  color: var(--color-font-light, #666);
+  margin-bottom: 10px;
+  line-height: 1.4;
 }
 
 /* 박스 안의 항목 줄들 */
@@ -159,5 +175,8 @@ body {
     border-radius: var(--common-radius);
 }
 
+.progress-bar {
+	background-color: var(--color-main) !important;
+}
 
 
