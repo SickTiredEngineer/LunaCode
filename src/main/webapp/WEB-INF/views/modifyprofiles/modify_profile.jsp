@@ -22,7 +22,7 @@
 				<h2 class="profiletitle">프로필 설정</h2>
 			</header>
 			
-			<div class="profile-main">
+			<div class="main-content-layout">
 				
 				<aside class="common-category">
 					<a href="ModifyProfile" class="common-category-element">프로필 설정</a>
@@ -38,7 +38,7 @@
 						<div class="row profile">
 						
 							<label class="photobox">
-								<span>사진</span>
+							<span>사진</span>
 								<input type="file" style="display: none">
 							</label>
 							

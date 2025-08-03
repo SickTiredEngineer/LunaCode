@@ -22,7 +22,7 @@
 				<h2 class="profiletitle">비밀번호 설정</h2>
 			</header>
 			
-			<div class="profile-main">
+			<div class="main-content-layout">
 			
 				<aside class="common-category">
 					<a href="ModifyProfile" class="common-category-element">프로필 설정</a>

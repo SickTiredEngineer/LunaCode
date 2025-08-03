@@ -10,13 +10,17 @@ body{
 	margin-bottom: 50px;
 }
 
+.main-content-layout {
+	display: flex;            /* 자식(aside, article)을 가로로 배치 */
+}
+
 article {
 	background-color: var(--color-sub);
 	padding: 50px;
 	border-radius: 50px;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 	width: 800px;
-	margin: 0 auto;
+	margin-left: 50px;
 }
 
 .row {
