@@ -61,18 +61,32 @@
 	   </div>
     </section>
 
-    <section class="fade-section2" data-aos="fade-up" data-aos-delay="200" >
-       <img src="${pageContext.request.contextPath}/resources/image/home_banner2.png" class="banner-bg2" alt="하단 광고3" />
-       <div class="banner-bg2-text"> 
+	<section class="fade-section2" data-aos="fade-up" data-aos-delay="200">
+	  <div class="searchbar-wrap">
+	    <img src="${pageContext.request.contextPath}/resources/image/home_banner2.png" class="banner-bg2" alt="하단 광고3" />
+	           <div class="banner-bg2-text"> 
  	  	 <span id= "bottom-typer">IT 공부 재밌게 하는 법</span>
 	   </div>
-    </section>
+		<div id="observeTarget"></div>
+	    <div id="suggestions" class="suggestions">
+	      <ul>
+	        <li><span class="icon">🔍</span>비전공자 코딩 입문 추천</li>
+	        <li><span class="icon">🔍</span>실무 중심 IT 자격증 강의</li>
+	        <li><span class="icon">🔍</span>단기완성 웹 개발 부트캠프</li>
+	        <li><span class="icon">🔍</span>취업에 강한 프로그래밍 강의</li>
+	        <li><span class="icon">🔍</span>가성비 최고의 IT 인강 사이트</li>
+	      </ul>
+	    </div>
+	  </div>
+	</section>
+
 
     <section class="fade-section" data-aos="fade-up">
       <h2>실무 중심 커리큘럼 & 실전 프로젝트</h2>
       <p>개발자·디자이너·데이터분석가 등 다양한 진출 가능</p>
       <p>[LunaCode]은 현업으로 가는 가장 실용적인 길입니다</p>
     </section>
+   
     <!-- 연관 검색어 박스 -->
 	<div class="related-box" id="related-box">
 	  <p id="animated-text">코딩? 나도 아무것도 몰랐어요</p>
