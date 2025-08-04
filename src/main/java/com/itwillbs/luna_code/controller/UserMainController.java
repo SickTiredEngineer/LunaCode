@@ -16,4 +16,24 @@ public class UserMainController {
 	public String searchArea() {
 		return "usermain/searcharea";
 	}
+	
+	@GetMapping("MyClass")
+	public String myClass() {
+		return "usermain/my_class";
+	}
+	
+	@GetMapping("MyClass2")
+	public String myClass2() {
+		return "usermain/my_class2";
+	}
+	
+	@GetMapping("PlayList")
+	public String playList() {
+		return "usermain/play_list";
+	}
+	
+	@GetMapping("PlayListPlus")
+	public String playListPlus() {
+		return "usermain/play_list_plus";
+	}
 }

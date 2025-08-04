@@ -1,0 +1,121 @@
+@charset "UTF-8";
+/* ===================================
+   페이지 공통 레이아웃
+=================================== */
+.content-layout {
+    display: flex;
+    gap: 40px; 
+    align-items: flex-start;
+}
+
+/* ===================================
+   사이드바 (common-category)
+=================================== */
+.common-category {
+    flex-shrink: 0; 
+    width: 200px; 
+    height: auto; 
+    margin-top: 164px; 
+}
+
+/* ===================================
+   재생목록 컨테이너
+=================================== */
+.playlist-container {
+    flex: 1;
+    max-width: 1000px;
+}
+
+/* 상단 헤더 (제목 + 편집 버튼) */
+.playlist-header {
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
+    
+    /* [핵심] align-items을 완전히 제거하여 수직 정렬을 해제합니다! */
+
+    margin-top: 80px;
+    margin-bottom: var(--common-margin);
+}
+
+.playlist-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.header-buttons {
+    display: flex;
+    gap: 10px; /* 버튼 사이의 간격 */
+    
+    /* [이동] 버튼 그룹 전체를 아래로 내립니다. */
+    margin-top: 40px; 
+}
+
+
+
+/* ===================================
+   폴더 그리드
+=================================== */
+.playlist-grid {
+    display: grid;
+    /* 화면 너비에 따라 자동으로 컬럼 수가 조절되는 반응형 그리드 */
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 각 폴더 아이템 */
+.playlist-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-font);
+    padding: var(--common-padding);
+    transition: transform 0.2s;
+}
+.playlist-item a:hover {
+    transform: translateY(-5px);
+}
+
+/* CSS로 그린 폴더 아이콘 */
+.folder-icon {
+    width: 100px;
+    height: 75px;
+    background-color: var(--color-main);
+    border-radius: var(--common-radius);
+    position: relative;
+    margin-bottom: 15px;
+}
+.folder-icon::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 40px;
+    height: 12px;
+    background-color: inherit;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.playlist-name {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+/* "새로 만들기" 폴더 특별 스타일 */
+.playlist-item.add-new a {
+    width: 130px; /* 아이콘과 텍스트가 있는 다른 아이템과 크기를 맞춤 */
+    height: 106px;
+    border: 2px dashed var(--color-border);
+    border-radius: 12px;
+    justify-content: center;
+    background-color: var(--color-sub);
+}
+.add-icon {
+    font-size: 40px;
+    color: var(--color-font-gray);
+    font-weight: 200;
+}

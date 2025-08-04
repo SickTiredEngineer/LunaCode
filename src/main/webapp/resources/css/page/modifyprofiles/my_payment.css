@@ -1,76 +1,102 @@
 @charset "UTF-8";
-body{
-	font-family: var(--font-main);
+/* ===================================
+   페이지 공통 레이아웃 (재사용)
+=================================== */
+body {
+    font-family: var(--font-main);
+}
+.title-layout {
+    margin: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+.page-main-title {
+    width: 200px;
+    text-align: center;
+    color: var(--color-main) !important;
+    font-weight: bold;
+    margin-top: var(--common-margin);
+}
+.content-layout {
+    display: flex;
+    flex-direction: row;
 }
 
-.profiletitle {
-	text-align: center;
-	color: #5F9FD5;
-	margin-top: 50px;
-	margin-bottom: 50px;
+/* ===================================
+   결제 내역 컨테이너
+=================================== */
+.payment-history-container {
+    flex: 1;
+    margin-left: var(--common-margin);
+    max-width: 800px;
+    /* 이 컨테이너는 배경색 없이 내부 아이템이 디자인을 갖도록 함 */
 }
 
-.main-content-layout {
-	display: flex;       /* 자식(aside, article)을 가로로 배치 */
+/* ===================================
+   결제 항목 리스트
+=================================== */
+.payment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-article {
-/* 	background-color: var(--color-sub); */
-	padding: 50px;
-	border-radius: 50px;
-/* 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); */
-	width: 800px;
-	margin-left: 50px;
+/* 결제 항목 아이템 (기존 .order-box 스타일) */
+.payment-item {
+    background-color: var(--color-white);
+    border-radius: var(--common-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+    padding: 20px 25px;
+    margin-bottom: var(--common-margin);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.2s, box-shadow 0.2s;
 }
-
-.order-box {
-	background-color: var(--color-white);
-	border-radius: 12px;
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-	padding: 16px 20px;
-	margin-bottom: 20px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.payment-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
 }
 
 .order-info {
-	font-size: 16px;
-	font-weight: 500;
-	color: var(--color-font);
+    font-size: var(--font-size-info);
+    font-weight: 500;
+    color: var(--color-font);
 }
 
 .order-number {
-	font-size: 12px;
-	color: var(--color-font-gray);
-	margin-bottom: 5px;
+    font-size: var(--font-size-normal);
+    color: var(--color-font-gray);
+    margin-bottom: 8px;
 }
 
 .status-box {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex-shrink: 0;
+    margin-left: var(--common-margin);
 }
 
 .status {
-	padding: 6px 12px;
-	border-radius: 20px;
-	color: var(--color-white);
-	font-size: 14px;
-	font-weight: bold;
-	text-align: center;
-	margin-bottom: 5px;
+    padding: 6px 14px;
+    border-radius: var(--common-radius);
+    color: var(--color-white);
+    font-size: var(--font-size-normal);
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 8px;
 }
 
 .paid {
-	background-color: var(--color-main);
+    background-color: var(--color-main);
 }
 
 .refunded {
-	background-color: #E65C5C;
+    background-color: #E65C5C;
 }
 
 .date {
-	font-size: 12px;
-	color: #666;
+    font-size: 13px;
+    color: var(--color-black);
 }
