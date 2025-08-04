@@ -34,7 +34,7 @@
 					<div class="d-flex flex-row input-form-layout">
 						<p class="info-text">아이디</p>
 						<input type="text" class="input-form-size common-input-form" placeholder="집가고싶당" id="input_id">
-						<button class="positive-button" id="bt_check_id">확인</button>
+						<button type="button" class="positive-button" id="bt_check_id">중복확인</button>
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
@@ -83,7 +83,7 @@
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">별명</p>
 						<input type="text" class="input-form-size common-input-form" placeholder="">
-						<button class="positive-button">확인</button>
+						<button type="button" class="positive-button">중복확인</button>
 					</div>
 					
 					
@@ -96,9 +96,17 @@
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">이메일</p>
-						<input type="text" class="common-input-form input-form-email-size" placeholder="">
+						<input type="text" class="common-input-form input-form-email-size" placeholder="" id="email_1">
 						<p class="email-mark">@</p>
-						<input type="text" class="common-input-form input-form-email-size" placeholder="">
+						<input type="text" class="common-input-form input-form-email-size" placeholder="" id="email_2">
+						
+						<select class="email-selector" id="email_selector">
+							<option value="">직접 입력</option>
+							<option value="naver.com">네이버</option>
+							<option value="gmail.com">지메일</option>
+							<option value="daum.net">다음</option>
+						</select>
+						
 					</div>
 					
 					<br>

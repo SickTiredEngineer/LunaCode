@@ -3,7 +3,6 @@
 .main_bannder {
   	width: 120px;
 	height: auto;
-
 }
 
 
@@ -31,11 +30,16 @@
 
 
 .header {
-	 position: relative;
+
+	 position: sticky;
 	 border-bottom: 1px solid var(--color-border);
 	 background-color: #fff;
 	 padding: 20px 20px;   
-	 min-height: 100px;    
+/* 	 min-height: 100px;     */
+  top: 0;
+  left: 0;
+  right: 0;   /* 이 조합이면 width:100%와 동일 효과 */
+  width: 100%; /* 100vw 대신 100% */
 }
 
 

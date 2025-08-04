@@ -115,6 +115,9 @@
 										</p>	
 									</div>
 								</div>
+								
+								<div class="horizontal-line"></div>
+								
 							</div>
 
 

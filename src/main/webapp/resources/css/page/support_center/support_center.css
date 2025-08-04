@@ -25,7 +25,7 @@
 /* 목록이 담길 레이아웃 큰 틀 */
 .list-layout{
 	margin-left: var(--common-margin);
-	width: 1000px;
+	width: 1100px;
 	height: 500px;
 	min-width: 600px;
 /* 	border: 1px solid var(--color-border); */
@@ -39,7 +39,7 @@
 /* 목록이 실질적으로 담기는 틀 */
 list-main-layout{
 	margin-left: var(--common-margin);
-	width: 100%;
+	width: 1100px;
 	height: 600px;
 }
 
@@ -47,7 +47,7 @@ list-main-layout{
 /* ========================================= */
 /* 항목 설명하는 텍스트들이 들어가는 레이아웃 */
 .list-info-layout{
-	width: 100%;
+	width: 1100px;
 	margin-left: var(--common-margin);
 	border-radius: var(--common-radius);
 	height: 50px;

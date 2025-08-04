@@ -9,7 +9,7 @@
 <html>
 
 	<head>
-		<title>Main</title>
+		<title>문의 작성</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
@@ -41,52 +41,58 @@
 							<a href="NoticeList" class="common-category-element">공지사항</a>
 						</div>
 						
-						<div class="d-flex flex-column write_main_layout">
-							
-							
-							<div class="d-flex flex-row write-layout">
-									<p class="info-text">문의 카테고리</p>
-									<input type="text" readonly="readonly" class="common-input-form form-size">
-							</div>
-							
-							<div class="horizontal-line"></div>
 						
-							<div class="d-flex flex-row write-layout">
-									<p class="info-text">문의 제목</p>
-									<input type="text" class="common-input-form form-size">
-							</div>
-							
-							<div class="horizontal-line"></div>
+						<div class="d-flex flex-column">
 						
-							<div class="d-flex flex-row write-layout-content">
-									<p class="info-text-content">문의 내용</p>
-									<textarea rows="10" cols="50" class="common-input-form"></textarea>
-							</div>
+							<div class="d-flex flex-column write_main_layout">
+								
+								
+								<div class="d-flex flex-row write-layout">
+										<p class="info-text">문의 카테고리</p>
+										<select class="common-input-form form-size select-category">
+											<option value="other">기타</option>
+						                    <option value="class">강의</option>
+						                    <option value="pay">결제</option>
+						                    <option value="ref">환불</option>
+										</select>
+								</div>
+								
+								<div class="horizontal-line"></div>
 							
-							<div class="horizontal-line"></div>
-							
-							<div class="d-flex flex-row  write-layout">
-									<p class="info-text">첨부 파일</p>
-									<input type="text" class="common-input-form form-size">
+									<div class="d-flex flex-row write-layout">
+											<p class="info-text">문의 제목</p>
+											<input type="text" class="common-input-form form-size">
+									</div>
 									
-									<a href="#" class="positive-button button-detail">파일 선택</a>
-							</div>
+									<div class="horizontal-line"></div>
+								
+									<div class="d-flex flex-row write-layout-content">
+											<p class="info-text-content">문의 내용</p>
+											<textarea rows="10" cols="50" class="common-input-form"></textarea>
+									</div>
+									
+									<div class="horizontal-line"></div>
+									
+									<div class="d-flex flex-row  write-layout">
+											<p class="info-text">첨부 파일</p>
+											<input type="text" class="common-input-form form-size">
+											<a href="#" class="positive-button button-detail">파일 선택</a>
+									</div>
+									
+									
+									<div class="d-flex flex-row">
+											<a href="#" class="positive-button button-detail add-attachment-bt">첨부 파일 추가</a>
+									</div>
+								
+								</div>
 							
-						
-						
+						<div class="d-flex flex-row button-container">
+							<a href="PersonalSupport" class="negative-button">취소</a>
+							<a href="PersonalSupport" class="positive-button">완료</a>
 						</div>
-						
+								
 
-					</div>	
-					
-					<div>
-					
-						<div>
-							
-						
-						
-						
-						</div>
+						</div>	
 					
 					</div>
 					

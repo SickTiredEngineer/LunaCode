@@ -5,17 +5,34 @@ body{
 	font-family: var(--font-main);
 }
 
+
 .top-layout{
 	margin: 40px 0px;
 }
 
+
+
+
 .main-text{
-	width: 200px;
-	text-align: center;
+	width: auto;
+	text-align: left;
 	color: var(--color-main)  !important;
 	font-weight: bold;
 	margin-top: 20px;
 }
+
+
+.view-count-text{
+	width:100%;
+	
+	text-align: right;
+	font-weight: bold;
+	margin: var(--common-margin) var(--common-margin) 0px 0px
+	
+}
+
+
+
 
 .write_main_layout{
 	margin-left: var(--common-margin);
@@ -25,6 +42,10 @@ body{
 	border-bottom: 2px solid var(--color-main); 
 	border-top: 2px solid var(--color-main);
 	border-radius: var(--common-radius);
+}
+
+.qna_layout{
+	margin-bottom: var(--common-margin);
 }
 
 

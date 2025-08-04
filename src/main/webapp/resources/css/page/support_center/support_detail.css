@@ -5,13 +5,14 @@ body{
 	font-family: var(--font-main);
 }
 
+
 .top-layout{
 	margin: 40px 0px;
 }
 
 .main-text{
-	width: 200px;
-	text-align: center;
+	width: auto;
+	text-align: left;
 	color: var(--color-main)  !important;
 	font-weight: bold;
 	margin-top: 20px;
@@ -25,6 +26,10 @@ body{
 	border-bottom: 2px solid var(--color-main); 
 	border-top: 2px solid var(--color-main);
 	border-radius: var(--common-radius);
+}
+
+.qna_layout{
+	margin-bottom: var(--common-margin);
 }
 
 

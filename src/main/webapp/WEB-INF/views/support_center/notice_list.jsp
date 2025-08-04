@@ -15,6 +15,7 @@
 	
 	
 	<body>
+	
 		<div class="page-base container">
 			
 			<!-- 헤더 -->		
@@ -26,11 +27,10 @@
 				
 				<div class="d-flex flex-row justify-content-between top-layout">
 				
-					<div class="d-flex flex-column justify-content-center">
+					<div class="d-flex justify-content-center">
 						<h2 class="main-text">공지사항</h2>
 					</div>
 					
-				
 					<div class="d-flex flex-row">
 						<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
 							<input type="text" class="search-form-input" maxlength="10">
@@ -112,7 +112,8 @@
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
 
 							</div>
-						
+							
+							<div class="horizontal-line"></div>	
 							
 						</div>
 						

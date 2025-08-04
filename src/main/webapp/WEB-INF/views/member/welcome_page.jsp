@@ -16,7 +16,7 @@
 	
 	<body>
 	
-		<div class="page-base container">
+		<div>
 		
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
