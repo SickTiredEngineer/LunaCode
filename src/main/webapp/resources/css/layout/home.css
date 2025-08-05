@@ -128,15 +128,15 @@
 .searchbar-wrap {
   position: relative;
   margin: 0 auto;
-  display: inline-block;   /* 원본 이미지 크기와 wrap됨 */
+  display: inline-block;   
 }
 
 .suggestions {
   position: absolute;
-  top: 40px;              /* 원하는 만큼 Y축 위치(위에서 40px 내려옴) */
+  top: 48px;              
   left: 50%;
   transform: translateX(-50%);
-  width: 47%;             /* 혹은 100%로 사진만큼 딱 맞게 */
+  width: 47%;             
   background: #fff;
   border-radius: 5px;
   margin-top: 380px;

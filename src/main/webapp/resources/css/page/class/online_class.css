@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+.title_text{
+  text-align: center;   
+  color: #8baee7;        
+  font-weight: bold;   
+  margin-top: 20px;  
+  margin-bottom: 20px;  
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;;
+}
+
+.video-section {
+  display: flex;         
+  justify-content: center; 
+  align-items: center;   
+}
+
+.video_play{
+	width: 1000px;
+	display: block;
+	border-radius: 10px;
+	border: 3px solid #8baee7;
+	box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}

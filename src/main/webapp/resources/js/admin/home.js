@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', function () {
   const sugDiv = document.getElementById('suggestions');
-  const target = document.getElementById('observeTarget'); // 관찰 대상
+  const target = document.getElementById('observeTarget'); 
   let hasShown = false;
 
   // 초기 숨김 상태 설정
@@ -151,17 +151,15 @@ document.addEventListener('DOMContentLoaded', function () {
   sugDiv.style.maxHeight = '0px';
   sugDiv.style.transition = 'opacity 0.5s ease, max-height 0.5s ease';
 
-  // IntersectionObserver 설정
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !hasShown) {
         hasShown = true;
 
-        // 700ms 뒤에 자연스럽게 나타나게
         setTimeout(() => {
           sugDiv.style.opacity = 1;
           sugDiv.style.maxHeight = '500px';
-        }, 300);
+        }, 400);
       }
     });
   }, {
