@@ -85,11 +85,9 @@
 			<div class="d-flex align-items-center gap-3">
 
 				<a href="AdminDashboard" class="nav-link">관리자</a>
-
+				<a href="Community" class="nav-link">커뮤니티</a>
 				
-
-				<a href="#" class="nav-link">커뮤니티</a>
-				<a href="Review" class="nav-link">수강후기</a>
+<!-- 				<a href="Review" class="nav-link">수강후기</a> -->
 				
 				<!-- TODO: 로그인 유무에 따라 UI 다르게 보이게 설정하기 -->
 <%-- 				<c:choose> --%>

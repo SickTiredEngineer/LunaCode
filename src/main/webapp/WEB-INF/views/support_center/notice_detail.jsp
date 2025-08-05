@@ -61,8 +61,15 @@
 									<div class="horizontal-line"></div>
 								
 									<div class="d-flex flex-row write-layout-content">
-										<p class="info-text-content">내용</p>
-										<textarea rows="10" cols="50" class="common-input-form"></textarea>
+<!-- 										<p class="info-text-content">내용</p> -->
+<!-- 										<textarea rows="10" cols="50" class="common-input-form"></textarea> -->
+											<pre class="notice-content">공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 
+공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용
+공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용 
+
+											
+											
+											</pre>
 									</div>
 									
 									<div class="horizontal-line"></div>

@@ -13,7 +13,7 @@
         
         <title>루나코드 관리자 페이지</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="${pageContext.request.contextPath}/resources/css/page/admin/admin_dashboard.css" rel="stylesheet" rel="stylesheet" />
+        <link href="${pageContext.request.contextPath}/resources/css/page/admin/temp_admin.css" rel="stylesheet" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
