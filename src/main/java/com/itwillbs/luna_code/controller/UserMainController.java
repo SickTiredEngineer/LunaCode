@@ -27,6 +27,11 @@ public class UserMainController {
 		return "usermain/my_class2";
 	}
 	
+	@GetMapping("MyClassDetail")
+	public String myClassDetail() {
+		return "usermain/my_class_detail";
+	}
+	
 	@GetMapping("PlayList")
 	public String playList() {
 		return "usermain/play_list";
@@ -35,5 +40,10 @@ public class UserMainController {
 	@GetMapping("PlayListPlus")
 	public String playListPlus() {
 		return "usermain/play_list_plus";
+	}
+	
+	@GetMapping("Attendance")
+	public String attendance() {
+		return "usermain/attendance";
 	}
 }

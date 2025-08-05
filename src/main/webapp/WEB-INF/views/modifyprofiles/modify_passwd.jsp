@@ -25,7 +25,7 @@
 	                <h2 class="page-main-title">비밀번호 설정</h2>
 	            </div>
 	
-	            <%-- 메인 콘텐츠 레이아웃 (사이드바 + 폼) --%>
+	            <%-- 메인 콘텐츠 레이아웃 --%>
 	            <div class="content-layout">
 	            
 	                <%-- 좌측 공통 카테고리 --%>
@@ -36,24 +36,24 @@
 	                    <a href="ModifyDelete" class="common-category-element">계정 탈퇴</a>
 	                </aside>
 	                
-	                <%-- 메인 폼 영역 (1:1 문의의 .write_main_layout 역할) --%>
+	                <%-- 메인 폼 영역 --%>
 	                <section class="form-container">
-	                    <form method="post" action="<c:url value='/user/modifyPasswdAction'/>">
+	                    <form>
 	                    
-	                        <%-- 각 입력 행 (1:1 문의의 .write-layout 역할) --%>
+	                        <%-- 각 입력 행 --%>
 	                        <div class="form-row">
-	                            <label for="currentPassword" class="form-label">현재 비밀번호</label>
-	                            <input type="password" id="currentPassword" name="currentPassword" class="common-input-form-main-color form-input-size" required>
+	                            <label class="form-label">현재 비밀번호</label>
+	                            <input type="password" class="common-input-form-main-color form-input-size">
 	                        </div>
                    
 	                        <div class="form-row">
-	                            <label for="newPassword" class="form-label">새 비밀번호</label>
-	                            <input type="password" id="newPassword" name="newPassword" class="common-input-form-main-color form-input-size" required>
+	                            <label class="form-label">새 비밀번호</label>
+	                            <input type="password" class="common-input-form-main-color form-input-size">
 	                        </div>
 	
 	                        <div class="form-row">
-	                            <label for="newPasswordConfirm" class="form-label">새 비밀번호 확인</label>
-	                            <input type="password" id="newPasswordConfirm" name="newPasswordConfirm" class="common-input-form-main-color form-input-size" required>
+	                            <label class="form-label">새 비밀번호 확인</label>
+	                            <input type="password" class="common-input-form-main-color form-input-size">
 	                        </div>
 	                        
 	                        <%-- 하단 버튼 영역 --%>

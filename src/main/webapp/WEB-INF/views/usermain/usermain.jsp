@@ -41,8 +41,8 @@
 		                <a href="UserMain" class="common-category-element active">홈</a>
 		                <a href="MyClass" class="common-category-element">내 강의</a>
 		                <a href="PlayList" class="common-category-element">재생목록</a>
+		                <a href="Attendance" class="common-category-element">출석</a>
 		                <a href="#" class="common-category-element">커뮤니티 활동</a>
-		                <a href="#" class="common-category-element">출석</a>
 		            </aside>
 		            
 		            <%-- 메인 콘텐츠 영역 --%>
@@ -71,7 +71,7 @@
 		                <ul class="widget-list">
 		                    <li class="widget-item">
 		                        <h3 class="widget-header">
-	                       			<a href="#" class="widget-full-link">
+	                       			<a href="MyClass" class="widget-full-link">
 								        <span>내 강의</span>
 								        <span class="widget-more-arrow">></span>
 								    </a>
@@ -88,7 +88,7 @@
 		                    </li>
 		                    <li class="widget-item">
 		                        <h3 class="widget-header">
-		                        	<a href="#" class="widget-full-link">
+		                        	<a href="Attendance" class="widget-full-link">
 								        <span>출석</span>
 								        <span class="widget-more-arrow">></span>
 								    </a>
@@ -101,15 +101,15 @@
 		                    </li>
 		                    <li class="widget-item">
 		                        <h3 class="widget-header">
-		                        	<a href="#" class="widget-full-link">
+		                        	<a href="PlayList" class="widget-full-link">
 								        <span>재생목록</span>
 								        <span class="widget-more-arrow">></span>
 								    </a>
 		                        </h3>
 		                        <div class="widget-content">
-		                            <a href="#" class="playlist-add-button">+</a>
-		                            <div class="playlist-item">첫번째 재생목록</div>
-		                            <div class="playlist-item">두번째 재생목록</div>
+		                            <a href="PlayList" class="playlist-add-button">+</a>
+		                            <div class="playlist-item">재생목록1</div>
+		                            <div class="playlist-item">재생목록2</div>
 		                        </div>
 		                    </li>
 		                </ul>

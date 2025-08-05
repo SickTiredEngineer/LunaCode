@@ -1,16 +1,12 @@
 @charset "UTF-8";
-/* ===================================
-   페이지 공통 레이아웃
-=================================== */
+/* 페이지 공통 레이아웃 */
 .content-layout {
     display: flex;
     gap: 40px; 
     align-items: flex-start;
 }
 
-/* ===================================
-   사이드바 (common-category)
-=================================== */
+/* 사이드바 (common-category) */
 .common-category {
     flex-shrink: 0; 
     width: 200px; 
@@ -18,21 +14,15 @@
     margin-top: 164px; 
 }
 
-/* ===================================
-   재생목록 컨테이너
-=================================== */
+/* 강의 컨테이너 */
 .myclass-container {
     flex: 1;
     max-width: 1000px;
 }
 
-/* 상단 헤더 (제목 + 편집 버튼) */
+/* 상단 헤더 */
 .myclass-header {
     display: flex;
-    justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
-    
-    /* [핵심] align-items을 완전히 제거하여 수직 정렬을 해제합니다! */
-
     margin-top: 80px;
     margin-bottom: var(--common-margin);
 }
@@ -63,9 +53,7 @@
     border-bottom: 3px solid var(--color-main);
 }
 
-/* ===================================
-   강의 목록
-=================================== */
+/* 강의 목록 */
 .course-list {
     list-style: none;
     padding: 0;

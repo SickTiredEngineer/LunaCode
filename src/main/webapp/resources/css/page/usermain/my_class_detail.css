@@ -1,0 +1,147 @@
+@charset "UTF-8";
+/* 페이지 공통 레이아웃 */
+.content-layout {
+    display: flex;
+    gap: 40px; 
+    align-items: flex-start;
+}
+
+/* 사이드바 (common-category) */
+.common-category {
+    flex-shrink: 0; 
+    width: 200px; 
+    height: auto; 
+    margin-top: 164px; 
+}
+
+/* 강의 상세 페이지 컨테이너 */
+.course-detail-container {
+    flex: 1; /* 사이드바를 제외한 나머지 공간을 모두 차지 */
+    max-width: 1000px; /* 콘텐츠가 너무 넓어지지 않도록 최대 너비 지정 */
+}
+
+
+/* 상단 헤더 (제목 + 정렬 버튼) */
+.course-detail-header {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px; /* 공통 헤더와의 간격 */
+    margin-bottom: var(--common-margin); /* 아래 목록과의 간격 */
+}
+
+.main-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.positive-button {
+	margin-top: 40px;
+}
+
+/* 강의 섹션 목록 (ul.section-list) */
+.section-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 각 섹션 카드 사이의 간격 */
+}
+
+/* 각 섹션 카드 (li.section-item) */
+.section-item {
+    background-color: var(--color-background, var(--color-white)); /* 변수 없으면 흰색 */
+    border: 1px solid var(--color-border);
+    border-radius: var(--common-radius);
+    overflow: hidden; /* 내부 요소가 카드의 둥근 모서리를 넘어가지 않도록 */
+}
+
+/* 섹션 헤더 (클릭 가능한 제목 영역) */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--common-padding, 15px);
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.section-header:hover {
+    background-color: var(--color-sub);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.arrow-icon {
+    font-size: 12px;
+}
+
+.section-progress {
+    font-size: 14px;
+    font-weight: normal;
+    color: var(--color-font-sub, #888);
+}
+
+.section-progress b {
+    color: var(--color-font, #333);
+    font-weight: bold;
+}
+
+/* 개별 강의 목록 (ul.lecture-list) */
+.lecture-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* 개별 강의 링크 (a 태그) */
+.lecture-item a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--common-padding, 15px) 20px;
+    border-top: 1px solid var(--color-border);
+    text-decoration: none;
+    color: var(--color-font);
+    transition: background-color 0.2s;
+}
+
+.lecture-item a:hover {
+     background-color: var(--color-sub, #F8F9FA);
+}
+
+/* 강의 정보 (아이콘 + 제목) */
+.lecture-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.play-icon {
+    color: var(--color-font-sub, #888);
+    font-size: 12px;
+}
+
+.lecture-title {
+    font-size: var(--font-size-normal, 14px);
+}
+
+/* 강의 시간 */
+.lecture-duration {
+    font-size: 14px;
+    color: var(--color-font-sub, #888);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.pencil-icon {
+    font-size: 12px;
+}

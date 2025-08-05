@@ -26,8 +26,8 @@
 	                <a href="UserMain" class="common-category-element active">홈</a>
 	                <a href="MyClass" class="common-category-element">내 강의</a>
 	                <a href="PlayList" class="common-category-element">재생목록</a>
+	                <a href="Attendance" class="common-category-element">출석</a>
 	                <a href="#" class="common-category-element">커뮤니티 활동</a>
-	                <a href="#" class="common-category-element">출석</a>
 	            </aside>
 				
 				<section class="myclass-container">
@@ -44,6 +44,7 @@
 	                <%-- 강의 목록 --%>
 	                <ul class="course-list">
 	                    <li class="course-item">
+	                    	<a href="MyClassDetail">
 	                        <div class="play-icon">▶</div>
 	                        <div class="course-details">
 	                            <h3 class="course-title">오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선</h3>
@@ -52,8 +53,9 @@
 	                                <div class="progress-bar" style="width: 80%;"></div>
 	                            </div>
 	                        </div>
+	                        </a>
 	                    </li>
-	                    <li class="course-item">
+	                    <li class="course-item">	
 	                        <div class="play-icon">▶</div>
 	                        <div class="course-details">
 	                            <h3 class="course-title">너도 할 수 있다! 스프링 기초</h3>

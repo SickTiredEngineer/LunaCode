@@ -38,23 +38,23 @@
 	                
 	                <%-- 메인 폼 영역 --%>
 	                <section class="form-container">
-	                    <form method="post" action="<c:url value='/user/deleteAccountAction'/>">
+	                    <form>
 	                    
 	                        <div class="form-row">
 	                            <label for="currentPassword" class="form-label">현재 비밀번호</label>
-	                            <input type="password" id="currentPassword" name="currentPassword" class="common-input-form-main-color" required>
+	                            <input type="password" class="common-input-form-main-color">
 	                        </div>
 	                    
 	                        <div class="form-row">
 	                            <label for="confirmPassword" class="form-label">비밀번호 확인</label>
-	                            <input type="password" id="confirmPassword" name="confirmPassword" class="common-input-form-main-color" required>
+	                            <input type="password" class="common-input-form-main-color">
 	                        </div>
 	                        
 	                        <%-- 유의사항 안내 영역 --%>
 	                        <div class="notice-area">
 	                            <p class="notice-title">유의사항</p>
 	                            <label class="notice-agreement">
-	                                <input type="checkbox" name="agree" required>
+	                                <input type="checkbox" name="agree">
 	                                계정 탈퇴를 진행하여 모든 정보를 삭제하는 데 동의합니다.
 	                            </label>
 	                        </div>

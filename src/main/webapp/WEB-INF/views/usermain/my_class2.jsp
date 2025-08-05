@@ -6,7 +6,7 @@
 <html>
 
 	<head>
-		<title>MyClass</title>
+		<title>MyClass2</title>
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/my_class2.css" rel="stylesheet">  
@@ -26,8 +26,8 @@
 	                <a href="UserMain" class="common-category-element active">홈</a>
 	                <a href="MyClass" class="common-category-element">내 강의</a>
 	                <a href="PlayList" class="common-category-element">재생목록</a>
+	                <a href="Attendance" class="common-category-element">출석</a>
 	                <a href="#" class="common-category-element">커뮤니티 활동</a>
-	                <a href="#" class="common-category-element">출석</a>
 	            </aside>
 				
 				<section class="myclass-container">
