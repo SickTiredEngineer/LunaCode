@@ -3,43 +3,111 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 
-
 <html>
 
-	<head>
-		<title>온라인 강의</title>
-		<meta charset="UTF-8">
-		
-		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-	    <link href="${pageContext.request.contextPath}/resources/css/page/class/online_class.css" rel="stylesheet">
+<head>
+<title>온라인 강의</title>
+<meta charset="UTF-8">
 
-	</head>
+<link href="${pageContext.request.contextPath}/resources/css/page/class/online_class.css" rel="stylesheet">
+<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
+
+</head>
+
+<body>
+
+	<div class="page-base container">
 	
-	<body>
-		
-		<div class="page-base container">
-			
-			<!-- 헤더 -->		
-			<header>
-				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
-			</header>
-		
-			<article>
-				<h2 class="title_text">온라인 강의</h2>
-				<div class="video-section">
-					<video class ="video_play" controls>
-						<source src="${pageContext.request.contextPath}/resources/video/my_video.mp4" type="video/mp4">
-					</video>
-				</div>
-			</article>
-			
-			<!-- 푸터 -->
-			<footer>
-				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
-			</footer>
-		
-		</div>
+	<!-- 헤더 -->
+	<header>
+	  <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+	</header>
 	
-	</body>
+	<article>
+	  <h2 class="title_text">온라인 강의</h2>
 	
+	  <div class="video-section">
+	    <!-- 카테고리 -->
+	    <div class="common-category-wrapper">
+	      <div class="d-flex flex-column align-items-center common-category category-size">
+	        <a href="#" class="common-category-element">온라인 강의</a>
+	        <a href="#" class="common-category-element"></a>
+	        <a href="#" class="common-category-element"></a>
+	      </div>
+	    </div>
+	
+	    <!-- 영상 영역 + 강의명(캡션) -->
+	 	<div class="video-section">  
+	    <div class="video-wrapper">
+	      <video id="video" class="video_play" controls controlsList="nodownload">
+	        <source src="${pageContext.request.contextPath}/resources/video_upload/video1.mp4" type="video/mp4" />
+	      </video>
+	      <div class="lecture-caption">3 - 2. 생성자 배우기</div>
+	    </div>
+	  </div>
+	  
+	  <!-- 강의 리스트 (썸네일+강의명) -->
+	  <div class="video-toc">
+		<ul>
+		 <li>
+			<a href="#" onclick="changeVideo('video1.mp4'); return false;">
+				<img src="${pageContext.request.contextPath}/resources/image/banner3.png" alt="1강 썸네일" class="thumb" />
+				<span class="toc-title">1강: 오리엔테이션</span>
+			</a>
+		 </li>
+		 <li>
+			<a href="#" onclick="changeVideo('video2.mp4'); return false;">
+				<img src="${pageContext.request.contextPath}/resources/image/banner3.png" alt="2강 썸네일" class="thumb" />
+				<span class="toc-title">2강: 이론 설명</span>
+			</a>
+		 </li>
+		 <li>
+			<a href="#" onclick="changeVideo('video3.mp4'); return false;">
+				<img src="${pageContext.request.contextPath}/resources/image/banner3.png" alt="3강 썸네일" class="thumb" />
+				<span class="toc-title">3강: 실전 예제</span>
+			</a>
+		 </li>
+		</ul>
+	  </div>
+	  </div>
+	  <!-- 추가하기 버튼 -->
+	  <div class="add-button-wrapper" style="margin-top:20px;">
+	    <button type="button" class="btn btn-outline-success" id="addAccordionBtn">메모 추가</button>
+	  </div>
+	  
+	  <div class="accordion" id="memoAccordion"></div>
+	
+	  <div class="lecture-comment-section"></div>
+	
+	  <ul class="comment-list"></ul>
+	
+	  <!-- 댓글 작성 영역 -->
+	  <div class="comment-input-area">
+	    <textarea placeholder="댓글을 입력하세요..."></textarea>
+	    <button type="button" class="btn btn-outline-success">등록</button>
+	  </div>
+	
+	  <ul class="comment-list">
+	    <li class="comment-item">
+	      <ul class="reply-list"></ul>
+	      <div class="reply-input-area" style="display:none; margin-top:8px;">
+	        <textarea class="form-control" placeholder="답글을 입력하세요..." rows="2"></textarea>
+	        <button type="button" class="btn btn-sm btn-primary reply-submit-btn mt-2">등록</button>
+	      </div>
+	    </li>
+	  </ul>
+	
+	</article>
+	
+		<!-- 푸터 -->
+		<footer>
+		  <jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+		</footer>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/video_upload/video.js"></script>
+	
+	</div>
+
+</body>
+
 </html>
