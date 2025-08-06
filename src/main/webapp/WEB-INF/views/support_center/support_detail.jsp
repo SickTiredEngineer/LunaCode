@@ -70,27 +70,20 @@
 									
 									<div class="horizontal-line"></div>
 									
-									<div class="d-flex flex-column  child-layout">
-									
-										<div class="d-flex flex-row">
-											<p class="info-text">첨부 파일1:</p>
-											<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-									
-										<div class="d-flex flex-row">
-											<p class="info-text">첨부 파일2:</p>
-											<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
+										<div class="d-flex flex-row child-layout">
+											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
 											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
 										</div>
 										
-										<div class="d-flex flex-row">
-											<p class="info-text">첨부 파일3:</p>
-											<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
+										<div class="d-flex flex-row child-layout">
+											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
 											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
 										</div>
-
-									</div>
+										
+										<div class="d-flex flex-row child-layout">
+											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
+											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+										</div>	
 								
 								</div>
 								
@@ -105,28 +98,43 @@
 										
 										<div class="horizontal-line"></div>
 										
-										<div class="d-flex flex-column  child-layout">
+<!-- 										<div class="d-flex flex-column  child-layout"> -->
 										
-											<div class="d-flex flex-row">
-												<p class="info-text">첨부 파일1:</p>
-												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
-												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-											</div>
+<!-- 											<div class="d-flex flex-row"> -->
+<!-- 												<p class="info-text">첨부 파일1:</p> -->
+<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
+<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
+<!-- 											</div> -->
 										
-											<div class="d-flex flex-row">
-												<p class="info-text">첨부 파일2:</p>
-												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
-												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-											</div>
+<!-- 											<div class="d-flex flex-row"> -->
+<!-- 												<p class="info-text">첨부 파일2:</p> -->
+<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
+<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
+<!-- 											</div> -->
 											
-											<div class="d-flex flex-row">
-												<p class="info-text">첨부 파일3:</p>
-												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
-												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-											</div>
+<!-- 											<div class="d-flex flex-row"> -->
+<!-- 												<p class="info-text">첨부 파일3:</p> -->
+<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
+<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
+<!-- 											</div> -->
 	
+<!-- 										</div> -->
+
+										<div class="d-flex flex-row child-layout">
+											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
+											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
 										</div>
-									
+										
+										<div class="d-flex flex-row child-layout">
+											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
+											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+										</div>
+										
+										<div class="d-flex flex-row child-layout">
+											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
+											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+										</div>		
+																	
 									</div>
 									
 							

@@ -1,0 +1,181 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+
+<!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
+
+
+<html>
+
+	<head>
+		<title>회원 상세 정보</title>
+		<meta charset="UTF-8">
+		
+		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_member_detail.css" rel="stylesheet">
+
+	</head>
+	
+	<body>
+		
+		<div class="page-base container">
+			
+			<!-- 헤더 -->		
+			<header>
+				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+			</header>
+		
+			<article>
+			
+				<div class="d-flex flex-row align-items-center justify-content-start top-layout">
+					<h2 class="main-text">회원 관리</h2>
+				</div>
+			
+				<div class="d-flex flex-row">
+				
+					<div class="d-flex flex-row">
+						<div class="d-flex flex-column align-items-center common-category category-size">
+							<a href="ApMemberList" class="common-category-element">회원 관리</a>
+							<a href="Community" class="common-category-element">강사 신청</a>
+							<a href="Community" class="common-category-element">강의 관리</a>
+							<a href="Community" class="common-category-element">결제 관리</a>
+							<a href="Community" class="common-category-element">1:1 문의 관리</a>
+							<a href="Community" class="common-category-element">공통 코드 관리</a>
+							<a href="Community" class="common-category-element">통계</a>
+						</div>
+						
+						
+						<div class="d-flex flex-column">
+						
+							<div class="d-flex flex-column main_layout">
+									
+									<div class="d-flex flex-row content-layout">
+									
+										<div class="d-flex flex-column">
+											<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" class="profile-image">
+											<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png" class="profile-image">
+										
+										</div>
+									
+										
+										
+										<!-- 정보 폼 -->								
+										<div class="d-flex flex-column member-info-root-layout">
+										
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">ID :</p>	
+												<p>대충 길고 긴 아이디</p>
+<!-- 												<input type="text" class="common-input-form form-size"> -->
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">이름 :</p>
+												<p>박길동</p>
+<!-- 												<input type="text" class="common-input-form form-size"> -->
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">생년월일 :</p>
+												<p>1999-01-01</p>
+<!-- 												<input type="text" class="common-input-form form-size"> -->
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">닉네임 :</p>
+												<p>MyNickName</p>
+<!-- 												<input type="text" class="common-input-form form-size"> -->
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">이메일 :</p>
+												<p>myEmail@somehost.com</p>
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">휴대전화 :</p>
+												<p>010-1234-5678</p>
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">계정 상태 :</p>
+												
+												<select class="member-type-selector">
+													<option>활성화</option>
+													<option>정지</option>
+												</select>
+
+											</div>
+
+										</div>
+										
+									</div>
+									
+									<div class="horizontal-line"></div>
+								
+									<div class="d-flex justify-content-center attachment-text">강사 증빙 자료</div>
+									
+									<div class="d-flex flex-row content-layout">
+										<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+									</div>
+									
+									<div class="d-flex flex-row content-layout">
+										<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+									</div>
+									
+									<div class="d-flex flex-row content-layout">
+										<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+									</div>							
+								
+							</div>
+
+							
+							<!-- 
+							TODO: JS 추가해야함 -> Focus 없애는코드
+							const readonlyAreas = document.querySelectorAll('.readonly-textarea');
+							readonlyAreas.forEach(el => {
+							  el.addEventListener('focus', e => e.target.blur());
+							});
+							 -->
+
+
+							<div class="d-flex button-container">
+								<a href="ApMemberList" class="negative-button">돌아가기</a>
+								<a href="ApMemberList" class="positive-button">적용</a>
+							</div>
+		
+						</div>
+	
+					</div>
+				</div>
+			
+				
+			
+			</article>
+			
+			<!-- 푸터 -->
+			<footer>
+				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+			</footer>
+		
+		</div>
+	
+	</body>
+	
+</html>

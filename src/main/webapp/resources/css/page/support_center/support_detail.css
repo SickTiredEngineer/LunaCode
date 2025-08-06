@@ -61,6 +61,7 @@ textarea::-webkit-resizer {
 /* ======================================= */
 /* 각 안내문 규격 */
 .info-text{
+	font-family: var(--font-main);
 	align-content:center;
 	color: var(--color-font) !important;
 	width: 200px;
@@ -68,7 +69,20 @@ textarea::-webkit-resizer {
 	font-weight: bold;
 }
 
+
+.attachment-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+}
+
+
+
 .info-text-content{
+	font-family: var(--font-main);
 	align-content:center;
 	color: var(--color-font) !important;
 	width: 200px;
@@ -93,6 +107,10 @@ textarea::-webkit-resizer {
 }
 
 
+.attachment-bt{
+	font-family: var(--font-main);
+	margin: 0px 0px var(--common-margin) 220px;
+}
 
 
 

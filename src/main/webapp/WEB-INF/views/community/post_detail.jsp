@@ -47,6 +47,11 @@
 									<div class="d-flex flex-row justify-content-between tmi-layout">
 										<p class="tmi-text">작성자: 바보뭉충이빵구똥구</p>
 										<p class="tmi-text">조회수: 15000</p>
+										
+										<div class="d-flex flex-row">
+											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
+											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
+										</div>	
 									</div>
 									
 									<div class="d-flex flex-row content-layout">

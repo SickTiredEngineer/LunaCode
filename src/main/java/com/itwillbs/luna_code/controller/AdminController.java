@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 
 	
-	@GetMapping("AdminDashboard")
+	@GetMapping("ApMemberList")
 	public String adminDashBoard() {
-		return "admin/admin_dashboard";
+		return "admin/ap_member_list";
+	}
+	
+	@GetMapping("MemberDetail")
+	public String memberDetail() {
+		return "admin/ap_member_detail";
 	}
 	
 	

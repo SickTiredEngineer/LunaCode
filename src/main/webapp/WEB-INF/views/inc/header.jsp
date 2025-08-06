@@ -84,7 +84,7 @@
 			
 			<div class="d-flex align-items-center gap-3">
 
-				<a href="AdminDashboard" class="nav-link">관리자</a>
+				<a href="ApMemberList" class="nav-link">관리자</a>
 				<a href="Community" class="nav-link">커뮤니티</a>
 				
 <!-- 				<a href="Review" class="nav-link">수강후기</a> -->
