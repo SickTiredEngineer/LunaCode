@@ -47,6 +47,12 @@
     cursor: pointer;
 }
 
+.common-category {
+    flex-shrink: 0; 
+    width: 200px;
+    height: auto;
+}
+
 /* 캐러셀 컨테이너 */
 .carousel-container {
     margin-bottom: 40px;

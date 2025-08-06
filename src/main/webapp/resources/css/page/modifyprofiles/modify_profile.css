@@ -37,14 +37,11 @@ body {
 /* ===================================
    폼 내부 요소
 =================================== */
-/* 폼 입력 행 (공통) */
 .form-row {
     display: flex;
     padding: 25px 0;
     margin: 0;
 }
-
-/* 폼 라벨 (공통) */
 .form-label {
     width: 150px; /* 라벨 너비 통일 */
     flex-shrink: 0;
@@ -63,10 +60,11 @@ body {
 
 .profile-inputs {
     display: flex;
-    align-items: flex-end; /* 사진과 닉네임 영역을 상단에 정렬 */
+    align-items: flex-end;
     gap: 30px;
-    width: 100%;       /* [추가] 다른 입력칸처럼 가로 공간을 모두 사용 */
-    max-width: 450px;  /* [추가] 다른 입력칸과 최대 너비를 일치시킴 */
+    /* 프로필 입력부 전체의 최대 너비를 다른 입력창과 동일하게 설정 */
+    max-width: 450px; 
+    width: 100%; /* 부모 요소 내에서 너비를 채우도록 설정 */
 }
 
 .profile-photobox {
@@ -77,37 +75,48 @@ body {
     align-items: center;
     border: 2px dashed var(--color-main);
     border-radius: var(--common-radius);
-    cursor: pointer;
     background-color: var(--color-white);
     color: var(--color-font);
     font-weight: 500;
     flex-shrink: 0;
 }
 
+.profile-input-group {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* .profile-inputs 내부의 남은 공간을 채움 */
+}
+
+#photo-upload-btn {
+    height: 45px;
+    margin-bottom: 10px;
+    margin-left: 0;
+}
+
 .profile-nickname {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-grow: 1;
+    width: 100%;
 }
+
 .profile-nickname input {
-    width: 250px;
+    flex-grow: 1;
     height: 45px;
 }
 
 /* ===================================
    일반 입력창 스타일
 =================================== */
-/* input과 textarea 너비를 유연하게 설정 */
 .form-row input,
 .form-row textarea {
     width: 100%;
-    max-width: 450px;
+    max-width: 450px; /* 일반 입력창들의 최대 너비 기준 */
     height: 45px;
 }
 .form-row textarea {
     height: 120px;
-    resize: vertical; /* 세로로만 크기 조절 가능 */
+    resize: vertical;
 }
 
 /* ===================================

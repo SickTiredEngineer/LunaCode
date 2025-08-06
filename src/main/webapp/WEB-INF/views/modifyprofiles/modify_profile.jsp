@@ -37,57 +37,65 @@
 	                </aside>
 	                
 	                <%-- 메인 폼 영역 --%>
-	                <section class="form-container">
-	                    <form method="post" action="<c:url value='/user/modifyProfileAction'/>">
-	                    
-	                        <%-- 프로필 사진 및 닉네임 행 (특별한 구조) --%>
-	                        <div class="form-row profile-area">
-	                            <label class="form-label">프로필</label>
-	                            <div class="profile-inputs">
-	                                <label class="profile-photobox">
-	                                    <span>사진 추가</span>
-	                                    <input type="file" name="profileImage" style="display: none;">
-	                                </label>
-	                                <div class="profile-nickname">
-	                                    <input type="text" name="nickname" placeholder="닉네임" class="common-input-form-main-color">
-	                                    <button type="button" class="positive-button">중복 체크</button>
-	                                </div>
-	                            </div>
-	                        </div>
-	
-	                        <div class="horizontal-line"></div>
-	                        
-	                        <%-- 이메일 행 --%>
-	                        <div class="form-row">
-	                            <label for="email" class="form-label">이메일</label>
-	                            <input type="email" id="email" name="email" class="common-input-form-main-color" readonly>
-	                        </div>
-	                        
-	                        <div class="horizontal-line"></div>
-	
-	                        <%-- 자기소개 행 --%>
-	                        <div class="form-row">
-	                            <label for="bio" class="form-label">자기소개</label>
-	                            <textarea id="bio" name="bio" class="common-input-form-main-color"></textarea>
-	                        </div>
-	
-	                        <div class="horizontal-line"></div>
-	
-	                        <%-- 깃허브 행 --%>
-	                        <div class="form-row">
-	                            <label for="github" class="form-label">깃허브</label>
-	                            <input type="text" id="github" name="github" class="common-input-form-main-color" placeholder="https://github.com/username">
-	                        </div>
-	                        
-	                        <div class="horizontal-line"></div>
-	
-	                        <%-- 하단 버튼 영역 --%>
-	                        <div class="action-buttons">
-	                            <button type="button" class="negative-button">취소</button>
-	                            <button type="submit" class="positive-button">완료</button>
-	                        </div>
-	                    </form>
-	                </section>
+					<section class="form-container">
+					    <form method="post" action="<c:url value='/user/modifyProfileAction'/>">
+					    
+					        <%-- 프로필 사진 및 닉네임 행 (수정된 구조) --%>
+					        <div class="form-row profile-area">
+					            <label class="form-label">프로필</label>
+					            <div class="profile-inputs">
+					                <label class="profile-photobox">
+					                    <span>사진</span>
+					                    <input name="profileImage" style="display: none;">
+					                </label>
+					                
+					                <!-- 업로드 버튼과 닉네임 입력을 수직으로 묶는 래퍼 -->
+					                <div class="profile-input-group">
+					                    <!-- 사진 업로드 버튼 -->
+					                    <button type="button" class="positive-button" id="photo-upload-btn">사진 업로드</button>
+					
+					                    <!-- 닉네임 입력 그룹 -->
+					                    <div class="profile-nickname">
+					                        <input type="text" name="nickname" placeholder="닉네임" class="common-input-form-main-color">
+					                        <button type="button" class="positive-button">중복 체크</button>
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					
+					        <div class="horizontal-line"></div>
+					        
+					        <%-- 이메일 행 --%>
+					        <div class="form-row">
+					            <label for="email" class="form-label">이메일</label>
+					            <input type="email" id="email" name="email" class="common-input-form-main-color" readonly>
+					        </div>
+					        
+					        <div class="horizontal-line"></div>
+					
+					        <%-- 자기소개 행 --%>
+					        <div class="form-row">
+					            <label for="bio" class="form-label">자기소개</label>
+					            <textarea id="bio" name="bio" class="common-input-form-main-color"></textarea>
+					        </div>
+					
+					        <div class="horizontal-line"></div>
+					
+					        <%-- 깃허브 행 --%>
+					        <div class="form-row">
+					            <label for="github" class="form-label">깃허브</label>
+					            <input type="text" id="github" name="github" class="common-input-form-main-color" placeholder="https://github.com/username">
+					        </div>
+					        
+					        <div class="horizontal-line"></div>
+					
+					        <%-- 하단 버튼 영역 --%>
+					        <div class="action-buttons">
+					            <button type="button" class="negative-button">취소</button>
+					            <button type="submit" class="positive-button">완료</button>
+					        </div>
+					    </form>
+					</section>
 	            </div>
 	        </article>
 	
