@@ -1,0 +1,204 @@
+@charset "UTF-8";
+
+/* ========================================= */
+
+/* 카테고리 사이즈 */
+.category-size{
+	height: fit-content !important;
+}
+
+/* 카테고리에 해당되는 게시판 이름 출력 H2에 적용 */
+.main-text{
+	width: 300px;
+	text-align: left;
+/* 	font-size:20px; */
+	font-family: var(--font-main);
+	color: var(--color-main)  !important;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+/* ========================================= */
+/* 수평선 -> 공용으로 뺏음 */
+.horizontal-line {
+	width: 100%;
+	height: 1px; /* 원하는 높이로 고정 */
+	background-color: var(--color-border);
+	border: none;
+}
+
+
+/* ========================================= */
+/* 목록이 담길 레이아웃 큰 틀 */
+.list-layout{
+	margin-left: var(--common-margin);
+	width: 1100px;
+	height: 500px;
+	min-width: 600px;
+}
+
+/* ========================================= */
+/* 목록이 실질적으로 담기는 틀 */
+list-main-layout{
+	margin-left: var(--common-margin);
+	width: 1100px;
+	height: 600px;
+}
+
+
+/* ========================================= */
+/* 항목 설명하는 텍스트들이 들어가는 레이아웃 */
+.list-info-layout{
+	width: 1100px;
+	margin-left: var(--common-margin);
+	border-radius: var(--common-radius);
+	height: 50px;
+	padding-left: var(--common-padding);
+	background-color: var(--color-main);
+}
+
+/* 설명 텍스트 규격 */
+.info-text{
+	color: var(--color-font-white) !important;
+	width: auto;
+}
+
+/* ========================================= */
+.list-item-root{
+	border-bottom: 1px solid var(--color-border);
+}
+
+.list-item-root:hover{
+	background-color: var(--color-sub);
+}
+
+/* 목록 아이템들에 대한 스타일 */
+.list-item-layout{
+	display: inline-block;
+	text-decoration: none;
+/* 	width:100%; */
+	height: 50px;
+	padding-left: var(--common-padding);
+/* 	padding-top: var(--common-padding); */
+}
+
+/* ========================================= */
+/* 각 항목들의 텍스트 규격 */
+.text-no{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: left;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 100px;
+	margin-right: var(--common-margin-half);
+}
+
+.text-subject{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 350px;
+	margin-right: var(--common-margin-half);
+}
+
+.text-writer{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
+.text-date{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
+
+.text-category{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
+.text-view-count{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+}
+
+/* 수정, 삭제에 적용될 아이콘 및 동작 */
+.edit-icon{
+	width: 30px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	background-color: var(--color-sub);
+}
+
+.edit-icon:hover, .search-icon:hover{
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+}
+
+.edit-icon:hover, .search-icon:active{
+	transform: scale(0.95);
+}
+/* ========================================= */
+/* 검색창 */
+.search-icon{
+	width: 40px;
+	height: 100%;
+	align-content: center;
+}
+
+/* 검색창 사이즈 */
+.search-form-size{
+	width: 300px;
+	height: 40px;	
+}
+
+/* 게시글 작성 버튼 */
+.write-button-size{
+	height: 40px;
+	align-self: center;
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+/* 페이지 번호 이동 기능 레이아웃 */
+.page-selector-layout{
+	margin-top: 50px;
+}
+
+.page-selector{
+	font-weight: bold;
+	font-family: var(--font-main);	
+	text-decoration: none;
+	margin-right: 2em;	
+}
+
+.top-layout{
+	margin: 40px 0px;
+}
+
+

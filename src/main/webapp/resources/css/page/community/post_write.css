@@ -14,19 +14,21 @@
 
 /* ======================================= */
 /* 해당 페이지 이름 안내 글 규격 */
+/* 카테고리에 해당되는 게시판 이름 출력 H2에 적용 */
 .main-text{
-	width: auto;
+	width: 300px;
 	text-align: left;
+/* 	font-size:20px; */
+	font-family: var(--font-main);
 	color: var(--color-main)  !important;
 	font-weight: bold;
 	margin-top: 20px;
 }
 
 /* ======================================= */
-/* root layout */
-.detail-main-layout{
+/* write-layout이 들어가는 root layout */
+.write_main_layout{
 	margin-left: var(--common-margin);
-/* 	background-color: var(--color-sub); */
 	width: 1000px;
 	height: fit-content !important;
 	border-bottom: 2px solid var(--color-main); 
@@ -34,28 +36,35 @@
 	border-radius: var(--common-radius);
 }
 
-/* detail-main-layout 사이 마진 */
-.root-layout-margin{
-	margin-bottom: var(--common-margin);
-}
 /* ======================================= */
-/* 각 칸마다 안내문 + 내용 삽입 */
-.child-layout{
+/* 각 칸마다 입력 안내문 + 입력란 삽입 */
+.write-layout{
+/* 	margin: var(--common-margin); */
 	margin-top: var(--common-margin);
 	margin-left: var(--common-margin);
 	align-content: center;
+/* 	border-bottom: 1px solid var(--color-border); */
+/* 	justify-content: center; */
 }
 
+/* ======================================= */
 /* Content Input Box */
-.child-layout-content{
+.write-layout-content{
 	margin: var(--common-margin) 0 var(--common-margin) var(--common-margin);
   	resize: none;   
   	overflow: auto; 
   	height: auto;
 }
 
+/* TextArea 리사이저 제거 */
 textarea::-webkit-resizer {
   display: none;
+}
+/* ======================================= */
+/* 문의 카테고리 선택 드롭다운 패딩 (?) */
+/* 적용 안되는거같음 */
+.select-category{
+	padding-right: var(--common-padding);
 }
 
 /* ======================================= */
@@ -76,23 +85,32 @@ textarea::-webkit-resizer {
 	font-weight: bold;
 }
 
+/* 안내문 사이즈 */
 .form-size{
-	width: 200px;
+	width: 300px;
 	height: 30px;	
 }
 
-.attachment-bt{
+/* ======================================= */
+/* 첨부파일 추가 버튼 */
+.add-attachment-bt{
 	margin: 0px 0px var(--common-margin) 220px;
+}
+
+
+/* 그 외 버튼 높이 */
+.button-detail{
 	height: 30px;
 }
 
+/* 취소, 완료 버튼을 담는 레이아웃 */
 .button-container{
 	justify-content: right;
 	flex-direction:row;
 	margin: var(--common-margin) 0px;
 }
 
-
+/* ======================================= */
 
 
 

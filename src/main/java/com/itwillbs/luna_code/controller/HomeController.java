@@ -30,6 +30,7 @@ public class HomeController {
 		return "home";
 	}
 	
+	/* 홈 화면 이동 */
 	@GetMapping("GoHome")
 	public String goHome() {
 		return "home";

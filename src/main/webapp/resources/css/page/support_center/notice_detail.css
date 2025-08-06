@@ -5,12 +5,16 @@ body{
 	font-family: var(--font-main);
 }
 
-
+/* ======================================= */
 .top-layout{
 	margin: 40px 0px;
 }
 
-
+/* ======================================= */
+/* 카테고리 사이즈 */
+.category-size{
+	height: fit-content !important;
+}
 
 
 .main-text{
@@ -21,18 +25,12 @@ body{
 	margin-top: 20px;
 }
 
-
 .view-count-text{
 	width:100%;
-	
 	text-align: right;
 	font-weight: bold;
 	margin: var(--common-margin) var(--common-margin) 0px 0px
-	
 }
-
-
-
 
 .write_main_layout{
 	margin-left: var(--common-margin);
@@ -48,52 +46,23 @@ body{
 	margin-bottom: var(--common-margin);
 }
 
-
 .write-layout{
 	margin-top: var(--common-margin);
 	margin-left: var(--common-margin);
 	align-content: center;
-/* 	justify-content: center; */
 }
 
 /* ======================================= */
 /* Content Input Box */
-.write-layout-content{
-	
-	margin: var(--common-margin) 0 var(--common-margin) var(--common-margin);
-  	resize: none;   
-  	overflow: auto; 
-  	height: auto;
-
-/* 	margin-top: var(--common-margin); */
-/* 	margin-left: var(--common-margin); */
-/* 	margin-bottom: var(--common-margin); */
-/* 	justify-content: center; */
+.notice-content{
+  white-space: pre-wrap;     /* pre 기본값(pre) → pre-wrap으로 바꿔야 줄바꿈 허용 */
+  overflow-wrap: anywhere;   /* 긴 단어/URL 강제 개행 */
+  font-family: inherit;      /* 기본 monospace 말고 페이지 폰트 쓰기 */
+  margin: 0;                 /* 필요시 여백 조절 */
 }
-
-textarea::-webkit-resizer {
-  display: none;
-}
-
-
-.select-category{
-	padding-right: var(--common-padding);
-}
-
-
-select > option:hover{
-	background-color: var(--color-sub) !important;	
-}
-
-.category-option:hover{
-	background-color: var(--color-sub) !important;	
-}
-
-
 
 /* ======================================= */
-
-/* 설명 텍스트 규격 */
+/* 안내 텍스트 규격 */
 .info-text{
 	align-content:center;
 	color: var(--color-font) !important;
@@ -110,17 +79,10 @@ select > option:hover{
 	font-weight: bold;
 }
 
-/* 카테고리 사이즈 = 의미없음 */
-.category-size{
-	height: fit-content !important;
-}
-
-
 .form-size{
 	width: 200px;
 	height: 30px;	
 }
-
 
 .add-attachment-bt{
 	margin: 0px 0px var(--common-margin) 220px;
@@ -131,7 +93,6 @@ select > option:hover{
 .button-detail{
 	height: 30px;
 }
-
 
 .button-container{
 	justify-content: right;
