@@ -9,11 +9,11 @@
 <html>
 
 	<head>
-		<title>회원 상세 정보</title>
+		<title>강의 관리 상세 정보</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_member_detail.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_req_class_detail.css" rel="stylesheet">
 
 	</head>
 	
@@ -30,7 +30,7 @@
 			
 				<div class="d-flex flex-row justify-content-center top-layout">
 					<div class="d-flex flex-column justify-content-center">
-						<h2 class="main-text">회원 관리</h2>
+						<h2 class="main-text">강의 관리</h2>
 					</div>
 				</div>
 			
@@ -38,41 +38,55 @@
 				
 					<div class="d-flex flex-row">
 						<jsp:include page="/WEB-INF/views/admin/admin_sidebar.jsp" />
-
 						
 						
 						<div class="d-flex flex-column">
 						
 							<div class="d-flex flex-column main_layout">
 									
-									<div class="d-flex flex-row content-layout">
-										<div class="d-flex flex-column">
-											<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" class="profile-image">
+									<div class="d-flex flex-column justify-content-center content-layout">
+										<div class="d-flex flex-column justify-content-center">
 											
-											<div class="d-flex justify-content-center">
-												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png" class="negative-button icon-delete">
+											<div class="d-flex flex-column justify-content-center">
+												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_class_video.png" class="thumbnail-image">
+												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png" class="negative-button icon-delete">	
 											</div>
+											
+											
+											
+											
+<!-- 											<div class="d-flex justify-content-start"> -->
+												
+<!-- 											</div> -->
+											
 										</div>
+										
+										
 
 										<!-- 정보 폼 -->								
-										<div class="d-flex flex-column member-info-root-layout">
+										<div class="d-flex flex-column class-info-root-layout">
+											
+											<br>
+											
+											<div class="horizontal-line"></div>
+										
 										
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">ID :</p>	
-												<p>대충 길고 긴 아이디</p>
+												<p class="info-text">강의명 :</p>	
+												<p>JAVA 기초 프로그래밍</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">이름 :</p>
-												<p>박길동</p>
+												<p class="info-text">강사ID :</p>
+												<p>KimTeacher</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">생년월일 :</p>
+												<p class="info-text">신청일 :</p>
 												<p>1999-01-01</p>
 											</div>
 											
@@ -80,39 +94,63 @@
 											
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">닉네임 :</p>
-												<p>MyNickName</p>
+												<p class="info-text">카테고리 :</p>
+												<p>기초 프로그래밍</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">이메일 :</p>
-												<p>myEmail@somehost.com</p>
-											</div>
-											
-											<div class="horizontal-line"></div>
-											
-											<div class="d-flex flex-row info-item">
-												<p class="info-text">휴대전화 :</p>
-												<p>010-1234-5678</p>
-											</div>
-											
-											<div class="horizontal-line"></div>
-											
-											<div class="d-flex flex-row info-item">
-												<p class="info-text">계정 상태 :</p>
+												<p class="info-text">승인 여부 :</p>
 												
 												<select class="member-state-selector">
-													<option>활성화</option>
-													<option>정지</option>
+													<option>승인</option>
+													<option>보류</option>
+													<option>거부</option>
 												</select>
 
 											</div>
+											
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">보류 사유 :</p>
+												<textarea rows="3" cols="5" class="common-input-form comment-input-layout margin-left"></textarea>
+											</div>
+											
+											<br>
+											
+											<div class="horizontal-line"></div>
+								
+
+								
+											<div class="d-flex justify-content-center attachment-text">강의 계획서</div>
+											
+											<div class="d-flex flex-row content-layout">
+												<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
+												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+											</div>
+											
+											<div class="d-flex flex-row content-layout">
+												<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
+												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+											</div>
+											
+											<div class="d-flex flex-row content-layout">
+												<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
+												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+											</div>	
+											
+											
+											
+											
 
 										</div>
 										
 									</div>
+									
+									<br>
 									
 <!-- 									<div class="horizontal-line"></div> -->
 								

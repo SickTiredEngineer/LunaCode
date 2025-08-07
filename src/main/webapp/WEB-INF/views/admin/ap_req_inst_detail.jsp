@@ -9,11 +9,11 @@
 <html>
 
 	<head>
-		<title>회원 상세 정보</title>
+		<title>강사 신청 상세 정보</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_member_detail.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_req_inst_detail.css" rel="stylesheet">
 
 	</head>
 	
@@ -30,7 +30,7 @@
 			
 				<div class="d-flex flex-row justify-content-center top-layout">
 					<div class="d-flex flex-column justify-content-center">
-						<h2 class="main-text">회원 관리</h2>
+						<h2 class="main-text">강사 신청 관리</h2>
 					</div>
 				</div>
 			
@@ -38,7 +38,6 @@
 				
 					<div class="d-flex flex-row">
 						<jsp:include page="/WEB-INF/views/admin/admin_sidebar.jsp" />
-
 						
 						
 						<div class="d-flex flex-column">
@@ -101,37 +100,47 @@
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">계정 상태 :</p>
+												<p class="info-text">승인 여부 :</p>
 												
 												<select class="member-state-selector">
-													<option>활성화</option>
-													<option>정지</option>
+													<option>승인</option>
+													<option>보류</option>
+													<option>거부</option>
 												</select>
 
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">보류 사유 :</p>
+												<textarea rows="3" cols="5" class="common-input-form comment-input-layout margin-left"></textarea>
 											</div>
 
 										</div>
 										
 									</div>
 									
-<!-- 									<div class="horizontal-line"></div> -->
+									<br>
+									
+									<div class="horizontal-line"></div>
 								
-<!-- 									<div class="d-flex justify-content-center attachment-text">강사 증빙 자료</div> -->
+									<div class="d-flex justify-content-center attachment-text">강사 증빙 자료</div>
 									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
+									<div class="d-flex flex-row content-layout">
+										<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+									</div>
 									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
+									<div class="d-flex flex-row content-layout">
+										<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+									</div>
 									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div>							 -->
+									<div class="d-flex flex-row content-layout">
+										<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
+									</div>							
 								
 							</div>
 

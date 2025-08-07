@@ -10,7 +10,7 @@
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_member_list.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_req_inst_list.css" rel="stylesheet">
 	</head>
 	
 	
@@ -28,7 +28,7 @@
 				<div class="d-flex flex-row justify-content-center top-layout">
 				
 					<div class="d-flex flex-column justify-content-center">
-						<h2 class="main-text">회원 관리</h2>
+						<h2 class="main-text">강사 신청 관리</h2>
 						
 						<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
 							<input type="text" class="search-form-input" maxlength="10">
@@ -49,7 +49,7 @@
 					<div class="d-flex flex-column list-main-layout">
 					
 						<div class="d-flex flex-row align-items-center list-info-layout">
-								<h3 class="text-no info-text">회원번호</h3>
+								<h3 class="text-no info-text">No</h3>
 								<h3 class="text-id info-text">ID</h3>
 								<h3 class="text-name info-text">이름</h3>
 								<h3 class="text-type info-text">회원 타입</h3>
@@ -62,7 +62,7 @@
 							<!-- ============================== -->
 							<!-- Example Start -->
 							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+								<a href="ApReqInstDetail" class="d-flex flex-row align-items-center list-item-layout">
 									<h3 class="text-no">1</h3>
 									<h3 class="text-id">koo123</h3>
 									<h3 class="text-name">구돼지</h3>
@@ -74,7 +74,7 @@
 							</div>
 							
 							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+								<a href="ApReqInstDetail" class="d-flex flex-row align-items-center list-item-layout">
 									<h3 class="text-no">2</h3>
 									<h3 class="text-id">kim123</h3>
 									<h3 class="text-name">김말이</h3>
@@ -84,31 +84,6 @@
 								
 								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">3</h3>
-									<h3 class="text-id">hong123</h3>
-									<h3 class="text-name">홍길동</h3>
-									<h3 class="text-type">강사</h3>
-									<h3 class="text-state">active</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">4</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-							</div>
-							
 							
 						</div>
 						

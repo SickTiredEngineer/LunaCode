@@ -16,14 +16,29 @@ body{
 	height: fit-content !important;
 }
 
-.profile-image{
+.thumbnail-image{
 	width: 250px;
 	height: 250px;
 	border: 1px solid var(--color-main);
 	border-radius: var(--common-radius);
 	margin-top: var(--common-margin);
+/* 	margin-left: var(--common-margin); */
+}
+
+textarea::-webkit-resizer {
+ 	display: none;
+}
+
+textarea{
+	resize: none;
+}
+
+
+.reason-box{
 	margin-left: var(--common-margin);
 }
+
+
 
 .icon-delete{
 	width: 40px;
@@ -31,7 +46,7 @@ body{
 	border: 1px solid var(--color-main);
 	border-radius: var(--common-radius);
 	margin-top: var(--common-margin);
-	margin-left: var(--common-margin);
+/* 	margin-left: var(--common-margin); */
 }
 
 
@@ -60,7 +75,7 @@ body{
 
 .main_layout{
 	margin-left: var(--common-margin);
-	width: 1000px;
+	width: 1100px;
 	height: fit-content !important;
 	border-bottom: 2px solid var(--color-main); 
 	border-top: 2px solid var(--color-main);
@@ -68,12 +83,14 @@ body{
 }
 
 
-.member-info-root-layout{
-	margin-left: 100px;
+.class-info-root-layout{
+/* 	margin-left: 100px; */
+	width: 100%
 }
 
 .info-item{
 	margin-top: var(--common-margin);
+	
 }
 
 
