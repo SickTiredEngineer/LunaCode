@@ -9,7 +9,7 @@
 /* 사이드바 (common-category) */
 .common-category {
     flex-shrink: 0; 
-    width: 200px; 
+    width: 200px;
     height: auto; 
     margin-top: 164px; 
 }

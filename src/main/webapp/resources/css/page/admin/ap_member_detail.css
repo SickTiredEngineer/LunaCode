@@ -16,12 +16,21 @@ body{
 	height: fit-content !important;
 }
 
+.profile-image{
+	width: 250px;
+	height: 250px;
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+	
+}
 
 /* 작성자, 조회수 삽입하는 레이아웃 */
 .tmi-layout{
 	margin:  var(--common-margin);
 	height: 15px;
-	
 }
 
 .main-text{
@@ -41,13 +50,22 @@ body{
 
 .main_layout{
 	margin-left: var(--common-margin);
-/* 	background-color: var(--color-sub); */
 	width: 1000px;
 	height: fit-content !important;
 	border-bottom: 2px solid var(--color-main); 
 	border-top: 2px solid var(--color-main);
 	border-radius: var(--common-radius);
 }
+
+
+.member-info-root-layout{
+	margin-left: 100px;
+}
+
+.info-item{
+	margin-top: var(--common-margin);
+}
+
 
 
 .content-layout{
@@ -69,40 +87,39 @@ body{
 }
 
 
-textarea::-webkit-resizer {
- 	display: none;
-}
-
-textarea{
-	resize: none;
-}
-
-textarea[readonly] {
-	cursor: default;
-	outline: none;
-	pointer-events:none;
-}
-
 /* ======================================= */
 /* 안내 텍스트 규격 */
 .info-text{
 	font-family: var(--font-main);
 	align-content:center;
 	color: var(--color-font) !important;
-	width: auto;
+	width: 100px;
 	height: 30px;
 	font-weight: bold;
+	margin-right: var(--common-margin);
 }
 
 
-.tmi-text{
+.attachment-info-text{
 	font-family: var(--font-main);
-	font-size: 13px;
 	align-content:center;
 	color: var(--color-font) !important;
 	width: auto;
-	height: auto;
+	height: 30px;
 	font-weight: bold;
+	margin-right: var(--common-margin);	
+}
+
+.attachment-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-main) !important;
+	width: auto;
+	height: auto;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: var(--common-margin);
 }
 
 
@@ -112,15 +129,6 @@ textarea[readonly] {
 	color: var(--color-font) !important;
 	width: auto;
 	height: 30px;
-	font-weight: bold;
-}
-
-.info-text-content{
-	font-family: var(--font-main);
-	align-content:center;
-	color: var(--color-font) !important;
-	width: 200px;
-	height: auto;
 	font-weight: bold;
 }
 
@@ -134,40 +142,11 @@ textarea[readonly] {
 	margin: 0px var(--common-margin);
 }
 
+
 .button-container{
 	justify-content: right;
 	flex-direction:row;
 	margin: var(--common-margin) 0px;
-}
-
-
-/* ======================================= */
-/* 개추 버튼 */
-.great-button{
-	justify-content:center;
-	width: 70px;
-	height: 70px;
-	border: 1px solid var(--color-border);
-	border-radius: var(--common-radius);
-	background-color: #FFFFFF;
-}
-
-.great-button:hover{
-	transform: scale(1.1);
-	border: 1px solid var(--color-main);
-	background-color: var(--color-sub);
-}
-
-/* .greate-icon-size{ */
-/* 	width: 100%; */
-/* 	height: 100%; */
-/* } */
-
-.greate-text{
-	font-family: var(--font-main);
-	text-align: center;
-	color: var(--color-main);
-	font-weight: bold;
 }
 
 /* ======================================= */
@@ -181,43 +160,29 @@ textarea[readonly] {
 	width: 100%;
 }
 
-.comment-layout{
-	justify-content: flex-start;
-	padding-top: var(--common-margin-half);
-	margin-top: var(--common-margin);
-	height: 100px;
-	width: 80%;
-}
 
-.comment-writer-text{
-	margin-right: var(--common-margin);
-	height: 50%;
-	align-content: center;
-	width: auto;
-	font-weight: bold;
+
+.member-type-selector{
+	color: var(--color-font);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	width: 100px;
+	height: 30px;
+/* 	FONT-FAMILY: VAR(--FONT-MAIN); */
+	
 }
 
 
-.writer-layout{
-	width: 20%;
+
+.member-type-selector:focus {
+	box-shadow: none !important;
+	outline: 0;
+	border: 2px solid var(--color-main) !important;
 }
 
 
-.comment-line-margin{
-	margin-top: var(--common-margin);
-}
 
 
-.page-selector-layout{
-	margin-top: 50px;
-}
-
-.page-selector{
-	font-weight: bold;
-	font-family: var(--font-main);	
-	text-decoration: none;
-	margin-right: 2em;	
-}
 
 
 

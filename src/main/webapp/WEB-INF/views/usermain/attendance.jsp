@@ -56,14 +56,14 @@
 		                    <!-- 일간 출석률 -->
 		                    <div class="chart-container">
 		                        <h4>일간 출석률</h4>
-		                        <div class="bar-chart">
-		                            <div class="bar-wrapper"><div class="bar" style="height: 50%;"></div>월</div>
-		                            <div class="bar-wrapper"><div class="bar" style="height: 10%;"></div>화</div>
-		                            <div class="bar-wrapper"><div class="bar" style="height: 50%;"></div>수</div>
-		                            <div class="bar-wrapper"><div class="bar" style="height: 50%;"></div>목</div>
-		                            <div class="bar-wrapper"><div class="bar" style="height: 10%;"></div>금</div>
-		                            <div class="bar-wrapper"><div class="bar" style="height: 50%;"></div>토</div>
-		                            <div class="bar-wrapper"><div class="bar" style="height: 50%;"></div>일</div>
+		                          <div class="chart">
+		                            <div class="bar-container"><div class="bar" style="height: 50%;"></div><span>월</span></div>
+		                            <div class="bar-container"><div class="bar" style="height: 10%;"></div><span>화</span></div>
+		                            <div class="bar-container"><div class="bar" style="height: 50%;"></div><span>수</span></div>
+		                            <div class="bar-container"><div class="bar" style="height: 10%;"></div><span>목</span></div>
+		                            <div class="bar-container"><div class="bar" style="height: 50%;"></div><span>금</span></div>
+		                            <div class="bar-container"><div class="bar" style="height: 10%;"></div><span>토</span></div>
+		                            <div class="bar-container"><div class="bar" style="height: 50%;"></div><span>일</span></div>
 		                        </div>
 		                    </div>
 		
