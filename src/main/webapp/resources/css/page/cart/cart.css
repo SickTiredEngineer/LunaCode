@@ -1,0 +1,222 @@
+@charset "UTF-8";
+body {
+    font-family: var(--font-main);
+}
+
+.cart-container {
+    width: 1000px;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-font);
+    margin-bottom: 30px;
+}
+
+/* 진행 단계 */
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    color: var(--color-font-gray);
+    font-weight: bold;
+}
+
+.progress-step.active {
+    color: var(--color-main);
+}
+
+.step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-sub);
+    color: var(--color-font-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--font-size-normal);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.progress-step.active .step-circle {
+    background-color: var(--color-main);
+    color: var(--color-font-white);
+}
+
+.progress-arrow {
+    margin: 0 var(--common-margin);
+    color: var(--color-font-gray);
+    font-size: 18px;
+}
+
+/* 장바구니 테이블 */
+.cart-table {
+    width: 100%;
+    border-top: 2px solid var(--color-border);
+    border-bottom: 2px solid var(--color-border);
+    padding: 10px 0;
+}
+
+.cart-header {
+    display: flex;
+    background-color: var(--color-sub);
+    padding: 15px 20px;
+    font-weight: bold;
+    color: var(--color-font);
+    align-items: center;
+    border-radius: var(--common-radius-half);
+}
+
+.header-item {
+    width: 120px;
+    text-align: center;
+    flex-grow: 1;
+}
+
+.header-item.product-info {
+    width: 400px;
+    flex-grow: 3;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.header-item.product-info label {
+    padding-left: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: var(--common-padding);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cart-item:last-of-type {
+    border-bottom: none;
+}
+
+.item-cell {
+    width: 120px;
+    text-align: center;
+    flex-grow: 1;
+    color: var(--color-font);
+    font-size: var(--font-size-info);
+}
+
+.item-cell.product-info {
+    width: 400px;
+    flex-grow: 3;
+    display: flex;
+    align-items: center;
+    text-align: left;
+}
+
+.item-cell input[type="checkbox"] {
+    margin-right: 15px;
+}
+
+.product-image {
+    width: 80px;
+    height: 60px;
+    background-color: var(--color-sub);
+    border-radius: var(--common-radius-half);
+    margin-right: var(--common-margin);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: var(--common-radius-half);
+}
+
+.product-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.product-duration {
+    color: var(--color-font-gray);
+    font-size: var(--font-size-normal);
+}
+
+.delete-button-container {
+    text-align: right;
+    padding: 15px 20px 0 0;
+}
+
+.small-button {
+    width: 60px;
+    height: 25px;
+    font-size: 12px;
+    margin-left: 0;
+}
+
+/* 결제 요약 */
+.cart-summary {
+    width: 100%;
+    background-color: var(--color-sub);
+    border-radius: var(--common-radius);
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.summary-item {
+    text-align: center;
+}
+
+.summary-item p {
+    margin: 0;
+    color: var(--color-font);
+    font-size: var(--font-size-info);
+}
+
+.summary-item .price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.summary-operator {
+    font-size: 24px;
+    color: var(--color-font-gray);
+    margin: 0 50px;
+}
+
+.summary-item.total .price {
+    color: var(--color-main);
+    font-size: 22px;
+}
+
+/* 하단 버튼 */
+.cart-actions {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-actions .negative-button,
+.cart-actions .positive-button {
+    width: 120px;
+    height: 40px;
+    font-size: var(--font-size-info);
+}

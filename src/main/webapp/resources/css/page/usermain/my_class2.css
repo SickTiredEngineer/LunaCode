@@ -1,99 +1,100 @@
 @charset "UTF-8";
 /* 페이지 공통 레이아웃 */
 .content-layout {
-    display: flex;
-    gap: 40px; 
-    align-items: flex-start;
+	display: flex;
+	gap: 40px; 
+	align-items: flex-start;
 }
 
 /* 사이드바 (common-category) */
 .common-category {
-    flex-shrink: 0; 
-    width: 200px; 
-    height: auto; 
-    margin-top: 164px; 
+	flex-shrink: 0; 
+	width: 200px; 
+	height: auto; 
+	margin-top: 164px; 
 }
 
 /* 강의 컨테이너 */
 .myclass-container {
-    flex: 1;
-    max-width: 1000px;
+	flex: 1;
+	max-width: 1000px;
 }
 
 /* 상단 헤더 */
 .myclass-header {
-    display: flex;
-    margin-top: 80px;
-    margin-bottom: var(--common-margin);
+	display: flex;
+	margin-top: 80px;
+	margin-bottom: var(--common-margin);
 }
 
 .myclass-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin: 0;
+	color: var(--color-font);
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
 }
 
 /* 탭 메뉴 스타일 */
 .content-tabs {
-    display: flex;
-    gap: 30px;
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: 30px;
+	display: flex;
+	gap: 30px;
+	border-bottom: 1px solid var(--color-border);
+	margin-bottom: 30px;
 }
 .tab-item {
-    padding: 10px 5px;
-    text-decoration: none;
-    color: var(--color-font-gray);
-    font-weight: 500;
-    margin-bottom: -1px; /* 활성 탭의 border가 아래 선과 겹치도록 */
+	padding: 10px 5px;
+	text-decoration: none;
+	color: var(--color-font-gray);
+	font-weight: 500;
+	margin-bottom: -1px; /* 활성 탭의 border가 아래 선과 겹치도록 */
 }
 .tab-item.active {
-    color: var(--color-main);
-    font-weight: bold;
-    border-bottom: 3px solid var(--color-main);
+	color: var(--color-main);
+	font-weight: bold;
+	border-bottom: 3px solid var(--color-main);
 }
 
 /* 강의 목록 */
 .course-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 .course-item {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    padding: 20px;
-    margin-bottom: 20px;
-    border: 2px dashed var(--color-border);
-    border-radius: 20px;
+	display: flex;
+	align-items: center;
+	gap: 25px;
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 2px dashed var(--color-border);
+	border-radius: 20px;
 }
 .play-icon {
-    flex-shrink: 0;
-    width: 100px;
-    height: 100px;
-    border: 2px solid var(--color-border);
-    border-radius: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 30px;
-    color: var(--color-main);
+	flex-shrink: 0;
+	width: 100px;
+	height: 100px;
+	border: 2px solid var(--color-border);
+	border-radius: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 30px;
+	color: var(--color-main);
 }
 .course-details {
-    flex: 1;
+	flex: 1;
 }
 .course-title {
-    font-size: var(--font-size-info);
-    font-weight: 500;
-    margin: 0 0 8px 0;
+	font-size: var(--font-size-info);
+	font-weight: 500;
+	margin: 0 0 8px 0;
 }
 .course-progress-text {
-    font-size: var(--font-size-normal);
-    color: var(--color-font);
-    margin: 0 0 10px 0;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	margin: 0 0 10px 0;
 }
 
 .progress-bar {
-    background-color: var(--color-main) !important;
+	background-color: var(--color-main) !important;
 }

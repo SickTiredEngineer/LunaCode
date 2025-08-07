@@ -1,0 +1,268 @@
+@charset "UTF-8";
+body {
+	font-family: var(--font-main);
+}
+
+.payment-container {
+	width: 1000px;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.page-title {
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--color-font);
+	margin-bottom: 30px;
+}
+
+/* 각 콘텐츠 섹션 구분 */
+.content-section {
+	width: 100%;
+	margin-bottom: 40px;
+}
+
+/* 진행 단계 */
+.progress-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.progress-step {
+	display: flex;
+	align-items: center;
+	color: var(--color-font-gray);
+	font-weight: bold;
+}
+
+.progress-step.active {
+	color: var(--color-main);
+}
+
+.step-circle {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--color-sub);
+	color: var(--color-font-gray);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: var(--font-size-normal);
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.progress-step.active .step-circle {
+	background-color: var(--color-main);
+	color: var(--color-font-white);
+}
+
+.progress-arrow {
+	margin: 0 var(--common-margin);
+	color: var(--color-font-gray);
+	font-size: 18px;
+}
+
+/* 섹션 헤더 (상품정보, 환불정책) */
+.section-header {
+	display: flex;
+	background-color: var(--color-sub);
+	padding: 15px 0px;
+	font-weight: bold;
+	color: var(--color-font);
+	align-items: center;
+	border-radius: var(--common-radius-half);
+}
+
+.header-item {
+	width: 120px;
+	text-align: center;
+	flex-grow: 1;
+}
+
+.header-item.product-info {
+	width: 400px;
+	flex-grow: 3;
+	text-align: center;
+}
+
+/* 주문 상품 정보 */
+.order-item-box {
+	display: flex;
+	align-items: center;
+	border-radius: var(--common-radius);
+	padding: 15px 0px;
+	margin-top: 1px;
+}
+
+.item-cell {
+	width: 120px;
+	text-align: center;
+	flex-grow: 1;
+	color: var(--color-font);
+	font-size: var(--font-size-info);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.item-cell.product-info {
+	width: 400px;
+	flex-grow: 3;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.product-image {
+	width: 80px;
+	height: 60px;
+	background-color: #E0E8F8;
+	border-radius: var(--common-radius-half);
+	margin-right: var(--common-margin);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.product-image img {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: var(--common-radius-half);
+}
+
+.product-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.product-duration {
+	color: var(--color-font-gray);
+	font-size: var(--font-size-normal);
+}
+
+.price-cell {
+	position: relative;
+}
+
+.faq-link {
+	font-size: 12px;
+	color: var(--color-font-gray);
+	position: absolute;
+	bottom: -10px;
+	right: 10px;
+	text-decoration: none;
+}
+
+/* 결제 수단 선택 */
+.section-title-box {
+	background-color: var(--color-sub);
+	padding: 15px 20px;
+	font-weight: bold;
+	color: var(--color-font);
+	border-radius: var(--common-radius);
+	margin-bottom: 15px;
+}
+
+.payment-options {
+	display: flex;
+	justify-content: space-between;
+	gap: 20px;
+}
+
+.payment-option {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid var(--color-border);
+	border-radius: var(--common-radius);
+	padding: 20px;
+	cursor: pointer;
+	background-color: #fff;
+	height: 100px;
+	transition: border-color 0.2s;
+}
+
+.payment-option img {
+	height: 30px;
+	margin-bottom: 10px;
+}
+
+.payment-option span {
+	font-weight: bold;
+	color: var(--color-font);
+}
+
+.payment-option:hover {
+	border-color: var(--color-main);
+}
+
+/* 환불 정책 안내 */
+.refund-policy-item {
+	display: flex;
+	align-items: center;
+	padding: 15px 20px;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.refund-policy-item:last-of-type {
+	border-bottom: none;
+}
+
+/* 최종 요약 및 하단 버튼 (장바구니와 동일) */
+.cart-summary {
+	width: 100%;
+	background-color: var(--color-sub);
+	border-radius: var(--common-radius);
+	padding: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.summary-item {
+	text-align: center;
+}
+
+.summary-item p {
+	margin: 0;
+	color: var(--color-font);
+	font-size: var(--font-size-info);
+}
+
+.summary-item .price {
+	font-size: 20px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+.summary-operator {
+	font-size: 24px;
+	color: var(--color-font-gray);
+	margin: 0 50px;
+}
+
+.summary-item.total .price {
+	color: var(--color-main);
+	font-size: 22px;
+}
+
+.cart-actions {
+	margin-top: 30px;
+	display: flex;
+	justify-content: center;
+}
+
+.cart-actions .negative-button,
+.cart-actions .positive-button {
+	width: 120px;
+	height: 40px;
+	font-size: var(--font-size-info);
+}

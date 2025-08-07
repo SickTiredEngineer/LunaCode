@@ -3,7 +3,7 @@
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-/* 	gap: 20px; */
+	/* gap: 20px; */
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -14,10 +14,10 @@
 
 /* 공통 항목 기본 상태는 그대로 두되 여백 조정 */
 .common-category .common-category-element {
-  display: block;
-/*   margin: 10px auto; */
+	display: block;
+	/* margin: 10px auto; */
 }
 
-.common-category{
+.common-category {
 	height: 300px;
 }
