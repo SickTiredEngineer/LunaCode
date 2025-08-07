@@ -86,7 +86,7 @@
 	    <textarea placeholder="댓글을 입력하세요..."></textarea>
 	    <button type="button" class="btn btn-outline-success">등록</button>
 	  </div>
-	
+	  
 	  <ul class="comment-list">
 	    <li class="comment-item">
 	      <ul class="reply-list"></ul>

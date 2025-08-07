@@ -1,0 +1,513 @@
+@charset "UTF-8";
+
+/* 전체 배경 */
+body, html {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
+}
+
+/* 배경 효과 */
+.register-bg {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lecture-register-card {
+  background: #F2F4F8;
+  border-radius: 20px;
+  width: 80%;
+  box-shadow: 0 2px 32px 0 rgba(51,102,153,0.08);
+  padding: 36px 30px 30px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 19px;
+}
+
+/* 상단 두개 줄, 가로배치! */
+.reg-top-row {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 10px;
+}
+.reg-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reg-label {
+  font-size: 20px;
+  font-weight: 800;
+  color: #444444;
+  margin-left: 3px;
+  margin-bottom: 1.5px;
+  letter-spacing: 0.4px; /* 글자 사이 간격(자간) */
+}
+.reg-input {
+  border: 1.3px solid #e0e6ee;
+  border-radius: 9px;
+  padding: 17px 13px;
+  font-size: 17px;
+  font-weight: 500px;
+  background: #fff;
+  transition: border-color 0.2s;
+  margin-bottom: 0;
+}
+.reg-input:focus {
+  outline: none;
+  background: #fff;
+  border-color: #C1C7CD;
+}
+
+/* 타이틀용 */
+.page-title {
+  text-align: center;
+  color: #8baee7;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.register-section {
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 15px;
+  color: #222;
+  font-weight: 500;
+}
+
+.reg-category-block {
+  margin-bottom: 20px;
+}
+
+.reg-category-selector {
+  display: flex;
+  gap: 15px;
+  margin-top: 3px;
+}
+
+.reg-category-col {
+  width: 352px;
+  max-height: 210px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 8px;
+  box-shadow: 0 1.3px 4px 0 rgba(80, 120, 195, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;         /* 세로 스크롤 허용 */
+  overflow-x: hidden;       /* 가로 스크롤 숨김 */
+  scrollbar-color: #5F9FD5 transparent;
+}
+
+.reg-category-col::-webkit-scrollbar {
+  width: 6px;
+}
+
+.reg-category-col::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.reg-category-col::-webkit-scrollbar-thumb {
+  background-color: #5F9FD5;
+  border-radius: 3px;
+}
+
+.reg-cat-btn {
+  background: none;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 14px;
+  margin: 3px 7px;
+  font-size: 17px;
+  color: #444444;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.17s, color 0.13s;
+  padding: 11px 19px;
+  font-weight: 600;         
+}
+
+.reg-cat-btn[aria-selected="true"],
+.reg-cat-btn.selected {
+  background: #5F9FD5;
+  color: #fff;
+  font-weight: 600;
+}
+
+.reg-cat-btn:hover:not([aria-selected="true"]) {
+  background: #e6f0ff;
+}
+
+.reg-chosen-tags-wrap {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 32px;
+}
+
+.reg-chosen-tag {
+  background: #fff;
+  color: #444;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-weight: 700;
+  font-size: 15px;
+  gap: 6px;
+  border: 1px solid #ccc;
+}
+
+.reg-chosen-x {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 2px 1px 2px;
+  line-height: 1;
+}
+
+.difficulty-group, .type-group {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  padding-left: 2px;
+}
+
+.register-btn-section {
+  margin-top: 18px;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.btn {
+  min-width: 93px;
+  height: 43px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: #eef6fd;
+  color: #397ef6;
+  border: 1px solid #d3e4fb;
+}
+
+.register-btn {
+  background: #397ef6;
+  color: #fff;
+}
+
+@media (max-width: 520px) {
+  .lecture-register-card {
+    padding: 19px 4vw 18px 4vw;
+    max-width: 99vw;
+  }
+}
+
+@keyframes fade-in {
+  from { opacity:0; transform: translateY(36px); }
+  to   { opacity:1; transform: none; }
+}
+
+/* 여기부터는 강의 난의도 선택과 유형 선택 */
+.reg-select-group {
+  margin-bottom: 19px;
+}
+
+.reg-select-label {
+  font-size: 15px;
+  font-weight: 500;
+  color: #234;
+  margin-bottom: 7px;
+  margin-left: 1px;
+}
+
+.reg-select-btns {
+  display: flex;
+  gap: 12px;
+}
+
+.reg-toggle-btn {
+  min-width: 230px;
+  min-height: 70px;
+  box-sizing: border-box;
+  background: #f7fafe;
+  border: 1.7px solid #e0e6ee;
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;      /* 세로 중앙 정렬 */
+  gap: 12px;
+  font-size: 18px;
+  color: #444444;
+  font-weight: 500;
+  transition: border 0.18s ease, background 0.2s ease, color 0.14s ease;
+  position: relative;
+  box-shadow: 0 0.3px 5px 0 rgba(51, 102, 153, 0.06);
+  user-select: none;
+}
+
+.reg-toggle-btn span {
+  display: block;
+  line-height: 1.25;
+}
+
+.reg-toggle-btn span small {
+  font-size: 12.1px;
+  color: #96a2b7;
+  display: block;
+  margin-top: 2px;
+}
+
+.reg-toggle-btn .chk-ico {
+  font-size: 22px;      
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  min-height: 26px;
+  margin-right: 5px;     
+  margin-top: 2px;  
+}
+
+/* 기본 미선택 시 체크 아이콘은 숨김 */
+.reg-toggle-btn:not(.selected) .chk-ico {
+  color: transparent;
+  border-color: transparent;
+}
+
+/* 선택된 버튼: 체크 아이콘 파란색 박스와 체크 표시 */
+.reg-toggle-btn.selected .chk-ico {
+  color: #397ef6;
+  border-color: #397ef6;
+  background-color: #e6f1fb;
+}
+
+/* 선택된 버튼 스타일 */
+.reg-toggle-btn.selected {
+  border-color: #397ef6;
+  background: #eef7ff;
+  color: #397ef6;
+  font-weight: 700;
+}
+
+/* 호버 시 체크 아이콘 약간 진하게 */
+.reg-toggle-btn:hover .chk-ico {
+  border-color: #a5bffc;
+}
+
+/* 호버 시 버튼 배경과 테두리 변화 */
+.reg-toggle-btn:hover:not(.selected) {
+  border-color: #a9c9f7;
+  background: #eff6ff;
+  color: #386097;
+}
+
+/* 강의 유형 상세 선택 */
+.reg-info-vertical-table {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-width: 715px; 
+  background: #f8fbff;
+  padding: 24px 26px 24px 26px;
+  border-radius: 14px;
+  box-shadow: 0 0.8px 6px rgba(57, 126, 246, 0.08);
+  border: 1.5px solid #e2ebf5;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: 'Pretendard', 'sans-serif';
+}
+
+.info-row-vertical {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label-vertical {
+  font-weight: 600;
+  font-size: 15px;
+  color: #55608a;
+  margin-left: 2px;
+}
+
+.input-vertical,
+.input-vertical-date,
+select.input-vertical {
+  width: 100%;
+  height: 40px;
+  border: 1.3px solid #e0e6ee;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 15px;
+  background: #fff;
+  color: #294067;
+  transition: border-color 0.25s;
+  box-sizing: border-box;
+}
+
+.input-vertical:focus,
+select.input-vertical:focus,
+.input-vertical-date:focus {
+  outline: none;
+  border-color: #397ef6;
+  background: #fff;
+}
+
+select[multiple].input-vertical {
+  height: 90px;
+  padding: 8px 12px;
+  background: #f5f7fa;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+.date-range-vertical {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.input-vertical-date {
+  width: 300px;
+  height: 40px;
+}
+
+.date-separator {
+  font-size: 18px;
+  color: #97a0b2;
+  user-select: none;
+}
+
+/* 가격 설정 */ 
+/* 가격 및 수강기한 프레임 */
+.price-period-frame {
+  background: #f8f9fb;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(240, 241, 244, 0.3);
+  padding: 32px 26px 28px 26px;
+  max-width: 560px;
+  margin: 0 auto 32px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* 가격 입력 행 */
+.price-row {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+/* 개별 가격 그룹 */
+.price-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 180px;
+  min-width: 158px;
+}
+
+/* 가격 라벨 */
+.price-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 7px;
+}
+
+/* 부가세 정보 작은 글씨 */
+.vat-info {
+  font-size: 13px;
+  color: #999;
+  margin-left: 5px;
+  font-weight: 400;
+}
+
+/* 인풋과 통화기호 래핑 */
+.input-wrap {
+  display: flex;
+  align-items: center;
+}
+
+/* 통화 심볼 스타일 */
+.currency-symbol {
+  font-size: 17px;
+  margin-right: 5px;
+  color: #666;
+}
+
+/* 가격 입력창 스타일 */
+.price-input {
+  width: 110px;
+  font-size: 16px;
+  padding: 7px 8px;
+  border: 1px solid #dadada;
+  border-radius: 4px;
+  background: #fff;
+  color: #222;
+  transition: border-color 0.2s;
+}
+
+.price-input:focus {
+  outline: none;
+  border-color: #397ef6;
+}
+
+/* 구분선 */
+.divider-line {
+  height: 1px;
+  background: #e5e7ea;
+  margin: 18px 0 12px 0;
+  border: none;
+}
+
+/* 수강기한 영역 */
+.period-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* 수강기한 라벨 */
+.period-label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #444;
+  min-width: 72px;
+}
+
+/* 수강기한 셀렉트 박스 */
+.period-select {
+  font-size: 15px;
+  border-radius: 4px;
+  padding: 8px 18px;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.period-select:focus {
+  outline: none;
+  border-color: #397ef6;
+}

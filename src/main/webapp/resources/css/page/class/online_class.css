@@ -450,3 +450,21 @@ textarea::-webkit-resizer {
   text-align: justify;
   margin: 10px 20px 20px 20px; /* 위 아래, 좌우 마진 */
 }
+
+/* 좋아요 */
+.like-section {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.thumb-icon {
+  transition: fill 0.2s;
+}
+.like-count {
+  font-size: 15px;
+  color: #888;
+}
+.like-btn:hover .thumb-icon {
+  fill: #42a5f5;
+}
+

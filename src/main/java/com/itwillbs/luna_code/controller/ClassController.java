@@ -10,6 +10,9 @@ public class ClassController {
 		return "class/online_class";
 	}
 	
-	
+	@GetMapping("ClassRegist")
+	public String classregist() {
+		return "class/class_regist";
+	}
 	
 }
