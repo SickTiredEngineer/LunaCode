@@ -53,18 +53,19 @@ body {
 
 .profile-inputs {
 	display: flex;
-	align-items: flex-end; /* 하단 정렬 */
+	flex-direction: column; /* 자식 요소(사진그룹, 닉네임그룹)를 수직으로 정렬 */
+	align-items: flex-start; /* 좌측 정렬 */
 	gap: 20px;
 	width: 100%;
 	max-width: 450px;
 }
 
-/* [New] 사진과 업로드 버튼 그룹 */
+/* [수정] 사진과 업로드 버튼 그룹: 수평 정렬로 변경 */
 .profile-photo-group {
 	display: flex;
-	flex-direction: column;
-	gap: 10px; /* 사진과 버튼 사이 간격 */
-	flex-shrink: 0;
+	flex-direction: row; /* 사진과 버튼을 가로로 나열 */
+	align-items: center;  /* 세로 중앙 정렬 */
+	gap: 20px; /* 사진과 버튼 사이 간격 */
 }
 
 .profile-photobox {
@@ -84,16 +85,15 @@ body {
 /* 사진 업로드 버튼 */
 #photo-upload-btn {
 	height: 45px;
-	width: 150px; /* 사진 박스와 너비 통일 */
+	width: 120px; /* 버튼 너비는 원하는 대로 조절 가능 */
 	margin-left: 0;
 }
 
-/* 닉네임 입력 그룹 */
+/* [수정] 닉네임 입력 그룹: 너비를 100%로 설정하여 하단에 배치 */
 .profile-nickname {
 	display: flex;
 	align-items: center;
-/* 	gap: 10px; */
-	flex-grow: 1; /* 남은 공간을 채우도록 설정 */
+	width: 100%; /* 부모 너비(profile-inputs)에 맞게 꽉 채움 */
 }
 
 .profile-nickname input {
