@@ -37,19 +37,20 @@
 
 					<!-- 강의 섹션 목록 -->
 					<ul class="section-list">
-
-						<!-- 섹션 1 -->
-						<li class="section-item">
-							<!-- 섹션 제목/진행률 헤더 (클릭해서 열고 닫는 부분) -->
+					
+						<!-- 섹션 1: 'open' 클래스가 있어 기본적으로 열려있는 상태 -->
+						<li class="section-item open">
+							
+							<!-- 섹션 제목/진행률 헤더 -->
 							<div class="section-header">
 								<span class="section-title">
 									<span class="arrow-icon">▼</span>
 									백엔드 개발 개요와 개발 환경 설정
 								</span>
-								<span class="section-progress">진행률 : 20% <b>3개</b></span>
+								<span class="section-progress">진행률 : 25% <b>4개</b></span>
 							</div>
-
-							<!-- 개별 강의 목록 -->
+					
+							<!-- 개별 강의 목록 (아이템이 4개라 스크롤바가 보임) -->
 							<ul class="lecture-list">
 								<li class="lecture-item">
 									<a href="#">
@@ -58,7 +59,7 @@
 											<span class="lecture-title">프롤로그</span>
 										</span>
 										<span class="lecture-duration">
-											<span class="pencil-icon">✎</span>
+											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png">
 											7 : 28
 										</span>
 									</a>
@@ -70,7 +71,7 @@
 											<span class="lecture-title">개요</span>
 										</span>
 										<span class="lecture-duration">
-											<span class="pencil-icon">✎</span>
+											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png">
 											9 : 02
 										</span>
 									</a>
@@ -82,26 +83,41 @@
 											<span class="lecture-title">환경 설정</span>
 										</span>
 										<span class="lecture-duration">
-											<span class="pencil-icon">✎</span>
+											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png">
 											7 : 00
+										</span>
+									</a>
+								</li>
+								<li class="lecture-item">
+									<a href="#">
+										<span class="lecture-info">
+											<span class="play-icon">▶</span>
+											<span class="lecture-title">첫 프로젝트 생성하기</span>
+										</span>
+										<span class="lecture-duration">
+											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png">
+											11 : 45
 										</span>
 									</a>
 								</li>
 							</ul>
 						</li>
-
-						<!-- 섹션 2 -->
+					
+						<!-- 섹션 2: 'open' 클래스가 없어 기본적으로 닫혀있는 상태 -->
 						<li class="section-item">
 							<div class="section-header">
 								<span class="section-title">
 									<span class="arrow-icon">▼</span>
 									Java 문법 기초와 객체지향 이해
 								</span>
-								<span class="section-progress">진행률 : 50% <b>7개</b></span>
+								<span class="section-progress">진행률 : 0% <b>7개</b></span>
 							</div>
-							<!-- 이 섹션의 강의 목록은 여기에 ul.lecture-list 로 추가됩니다. -->
+							<!-- 이 섹션의 강의 목록은 CSS에 의해 숨겨져 있습니다. -->
+							<ul class="lecture-list">
+								<!-- 여기에 강의 아이템들이 들어갑니다. -->
+							</ul>
 						</li>
-
+					
 					</ul>
 				</section>
 			</article>
@@ -111,4 +127,18 @@
 			</footer>
 		</div>
 	</body>
+	
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const sectionHeaders = document.querySelectorAll('.section-header');
+			
+			sectionHeaders.forEach(function(header) {
+				header.addEventListener('click', function() {
+					const sectionItem = header.closest('.section-item');
+					sectionItem.classList.toggle('open');
+				});
+			});
+		});
+	</script>
+	
 </html>

@@ -73,6 +73,16 @@
 								</div>
 							</div>
 						</li>
+						<li class="course-item">
+							<div class="play-icon">▶</div>
+							<div class="course-details">
+								<h3 class="course-title">오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선</h3>
+								<p class="course-progress-text">10 / 10회차 (100%)</p>
+								<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+									<div class="progress-bar" style="width: 100%;"></div>
+								</div>
+							</div>
+						</li>
 					</ul>
 					
 				</section>

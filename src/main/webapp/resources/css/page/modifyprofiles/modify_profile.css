@@ -69,15 +69,15 @@ body {
 }
 
 .profile-photobox {
-	width: 150px;
-	height: 150px;
+	width: 200px;
+	height: 200px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	border: 2px dashed var(--color-main);
 	border-radius: 50%;
 	background-color: var(--color-white);
-	color: var(--color-font);
+	color: var(--color-font-gray);
 	font-weight: 500;
 	flex-shrink: 0;
 }

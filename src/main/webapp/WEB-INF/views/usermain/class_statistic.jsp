@@ -70,6 +70,11 @@
 									<li><span class="icon">👤</span><span>이몽룡님이 수강을 신청했습니다</span></li>
 									<li><span class="icon">👤</span><span>성춘향님이 수강을 신청했습니다</span></li>
 									<li><span class="icon">👤</span><span>변사또님이 수강을 신청했습니다</span></li>
+									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
+									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
+									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
+									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
+									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
 								</ul>
 							</div>
 						</div>
@@ -85,6 +90,9 @@
 									<li><span class="icon">💬</span><span>강사님 질문 있습니다!</span></li>
 									<li><span class="icon">💬</span><span>이 강의에 파이썬에 대한 내용도 있나요?</span></li>
 									<li><span class="icon">💬</span><span>이 부분은 일부러 수정 안하신건가요?</span></li>
+									<li><span class="icon">💬</span><span>질문 있어요</span></li>
+									<li><span class="icon">💬</span><span>질문 있어요</span></li>
+									<li><span class="icon">💬</span><span>질문 있어요</span></li>
 									<li><span class="icon">💬</span><span>질문 있어요</span></li>
 								</ul>
 							</div>

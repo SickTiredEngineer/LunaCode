@@ -87,7 +87,15 @@
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
-	min-height: 200px; /* 모든 위젯의 최소 높이를 지정하여 레이아웃 안정성 확보 */
+	min-height: 200px; 
+	
+	/* 스크롤바 생성을 위한 속성 */
+	max-height: 200px; 
+	overflow-y: auto;
+
+	/* Firefox 스크롤바 스타일링 */
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-main) var(--color-sub); /* 핸들 색상, 트랙 색상 순 */
 }
 
 /* 차트 & 목록 스타일 */

@@ -59,6 +59,19 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+		/* 3개의 아이템 높이에 맞춘 최대 높이 설정 */
+	/* 계산: (아이템 높이 140px + 하단 마진 20px) * 3개 - 마지막 아이템 마진 20px = 460px */
+	max-height: 460px;
+	
+	/* 내용이 max-height를 넘어가면 세로 스크롤바 자동 생성 */
+	overflow-y: auto;
+
+	/* 스크롤바와 콘텐츠 사이에 여백 추가 */
+	padding-right: 10px;
+
+	/* Firefox용 스크롤바 스타일 */
+	scrollbar-width: thin;
+	scrollbar-color: var(--color-main) var(--color-sub); /* 핸들 색상, 트랙 색상 순 */
 }
 .course-item {
 	display: flex;

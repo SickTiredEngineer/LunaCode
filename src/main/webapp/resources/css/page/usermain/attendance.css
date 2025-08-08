@@ -66,6 +66,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	height: 150px;
 }
 
 .streak-card h3 {
@@ -76,8 +77,8 @@
 }
 
 .streak-circle {
-	width: 70px;
-	height: 70px;
+	width: 80px;
+	height: 80px;
 	border-radius: 50%;
 	background-color: var(--color-sub);
 	border: 2px solid var(--color-main);

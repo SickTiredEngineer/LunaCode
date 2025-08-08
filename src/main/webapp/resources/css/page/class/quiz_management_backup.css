@@ -1,18 +1,38 @@
 @charset "UTF-8";
-
-/* 페이지 공통 레이아웃 */
-.content-layout {
+/* 페이지 레이아웃 */
+body {
+	font-family: var(--font-main);
+}
+/* 카테고리 부분 */
+.profile-main {
 	display: flex;
-	gap: 40px; 
+	justify-content: center;
 	align-items: flex-start;
+/* 	gap: 20px; */
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
-/* 사이드바 (common-category) */
+.common-category a {
+	cursor: pointer;
+}
+
+/* 공통 항목 기본 상태는 그대로 두되 여백 조정 */
+.common-category .common-category-element {
+  display: block;
+/*   margin: 10px auto; */
+}
+
 .common-category {
-	flex-shrink: 0; 
-	width: 200px; 
-	height: auto; 
-	margin-top: 164px; 
+	width: 200px;
+	height: 250px;
+}
+
+/* 페이지 제목*/
+.title-layout {
+	margin: 40px 0;
+	display: flex;
+	justify-content: center;
 }
 
 /* 강의 상세 페이지 컨테이너 */
@@ -21,25 +41,22 @@
 	max-width: 1000px;
 }
 
-/* 상단 헤더 (제목 + 정렬 버튼) */
-.course-detail-header {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 80px;
-	margin-bottom: var(--common-margin);
-}
-.main-title {
-	color: var(--color-font);
-	font-size: 24px;
+.page-main-title {
+	width: 250px;
+	text-align: center;
+	color: var(--color-main) !important;
 	font-weight: bold;
-	margin: 0;
+	margin-top: var(--common-margin);
 }
-.positive-button {
-	margin-top: 40px;
+
+/* 메인 콘텐츠 레이아웃 (사이드바 + 폼) */
+.content-layout {
+	display: flex;
+	flex-direction: row;
 }
 
 /* --- 강의 섹션 및 드롭다운 스타일 --- */
-/* 강의 섹션 목록 (ul.section-list) */
+/* 섹션 목록 (ul.section-list) */
 .section-list {
 	list-style: none;
 	padding: 0;
@@ -125,9 +142,11 @@
 	text-decoration: none;
 	color: var(--color-font);
 	transition: background-color 0.2s;
-	font-weight: bold;
+	font-weight: bold;s
 }
-
+/* .lecture-item a:hover { */
+/* 	background-color: var(--color-sub); */
+/* } */
 .lecture-info {
 	display: flex;
 	align-items: center;
@@ -150,7 +169,6 @@
 .pencil-icon {
 	font-size: var(--font-size-normal);
 }
-
 
 /* --- 스크롤바 스타일링 --- */
 
