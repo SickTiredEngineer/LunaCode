@@ -34,6 +34,13 @@
 <!-- 			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value> -->
 			<param-value>classpath:/config/servlet-context.xml</param-value>
 		</init-param>
+		
+		<!-- 자바에서 400 처리 -->
+		<init-param>
+			<param-name>throwExceptionIfNoHandlerFound</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 		

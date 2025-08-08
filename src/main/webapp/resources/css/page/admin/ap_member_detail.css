@@ -21,11 +21,21 @@ body{
 	height: 250px;
 	border: 1px solid var(--color-main);
 	border-radius: var(--common-radius);
-	
 	margin-top: var(--common-margin);
 	margin-left: var(--common-margin);
-	
 }
+
+.icon-delete{
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+}
+
+
+
 
 /* 작성자, 조회수 삽입하는 레이아웃 */
 .tmi-layout{
@@ -162,7 +172,7 @@ body{
 
 
 
-.member-type-selector{
+.member-state-selector{
 	color: var(--color-font);
 	border: 1px solid var(--color-border);
 	border-radius: var(--common-radius);
@@ -172,9 +182,7 @@ body{
 	
 }
 
-
-
-.member-type-selector:focus {
+.member-state-selector:focus {
 	box-shadow: none !important;
 	outline: 0;
 	border: 2px solid var(--color-main) !important;

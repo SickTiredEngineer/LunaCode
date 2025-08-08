@@ -1,0 +1,181 @@
+@charset "UTF-8";
+body {
+	font-family: var(--font-main);
+}
+
+/* 페이지 기본 컨테이너 */
+.completion-container {
+	width: 1000px;
+	margin: 40px auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.page-title {
+	font-size: 24px;
+	font-weight: bold;
+	color: var(--color-font);
+	margin-bottom: 30px;
+}
+
+/* 진행 단계 */
+.progress-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+.progress-step {
+	display: flex;
+	align-items: center;
+	color: var(--color-font-gray);
+	font-weight: bold;
+}
+
+.progress-step.active {
+	color: var(--color-main);
+}
+
+.step-circle {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-color: var(--color-sub);
+	color: var(--color-font-gray);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: var(--font-size-normal);
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.progress-step.active .step-circle {
+	background-color: var(--color-main);
+	color: var(--color-font-white);
+}
+
+.progress-arrow {
+	margin: 0 var(--common-margin);
+	color: var(--color-font-gray);
+	font-size: 18px;
+}
+
+/* 주문 완료 메시지 & 버튼 */
+.completion-message-box {
+	text-align: center;
+	margin: 30px 0;
+}
+
+.completion-text {
+	font-size: 20px;
+	font-weight: bold;
+	color: var(--color-font);
+	margin-bottom: 25px;
+}
+
+.completion-actions {
+	display: flex;
+	justify-content: center;
+	gap: 15px; /* 버튼 사이 간격 */
+}
+
+/* 버튼은 common.css의 .negative-button 사용 */
+.completion-actions .negative-button {
+	width: 130px;
+	height: 40px;
+}
+
+/* 구분선 */
+.separator-line {
+	width: 100%;
+	border: none;
+	border-top: 1px solid var(--color-border);
+	margin: 20px 0 40px 0;
+}
+
+/* 주문 내역 */
+.order-history-section {
+	width: 100%;
+}
+
+.section-header {
+	display: flex;
+	background-color: var(--color-sub);
+	padding: 15px 0px;
+	font-weight: bold;
+	color: var(--color-font);
+	align-items: center;
+	border-radius: var(--common-radius-half);
+}
+
+.header-item {
+	width: 120px;
+	text-align: center;
+	flex-grow: 1;
+}
+
+/* '주문 내역' 헤더 텍스트는 좌측 정렬 */
+.header-item.product-info {
+	width: 400px;
+	flex-grow: 3;
+	text-align: center;
+}
+
+.order-item-box {
+	display: flex;
+	align-items: stretch; /* 모든 셀 높이 통일 */
+	padding: 15px 0px;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.item-cell {
+	width: 120px;
+	text-align: center;
+	flex-grow: 1;
+	color: var(--color-font);
+	font-size: var(--font-size-info);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.item-cell.product-info {
+	width: 400px;
+	flex-grow: 3;
+	justify-content: flex-start;
+}
+
+.product-image {
+	width: 80px;
+	height: 60px;
+	background-color: #E0E8F8;
+	border-radius: var(--common-radius); /* 이미지 모서리를 더 둥글게 */
+	margin-right: var(--common-margin);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.product-image img {
+	max-width: 100%;
+	max-height: 100%;
+	border-radius: var(--common-radius);
+}
+
+.product-details {
+	text-align: left;
+}
+
+.product-name {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+.product-duration {
+	color: var(--color-font-gray);
+	font-size: var(--font-size-normal);
+}

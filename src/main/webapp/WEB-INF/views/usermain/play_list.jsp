@@ -15,63 +15,63 @@
 	
 	<body>
 		<div class="page-base container">
-			
+		
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 			</header>
 			
 			<article class="content-layout">
 			
-	            <%-- 좌측 공통 카테고리 --%>
-	            <aside class="common-category">
-	                <a href="UserMain" class="common-category-element active">홈</a>
-	                <a href="MyClass" class="common-category-element">내 강의</a>
-	                <a href="PlayList" class="common-category-element">재생목록</a>
-	                <a href="Attendance" class="common-category-element">출석</a>
-	                <a href="#" class="common-category-element">커뮤니티 활동</a>
-	            </aside>
-	            
+				<%-- 좌측 공통 카테고리 --%>
+				<aside class="common-category">
+					<a href="UserMain" class="common-category-element active">홈</a>
+					<a href="MyClass" class="common-category-element">내 강의</a>
+					<a href="PlayList" class="common-category-element">재생목록</a>
+					<a href="Attendance" class="common-category-element">출석</a>
+					<a href="#" class="common-category-element">커뮤니티 활동</a>
+				</aside>
+				
 				<%-- 메인 콘텐츠 영역 --%>
-	            <section class="playlist-container">
-	                
-	                <%-- 상단 헤더 (제목 + 편집 버튼) --%>
-	                <div class="playlist-header">
-	                    <h2 class="playlist-title">재생목록</h2>
-	                    <button type="button" class="positive-button">편집</button>
-	                </div>
-	                
-	                <%-- 폴더 그리드 --%>
-	                <ul class="playlist-grid">
-	                    <%-- 새로 만들기 폴더 (특별한 스타일) --%>
-	                    <li class="playlist-item add-new">
-	                        <a href="">
-	                            <div class="add-icon">+</div>
-	                        </a>
-	                    </li>
-	                    
-	                    <%-- 일반 재생목록 폴더 --%>
-	                    <li class="playlist-item">
-	                        <a href="PlayListPlus">
-	                            <div class="folder-icon"></div>
-	                            <span class="playlist-name">재생목록 1</span>
-	                        </a>
-	                    </li>
-	                    
-	                    <li class="playlist-item">
-	                        <a href="#">	
-	                            <div class="folder-icon"></div>
-	                            <span class="playlist-name">재생목록 2</span>
-	                        </a>
-	                    </li>
-	                </ul>
-	                
-	            </section>
-	        </article>
-	        
+				<section class="playlist-container">
+				
+					<%-- 상단 헤더 (제목 + 편집 버튼) --%>
+					<div class="playlist-header">
+						<h2 class="playlist-title">재생목록</h2>
+						<button type="button" class="positive-button">편집</button>
+					</div>
+					
+					<%-- 폴더 그리드 --%>
+					<ul class="playlist-grid">
+						<%-- 새로 만들기 폴더 (특별한 스타일) --%>
+						<li class="playlist-item add-new">
+							<a href="">
+								<div class="add-icon">+</div>
+							</a>
+						</li>
+						
+						<%-- 일반 재생목록 폴더 --%>
+						<li class="playlist-item">
+							<a href="PlayListPlus">
+								<div class="folder-icon"></div>
+								<span class="playlist-name">재생목록 1</span>
+							</a>
+						</li>
+						
+						<li class="playlist-item">
+							<a href="#">	
+								<div class="folder-icon"></div>
+								<span class="playlist-name">재생목록 2</span>
+							</a>
+						</li>
+					</ul>
+					
+				</section>
+			</article>
+			
 			<footer>
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
-	
+		
 		</div>
 	</body>
 	

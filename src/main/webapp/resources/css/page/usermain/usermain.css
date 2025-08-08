@@ -1,136 +1,134 @@
 @charset "UTF-8";
 /* 페이지 공통 레이아웃 */
 .content-layout {
-    display: flex;
-    gap: var(--common-margin);
+	display: flex;
+	gap: var(--common-margin);
 }
 
 .main-dashboard {
-    flex: 1;
-    max-width: 1000px;
+	flex: 1;
+	max-width: 1000px;
 }
 
 /* 헤더 내 검색 영역 */
 .search-area {
-    max-width: 600px;
-    margin: 40px auto;
-    text-align: center;
+	max-width: 600px;
+	margin: 40px auto;
+	text-align: center;
 }
 .search-box {
-    position: relative;
-    margin-bottom: 15px;
+	position: relative;
+	margin-bottom: 15px;
 }
 .search-box input {
-    width: 100%;
-    height: 45px;
-    padding: 10px 15px 10px 40px;
-    border: 2px solid var(--color-main);
-    border-radius: 50px;
-    font-size: 16px;
+	width: 100%;
+	height: 45px;
+	padding: 10px 15px 10px 40px;
+	border: 2px solid var(--color-main);
+	border-radius: 50px;
+	font-size: 16px;
 }
 .search-icon {
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--color-main);
+	position: absolute;
+	left: 15px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--color-main);
 }
 .tag-list {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    flex-wrap: wrap;
+	display: flex;
+	justify-content: center;
+	gap: 25px;
+	flex-wrap: wrap;
 }
 .tag {
-    color: var(--color-font-main);
-    font-weight: 500;
-    cursor: pointer;
+	color: var(--color-font-main);
+	font-weight: 500;
+	cursor: pointer;
 }
 
 .common-category {
-    flex-shrink: 0; 
-    width: 200px;
-    height: auto;
+	flex-shrink: 0; 
+	width: 200px;
+	height: auto;
 }
 
 /* 캐러셀 컨테이너 */
 .carousel-container {
-    margin-bottom: 40px;
-    border-radius: var(--common-radius);
-    overflow: hidden;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+	margin-bottom: 40px;
+	border-radius: var(--common-radius);
+	overflow: hidden;
+	box-shadow: 0 6px 20px rgba(0,0,0,0.1);
 }
 .carousel-item {
-    height: 400px; /* 캐러셀 높이 조정 */
+	height: 400px; /* 캐러셀 높이 조정 */
 }
 .carousel-item img {
-    object-fit: cover;
-    height: 100%;
+	object-fit: cover;
+	height: 100%;
 }
 
 /* 정보 위젯 (박스) 리스트 */
 .widget-list {
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	display: flex;
+	justify-content: space-between;
+	gap: 30px;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 
 .widget-item {
-    flex: 1;
-    background-color: var(--color-white);
-    border: 1px solid var(--color-sub);
-    border-radius: var(--common-radius);
-    padding: var(--common-padding);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    transition: transform 0.2s, box-shadow 0.2s;
+	flex: 1;
+	background-color: var(--color-white);
+	border: 1px solid var(--color-sub);
+	border-radius: var(--common-radius);
+	padding: var(--common-padding);
+	box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+	transition: transform 0.2s, box-shadow 0.2s;
 }
 .widget-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+	transform: translateY(-5px);
+	box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .widget-header {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: var(--common-margin);
-    color: var(--color-font);
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: var(--common-margin);
+	color: var(--color-font);
 }
 
 .widget-full-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--color-sub);
-
-    text-decoration: none; /* 링크 밑줄 제거 */
-    color: inherit;        /* 부모(h3)의 글자색을 그대로 사용 */
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-bottom: 15px;
+	border-bottom: 1px solid var(--color-sub);
+	text-decoration: none; /* 링크 밑줄 제거 */
+	color: inherit;        /* 부모(h3)의 글자색을 그대로 사용 */
 }
 
 .widget-more-arrow {
-    color: var(--color-font);
-    font-size: 24px;
-    transition: color 0.2s;
+	color: var(--color-font);
+	font-size: 24px;
+	transition: color 0.2s;
 }
 
 /* 링크 전체에 마우스를 올렸을 때 화살표 색상 변경 */
 .widget-full-link:hover .widget-more-arrow {
-    color: var(--color-main);
+	color: var(--color-main);
 }
 
 .widget-content {
-    font-size: 15px;
+	font-size: 15px;
 }
 
 /* "내 강의" 위젯 스타일 */
 .class-info {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 15px;
 }
 .class-title { 
 	font-weight: 500; 
@@ -140,27 +138,27 @@
 }
 .progress { 
 	height: 1rem;
-	}
+}
 .progress-bar { 
 	background-color: var(--color-main) !important;
 }
 
 /* "출석" 위젯 스타일 */
 .attendance-item {
-    display: flex;
-    justify-content: space-between;
-    padding: 12px 5px;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 5px;
 }
 
 /* "재생목록" 위젯 스타일 */
 .playlist-add-button {
-    display: block;
-    font-size: 24px;
-    text-align: center;
-    color: var(--color-font-gray);
-    margin-bottom: 15px;
-    text-decoration: none;
+	display: block;
+	font-size: 24px;
+	text-align: center;
+	color: var(--color-font-gray);
+	margin-bottom: 15px;
+	text-decoration: none;
 }
 .playlist-item {
-    padding: 8px 5px;
+	padding: 8px 5px;
 }

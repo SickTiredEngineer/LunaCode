@@ -46,4 +46,14 @@ public class UserMainController {
 	public String attendance() {
 		return "usermain/attendance";
 	}
+	
+	@GetMapping("ClassStatistic")
+	public String classStatistic() {
+		return "usermain/class_statistic";
+	}
+	
+	@GetMapping("ClassStatisticDetail")
+	public String classStatisticDetail() {
+		return "usermain/class_statistic_detail";
+	}
 }

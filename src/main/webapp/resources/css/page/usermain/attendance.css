@@ -1,161 +1,163 @@
 @charset "UTF-8";
 /* 페이지 공통 레이아웃 */
 .content-layout {
-    display: flex;
-    gap: 40px; 
-    align-items: flex-start;
+	display: flex;
+	gap: 40px; 
+	align-items: flex-start;
 }
 
 /* 사이드바 (common-category) */
 .common-category {
-    flex-shrink: 0; 
-    width: 200px; 
-    height: auto; 
-    margin-top: 164px; 
+	flex-shrink: 0; 
+	width: 200px; 
+	height: auto; 
+	margin-top: 164px; 
 }
 
 /* 출석 컨테이너 */
 .attendance-container {
-    flex: 1;
-    max-width: 1000px;
+	flex: 1;
+	max-width: 1000px;
 }
 
 .attendance-header {
-    display: flex;
-    margin-top: 80px;
-    margin-bottom: 60px;
+	display: flex;
+	margin-top: 80px;
+	margin-bottom: 60px;
 }
 
 .attendance-title {
-    font-size: 24px;
-    font-weight: bold;
-    height: 30px;
-    margin: 0;
+	font-size: 24px;
+	font-weight: bold;
+	height: 30px;
+	margin: 0;
 }
 
 .main-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
 }
 
 .main-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: var(--common-margin);
-    color: var(--color-font);
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: var(--common-margin);
+	color: var(--color-font);
 }
 
 .content-body {
-    display: flex;
-    gap: var(--common-margin);
+	display: flex;
+	gap: var(--common-margin);
 }
 
 .streak-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 220px; /* 너비 고정 */
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	width: 220px; /* 너비 고정 */
 }
 
 .streak-card {
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--common-radius);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	background-color: var(--color-background);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	padding: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .streak-card h3 {
-    margin: 0;
-    color: var(--color-font);
-    font-size: 16px;
-    font-weight: bold;
+	margin: 0;
+	color: var(--color-font);
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .streak-circle {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: var(--color-sub);
-    border: 2px solid var(--color-main);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
-    font-weight: bold;
-    color: var(--color-font-main);
+	width: 70px;
+	height: 70px;
+	border-radius: 50%;
+	background-color: var(--color-sub);
+	border: 2px solid var(--color-main);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 14px;
+	font-weight: bold;
+	color: var(--color-font-main);
 }
 
 .stats-section {
-    flex-grow: 1;
-    background-color: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: var(--common-radius);
-    padding: 25px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 40px 20px;
+	flex-grow: 1;
+	background-color: var(--color-background);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	padding: 25px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: auto auto;
+	gap: 40px 20px;
 }
 
 .chart-container h4, .stat-item h4 {
-    margin: 0 0 15px 0;
-    font-size: 16px;
-    font-weight: bold;
-    color: var(--color-font);
-    border-left: 3px solid var(--color-main);
-    padding-left: var(--common-padding);
+	margin: 0 0 15px 0;
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--color-font);
+	border-left: 3px solid var(--color-main);
+	padding-left: var(--common-padding);
 }
 
 /* 출석 차트 스타일 */
 .chart {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    height: 160px;
-    text-align: center;
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+	height: 160px;
+	text-align: center;
 }
 
 .bar-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    flex-grow: 1;
-    justify-content: flex-end;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	flex-grow: 1;
+	justify-content: flex-end;
 }
 
 .bar {
-    width: 20px;
-    background-color: var(--color-main);
-    opacity: 0.7;
-    border-radius: 5px 5px 0 0;
+	width: 20px;
+	background-color: var(--color-main);
+	opacity: 0.7;
+	border-radius: 5px 5px 0 0;
 }
 
 .bar-container span {
-    margin-top: 8px;
-    font-size: 14px;
+	margin-top: 8px;
+	font-size: 14px;
 }
 
 .monthly-area-chart {
-    height: 125px;
+	height: 125px;
 }
 
 .stat-item p {
-    margin: 0;
-    font-size: 28px;
-    font-weight: bold;
-    color: var(--color-font-main);
+	margin: 0;
+	font-size: 28px;
+	font-weight: bold;
+	color: var(--color-font-main);
 }
 
 .stat-item span {
-    font-size: 18px;
-    font-weight: normal;
-    color: var(--color-font-sub);
+	font-size: 18px;
+	font-weight: normal;
+	color: var(--color-font-sub);
 }
- .stat-item.max-attendance p {
-    color: var(--color-font);
+
+.stat-item.max-attendance p {
+	color: var(--color-font);
 }
+

@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+/*  페이지 공통 레이아웃 */
+.content-layout {
+	display: flex;
+	gap: 40px;
+	align-items: flex-start;
+}
+
+.common-category {
+	flex-shrink: 0;
+	width: 200px;
+	height: auto;
+	margin-top: 164px;
+}
+
+/* 강사 대시보드 스타일 */
+
+/* 대시보드 전체 컨테이너 */
+.dashboard-container {
+	flex: 1;
+	min-width: 0;
+}
+
+/* 대시보드 제목 헤더 */
+.dashboard-header {
+	display: flex;
+	margin-top: 80px;
+	margin-bottom: var(--common-margin);
+}
+
+.dashboard-title {
+	color: var(--color-font);
+	font-size: 24px;
+	font-weight: bold;
+	margin: 0;
+}
+
+/* 2x2 위젯 그리드 컨테이너 */
+.dashboard-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 25px;
+}
+
+/* 각 대시보드 위젯(카드) 스타일 */
+.widget {
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	padding: 24px;
+	background-color: var(--color-white);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	display: flex;
+	flex-direction: column;
+}
+
+/* 위젯 제목 영역 */
+.widget-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	flex-shrink: 0;
+}
+
+.widget-header h3 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: var(--color-font)
+}
+
+.widget-header a {
+	text-decoration: none;
+	color: var(--color-font-gray);
+	font-size: 20px;
+	font-weight: bold;
+	transition: color 0.2s;
+}
+
+.widget-header a:hover {
+	color: var(--color-main);
+}
+
+/* 위젯 콘텐츠 영역 */
+.widget-content {
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	min-height: 200px; /* 모든 위젯의 최소 높이를 지정하여 레이아웃 안정성 확보 */
+}
+
+/* 차트 & 목록 스타일 */
+/* 1. Area Chart (수익 통계) */
+.monthly-area-chart {
+	width: 100%;
+	flex-grow: 1; /* 부모 요소의 남은 공간을 채움 */
+}
+
+/* 2. List (신규 수강생, 질문) */
+.item-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	flex-grow: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+
+.item-list li {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 8px 0;
+	font-size: var(--font-size-info);
+	border-bottom: 1px solid #f0f0f0;
+	color: var(--color-font);
+}
+
+.item-list li:last-child {
+	border-bottom: none;
+}
+
+.item-list .icon {
+	font-size: 18px;
+	color: var(--color-main);
+}
+
+/* 3. Bar Chart (강의 별 조회수) */
+.chart {
+	display: flex;
+	justify-content: space-around;
+	align-items: flex-end;
+	height: 100%; /* 부모(.widget-content)의 높이에 맞춤 */
+	text-align: center;
+	gap: 10px;
+}
+
+.bar-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	flex-grow: 1;
+	justify-content: flex-end;
+}
+
+.bar {
+	width: 25px; /* 너비 조정 */
+	background-color: var(--color-main);
+	opacity: 0.8;
+	border-radius: 5px 5px 0 0;
+	transition: height 0.5s ease-out;
+}
+
+.bar-container span {
+	margin-top: 8px;
+	font-size: var(--font-size-normal);
+	color: var(--color-font-gray);
+}

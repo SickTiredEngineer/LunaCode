@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+
+body{
+	font-family: var(--font-main);
+}
+
+/* ======================================= */
+.top-layout{
+	margin: 40px 0px;
+}
+
+/* ======================================= */
+/* 카테고리 사이즈 */
+.category-size{
+	height: fit-content !important;
+}
+
+.thumbnail-image{
+	width: 250px;
+	height: 250px;
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	margin-top: var(--common-margin);
+/* 	margin-left: var(--common-margin); */
+}
+
+textarea::-webkit-resizer {
+ 	display: none;
+}
+
+textarea{
+	resize: none;
+}
+
+
+.reason-box{
+	margin-left: var(--common-margin);
+}
+
+
+
+.icon-delete{
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	margin-top: var(--common-margin);
+/* 	margin-left: var(--common-margin); */
+}
+
+
+
+
+/* 작성자, 조회수 삽입하는 레이아웃 */
+.tmi-layout{
+	margin:  var(--common-margin);
+	height: 15px;
+}
+
+.main-text{
+	width: auto;
+	text-align: center;
+	color: var(--color-main)  !important;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+.view-count-text{
+	width:100%;
+	text-align: right;
+	font-weight: bold;
+	margin: var(--common-margin) var(--common-margin) 0px 0px
+}
+
+.main_layout{
+	margin-left: var(--common-margin);
+	width: 1100px;
+	height: fit-content !important;
+	border-bottom: 2px solid var(--color-main); 
+	border-top: 2px solid var(--color-main);
+	border-radius: var(--common-radius);
+}
+
+
+.class-info-root-layout{
+/* 	margin-left: 100px; */
+	width: 100%
+}
+
+.info-item{
+	margin-top: var(--common-margin);
+	
+}
+
+
+
+.content-layout{
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+	align-content: center;
+}
+
+/* ======================================= */
+/* Content Input Box */
+.post-content{
+	min-height: 50px;
+	min-width: 300px;
+	font-family: var(--font-main);
+	white-space: pre-wrap;     /* pre 기본값(pre) → pre-wrap으로 바꿔야 줄바꿈 허용 */
+	overflow-wrap: anywhere;   /* 긴 단어/URL 강제 개행 */
+	font-family: inherit;      /* 기본 monospace 말고 페이지 폰트 쓰기 */
+	margin: 0;                 /* 필요시 여백 조절 */
+}
+
+
+/* ======================================= */
+/* 안내 텍스트 규격 */
+.info-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: 100px;
+	height: 30px;
+	font-weight: bold;
+	margin-right: var(--common-margin);
+}
+
+
+.attachment-info-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+	margin-right: var(--common-margin);	
+}
+
+.attachment-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-main) !important;
+	width: auto;
+	height: auto;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: var(--common-margin);
+}
+
+
+.subject-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+}
+
+.form-size{
+	width: 200px;
+	height: 30px;	
+}
+
+.add-attachment-bt{
+	font-family: var(--font-main);
+	margin: 0px var(--common-margin);
+}
+
+
+.button-container{
+	justify-content: right;
+	flex-direction:row;
+	margin: var(--common-margin) 0px;
+}
+
+/* ======================================= */
+.comment-root-layout{
+	margin-top: var(--common-margin);
+}
+
+.comment-input-layout{
+	padding-top: var(--common-margin-half);
+	height: 100px;
+	width: 100%;
+}
+
+
+
+.member-state-selector{
+	color: var(--color-font);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	width: 100px;
+	height: 30px;
+/* 	FONT-FAMILY: VAR(--FONT-MAIN); */
+	
+}
+
+.member-state-selector:focus {
+	box-shadow: none !important;
+	outline: 0;
+	border: 2px solid var(--color-main) !important;
+}
+
+
+
+
+
+
+
+
+
