@@ -285,3 +285,15 @@ document.addEventListener('DOMContentLoaded', function () {
     onDateChange();
   }
 });
+
+// 판매가 자동 계산
+const supplyInput = document.getElementById('supply-amount');
+const sellingInput = document.getElementById('selling-amount');
+
+supplyInput.addEventListener('input', function() {
+  let supplyValue = Number(supplyInput.value);
+  if (isNaN(supplyValue)) supplyValue = 0;
+  let sellingValue = Math.round(supplyValue * 1.1); // 10% 부가세 포함
+  sellingInput.value = sellingValue > 0 ? sellingValue : '';
+});
+

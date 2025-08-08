@@ -8,12 +8,28 @@ body, html {
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.register-bg, .price-setting {
+  max-width: 100%;      /* 부모 너비 넘지 않도록 */
+  overflow-x: hidden;   /* 가로스크롤 숨김 */
+}
+
+
 /* 배경 효과 */
 .register-bg {
-  min-height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 40px 0;
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden
 }
 .lecture-register-card {
   background: #F2F4F8;
@@ -22,12 +38,17 @@ body, html {
   box-shadow: 0 2px 32px 0 rgba(51,102,153,0.08);
   padding: 36px 30px 30px 30px;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 19px;
+  overflow-x: hidden;
 }
 
 /* 상단 두개 줄, 가로배치! */
 .reg-top-row {
+  margin-left: 150px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 13px;
@@ -37,7 +58,15 @@ body, html {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  width: 100%;
 }
+
+.reg-input-group, .lecture-register-card {
+  width: 80%;
+  box-sizing: border-box; 
+}
+
+
 .reg-label {
   font-size: 20px;
   font-weight: 800;
@@ -47,11 +76,13 @@ body, html {
   letter-spacing: 0.4px; /* 글자 사이 간격(자간) */
 }
 .reg-input {
+  width: 100%;
   border: 1.3px solid #e0e6ee;
   border-radius: 9px;
   padding: 17px 13px;
   font-size: 17px;
-  font-weight: 500px;
+  font-weight: 500;
+  box-sizing: border-box;
   background: #fff;
   transition: border-color 0.2s;
   margin-bottom: 0;
@@ -90,12 +121,13 @@ body, html {
 
 .reg-category-selector {
   display: flex;
-  gap: 15px;
+  gap: 50px;
   margin-top: 3px;
+  justify-content: center;
 }
 
 .reg-category-col {
-  width: 352px;
+  width: 390px;
   max-height: 210px;
   background: #fff;
   border-radius: 10px;
@@ -228,6 +260,8 @@ body, html {
 /* 여기부터는 강의 난의도 선택과 유형 선택 */
 .reg-select-group {
   margin-bottom: 19px;
+  justify-content: center;
+  align-items: center;
 }
 
 .reg-select-label {
@@ -235,12 +269,14 @@ body, html {
   font-weight: 500;
   color: #234;
   margin-bottom: 7px;
-  margin-left: 1px;
+  margin-left: 23px;
 }
 
 .reg-select-btns {
   display: flex;
-  gap: 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 .reg-toggle-btn {
@@ -324,7 +360,7 @@ body, html {
   display: flex;
   flex-direction: column;
   gap: 22px;
-  max-width: 715px; 
+  max-width: 800px; 
   background: #f8fbff;
   padding: 24px 26px 24px 26px;
   border-radius: 14px;
@@ -397,6 +433,7 @@ select[multiple].input-vertical {
   user-select: none;
 }
 
+
 /* 가격 설정 */ 
 /* 가격 및 수강기한 프레임 */
 .price-period-frame {
@@ -423,7 +460,9 @@ select[multiple].input-vertical {
   display: flex;
   flex-direction: column;
   flex: 1 1 180px;
-  min-width: 158px;
+  margin-left: 20px;
+  flex-shrink: 1; /* 너무 커지는 걸 막음 */
+  min-width: 0;   /* flex 아이템 너비 제한 */
 }
 
 /* 가격 라벨 */
@@ -452,31 +491,42 @@ select[multiple].input-vertical {
 .currency-symbol {
   font-size: 17px;
   margin-right: 5px;
-  color: #666;
+  color: #444444;
 }
 
 /* 가격 입력창 스타일 */
 .price-input {
-  width: 110px;
+  width: 100%;
+  max-width: 250px;
   font-size: 16px;
   padding: 7px 8px;
-  border: 1px solid #dadada;
+  border: 1px solid #C1C7CD;
   border-radius: 4px;
   background: #fff;
-  color: #222;
+  color: #444444;
   transition: border-color 0.2s;
 }
 
 .price-input:focus {
   outline: none;
-  border-color: #397ef6;
+  border-color: #8baee7;
 }
+
+.price-setting {
+  display: flex;
+  gap: 24px;
+  max-width: 640px; /* 카드 내부 최대 폭 제한 */
+  width: 100%;      /* 폭 꽉 채우기 */
+  box-sizing: border-box;
+  overflow-x: hidden;            /* 입력칸 사이 간격 */
+}
+
 
 /* 구분선 */
 .divider-line {
-  height: 1px;
-  background: #e5e7ea;
-  margin: 18px 0 12px 0;
+  width: 100%;
+  height: 1px; /* 원하는 높이로 고정 */
+  background-color: var(--color-border);
   border: none;
 }
 
@@ -491,23 +541,82 @@ select[multiple].input-vertical {
 .period-label {
   font-size: 15px;
   font-weight: 600;
-  color: #444;
+  margin-left: 20px;
+  color: #444444;
   min-width: 72px;
 }
 
 /* 수강기한 셀렉트 박스 */
 .period-select {
+  width: 200px;
   font-size: 15px;
   border-radius: 4px;
   padding: 8px 18px;
+  margin-left: 337px;
   border: 1px solid #ccc;
   background: #fff;
-  color: #222;
-  cursor: pointer;
+  color: #444444;
   transition: border-color 0.2s;
 }
 
 .period-select:focus {
   outline: none;
-  border-color: #397ef6;
+  border-color: #8baee7;
+}
+
+
+/* ================================== */
+/* 공용 긍정 버튼 */
+/* ================================== */
+.positive-button{
+	width: 100px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	font-family: var(--font-main);
+	font-size: var(--font-size-normal);
+	font-weight: bold;
+	color: var(--color-font-white) !important;
+	background-color: var(--color-main);
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+.positive-button:active{
+	transform: scale(0.95);
+	background-position: 100% 0%;
+}
+
+/* ================================== */
+/* 공용 일반(부정) 버튼 */
+/* ================================== */
+.negative-button{
+	width: 100px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	font-family: var(--font-main);
+	font-size: var(--font-size-normal);
+	font-weight: bold;
+	color: var(--color-font) !important;
+	background-color: var(--color-white);
+	border: 1px solid var(--color-border);  
+	border-radius: var(--common-radius);
+	
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+.negative-button:active{
+	transform: scale(0.95);
+	background-position: 100% 0%;
+}
+
+.flex-row {
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }

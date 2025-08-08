@@ -15,4 +15,8 @@ public class ClassController {
 		return "class/class_regist";
 	}
 	
+	@GetMapping("Curriculum")
+	public String curriculum() {
+		return "class/curriculum";
+	}
 }

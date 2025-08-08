@@ -169,26 +169,28 @@
               
               <!-- 가격 설정 -->
 			  <div class="price-frame">
-			
-			  <!-- 가격 설정 영역 -->
 			  <div class="price-setting">
 			    <!-- 공급가액 -->
 			    <div class="price-group">
 			      <span class="price-label">공급가액</span>
 			      <div class="price-input-row">
 			        <span class="currency-symbol">$</span>
-			        <input type="number" value="500000" min="0" class="price-input" />
+			        <input type="number" min="0" class="price-input" id="supply-amount" name="supplyAmount" />
 			      </div>
 			    </div>
-			    <!-- 판매가 -->
+			    <!-- 판매가(부가세 포함) -->
 			    <div class="price-group sale-price">
-			      <span class="price-label">판매가 <span class="vat-info">(부가세 10% 포함)</span></span>
+			      <span class="price-label">
+			        판매가 <span class="vat-info">(부가세 10% 포함)</span>
+			      </span>
 			      <div class="price-input-row">
 			        <span class="currency-symbol">$</span>
-			        <input type="number" value="550000" min="0" class="price-input" />
+			        <input type="number" min="0" class="price-input" id="selling-amount" name="sellingAmount" readonly />
 			      </div>
 			    </div>
 			  </div>
+			</div>
+
 			
 			  <div class="divider-line"></div>
 			
@@ -205,13 +207,14 @@
 			</div>
 
 			
-			</div>
+		</div>
 
-              
-
+				<div class="d-flex flex-row button-container">
+					<a href="" class="negative-button">돌아가기</a>
+					<a href="" class="positive-button">등록</a>
+				</div>
             </div> 
           </div> 
-
         </div> 
       </div> 
     </article>

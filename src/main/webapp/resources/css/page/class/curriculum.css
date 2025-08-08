@@ -1,0 +1,149 @@
+body, html {
+  margin: 0; padding: 0; height: 100%;
+  background: #f9fbff;
+  font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+}
+
+/* 전체 배경 중앙 정렬 */
+.curriculum-bg {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  background: #fff;
+}
+
+/* 카드 스타일 및 중앙 정렬 */
+.curriculum-card {
+  width: 100%;
+  max-width: 1020px;
+  border-radius: 10px;
+  border: 2px solid #C1C7CD;
+  box-shadow: 0 2px 32px rgba(51,102,153,0.08);
+  padding: 15px 36px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* 타이틀 스타일 */
+.curriculum-title {
+  text-align: center;
+  color: #8baee7;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* 섹션 박스 스타일 */
+.section-block {
+  width: 910px;
+  max-width: 920px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #C1C7CD;
+  padding: 28px 22px 22px 22px;
+  margin-top: 10px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* 섹션 상단 헤더 */
+.section-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 26px;
+}
+
+/* 섹션 라벨 */
+.section-label {
+  font-size: 15px;
+  color: #8baee7;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  user-select: none;
+}
+
+/* 섹션 입력창 */
+.section-input {
+  flex: 1;
+  width: 850px;
+  height: 85px;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 16px;
+  border-radius: 9px;
+  border: 1.3px solid #c2d3ee;
+  background: #f9fbff;
+  box-sizing: border-box;
+  color: #444;
+  font-weight: 500;
+}
+
+/* 버튼 컨테이너 */
+.d-flex.flex-row.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+/* ================================== */
+/* 공용 긍정 버튼 */
+/* ================================== */
+.positive-button{
+	width: 100px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	font-family: var(--font-main);
+	font-size: var(--font-size-normal);
+	font-weight: bold;
+	color: var(--color-font-white) !important;
+	background-color: var(--color-main);
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+.positive-button:active{
+	transform: scale(0.95);
+	background-position: 100% 0%;
+}
+
+/* 드래그 핸들 (점 세 개) */
+.drag-handle {
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  padding: 0 10px 0 0;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+}
+
+/* 점 3개 수직 배열 */
+.drag-handle-dots {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 8px;
+  height: 30px;
+  margin-right: 6px;
+}
+
+.drag-handle-dots span {
+  width: 6px;
+  height: 6px;
+  background-color: #8baee7;
+  border-radius: 50%;
+}
