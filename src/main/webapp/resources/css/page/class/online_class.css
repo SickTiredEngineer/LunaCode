@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* 제목 텍스트 중앙 정렬, 색상, 폰트 지정 */
 .title_text {
   text-align: center;

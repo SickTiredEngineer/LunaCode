@@ -5,19 +5,12 @@
 
 <html>
 
-	<head>
-		<title>커리큘럼 작성</title>
-		<meta charset="UTF-8">
-		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/page/class/curriculum.css" rel="stylesheet" />
-		
-	</head>
-
 <head>
     <meta charset="UTF-8" />
     <title>커리큘럼 작성</title>
     <jsp:include page="/WEB-INF/views/inc/common_head.jsp" />
     <link href="${pageContext.request.contextPath}/resources/css/page/class/curriculum.css" rel="stylesheet" />
+    <script>  const ctx = '${pageContext.request.contextPath}';</script>
 </head>
 
 <body>
@@ -32,69 +25,65 @@
         <h3 class="curriculum-title">커리큘럼 작성</h3>
 
         <article>
-            <div class="curriculum-bg">
-                <div class="curriculum-card">
-
-                    <form id="curriculum-form">
-                        <!-- 섹션 리스트 컨테이너 -->
-                        <div id="sections-container">
-
-                            <!-- 섹션 1 -->
-                            <div class="section-block" draggable="true">
-                                <div class="section-header">
-                                    <div class="drag-handle" draggable="true" title="섹션 드래그">
-                                        <div class="drag-handle-dots">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <span class="section-label">섹션 1</span>
-                                </div>
-                                <div class="section-row">
-                                    <input type="text" class="section-input" value="프롤로그: 자바 개발환경 구축"
-                                        placeholder="섹션 제목 입력" />
-                                </div>
-                                <div class="d-flex flex-row button-container">
-                                    <a href="#" class="positive-button">수업추가</a>
-                                    <a href="#" class="positive-button">퀴즈추가</a>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-row button-container" >
-                            	<a href="#" class="positive-button" id="add-section-btn">섹션 추가</a>
-                        	</div>
-
-                            <!-- 섹션 2 -->
-                            <div class="section-block" draggable="true">
-                                <div class="section-header">
-                                    <div class="drag-handle" draggable="true" title="섹션 드래그">
-                                        <div class="drag-handle-dots">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <span class="section-label">섹션 2</span>
-                                </div>
-                                <div class="section-row">
-                                    <input type="text" class="section-input" value="섹션 2 제목 예시"
-                                        placeholder="섹션 제목 입력" />
-                                </div>
-                                <div class="d-flex flex-row button-container">
-                                    <a href="#" class="positive-button">수업추가</a>
-                                    <a href="#" class="positive-button">퀴즈추가</a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <div class="d-flex flex-row button-container" >
-                            <a href="#" class="positive-button" id="add-section-btn">섹션 추가</a>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </article>
+		  <div class="curriculum-bg">
+		    <div class="curriculum-card">
+		      <form id="curriculum-form">
+		        <div id="sections-container">
+		
+		          <!-- 섹션 1 -->
+		          <div class="section-block">
+		            <div class="section-header">
+		              <div class="lecture-actions">
+		              <img src="${pageContext.request.contextPath}/resources/icons/icon_delete.png" alt="삭제" title="삭제" />
+		              </div>
+		              <span class="section-label">섹션 1</span>
+		            </div>
+		            <div class="section-row">
+		              <input type="text" class="section-input" placeholder="섹션 제목 입력" />
+		            </div>
+		
+		            <div class="lessons-container">
+					  <div class="section-row lesson-row" draggable="true">
+					    <div class="lesson-input-wrapper">
+					      <input type="text" class="section-input" placeholder="수업 제목 입력" />
+					      <!-- 왼쪽 드래그 핸들 -->
+					      <div class="drag-handle" title="드래그로 순서 변경">
+					        <div class="drag-handle-dots">
+					          <span></span><span></span>
+					          <span></span><span></span>
+					          <span></span><span></span>
+					        </div>
+					      </div>
+					      <!-- 오른쪽 아이콘 -->
+					      <div class="lecture-actions">
+					        <img src="${pageContext.request.contextPath}/resources/images/icons/lock.png" alt="잠금" title="잠금" />
+					        <img src="${pageContext.request.contextPath}/resources/icons/icon_edit.png" alt="수정" title="수정" />
+					        <img src="${pageContext.request.contextPath}/resources/images/icons/view.png" alt="보기" title="보기" />
+					        <img src="${pageContext.request.contextPath}/resources/icons/icon_delete.png" alt="삭제" title="삭제" />
+					      </div>
+					    </div>
+					  </div>
+					</div>
+		
+		            <div class="d-flex flex-row button-container">
+		              <a href="#" class="positive-button lesson-add">수업추가</a>
+		              <a href="#" class="positive-button" id="">퀴즈추가</a>
+		            </div>
+		          </div>
+		
+		        </div>
+		
+		        <div class="d-flex flex-row button-container">
+		          <a href="#" class="positive-button" id="add-section-btn">섹션 추가</a>
+		        </div>
+		      </form>
+		        <div class="d-flex flex-row button-container">
+		          <a href="" class="negative-button" id="">돌아가기</a>
+		          <a href="" class="positive-button" id="saveBtn ">저장</a>
+		        </div>
+		    </div>
+		  </div>
+		</article>
 
         <!-- 푸터 -->
         <footer>
@@ -103,7 +92,7 @@
     </div>
 
     <!-- JS 분리파일 로드 -->
-    <script src="${pageContext.request.contextPath}/resources/js/class/curriculum_drag.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/class/curriculum.js"></script>
 </body>
 
 </html>
