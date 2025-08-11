@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+/* ======================================= */
+/* 최상단 Text 마진 비율 */
+.top-text-margin{
+	margin: 40px 0px;
+}
+
+/* ======================================= */
+/* 좌측 카테고리 사이즈 */
+.category-size{
+	height: fit-content !important;
+}
+
+/* ======================================= */
+/* 해당 페이지 이름 안내 글 규격 */
+.main-text{
+	width: auto;
+	text-align: left;
+	color: var(--color-main)  !important;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+/* ======================================= */
+/* root layout */
+.detail-main-layout{
+	margin-left: var(--common-margin);
+/* 	background-color: var(--color-sub); */
+	width: 1000px;
+	height: fit-content !important;
+	border-bottom: 2px solid var(--color-main); 
+	border-top: 2px solid var(--color-main);
+	border-radius: var(--common-radius);
+}
+
+/* detail-main-layout 사이 마진 */
+.root-layout-margin{
+	margin-bottom: var(--common-margin);
+}
+/* ======================================= */
+/* 각 칸마다 안내문 + 내용 삽입 */
+.child-layout{
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+	align-content: center;
+}
+
+/* Content Input Box */
+.child-layout-content{
+	margin: var(--common-margin) 0 var(--common-margin) var(--common-margin);
+  	resize: none;   
+  	overflow: auto; 
+  	height: auto;
+}
+
+textarea::-webkit-resizer {
+  display: none;
+}
+
+
+q-textarea{
+	border: none;
+	outline: none;
+}
+
+
+/* ======================================= */
+/* 각 안내문 규격 */
+.info-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: 200px;
+	height: 30px;
+	font-weight: bold;
+}
+
+.attachment-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+}
+
+
+
+.info-text-content{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: 200px;
+	height: auto;
+	font-weight: bold;
+}
+
+.form-size{
+	width: 200px;
+	height: 30px;	
+}
+
+.attachment-bt{
+	margin: 0px 0px var(--common-margin) 220px;
+	height: 30px;
+}
+
+.button-container{
+	justify-content: right;
+	flex-direction:row;
+	margin: var(--common-margin) 0px;
+}
+
+
+.attachment-bt{
+	font-family: var(--font-main);
+	margin: 0px 0px var(--common-margin) 220px;
+}
+
+
+
+
+

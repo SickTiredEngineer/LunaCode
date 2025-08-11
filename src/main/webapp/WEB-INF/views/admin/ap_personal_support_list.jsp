@@ -6,11 +6,11 @@
 <html>
 
 	<head>
-		<title>관리자 페이지</title>
+		<title>1:1 문의 목록</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_req_class_list.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_personal_support_list.css" rel="stylesheet">
 	</head>
 	
 	
@@ -28,7 +28,7 @@
 				<div class="d-flex flex-row justify-content-center top-layout">
 				
 					<div class="d-flex flex-column justify-content-center">
-						<h2 class="main-text">강의 관리</h2>
+						<h2 class="main-text">1:1 문의 관리</h2>
 						
 						<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
 							<input type="text" class="search-form-input" maxlength="10">
@@ -49,11 +49,13 @@
 					<div class="d-flex flex-column list-main-layout">
 					
 						<div class="d-flex flex-row align-items-center list-info-layout">
-							<h3 class="text-no info-text">강의 번호</h3>
-							<h3 class="text-id info-text">강의 명</h3>
-							<h3 class="text-name info-text">강사 ID</h3>
-							<h3 class="text-type info-text">등록 요청일</h3>
-							<h3 class="text-state info-text">승인 상태</h3>
+							<h3 class="text-no info-text">문의 번호</h3>
+							
+							<h3 class="text-subject info-text">문의 제목</h3>
+							<h3 class="text-id info-text">회원 ID</h3>
+							<h3 class="text-id info-text">답변자 ID</h3>
+							<h3 class="text-date info-text">문의 날짜</h3>
+							<h3 class="text-state info-text">답변 상태</h3>
 						</div>
 							
 							
@@ -62,41 +64,28 @@
 							<!-- ============================== -->
 							<!-- Example Start -->
 							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApReqClassDetail" class="d-flex flex-row align-items-center list-item-layout">
+								<a href="ApPersonalSupportDetail" class="d-flex flex-row align-items-center list-item-layout">
 									<h3 class="text-no">1</h3>
-									<h3 class="text-id">자바 프로그래밍 기초 과정</h3>
-									<h3 class="text-name">KimTeacher</h3>
-									<h3 class="text-type">2025-01-01</h3>
-									<h3 class="text-state">승인</h3>
+									<h3 class="text-subject">강사랑 싸우고싶어요.</h3>
+									<h3 class="text-id">Normal01</h3>
+									<h3 class="text-id">없음</h3>
+									<h3 class="text-date">2025-01-01</h3>
+									<h3 class="text-state">미답변</h3>
 								</a>
-								
 								
 							</div>
 							
 							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApReqClassDetail" class="d-flex flex-row align-items-center list-item-layout">
+								<a href="ApPersonalSupportDetail" class="d-flex flex-row align-items-center list-item-layout">
 									<h3 class="text-no">2</h3>
-									<h3 class="text-id">컴퓨터 비전 입문</h3>
-									<h3 class="text-name">VisTeacher</h3>
-									<h3 class="text-type">2024-01-01</h3>
-									<h3 class="text-state">대기</h3>
+									<h3 class="text-subject">서류 냈는데 왜 반려함?</h3>
+									<h3 class="text-id">Normal02</h3>
+									<h3 class="text-id">admin01</h3>
+									<h3 class="text-date">2025-01-01</h3>
+									<h3 class="text-state">답변</h3>
 								</a>
 								
-								
 							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApReqClassDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">3</h3>
-									<h3 class="text-id">신천지 특강 입문</h3>
-									<h3 class="text-name">HoTeacher</h3>
-									<h3 class="text-type">2024-01-01</h3>
-									<h3 class="text-state">거부</h3>
-								</a>
-								
-								
-							</div>
-							
 							
 							
 						</div>

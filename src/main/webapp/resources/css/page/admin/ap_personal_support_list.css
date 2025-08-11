@@ -27,7 +27,6 @@
 	border: none;
 }
 
-
 /* ========================================= */
 /* 목록이 담길 레이아웃 큰 틀 */
 .list-layout{
@@ -96,17 +95,17 @@ list-main-layout{
 	margin-right: var(--common-margin-half);
 }
 
-.text-id{
+.text-subject{
 	font-family: var(--font-main);
 	font-weight: bold;
 	text-align: center;
 	font-size: var(--font-size-normal);
 	color: var(--color-font);
-	width: 350px;
+	width: 300px;
 	margin-right: var(--common-margin-half);
 }
 
-.text-name{
+.text-id{
 	font-family: var(--font-main);
 	font-weight: bold;
 	text-align: center;
@@ -117,6 +116,27 @@ list-main-layout{
 }
 
 .text-type{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
+.text-date{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
+
+.text-date{
 	font-family: var(--font-main);
 	font-weight: bold;
 	text-align: center;
@@ -143,7 +163,7 @@ list-main-layout{
 	text-align: center;
 	font-size: var(--font-size-normal);
 	color: var(--color-font);
-	width: 150px;
+	width: 100px;
 }
 
 /* 수정, 삭제에 적용될 아이콘 및 동작 */

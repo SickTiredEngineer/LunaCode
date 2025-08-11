@@ -69,8 +69,6 @@
 									<h3 class="text-type">일반 회원</h3>
 									<h3 class="text-state">active</h3>
 								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 							</div>
 							
 							<div class="d-flex flex-row align-items-center list-item-root">
@@ -81,8 +79,6 @@
 									<h3 class="text-type">일반 회원</h3>
 									<h3 class="text-state">active</h3>
 								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 							</div>
 							
 							<div class="d-flex flex-row align-items-center list-item-root">
@@ -92,9 +88,7 @@
 									<h3 class="text-name">홍길동</h3>
 									<h3 class="text-type">강사</h3>
 									<h3 class="text-state">active</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+								</a>	
 							</div>
 							
 							<div class="d-flex flex-row align-items-center list-item-root">
@@ -105,11 +99,69 @@
 									<h3 class="text-type">일반 회원</h3>
 									<h3 class="text-state">deactive</h3>
 								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 							</div>
 							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">5</h3>
+									<h3 class="text-id">choibug</h3>
+									<h3 class="text-name">최벌레</h3>
+									<h3 class="text-type">일반 회원</h3>
+									<h3 class="text-state">deactive</h3>
+								</a>
+							</div>
 							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">6</h3>
+									<h3 class="text-id">choibug</h3>
+									<h3 class="text-name">최벌레</h3>
+									<h3 class="text-type">일반 회원</h3>
+									<h3 class="text-state">deactive</h3>
+								</a>
+							</div>
+							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">7</h3>
+									<h3 class="text-id">choibug</h3>
+									<h3 class="text-name">최벌레</h3>
+									<h3 class="text-type">일반 회원</h3>
+									<h3 class="text-state">deactive</h3>
+								</a>
+							</div>
+							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">8</h3>
+									<h3 class="text-id">choibug</h3>
+									<h3 class="text-name">최벌레</h3>
+									<h3 class="text-type">일반 회원</h3>
+									<h3 class="text-state">deactive</h3>
+								</a>
+							</div>
+							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">9</h3>
+									<h3 class="text-id">choibug</h3>
+									<h3 class="text-name">최벌레</h3>
+									<h3 class="text-type">일반 회원</h3>
+									<h3 class="text-state">deactive</h3>
+								</a>
+							</div>
+							
+							<div class="d-flex flex-row align-items-center list-item-root">
+								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">10</h3>
+									<h3 class="text-id">choibug</h3>
+									<h3 class="text-name">최벌레</h3>
+									<h3 class="text-type">일반 회원</h3>
+									<h3 class="text-state">deactive</h3>
+								</a>
+							</div>
+							
+
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">

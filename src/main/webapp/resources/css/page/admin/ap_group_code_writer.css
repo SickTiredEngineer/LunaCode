@@ -166,6 +166,14 @@ textarea{
 	height: 30px;	
 }
 
+.form-desc-size{
+	width: 500px;
+	height: 30px;
+	
+}
+
+
+
 .add-attachment-bt{
 	font-family: var(--font-main);
 	margin: 0px var(--common-margin);

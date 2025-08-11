@@ -27,7 +27,6 @@
 	border: none;
 }
 
-
 /* ========================================= */
 /* 목록이 담길 레이아웃 큰 틀 */
 .list-layout{
@@ -36,6 +35,7 @@
 	height: 500px;
 	min-width: 600px;
 	overflow-y: scroll;
+	
 }
 
 /* ========================================= */
@@ -126,6 +126,16 @@ list-main-layout{
 	margin-right: var(--common-margin-half);
 }
 
+.text-date{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 150px;
+	margin-right: var(--common-margin-half);
+}
+
 
 .text-state{
 	font-family: var(--font-main);
@@ -133,7 +143,7 @@ list-main-layout{
 	text-align: center;
 	font-size: var(--font-size-normal);
 	color: var(--color-font);
-	width: 150px;
+	width: 100px;
 	margin-right: var(--common-margin-half);
 }
 
@@ -175,6 +185,7 @@ list-main-layout{
 /* 검색창 사이즈 */
 .search-form-size{
 	width: 300px;
+/* 	width:fit-content important!; */
 	height: 40px;	
 }
 
@@ -202,5 +213,33 @@ list-main-layout{
 .top-layout{
 	margin: 40px 0px;
 }
+
+
+.common-cat{
+	
+	margin-left: var(--common-margin);
+	width: auto;
+	height: auto;
+}
+
+
+.cat-bt{
+	width: 100px;
+	height: 30px;
+	text-decoration: none;
+	color: var(--color-font);
+	margin-right: var(--common-margin);
+}
+
+.cat-bt:hover{
+	background-color: var(--color-sub);
+}
+
+.add-group-bt{
+	margin-right: var(--common-margin);
+}
+
+
+
 
 

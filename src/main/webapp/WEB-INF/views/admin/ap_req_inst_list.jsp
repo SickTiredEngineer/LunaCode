@@ -70,7 +70,7 @@
 									<h3 class="text-state">active</h3>
 								</a>
 								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+								
 							</div>
 							
 							<div class="d-flex flex-row align-items-center list-item-root">
@@ -82,7 +82,7 @@
 									<h3 class="text-state">active</h3>
 								</a>
 								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+								
 							</div>
 							
 						</div>
