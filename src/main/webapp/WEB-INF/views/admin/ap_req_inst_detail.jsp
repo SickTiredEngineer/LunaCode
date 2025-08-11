@@ -14,6 +14,7 @@
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_req_inst_detail.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/admin_common.css" rel="stylesheet">
 
 	</head>
 	

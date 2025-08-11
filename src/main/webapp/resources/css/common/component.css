@@ -25,6 +25,15 @@
 	background-position: 100% 0%;
 }
 
+/* TextArea Resizer Delete */
+textarea::-webkit-resizer {
+ 	display: none;
+}
+
+textarea{
+	resize: none;
+}
+
 /* ================================== */
 /* 공용 일반(부정) 버튼 */
 /* ================================== */

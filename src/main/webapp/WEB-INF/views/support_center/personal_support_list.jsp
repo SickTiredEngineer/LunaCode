@@ -39,10 +39,6 @@
 						</div>
 					</div>
 					
-<!-- 					<a href="SupportWrite"> -->
-<!-- 						<button class="positive-button write-button-size">문의 작성</button> -->
-<!-- 					</a> -->
-					
 					<a href="SupportWrite" class="positive-button write-button-size">문의 작성</a>
 					
 				</div>
@@ -50,12 +46,7 @@
 				
 				<div class="d-flex flex-row">
 			
-					<div class="d-flex flex-column align-items-center common-category category-size">
-						<a href="PersonalSupport" class="common-category-element">1:1 문의</a>
-						<a href="FAQList" class="common-category-element">FAQ</a>
-						<a href="NoticeList" class="common-category-element">공지사항</a>
-					</div>
-					
+					<jsp:include page="/WEB-INF/views/support_center/support_center_sidebar.jsp"/>
 					
 					<div class="d-flex flex-column list-main-layout">
 					
@@ -65,7 +56,7 @@
 								<h3 class="text-date info-text">작성일</h3>
 								<h3 class="text-category info-text">카테고리</h3>
 								<h3 class="text-answer-state info-text">답변 여부</h3>
-							</div>
+						</div>
 							
 							
 						<div class="list-layout">

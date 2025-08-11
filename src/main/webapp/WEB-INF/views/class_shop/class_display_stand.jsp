@@ -9,7 +9,7 @@
 <html>
 
 	<head>
-		<title>Main</title>
+		<title>강의 상점</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
@@ -21,10 +21,6 @@
 	
 	<body>
 		
-	
-	
-	
-	
 		<div class="page-base container">
 			
 			<!-- 헤더 -->		
@@ -34,6 +30,9 @@
 
 		
 			<article>
+			
+				
+			
 			
 			
 			</article>

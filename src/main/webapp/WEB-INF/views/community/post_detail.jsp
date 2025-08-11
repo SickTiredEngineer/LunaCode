@@ -35,10 +35,8 @@
 				<div class="d-flex flex-row">
 				
 					<div class="d-flex flex-row">
-						<div class="d-flex flex-column align-items-center common-category category-size">
-							<a href="Community" class="common-category-element">커뮤니티</a>
-						</div>
-						
+
+						<jsp:include page="/WEB-INF/views/community/community_sidebar.jsp"/>
 						
 						<div class="d-flex flex-column">
 						

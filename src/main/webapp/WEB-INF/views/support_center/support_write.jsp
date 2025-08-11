@@ -35,12 +35,8 @@
 				<div class="d-flex flex-row">
 				
 					<div class="d-flex flex-row">
-						<div class="d-flex flex-column align-items-center common-category category-size">
-							<a href="PersonalSupport" class="common-category-element">1:1 문의</a>
-							<a href="FAQList" class="common-category-element">FAQ</a>
-							<a href="NoticeList" class="common-category-element">공지사항</a>
-						</div>
-						
+					
+						<jsp:include page="/WEB-INF/views/support_center/support_center_sidebar.jsp"/>
 						
 						<div class="d-flex flex-column">
 						

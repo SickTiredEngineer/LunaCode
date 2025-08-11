@@ -1,0 +1,245 @@
+@charset "UTF-8";
+
+
+body{
+	font-family: var(--font-main);
+}
+
+/* ========================================= */
+/* 카테고리 사이즈 */
+.category-size{
+	height: fit-content !important;
+}
+
+/* 상단 레이아웃 규격 */
+.top-layout{
+	margin: 40px 0px;
+}
+
+.main_layout{
+	margin-left: var(--common-margin);
+	width: 1100px;
+	height: fit-content !important;
+	border-bottom: 2px solid var(--color-main); 
+	border-top: 2px solid var(--color-main);
+	border-radius: var(--common-radius);
+}
+
+
+/* ========================================= */
+/* 목록이 담길 레이아웃 큰 틀 */
+.list-layout{
+	margin-left: var(--common-margin);
+	width: 1100px;
+	height: 500px;
+	min-width: 600px;
+	overflow-y: scroll;
+}
+
+/* ========================================= */
+/* 항목 설명하는 텍스트들이 들어가는 레이아웃 */
+.list-info-layout{
+	width: 1100px;
+	margin-left: var(--common-margin);
+	border-radius: var(--common-radius);
+	height: 50px;
+	padding-left: var(--common-padding);
+	background-color: var(--color-main);
+}
+
+/* 목록 아이템들에 대한 스타일 */
+.list-item-layout{
+	display: inline-block;
+	text-decoration: none;
+	height: 50px;
+	padding-left: var(--common-padding);
+}
+
+/* ========================================= */
+/* 목록이 실질적으로 담기는 틀 */
+list-main-layout{
+	margin-left: var(--common-margin);
+	width: 1100px;
+	height: 600px;
+}
+
+/* ========================================= */
+/* 게시글 작성 버튼 */
+.write-button-size{
+	height: 40px;
+	align-self: center;
+	align-content: center;
+	text-align: center;
+	text-decoration: none;
+}
+
+.icon-delete{
+	width: 40px;
+	height: 40px;
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+}
+
+/* 수정, 삭제에 적용될 아이콘 및 동작 */
+.edit-icon{
+	width: 30px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	background-color: var(--color-sub);
+}
+
+.edit-icon:hover, .search-icon:hover{
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+}
+
+.edit-icon:hover, .search-icon:active{
+	transform: scale(0.95);
+}
+
+/* ========================================= */
+/* 검색창 검색 아이콘 CSS */
+.search-icon{
+	width: 40px;
+	height: 100%;
+	align-content: center;
+}
+/* ========================================= */
+/* 검색창 사이즈 */
+.search-form-size{
+	width: 300px;
+	height: 40px;	
+}
+
+
+/* ========================================= */
+/* 카테고리에 해당되는 게시판 이름 출력 H2에 적용 */
+.main-text{
+	width: auto;
+	text-align: center;
+	font-family: var(--font-main);
+	color: var(--color-main)  !important;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+/* ========================================= */
+/* 수평선 -> 공용으로 뺏음 */
+.horizontal-line {
+	width: 100%;
+	height: 1px; /* 원하는 높이로 고정 */
+	background-color: var(--color-border);
+	border: none;
+}
+
+
+/* 확인, 취소 버튼 담는 Layout CSS */
+.button-container{
+	justify-content: right;
+	flex-direction:row;
+	margin: var(--common-margin) 0px;
+}
+
+
+/* 페이지 번호 이동 기능 레이아웃 */
+.page-selector-layout{
+	margin-top: 50px;
+}
+
+.page-selector{
+	font-weight: bold;
+	font-family: var(--font-main);	
+	text-decoration: none;
+	margin-right: 2em;	
+}
+
+/* ======================================= */
+/* 입력 폼 css 설정 */
+.form-size{
+	width: 200px;
+	height: 30px;	
+}
+
+/* 공통코드 부분에서 사용하는 Common */
+.form-desc-size{
+	width: 500px;
+	height: 30px;
+}
+
+
+/* 제목 글자 css */
+.subject-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+}
+
+/* 첨부파일 안내 글자 규격 */
+.attachment-info-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-font) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+	margin-right: var(--common-margin);	
+}
+
+.attachment-text{
+	font-family: var(--font-main);
+	align-content:center;
+	color: var(--color-main) !important;
+	width: auto;
+	height: auto;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: var(--common-margin);
+}
+
+.add-attachment-bt{
+	font-family: var(--font-main);
+	margin: 0px var(--common-margin);
+}
+
+
+
+/* 내용(Content) 담는 Layout css 설정 */
+.content-layout{
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+	align-content: center;
+}
+
+/* ======================================= */
+.member-state-selector{
+	color: var(--color-font);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	width: 100px;
+	height: 30px;
+	
+}
+
+.member-state-selector:focus {
+	box-shadow: none !important;
+	outline: 0;
+	border: 2px solid var(--color-main) !important;
+}
+
+
+
+
+
+
+
+
+
+

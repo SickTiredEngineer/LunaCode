@@ -27,7 +27,7 @@
 				
 				<div class="d-flex flex-row justify-content-between top-layout">
 				
-					<div class="d-flex justify-content-start">
+					<div class="d-flex justify-content-center">
 						<h2 class="main-text">커뮤니티</h2>
 					</div>
 					
@@ -44,11 +44,9 @@
 				
 				
 				<div class="d-flex flex-row">
-			
-					<div class="d-flex flex-column align-items-center common-category category-size">
-						<a href="Community" class="common-category-element">커뮤니티</a>
-					</div>
-						
+					
+					<jsp:include page="/WEB-INF/views/community/community_sidebar.jsp"/>
+
 					<div class="d-flex flex-column list-main-layout">
 					
 						<div class="d-flex flex-row align-items-center list-info-layout">
