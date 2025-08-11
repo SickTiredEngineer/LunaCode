@@ -24,15 +24,15 @@
 	</header>
 	
 	<article>
-	  <h2 class="title_text">온라인 강의</h2>
+	  <h2 class="title_text">강의 이름을 적는다</h2>
 	
 	  <div class="video-section">
 	    <!-- 카테고리 -->
 	    <div class="common-category-wrapper">
 	      <div class="d-flex flex-column align-items-center common-category category-size">
-	        <a href="#" class="common-category-element">온라인 강의</a>
-	        <a href="#" class="common-category-element"></a>
-	        <a href="#" class="common-category-element"></a>
+	        <a href="#" class="common-category-element">강의 목록</a>
+	        <a href="#" class="common-category-element">Quiz</a>
+	        <a href="#" class="common-category-element">메모</a>
 	      </div>
 	    </div>
 	
@@ -107,6 +107,45 @@
 		<script src="${pageContext.request.contextPath}/resources/js/video_upload/video.js"></script>
 	
 	</div>
+	
+	<!-- 퀴즈 모달 -->
+	<div class="modal fade" id="quizModal" tabindex="-1" aria-labelledby="quizModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="modal-title" id="quizModalLabel">QUIZ</h5>
+	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="닫기"></button>
+	      </div>
+	      <div class="modal-body">
+	        <form id="quizForm">
+	          <div class="mb-3">
+	            <label id="quizQuestion" class="form-label"></label>
+	            <input type="text" placeholder="Answer" class="form-control" id="quizAnswer" name="quizAnswer" required>
+	          </div>
+	        </form>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary d-none" id="prevBtn">이전</button>
+	        <button type="button" class="btn btn-primary" id="nextBtn">다음</button>
+	        <button type="button" class="btn btn-success d-none" id="submitBtn">제출</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	
+	<!-- 경고 모달 -->
+	<div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-dialog-centered">
+	    <div class="modal-content warning-modal-content">
+	      <div class="modal-body text-center">
+	        <img src="${pageContext.request.contextPath}/resources/image/warning_icon.png" alt="경고 아이콘" class="warning-icon mb-3" />
+	        <p class="warning-message">답변을 입력해 주세요!</p>
+	        <button type="button" class="btn btn-warning mt-3" data-bs-dismiss="modal">확인</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 
 </body>
 

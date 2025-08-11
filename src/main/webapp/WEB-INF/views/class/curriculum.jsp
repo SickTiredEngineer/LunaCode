@@ -33,9 +33,6 @@
 		          <!-- 섹션 1 -->
 		          <div class="section-block">
 		            <div class="section-header">
-		              <div class="lecture-actions">
-		              <img src="${pageContext.request.contextPath}/resources/icons/icon_delete.png" alt="삭제" title="삭제" />
-		              </div>
 		              <span class="section-label">섹션 1</span>
 		            </div>
 		            <div class="section-row">
@@ -56,10 +53,10 @@
 					      </div>
 					      <!-- 오른쪽 아이콘 -->
 					      <div class="lecture-actions">
-					        <img src="${pageContext.request.contextPath}/resources/images/icons/lock.png" alt="잠금" title="잠금" />
-					        <img src="${pageContext.request.contextPath}/resources/icons/icon_edit.png" alt="수정" title="수정" />
-					        <img src="${pageContext.request.contextPath}/resources/images/icons/view.png" alt="보기" title="보기" />
-					        <img src="${pageContext.request.contextPath}/resources/icons/icon_delete.png" alt="삭제" title="삭제" />
+					        <img src="${pageContext.request.contextPath}/resources/icons/icon_lock.png" alt="잠금" title="잠금" />
+					        <img src="${pageContext.request.contextPath}/resources/icons/icon_edit.png" alt="수정" title="수정" class="lesson-edit"/>
+					        <img src="${pageContext.request.contextPath}/resources/icons/icon_view.png" alt="보기" title="보기" />
+					        <img src="${pageContext.request.contextPath}/resources/icons/icon_delete.png" alt="삭제" title="삭제" class="lesson-delete" />
 					      </div>
 					    </div>
 					  </div>

@@ -194,3 +194,10 @@ body, html {
   height: 30px;
   flex-shrink: 0;
 }
+
+/* 섹션 삭제 버튼 */
+.section-delete-icon {
+  width: 30px !important;
+  height: 30px !important;
+  flex-shrink: 0;
+}

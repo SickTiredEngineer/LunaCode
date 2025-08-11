@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const iconPath = `${ctx}/resources/icons`;
 
   if (!container.dataset.listener) {
+
     /** ====================
      * 섹션 추가
      ==================== */
@@ -36,48 +37,99 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     /** ====================
-     * 이벤트 위임 (수업 추가 & 섹션 삭제)
+     * (수업 추가 / 섹션 삭제 / 수정 / 레슨 삭제 / 아이콘 토글)
      ==================== */
     container.addEventListener('click', e => {
 
       // === 수업 추가 ===
       if (e.target.classList.contains('lesson-add')) {
-        e.preventDefault();
-
-        const lessonsContainer = e.target.closest('.section-block').querySelector('.lessons-container');
-        const lesson = document.createElement('div');
-        lesson.className = 'section-row lesson-row';
-        lesson.setAttribute('draggable', 'true');
-
-        lesson.innerHTML = `
-          <div class="lesson-input-wrapper">
-            <input type="text" class="section-input" placeholder="수업 제목 입력" />
-            <div class="drag-handle" title="드래그로 순서 변경">
-              <div class="drag-handle-dots">
-                <span></span><span></span>
-                <span></span><span></span>
-                <span></span><span></span>
-              </div>
-            </div>
-            <div class="lecture-actions">
-              <img src="${iconPath}/lock.png" alt="잠금" title="잠금" />
-              <img src="${iconPath}/icon_edit.png" alt="수정" title="수정" />
-              <img src="${iconPath}/view.png" alt="보기" title="보기" />
-              <img src="${iconPath}/icon_delete.png" alt="삭제" title="삭제" />
-            </div>
-          </div>
-        `;
-        lessonsContainer.appendChild(lesson);
-      }
+	  e.preventDefault();
+	  const lessonsContainer = e.target.closest('.section-block').querySelector('.lessons-container');
+	  const lesson = document.createElement('div');
+	  lesson.className = 'section-row lesson-row';
+	  lesson.setAttribute('draggable', 'true');
+	
+	  lesson.innerHTML = `
+	    <div class="lesson-input-wrapper" data-lesson-id="">
+	      <input type="text" class="section-input" placeholder="수업 제목 입력" />
+	      <div class="drag-handle" title="드래그로 순서 변경">
+	        <div class="drag-handle-dots">
+	          <span></span><span></span>
+	          <span></span><span></span>
+	          <span></span><span></span>
+	        </div>
+	      </div>
+	      <div class="lecture-actions">
+	        <img src="${iconPath}/icon_unlock.png" alt="잠금 해제" title="잠금 해제" data-locked="false"/>
+	        <img src="${iconPath}/icon_edit.png" alt="수정" title="수정" class="lesson-edit"/>
+	        <img src="${iconPath}/icon_view.png" alt="보기" title="보기" data-viewed="true"/>
+	        <img src="${iconPath}/icon_delete.png" alt="삭제" title="삭제" class="lesson-delete"/>
+	      </div>
+	    </div>
+	  `;
+	  lessonsContainer.appendChild(lesson);
+	}
 
       // === 섹션 삭제 ===
       if (e.target.classList.contains('section-delete-icon')) {
         e.preventDefault();
-        if (confirm('정말 이 섹션을 삭제하시겠습니까?\n삭제한 내용은 복구할 수 없습니다.')) {
-          const sectionBlock = e.target.closest('.section-block');
-          if (sectionBlock) {
-            sectionBlock.remove();
-          }
+        if (confirm('섹션을 삭제하시겠습니까?\n삭제된 내용은 복구할 수 없습니다.')) {
+          e.target.closest('.section-block').remove();
+        }
+      }
+
+      // === 레슨 수정 ===
+      if (e.target.classList.contains('lesson-edit')) {
+        e.preventDefault();
+        const lessonRow = e.target.closest('.lesson-row');
+        const lessonId = lessonRow.dataset.lessonId || 0; // 백엔드 데이터 세팅 시 사용
+        window.location.href = `${ctx}/lesson/edit/${lessonId}`;
+      }
+
+      // === 레슨 삭제 ===
+      if (e.target.classList.contains('lesson-delete')) {
+        e.preventDefault();
+        if (confirm('수업을 삭제하시겠습니까?')) {
+          e.target.closest('.lesson-row').remove();
+        }
+      }
+
+      // 락 토글
+      if (e.target.tagName === 'IMG' && (e.target.alt === '잠금' || e.target.alt === '잠금 해제')) {
+        const locked = e.target.dataset.locked === 'true';
+        const lessonRow = e.target.closest('.lesson-row');
+        if (locked) {
+          e.target.src = `${iconPath}/icon_unlock.png`;
+          e.target.alt = '잠금 해제';
+          e.target.title = '잠금 해제';
+          e.target.dataset.locked = 'false';
+          lessonRow.draggable = true;
+          lessonRow.querySelector('.section-input').disabled = false;
+          lessonRow.querySelector('.drag-handle').style.pointerEvents = 'auto';
+        } else {
+          e.target.src = `${iconPath}/icon_lock.png`;
+          e.target.alt = '잠금';
+          e.target.title = '잠금';
+          e.target.dataset.locked = 'true';
+          lessonRow.draggable = false;
+          lessonRow.querySelector('.section-input').disabled = true;
+          lessonRow.querySelector('.drag-handle').style.pointerEvents = 'none';
+        }
+      }
+
+      //  보기 토글
+      if (e.target.tagName === 'IMG' && (e.target.alt === '보기' || e.target.alt === '숨김')) {
+        const viewed = e.target.dataset.viewed === 'true';
+        if (viewed) {
+          e.target.src = `${iconPath}/icon_hide.png`;
+          e.target.alt = '숨김';
+          e.target.title = '숨김';
+          e.target.dataset.viewed = 'false';
+        } else {
+          e.target.src = `${iconPath}/icon_view.png`;
+          e.target.alt = '보기';
+          e.target.title = '보기';
+          e.target.dataset.viewed = 'true';
         }
       }
     });
@@ -88,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let draggedLesson = null;
 
     container.addEventListener('dragstart', e => {
-      if (e.target.classList.contains('lesson-row')) {
+      if (e.target.classList.contains('lesson-row') && e.target.draggable) {
         draggedLesson = e.target;
         e.target.classList.add('dragging');
       }
@@ -104,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
     container.addEventListener('dragover', e => {
       if (draggedLesson) {
         e.preventDefault();
-
         const lessonsContainer = draggedLesson.parentElement;
         if (lessonsContainer.classList.contains('lessons-container')) {
           const afterElement = getDragAfterElement(lessonsContainer, e.clientY);
@@ -131,19 +182,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /** ====================
-     * 저장 버튼 클릭 이벤트
+     * 저장 버튼 클릭 (락/보기 상태 함께 전송)
      ==================== */
     if (saveBtn) {
       saveBtn.addEventListener('click', e => {
         e.preventDefault();
         const sections = [];
+
         document.querySelectorAll('.section-block').forEach(sectionEl => {
           const sectionTitle = sectionEl.querySelector('> .section-row > .section-input').value.trim();
           const lessons = [];
+
           sectionEl.querySelectorAll('.lessons-container .lesson-row').forEach(lessonEl => {
             const lessonTitle = lessonEl.querySelector('.lesson-input-wrapper > .section-input').value.trim();
-            lessons.push({ title: lessonTitle });
+            const lockIcon = lessonEl.querySelector('img[alt="잠금"], img[alt="잠금 해제"]');
+            const viewIcon = lessonEl.querySelector('img[alt="보기"], img[alt="숨김"]');
+
+            lessons.push({
+              title: lessonTitle,
+              locked: lockIcon ? lockIcon.dataset.locked === 'true' : false,
+              viewed: viewIcon ? viewIcon.dataset.viewed === 'true' : true,
+              lessonId: lessonEl.dataset.lessonId || null
+            });
           });
+
           sections.push({ title: sectionTitle, lessons });
         });
 
@@ -154,15 +216,15 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(sections)
         })
-          .then(res => res.json())
-          .then(result => {
-            alert('저장 완료!');
-            console.log(result);
-          })
-          .catch(err => {
-            console.error('저장 실패:', err);
-            alert('저장 실패!');
-          });
+        .then(res => res.json())
+        .then(result => {
+          alert('저장 완료!');
+          console.log(result);
+        })
+        .catch(err => {
+          console.error('저장 실패:', err);
+          alert('저장 실패!');
+        });
       });
     }
 

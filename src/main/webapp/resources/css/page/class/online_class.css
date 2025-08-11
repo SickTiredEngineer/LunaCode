@@ -388,7 +388,7 @@ textarea::-webkit-resizer {
 /* 메모 제목 스타일  */
 .memo-title {
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', Arial, sans-serif;
   color: #2c3e50;
   letter-spacing: -0.3px;
@@ -428,7 +428,7 @@ textarea::-webkit-resizer {
   display: flex;
   align-items: center;
   gap: 10px;              
-  padding-right: 30px; 
+  padding-right: 30px;
 }
 
 /* 추가하기 버튼 스타일 */
@@ -442,6 +442,7 @@ textarea::-webkit-resizer {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 
 #addAccordionBtn:hover {
   background-color: #4492FE; /* 호버 시 진한 색 */
@@ -470,3 +471,44 @@ textarea::-webkit-resizer {
   fill: #42a5f5;
 }
 
+.modal-content{
+	position: static;
+}
+
+.warning-modal-content {
+  border-radius: 12px;
+  padding: 20px;
+  background-color: #444444;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.warning-icon {
+  width: 155px;
+  height: 103px;
+  object-fit: contain;
+}
+
+.warning-message {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444444;
+  margin-bottom: 0;
+}
+
+.btn-warning.mt-3 {
+	color: #fff !important;
+	background-color: #8baee7 !important;
+	border-color: #8baee7 !important;
+}
+
+.number-icon {
+    width: 35px;
+    height: 35px;
+    vertical-align: middle;
+}
+
+.btn-success {
+	color: #fff !important;
+	background-color: #8baee7 !important;
+	border-color: #8baee7 !important;
+}

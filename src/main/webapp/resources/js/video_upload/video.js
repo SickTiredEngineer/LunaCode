@@ -196,3 +196,84 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+
+// 퀴즈 창
+document.addEventListener("DOMContentLoaded", function() {
+    const video = document.getElementById("video");
+    const quizModal = new bootstrap.Modal(document.getElementById("quizModal"));
+    const warningModal = new bootstrap.Modal(document.getElementById("warningModal"));
+
+    // 퀴즈 데이터 
+    const quizList = [
+        { question: "생성자의 역할은 무엇인가요?" },
+        { question: "this 키워드의 의미는 무엇인가요?" },
+        { question: "객체지향 프로그래밍의 4대 특징은?" }
+    ];
+
+    let currentIndex = 0;
+    let answers = {};
+
+    // ✅ 로컬스토리지에서 퀴즈 완료 여부 불러오기
+    let quizCompleted = localStorage.getItem("quizCompleted") === "true";
+
+    const quizQuestion = document.getElementById("quizQuestion");
+    const quizAnswerInput = document.getElementById("quizAnswer");
+    const prevBtn = document.getElementById("prevBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const submitBtn = document.getElementById("submitBtn");
+
+    function loadQuestion(index) {
+        const commonIcon = "resources/image/icon_quiz.png"; // 공통 아이콘 경로
+
+        quizQuestion.innerHTML = `<img src="${commonIcon}" alt="문제 번호 아이콘" class="number-icon" /> ${index + 1}. ${quizList[index].question}`;
+        quizAnswerInput.value = answers[index] || "";
+
+        prevBtn.classList.toggle("d-none", index === 0);
+        nextBtn.classList.toggle("d-none", index === quizList.length - 1);
+        submitBtn.classList.toggle("d-none", index !== quizList.length - 1);
+    }
+
+    function validateInput() {
+        const value = quizAnswerInput.value.trim();
+        if (!value) {
+            warningModal.show();
+            return false;
+        }
+        answers[currentIndex] = value;
+        return true;
+    }
+
+    if (video) {
+        video.addEventListener("ended", function() {
+            if (quizCompleted) return; // ✅ 이미 제출했으면 실행 안 함
+            currentIndex = 0;
+            answers = {};
+            loadQuestion(currentIndex);
+            quizModal.show();
+        });
+    }
+
+    prevBtn.addEventListener("click", function() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            loadQuestion(currentIndex);
+        }
+    });
+
+    nextBtn.addEventListener("click", function() {
+        if (validateInput()) {
+            currentIndex++;
+            loadQuestion(currentIndex);
+        }
+    });
+
+    submitBtn.addEventListener("click", function() {
+        if (validateInput()) {
+            console.log("퀴즈 답안:", answers);
+            alert("제출되었습니다!");
+            quizCompleted = true;
+            localStorage.setItem("quizCompleted", "true"); // ✅ 로컬스토리지 저장
+            quizModal.hide();
+        }
+    });
+});
