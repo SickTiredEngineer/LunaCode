@@ -19,4 +19,24 @@ public class ClassController {
 	public String curriculum() {
 		return "class/curriculum";
 	}
+	
+	@GetMapping("QuizCommentary")
+	public String quizCommentary() {
+		return "class/quiz_commentary";
+	}
+	
+	@GetMapping("CurEdit")
+	public String curEdit() {
+		return "class/cur_edit";
+	}
+	
+	@GetMapping("QuizManagementBackup")
+	public String quizManagementBackup() {
+		return "class/quiz_management_backup";
+	}
+	
+	@GetMapping("ClassList")
+	public String classList() {
+		return "class/class_list";
+	}
 }

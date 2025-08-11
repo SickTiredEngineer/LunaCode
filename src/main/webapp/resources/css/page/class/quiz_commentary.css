@@ -1,0 +1,171 @@
+@charset "UTF-8";
+
+/* ======== 페이지 레이아웃 ======== */
+body, html {
+	margin: 0; padding: 0; height: 100%;
+	background: #f9fbff;
+	font-family: var(--font-main, 'Noto Sans KR', sans-serif);
+}
+
+.course-content {
+	display: flex;
+	justify-content: center;
+	padding: 40px 0;
+}
+
+.course-card {
+	width: 100%;
+	max-width: 950px;
+	background-color: #fff;
+	border: 2px solid var(--color-border);
+	border-radius: 16px;
+	padding: 30px 40px;
+	box-shadow: 0 2px 32px rgba(51,102,153,0.08);
+}
+
+.section-main-title {
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--color-main, #8baee7);
+	margin-bottom: 20px;
+}
+
+/* ======== 아코디언 섹션 ======== */
+.accordion-section {
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	margin-bottom: 16px;
+	overflow: hidden;
+	transition: all 0.3s ease;
+}
+
+.section-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px;
+	cursor: pointer;
+	background-color: #f9fbff;
+}
+.section-header:hover {
+	background-color: #eef2f9;
+}
+
+.section-title-area {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.section-title {
+	font-size: 18px;
+	font-weight: bold;
+	color: var(--color-font);
+	margin: 0 0 6px 0;
+}
+
+.lecture-type {
+	font-size: 14px;
+	color: var(--color-font);
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.section-progress {
+	font-size: 14px;
+	color: var(--color-font);
+	font-weight: 500;
+}
+
+
+/* ======== 섹션 콘텐츠 (Grid 애니메이션 적용) ======== */
+.section-content {
+	display: grid;
+	grid-template-rows: 0fr; /* 기본적으로 높이가 0인 상태 */
+	transition: grid-template-rows 0.3s ease-in-out;
+	background-color: #fff;
+}
+
+.accordion-section.active .section-content {
+	grid-template-rows: 1fr; /* active 시 컨텐츠 크기만큼 늘어남 */
+}
+
+/* Grid 애니메이션을 위한 자식 래퍼 */
+.section-content > .content-wrapper {
+	overflow: hidden;
+}
+
+.content-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 18px 20px;
+	border-top: 1.3px solid var(--color-border);
+}
+
+.item-title-area {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.item-title {
+	margin: 0;
+	font-size: 15px;
+	color: var(--color-font);
+	align-items: center;
+}
+
+.item-action-area {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	color: var(--color-font);
+	font-size: 14px;
+}
+
+/* 퀴즈 항목 스타일 */
+.quiz-icon {
+	font-size: 16px;
+	font-weight: bold;
+	color: var(--color-main);
+}
+
+/* ======== 아이콘 및 토글 화살표 ======== */
+.icon-video {
+	width: 16px; height: 16px;
+	border: 2px solid var(--color-main);
+	border-radius: 3px;
+	position: relative;
+}
+.icon-video::after {
+	content: '';
+	position: absolute;
+	top: 50%; left: 50%;
+	transform: translate(-40%, -50%);
+	width: 0; height: 0;
+	border-top: 4px solid transparent;
+	border-bottom: 4px solid transparent;
+	border-left: 6px solid var(--color-main);
+}
+
+.icon-play {
+	width: 20px;
+	height: 20px;
+	border-radius: 50%;
+	background-color: var(--color-sub);
+}
+
+.toggle-arrow {
+	width: 10px;
+	height: 10px;
+	border-left: 2px solid var(--color-font);
+	border-bottom: 2px solid var(--color-font);
+	transform: rotate(-45deg);
+	transition: transform 0.3s ease;
+}
+
+.accordion-section.active .toggle-arrow {
+	transform: rotate(135deg);
+}

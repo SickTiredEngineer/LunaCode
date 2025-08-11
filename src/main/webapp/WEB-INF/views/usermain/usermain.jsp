@@ -40,7 +40,6 @@
 						<a href="MyClass" class="common-category-element">내 강의</a>
 						<a href="PlayList" class="common-category-element">재생목록</a>
 						<a href="Attendance" class="common-category-element">출석</a>
-						<a href="#" class="common-category-element">커뮤니티 활동</a>
 					</aside>
 
 					<%-- 메인 콘텐츠 영역 --%>
@@ -139,5 +138,12 @@
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
 		</div>
+		
+		<script>
+		    const contextPath = "${pageContext.request.contextPath}";
+		</script>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/usermain/usermain.js"></script>
+		
 	</body>
 </html>

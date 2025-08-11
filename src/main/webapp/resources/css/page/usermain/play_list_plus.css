@@ -47,7 +47,7 @@
 .playlist-grid {
 	display: grid;
 	/* 화면 너비에 따라 자동으로 컬럼 수가 조절되는 반응형 그리드 */
-	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
 	list-style: none;
 	padding: 0;
 	margin: 0;
@@ -69,8 +69,8 @@
 
 /* CSS로 그린 폴더 아이콘 */
 .folder-icon {
-	width: 100px;
-	height: 75px;
+	width: 140px;
+	height: 105px;
 	background-color: var(--color-main);
 	border-radius: var(--common-radius);
 	position: relative;
@@ -95,15 +95,15 @@
 
 /* "새로 만들기" 폴더 스타일 */
 .playlist-item.add-new a {
-	width: 130px; /* 아이콘과 텍스트가 있는 다른 아이템과 크기를 맞춤 */
-	height: 106px;
+	width: 170px; /* 아이콘과 텍스트가 있는 다른 아이템과 크기를 맞춤 */
+	height: 150px;
 	border: 2px dashed var(--color-border);
 	border-radius: 12px;
 	justify-content: center;
 	background-color: var(--color-sub);
 }
 .add-icon {
-	font-size: 40px;
+	font-size: 60px;
 	color: var(--color-font-gray);
 	font-weight: 200;
 }

@@ -67,7 +67,6 @@
 					</div>
 					
 					<div class="modal-footer">
-						<%-- ★★★ 모달 닫기 버튼에 modal-close-btn 클래스 추가 ★★★ --%>
 						<a href="#" class="negative-button modal-close-btn">취소</a>
 						<a href="#" class="positive-button">등록</a>
 					</div>

@@ -1,106 +1,181 @@
 @charset "UTF-8";
+
 /* 페이지 공통 레이아웃 */
 .content-layout {
-	display: flex;
-	gap: 40px; 
-	align-items: flex-start;
+    display: flex;
+    gap: 40px; 
+    align-items: flex-start;
 }
 
 /* 사이드바 (common-category) */
 .common-category {
-	flex-shrink: 0; 
-	width: 200px; 
-	height: auto; 
-	margin-top: 164px; 
+    flex-shrink: 0; 
+    width: 200px; 
+    height: auto; 
+    margin-top: 164px; 
 }
 
 /* 재생목록 컨테이너 */
 .playlist-container {
-	flex: 1;
-	max-width: 1000px;
+    flex: 1;
+    max-width: 1000px;
 }
 
 /* 상단 헤더 (제목 + 편집 버튼) */
 .playlist-header {
-	display: flex;
-	justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
-	margin-top: 80px;
-	margin-bottom: var(--common-margin);
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
+    margin-top: 80px;
+    margin-bottom: var(--common-margin);
 }
 
 .playlist-title {
-	color: var(--color-font);
-	font-size: 24px;
-	font-weight: bold;
-	margin: 0;
+    color: var(--color-font);
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
 }
 
 .positive-button {
-	/* [핵심] 버튼을 원하는 만큼 아래로 내립니다. */
-	margin-top: 40px; 
+    margin-top: 40px; 
 }
 
 /* 폴더 그리드 */
 .playlist-grid {
-	display: grid;
-	/* 화면 너비에 따라 자동으로 컬럼 수가 조절되는 반응형 그리드 */
-	grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-	list-style: none;
-	padding: 0;
-	margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 /* 각 폴더 아이템 */
+.playlist-item {
+    position: relative; /* 삭제 버튼 절대 위치용 */
+}
+
 .playlist-item a {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-decoration: none;
-	color: var(--color-font);
-	padding: var(--common-padding);
-	transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-font);
+    padding: var(--common-padding);
+    transition: transform 0.2s;
 }
 .playlist-item a:hover {
-	transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 /* CSS로 그린 폴더 아이콘 */
 .folder-icon {
-	width: 100px;
-	height: 75px;
-	background-color: var(--color-main);
-	border-radius: var(--common-radius);
-	position: relative;
-	margin-bottom: 15px;
+    width: 140px;
+    height: 105px;
+    background-color: var(--color-main);
+    border-radius: var(--common-radius);
+    position: relative;
+    margin-bottom: 15px;
 }
 .folder-icon::before {
-	content: '';
-	position: absolute;
-	top: -8px;
-	left: 0;
-	width: 40px;
-	height: 12px;
-	background-color: inherit;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 0;
+    width: 40px;
+    height: 12px;
+    background-color: inherit;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .playlist-name {
-	font-size: 15px;
-	font-weight: 500;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 /* "새로 만들기" 폴더 스타일 */
 .playlist-item.add-new a {
-	width: 130px; /* 아이콘과 텍스트가 있는 다른 아이템과 크기를 맞춤 */
-	height: 106px;
-	border: 2px dashed var(--color-border);
-	border-radius: 12px;
-	justify-content: center;
-	background-color: var(--color-sub);
+    width: 170px; 
+    height: 150px;
+    border: 2px dashed var(--color-border);
+    border-radius: 12px;
+    justify-content: center;
+    background-color: var(--color-sub);
 }
 .add-icon {
-	font-size: 40px;
-	color: var(--color-font-gray);
-	font-weight: 200;
+    font-size: 60px;
+    color: var(--color-font-gray);
+    font-weight: 200;
+}
+
+/* --- 편집 모드 관련 스타일 --- */
+
+/* 삭제 버튼 컨테이너 */
+.folder-actions {
+    display: none; 
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+}
+
+/* 편집 모드일 때 삭제 버튼 보임 */
+.playlist-grid.edit-mode .folder-actions {
+    display: block;
+}
+
+/* 편집 모드일 때 "새로 만들기" 폴더는 숨김 */
+.playlist-grid.edit-mode .add-new {
+    display: none;
+}
+
+/* 편집 모드에서는 a 태그 클릭 비활성화 */
+.playlist-grid.edit-mode .playlist-item a {
+    pointer-events: none;
+}
+
+/* 삭제 버튼만 클릭 가능 */
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    pointer-events: auto;
+}
+.btn-delete:hover {
+    opacity: 0.8;
+}
+
+/* 이름(span)만 다시 클릭 가능 */
+.playlist-grid.edit-mode .playlist-name {
+    pointer-events: auto;
+    cursor: pointer;
+    background-color: rgba(0, 123, 255, 0.1);
+    border-radius: 4px;
+    padding: 2px 5px;
+    transition: background-color 0.2s;
+}
+.playlist-grid.edit-mode .playlist-name:hover {
+    background-color: rgba(0, 123, 255, 0.2);
+}
+
+/* 이름 편집용 input */
+.playlist-name-input {
+    width: 90%;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+    border: 1px solid var(--color-main);
+    border-radius: 4px;
+    padding: 1px 0;
+    margin: 1px 0;
+    box-sizing: border-box;
+    pointer-events: auto;
 }

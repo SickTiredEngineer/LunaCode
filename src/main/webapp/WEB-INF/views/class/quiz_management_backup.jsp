@@ -37,7 +37,7 @@
 					</aside>
 					
 					<%-- 메인 폼 영역 --%>
-					<section class="course-detail-container">
+					<div class="course-detail-container">
 	
 						<!-- 강의 섹션 목록 -->
 						<ul class="section-list">
@@ -111,7 +111,7 @@
 							</li>
 						
 						</ul>
-					</section>
+					</div>
 					
 				</div>
 			</article>
