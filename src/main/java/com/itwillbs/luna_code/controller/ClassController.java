@@ -35,8 +35,13 @@ public class ClassController {
 		return "class/quiz_management_backup";
 	}
 	
-	@GetMapping("ClassList")
-	public String classList() {
-		return "class/class_list";
+	@GetMapping("CourseRegistration")
+	public String courseRegistration() {
+		return "class/course_registration";
+	}
+	
+	@GetMapping("ClassStudentManagement")
+	public String classStudentManagement() {
+		return "class/class_student_management";
 	}
 }

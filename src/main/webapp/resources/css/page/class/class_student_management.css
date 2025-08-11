@@ -1,0 +1,178 @@
+@charset "UTF-8";
+
+.main-wrapper {
+	display: flex; /* 자식 요소들을 수평으로 배치 */
+	justify-content: center;
+	gap: 30px; /* 카테고리와 메인 콘텐츠 사이의 간격 */
+	align-items: flex-start;
+}
+
+/* 페이지 레이아웃 */
+body {
+	font-family: var(--font-main);
+}
+
+.common-category a {
+	cursor: pointer;
+}
+
+/* 공통 항목 기본 상태는 그대로 두되 여백 조정 */
+.common-category .common-category-element {
+	display: block;
+}
+
+.common-category {
+	width: 200px;
+	height: 250px;
+	flex-shrink: 0; /* 너비가 줄어들지 않도록 고정 */
+}
+
+/* 페이지 제목 */
+.title-layout {
+	margin: 40px 0;
+	display: flex;
+	justify-content: center;
+	color: var(--color-main);
+}
+
+/* 메인 콘텐츠 레이아웃 */
+.content-layout {
+	max-width: 900px;
+	padding: 0; /* 좌우 여백이 불필요하면 제거 */
+	flex-grow: 1; /* 남는 공간을 모두 차지하도록 설정 */
+}
+
+/* 1. 상단 컨트롤 영역 */
+.top-controls {
+	display: flex;
+	justify-content: space-between; /* 자식 요소들을 양 끝으로 정렬 */
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.view-all-link {
+	text-decoration: none;
+	color: var(--color-font-main);
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.view-all-link .dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background-color: var(--color-font-gray);
+	border-radius: 50%;
+	margin-right: 8px;
+}
+
+/* 이미지의 긴 "강의 등록" 버튼 스타일 */
+.register-action .positive-button.long-button {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 180px;
+	height: 25px;
+	background-color: var(--color-main);
+	border-color: var(--color-main);
+}
+
+/* 2. 하단 목록 영역 */
+.list-section {
+	display: flex;
+	align-items: flex-start;
+}
+
+/* 강의 리스트 */
+.lecture-list {
+	flex-grow: 1; /* 남는 공간을 모두 차지 */
+	list-style: none;
+	margin: 0; /* 기본 마진 제거 */
+	padding: 0; /* 기본 패딩 제거 */
+	display: flex;
+	flex-direction: column;
+	gap: 10px; /* 리스트 아이템 사이의 간격 */
+}
+
+.lecture-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px 20px;
+	border: 1px solid var(--color-main);
+	border-radius: var(--common-radius);
+	background-color: #fff;
+}
+
+.lecture-item .lecture-title {
+	font-size: 16px;
+}
+
+.item-actions {
+	display: flex;
+	gap: 10px;
+}
+
+/* 리스트 내부 "수정" 버튼 (positive-button 오버라이드) */
+.item-actions .positive-button {
+	width: 70px;
+	height: 35px;
+	background-color: var(--color-main);
+	margin-left: 0;
+}
+
+/* 3. 오른쪽 카테고리 태그 */
+.category-tags {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: center;
+	padding-top: 10px;
+}
+
+/* 마름모 포인터 */
+.pointer-wrapper {
+	height: 30px; /* 포인터가 위치할 공간 확보 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: var(--common-margin);
+}
+
+.pointer {
+	width: 25px;
+	height: 25px;
+	background-color: var(--color-gray);
+	transform: rotate(45deg); /* 사각형을 45도 회전시켜 마름모로 만듦 */
+}
+
+.category-tags .dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	background-color: var(--color-font-gray);
+	border-radius: 50%;
+	margin-left: var(--common-margin);
+}
+
+/* 태그 공통 스타일 */
+.category-tags .tag {
+	text-decoration: none;
+	width: 80px; /* 너비 고정 */
+	border-radius: 15px;
+	font-size: 14px;
+	text-align: center;
+}
+
+/* 비활성화된 태그 스타일 */
+.category-tags .tag {
+	color: var(--color-font);
+	background-color: var(--color-white);
+	font-weight: normal;
+}
+
+/* 활성화된 태그 스타일 */
+.category-tags .tag.active {
+	background-color: var(--color-main);
+	color: var(--color-font-white);
+}
