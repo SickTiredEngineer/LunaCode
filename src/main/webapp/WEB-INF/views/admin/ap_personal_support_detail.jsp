@@ -9,11 +9,11 @@
 <html>
 
 	<head>
-		<title>문의 자세히 보기</title>
+		<title>1:1 문의 관리</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath}/resources/css/page/support_center/support_detail.css" rel="stylesheet">
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_personal_support_detail.css" rel="stylesheet">
 
 	</head>
 	
@@ -29,17 +29,15 @@
 			<article>
 			
 				<div class="d-flex flex-row justify-content-center top-text-margin">
-					<h2 class="main-text">문의 상세내용</h2>
+					<h2 class="main-text">1:1 문의 관리</h2>
 				</div>
 			
 				<div class="d-flex flex-row">
 				
 					<div class="d-flex flex-row">
-						<div class="d-flex flex-column align-items-center common-category category-size">
-							<a href="PersonalSupport" class="common-category-element">1:1 문의</a>
-							<a href="FAQList" class="common-category-element">FAQ</a>
-							<a href="NoticeList" class="common-category-element">공지사항</a>
-						</div>
+						<div class="d-flex flex-column justify-content-start">
+							<jsp:include page="/WEB-INF/views/admin/admin_sidebar.jsp" />
+						</div>	
 						
 						
 						<div class="d-flex flex-column">
@@ -49,7 +47,7 @@
 								
 								<div class="d-flex flex-row child-layout">
 										<p class="info-text">문의 카테고리</p>
-										<p>기타</p>
+										<p >기타</p>
 <!-- 										<input type="text" class="common-input-form form-size" readonly="readonly" value="기타"> -->
 								</div>
 								
@@ -63,29 +61,34 @@
 									
 									<div class="horizontal-line"></div>
 								
-									<div class="d-flex flex-row child-layout-content">
+									<div class="d-flex flex-row child-layout">
 											<p class="info-text-content">문의 내용</p>
-											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">문의 내용 - 
-											응애ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ!
+											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">문의 내용 문의 내용 문의 내용 
+문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
+문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용											
 											</textarea>
+
+
 									</div>
+									
+									<br>
 									
 									<div class="horizontal-line"></div>
 									
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>	
+									<div class="d-flex flex-row child-layout">
+										<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+									</div>
+									
+									<div class="d-flex flex-row child-layout">
+										<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+									</div>
+									
+									<div class="d-flex flex-row child-layout">
+										<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
+										<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+									</div>	
 								
 								</div>
 								
@@ -95,8 +98,7 @@
 									
 										<div class="d-flex flex-row child-layout-content">
 												<p class="info-text-content">답변</p>
-												<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">답변 내용 - 
-												응애ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ
+												<textarea rows="10" cols="50" class="common-input-form">안타깝네요. 힘내세요.
 												</textarea>
 										</div>
 										
@@ -126,24 +128,25 @@
 
 										<div class="d-flex flex-row child-layout">
 											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+											<a href="#" class="positive-button button-detail attachment-bt">업로드</a>
 										</div>
 										
 										<div class="d-flex flex-row child-layout">
 											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+											<a href="#" class="positive-button button-detail attachment-bt">업로드</a>
 										</div>
 										
 										<div class="d-flex flex-row child-layout">
 											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
+											<a href="#" class="positive-button button-detail attachment-bt">업로드</a>
 										</div>		
 																	
 									</div>
 									
 							
 							<div class="d-flex flex-row button-container">
-								<a href="PersonalSupport" class="positive-button">돌아가기</a>
+								<a href="PersonalSupport" class="negative-button">돌아가기</a>
+								<a href="PersonalSupport" class="positive-button">작성</a>
 							</div>
 								
 						</div>	

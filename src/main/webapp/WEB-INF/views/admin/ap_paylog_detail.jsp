@@ -9,7 +9,7 @@
 <html>
 
 	<head>
-		<title>강의 관리 상세 정보</title>
+		<title>결제 기록 상세 보기</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
@@ -30,7 +30,7 @@
 			
 				<div class="d-flex flex-row justify-content-center top-layout">
 					<div class="d-flex flex-column justify-content-center">
-						<h2 class="main-text"></h2>
+						<h2 class="main-text">결제 기록</h2>
 					</div>
 				</div>
 			
@@ -45,16 +45,6 @@
 							<div class="d-flex flex-column main_layout">
 									
 									<div class="d-flex flex-column justify-content-center align-item-center content-layout">
-										<div class="d-flex flex-column justify-content-center">
-											
-											<div class="d-flex flex-column">
-												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_class_video.png" class="thumbnail-image">
-												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png" class="negative-button icon-delete">	
-											</div>
-
-										</div>
-										
-										
 
 										<!-- 정보 폼 -->								
 										<div class="d-flex flex-column justify-content-center class-info-root-layout">
@@ -65,11 +55,19 @@
 										
 										
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">강의명 :</p>	
+												<p class="info-text">결제 강의명 :</p>	
 												<p>JAVA 기초 프로그래밍</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
+											
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">유저ID :</p>
+												<p>Normal01</p>
+											</div>
+											
+											<div class="horizontal-line"></div>
+											
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">강사ID :</p>
@@ -79,7 +77,7 @@
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">신청일 :</p>
+												<p class="info-text">결제일 :</p>
 												<p>1999-01-01</p>
 											</div>
 											
@@ -87,8 +85,8 @@
 											
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">카테고리 :</p>
-												<p>기초 프로그래밍</p>
+												<p class="info-text">결제 방식 :</p>
+												<p>신용카드</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -98,8 +96,8 @@
 												
 												<select class="member-state-selector">
 													<option>승인</option>
-													<option>보류</option>
-													<option>거부</option>
+													<option>환불</option>
+												
 												</select>
 
 											</div>
@@ -108,37 +106,12 @@
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">보류 사유 :</p>
+												<p class="info-text"> 환불 사유 :</p>
 												<textarea rows="3" cols="5" class="common-input-form comment-input-layout margin-left"></textarea>
 											</div>
 											
 											<br>
 											
-											<div class="horizontal-line"></div>
-								
-
-								
-											<div class="d-flex justify-content-center attachment-text">강의 계획서</div>
-											
-											<div class="d-flex flex-row content-layout">
-												<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-											</div>
-											
-											<div class="d-flex flex-row content-layout">
-												<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-											</div>
-											
-											<div class="d-flex flex-row content-layout">
-												<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-											</div>	
-											
-											
-											
-											
-
 										</div>
 										
 									</div>
