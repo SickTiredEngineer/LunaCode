@@ -187,6 +187,7 @@ list-main-layout{
 
 /* 페이지 번호 이동 기능 레이아웃 */
 .page-selector-layout{
+	width: 100%;
 	margin-top: 50px;
 }
 

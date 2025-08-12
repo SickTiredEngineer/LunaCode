@@ -12,7 +12,6 @@
 		<link href="${pageContext.request.contextPath }/resources/css/page/member/join_form.css" rel="stylesheet">
 	</head>
 	
-	
 	<body>
 	
 		<div class="page-base container">
@@ -21,19 +20,15 @@
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 			</header>
 
-		
 			<article>
-				
-				
-					
-				<form action="JoinForm" method="post" class="d-flex flex-column align-items-center justify-content-center">
-				
-					
+
+				<form action="JoinForm" id="join_form" method="post" class="d-flex flex-column align-items-center justify-content-center">
+
 					<h2 class="main-msg">회원 정보 입력</h2>
 					<!-- =================================================== -->
 					<div class="d-flex flex-row input-form-layout">
 						<p class="info-text">아이디</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="집가고싶당" id="input_id">
+						<input name="user_id" type="text" class="input-form-size common-input-form" placeholder="" id="input_id">
 						<button type="button" class="positive-button" id="bt_check_id">중복확인</button>
 					</div>
 					
@@ -66,30 +61,33 @@
 					<div class="horizontal-line"></div>
 
 					<!-- =================================================== -->
-
-					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">이름</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
+						<input type="text" name="user_name" class="input-form-size common-input-form" placeholder="">
 					</div>
 
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">전화번호</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
+						<input type="text" name="phone" class="input-form-size common-input-form" placeholder="">
 					</div>
 					
 
 					<div class="d-flex flex-row  input-form-layout">
-						<p class="info-text">별명</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
-						<button type="button" class="positive-button">중복확인</button>
+						<p class="info-text" id="input_nickname">별명</p>
+						<input type="text" name="nickname" class="input-form-size common-input-form" placeholder="">
+						<button type="button" id="bt_check_nickname" class="positive-button">중복확인</button>
 					</div>
 					
+					<div class="d-flex flex-column justify-content-center span-layout">
+						<span class="info-span" id="span_nickname">●Test Span (1)</span>
+					</div>
+					
+					<div class="horizontal-line"></div>
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">생년월일</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
+						<input type="text" name="birth" class="input-form-size common-input-form" placeholder="">
 						<i class="bi bi-calendar icon"></i>
 					</div>
 
@@ -112,26 +110,23 @@
 					<br>
 					<div class="horizontal-line"></div>
 					
-					<div class="d-flex flex-row  input-form-layout">
-						<p class="info-text">강사자격 첨부</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="">
-						<button class="positive-button">파일 첨부</button>
-					</div>
+					<!-- 강사 회원일 경우, 증빙 서류 제출 UI 출력 -->
+					<c:if test="${param.type eq 'MB02'}">
+						<div class="d-flex flex-row  input-form-layout">
+							<p class="info-text">강사자격 첨부</p>
+							<input type="text" class="input-form-size common-input-form" placeholder="">
+							<button class="positive-button">파일 첨부</button>
+						</div>
+					</c:if>
 
 					<div class="d-flex flex-row justify-content-end input-form-layout-last">
-						<button class="negative-button">취소</button>
-						<button class="positive-button">가입</button>
-						
-						
-						
-						
+						<button type="button" class="negative-button">취소</button>
+						<button id="submit_button" type="submit" class="positive-button">가입</button>
 					</div>
 
 				</form>						
 
-				
 
-			
 			</article>
 			
 			<footer>

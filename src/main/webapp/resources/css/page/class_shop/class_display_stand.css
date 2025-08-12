@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+
+.shop-logo-text{
+	color:var(--color-main);
+	font-family: var(--font-main);
+	font-weight: bold;
+}
+
+
+/* ============================== */
+/* 강의 카드 Hover 동작 css */
+.class-card:hover{
+	border: 2px solid var(--color-main) !important;
+	transform: scale(1.03) !important;
+}
+
+/* ============================== */
+/* 카드 내부 수강 신청 버튼  css */
+.btn{
+	background-color: none !important;
+}
+
+.btn:hover {
+	background-color: var(--color-main) !important;
+	border: 2px solid var(--color-sub) !important;
+	color: var(--color-sub) !important;
+}
+
+/* ============================== */
+
+
+
+

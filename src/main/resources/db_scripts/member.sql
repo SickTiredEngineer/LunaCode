@@ -20,9 +20,15 @@ create table member(
     attendance_consecutive int,
     attendance_last datetime,
     member_type int,
-    certificate varchar(300),
-    terms_agree boolean default false
-);
+    certificate_01 varchar(300),
+	certificate_02 varchar(300),
+	certificate_03 varchar(300),
+)
+;
+
+
+
+
 
 -- 데이터 설명충
 desc member;
@@ -48,13 +54,39 @@ insert into member(
 	attendance_consecutive,
 	attendance_last,
 	member_type,
-	certificate,
-	terms_agree
+	certificate
 )
 values
-("admin", "KOO", "KOOS", 1234, 'koo123123123@naver.com', '01012345678', 'Profile Image Path', 'My Bio', 'url', 1, 1, now(), 1, null, true),
-("parkInst", "Park", "peacher", 1234, 'parkpark@naver.com', '0101332237', 'Profile Image Path', 'My Bio', 'url', 1, 1, now(), 2, null, true),
-("anNormal", "an", "ansNormal", 1234, 'aaaannn112233@naver.com', '01099990000', 'Profile Image Path', 'My Bio', 'url', 1, 1, now(), 3, null, true);
+("admin", "KOO", "KOOS", 1234, 'koo123123123@naver.com', '01012345678', null, 'My Bio', 'url', 1, 1, now(), 1, null, true),
+("parkInst", "Park", "peacher", 1234, 'parkpark@naver.com', '0101332237', null, 'My Bio', 'url', 1, 1, now(), 2, null, true),
+("anNormal", "an", "ansNormal", 1234, 'aaaannn112233@naver.com', '01099990000', null, 'My Bio', 'url', 1, 1, now(), 3, null, true);
+
+
+update member set profile_img = null;
+alter table member add birth date;
+
+alter table member rename column certificate to certificate_01; 
+
+alter table member add certificate_02 varchar(300);
+alter table member add certificate_03 varchar(300);
+
+
+-- 아이디 중복 검사 쿼리문 예시 
+with tmp_cnt as(
+	select count(*) as cnt from member where user_id = "admin"	
+)select case when cnt =  1 then '중복된 아이디입니다.' else '사용 가능한 아이디입니다.' end as text,
+case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
+case when cnt = 1 then true else false end as dupResult from tmp_cnt;
+
+
+-- 닉네임 중복 검사 쿼리문 예시
+with tmp_cnt as(
+	select count(*) as cnt from member where nickname = "KOOS"	
+)select case when cnt =  1 then '중복된 닉네임입니다.' else '사용 가능한 닉네임입니다.' end as text,
+case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
+case when cnt = 1 then true else false end as dupResult from tmp_cnt;
+
+
 
 
 

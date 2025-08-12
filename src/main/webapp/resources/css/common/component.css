@@ -161,6 +161,60 @@ textarea{
 }
 
 
+.page-selector-layout{
+	margin-top: 50px;
+}
+
+.page-selector{
+	font-weight: bold;
+	font-family: var(--font-main);	
+	text-decoration: none;
+	margin-right: 2em;	
+}
+
+
+
+
+/* ================================== */
+/* 강의 카테고리 */
+/* ================================== */
+.scroll-menu {
+  display: flex;
+  gap: 10px;
+  padding: 10px 6px 20px 6px;
+  background: #fff;
+  white-space: nowrap;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  overflow-x: visible;
+}
+
+/* 아이콘 이미지 스타일 */
+.scroll-menu img {
+  width: 120px;
+  height: 150px;
+  border-radius: 10px;
+  transition: filter 0.2s, transform 0.3s;
+}
+
+/* 아이콘 효과 조절 */
+@keyframes bounce-main {
+  0%   { transform: translateY(0) scale(1); }
+  100%  { transform: translateY(-15px) scale(1.32); } /* 올라오는 이미지 크기 조절은 scale 조절 translateY은 높이 조절 */
+}
+
+.scroll-menu img:hover {
+  position: relative;
+  animation: bounce-main 0.8s forwards; /* 올라오는 효과 속도 조절은 s앞 숫자로 조절 */
+  z-index: 10
+  }
+
+
+
+
+
 /* ================================== */
 /* 수평선, 빈 깡통 div에 작용 하세요 */
 /* ================================== */
@@ -170,3 +224,20 @@ textarea{
 	background-color: var(--color-border);
 	border: none;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

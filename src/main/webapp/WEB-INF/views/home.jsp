@@ -36,18 +36,7 @@
       </div>
     </div>
 
-    <div class="scroll-menu">
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_coding.png" alt="기초코딩" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_game_dev.png" alt="게임개발" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_android.png" alt="안드로이드" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_embeded.png" alt="임베디드" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_computer_using.png" alt="컴퓨터 활용" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_cg.png" alt="컴퓨터 그래픽" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_computer_vision.png" alt="컴퓨터 비전" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_fullstack.png" alt="풀스텍" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_ai.png" alt="AI" /></a>
-      <a href=""><img src="${pageContext.request.contextPath}/resources/image/icon_cert.png" alt="IT 자격증" /></a>
-    </div>
+    <jsp:include page="/WEB-INF/views/inc/class_category.jsp"></jsp:include>
 
     <!-- 본문 섹션들 (AOS 효과 포함) -->
     <section class="fade-section1" >
