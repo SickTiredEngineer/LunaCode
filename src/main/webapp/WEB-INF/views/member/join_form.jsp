@@ -29,7 +29,6 @@
 					<div class="d-flex flex-row input-form-layout">
 						<p class="info-text">아이디</p>
 						<input name="user_id" type="text" class="input-form-size common-input-form" placeholder="" id="input_id">
-						<button type="button" class="positive-button" id="bt_check_id">중복확인</button>
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
@@ -40,7 +39,7 @@
 					<!-- =================================================== -->
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">비밀번호</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="" id="input_pass">
+						<input type="text" class="input-form-size common-input-form" placeholder="" name="password" id="input_pass">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
@@ -63,20 +62,19 @@
 					<!-- =================================================== -->
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">이름</p>
-						<input type="text" name="user_name" class="input-form-size common-input-form" placeholder="">
+						<input type="text" id="input_name" name="user_name" class="input-form-size common-input-form" placeholder="">
 					</div>
 
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">전화번호</p>
-						<input type="text" name="phone" class="input-form-size common-input-form" placeholder="">
+						<input type="text" id="input_phone" name="phone" class="input-form-size common-input-form" placeholder="">
 					</div>
 					
 
 					<div class="d-flex flex-row  input-form-layout">
-						<p class="info-text" id="input_nickname">별명</p>
-						<input type="text" name="nickname" class="input-form-size common-input-form" placeholder="">
-						<button type="button" id="bt_check_nickname" class="positive-button">중복확인</button>
+						<p class="info-text">별명</p>
+						<input type="text" name="nickname" id="input_nickname" class="input-form-size common-input-form" placeholder="">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
@@ -87,16 +85,16 @@
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">생년월일</p>
-						<input type="text" name="birth" class="input-form-size common-input-form" placeholder="">
+						<input type="text" id="input_birth" name="birth" class="input-form-size common-input-form" placeholder="">
 						<i class="bi bi-calendar icon"></i>
 					</div>
 
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">이메일</p>
-						<input type="text" class="common-input-form input-form-email-size" placeholder="" id="email_1">
+						<input type="text" class="common-input-form input-form-email-size" placeholder="" name="email1" id="input_email_1">
 						<p class="email-mark">@</p>
-						<input type="text" class="common-input-form input-form-email-size" placeholder="" id="email_2">
+						<input type="text" class="common-input-form input-form-email-size" placeholder="" name="email2" id="input_email_2">
 						
 						<select class="email-selector" id="email_selector">
 							<option value="">직접 입력</option>
@@ -118,6 +116,11 @@
 							<button class="positive-button">파일 첨부</button>
 						</div>
 					</c:if>
+					
+					
+					<input type="text" name="member_type" hidden="hidden" value="${param.type}">
+					
+					
 
 					<div class="d-flex flex-row justify-content-end input-form-layout-last">
 						<button type="button" class="negative-button">취소</button>

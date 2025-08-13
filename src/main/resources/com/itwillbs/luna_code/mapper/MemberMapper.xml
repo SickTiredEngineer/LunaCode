@@ -6,6 +6,25 @@
 
 <!-- 인터페이스 경로 -->	
 <mapper namespace="com.itwillbs.luna_code.mapper.MemberMapper">
+
+	<select id="checkIdDuplication">
+		with tmp_cnt as(
+			select count(*) as cnt from member where user_id = #{id}	
+		)select case when cnt =  1 then '중복된 아이디입니다.' else '사용 가능한 아이디입니다.' end as text,
+		case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
+		case when cnt = 1 then 'false' else 'true' end as dupResult from tmp_cnt
+	</select>
+	
+	
+	<select id="checkNickNameDuplication">
+		with tmp_cnt as(
+			select count(*) as cnt from member where nickname = #{nickname}
+		)select case when cnt =  1 then '중복된 닉네임입니다.' else '사용 가능한 닉네임입니다.' end as text,
+		case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
+		case when cnt = 1 then 'false' else 'true' end as dupResult from tmp_cnt
+	</select>
+	
+	
 	
 	<insert id="insertNewMember">
 		insert into member(
@@ -17,34 +36,17 @@
 			phone,
 			profile_img,
 			bio,
+		    birth,
 			github_url,
 			attendance_count,
 			attendance_consecutive,
 			attendance_last,
 			member_type,
-			certificate,
-			terms_agree
-		)values
-		("admin", "KOO", "KOOS", 1234, 'koo123123123@naver.com', '01012345678', null, 'My Bio', 'url', 1, 1, now(), 1, null, true)
-
-	</insert>
-	
-	<select id="checkIdDuplication">
-		with tmp_cnt as(
-			select count(*) as cnt from member where user_id = #{id}	
-		)select case when cnt =  1 then '중복된 아이디입니다.' else '사용 가능한 아이디입니다.' end as text,
-		case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
-		case when cnt = 1 then 'true' else 'false' end as dupResult from tmp_cnt
-	</select>
-	
-	
-	<select id="checkNickNameDuplication">
-		with tmp_cnt as(
-			select count(*) as cnt from member where nickname = #{nickname}
-		)select case when cnt =  1 then '중복된 닉네임입니다.' else '사용 가능한 닉네임입니다.' end as text,
-		case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
-		case when cnt = 1 then 'true' else 'false' end as dupResult from tmp_cnt
-	</select>
+			certificate_01,
+		    certificate_02,
+		    certificate_03
+		)values(#{user_id}, #{user_name}, #{nickname}, #{password}, #{email}, #{phone}, "", "", #{birth}, '', 1, 1, now(), #{member_type}, null, null, null)
+</insert>
 	
 	
 	

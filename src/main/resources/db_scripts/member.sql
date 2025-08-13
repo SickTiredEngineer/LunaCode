@@ -16,19 +16,14 @@ create table member(
     profile_img varchar(300),
     bio text,
     github_url varchar(300),
-    attendance_count int,
-    attendance_consecutive int,
-    attendance_last datetime,
+    attendance_count int default 1,
+    attendance_consecutive int default 1,
+    attendance_last datetime default now(),
     member_type int,
     certificate_01 varchar(300),
 	certificate_02 varchar(300),
-	certificate_03 varchar(300),
-)
-;
-
-
-
-
+	certificate_03 varchar(300)
+);
 
 -- 데이터 설명충
 desc member;
@@ -39,7 +34,7 @@ select * from member;
 -- 데이터 초기화용
 delete from member;
 
--- example data
+-- member insert sql scripts
 insert into member(
 	user_id,
 	user_name,
@@ -49,18 +44,16 @@ insert into member(
 	phone,
 	profile_img,
 	bio,
+    birth,
 	github_url,
 	attendance_count,
 	attendance_consecutive,
 	attendance_last,
 	member_type,
-	certificate
-)
-values
-("admin", "KOO", "KOOS", 1234, 'koo123123123@naver.com', '01012345678', null, 'My Bio', 'url', 1, 1, now(), 1, null, true),
-("parkInst", "Park", "peacher", 1234, 'parkpark@naver.com', '0101332237', null, 'My Bio', 'url', 1, 1, now(), 2, null, true),
-("anNormal", "an", "ansNormal", 1234, 'aaaannn112233@naver.com', '01099990000', null, 'My Bio', 'url', 1, 1, now(), 3, null, true);
-
+	certificate_01,
+    certificate_02,
+    certificate_03
+)values('meme', 'KOO', 'KOOKOO', 'asdfqwer12', 'kookoo@gmail.com', '01055225352', '', '', '1999-01-01', '', 1, 1, now(), 'MB03', null, null, null);
 
 update member set profile_img = null;
 alter table member add birth date;
@@ -78,7 +71,6 @@ with tmp_cnt as(
 case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
 case when cnt = 1 then true else false end as dupResult from tmp_cnt;
 
-
 -- 닉네임 중복 검사 쿼리문 예시
 with tmp_cnt as(
 	select count(*) as cnt from member where nickname = "KOOS"	
@@ -86,7 +78,10 @@ with tmp_cnt as(
 case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
 case when cnt = 1 then true else false end as dupResult from tmp_cnt;
 
-
+-- common_code reference type int -> varchar
+alter table member modify column member_type varchar(30);
+-- update common code
+update member set member_type = 'MB01';
 
 
 

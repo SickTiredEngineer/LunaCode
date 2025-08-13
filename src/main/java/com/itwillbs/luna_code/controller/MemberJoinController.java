@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,9 +39,21 @@ public class MemberJoinController {
 	
 	/* 입력 정보 데이터 베이스에 저장 후 환영 페이지로 이동 */
 	@PostMapping("JoinForm")
-	public String checkAndJoin(MemberVO vo) {
+	public String checkAndJoin(Model model, MemberVO vo) {
 		
-		System.out.println(vo);
+		vo.setEmail(vo.getEmail1() + "@" + vo.getEmail2());
+		int result = memberService.insertNewMember(vo);
+		
+		if(result == 0) {
+			model.addAttribute("msg", "회원가입 실패, 이전 페이지로 돌아갑니다.");
+			return "error_page/fail";
+		}
+		
+		return "redirect:WelcomePage";
+	}
+	
+	@GetMapping("WelcomePage")
+	public String welcomePage() {
 		return "member/welcome_page";
 	}
 	
@@ -56,6 +69,7 @@ public class MemberJoinController {
 	@ResponseBody
 	@GetMapping("CheckNickNameDuplication")
 	public Map<String, String> checkNickNameDuplication(@RequestParam("nickname") String nickname){
+		System.out.println("checkNickNameDupliation: " + nickname);
 		return memberService.checkNickNameDuplication(nickname);
 	}
 	
