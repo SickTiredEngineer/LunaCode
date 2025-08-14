@@ -6,7 +6,7 @@
 <html>
 
 	<head>
-		<title>ModifyProfile</title>
+		<title>프로필 설정</title>
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_profile.css" rel="stylesheet">
@@ -90,8 +90,8 @@
 				
 							<%-- 하단 버튼 영역 --%>
 							<div class="action-buttons">
-								<button type="button" class="negative-button">취소</button>
-								<button type="submit" class="positive-button">완료</button>
+<!-- 								<button type="button" class="negative-button">취소</button> -->
+								<button type="submit" class="positive-button">변경 완료</button>
 							</div>
 						</form>
 					</section>

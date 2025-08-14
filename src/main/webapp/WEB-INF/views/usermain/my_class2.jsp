@@ -4,18 +4,16 @@
 <%@ page session="false" %>
 
 <html>
-
 	<head>
-		<title>MyClass2</title>
+		<title>MyClass - 학습 완료</title>
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/my_class2.css" rel="stylesheet">  
+		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/my_class.css" rel="stylesheet">  
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/usermain_category.css" rel="stylesheet">    
 	</head>
 	
 	<body>
 		<div class="page-base container">
-		
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 			</header>
@@ -23,8 +21,8 @@
 			<article class="content-layout">
 				<%-- 좌측 공통 카테고리 --%>
 				<aside class="common-category">
-					<a href="UserMain" class="common-category-element active">홈</a>
-					<a href="MyClass" class="common-category-element">내 강의</a>
+					<a href="UserMain" class="common-category-element">홈</a>
+					<a href="MyClass" class="common-category-element active">내 강의</a>
 					<a href="PlayList" class="common-category-element">재생목록</a>
 					<a href="Attendance" class="common-category-element">출석</a>
 				</aside>
@@ -40,59 +38,21 @@
 						<a href="MyClass2" class="tab-item active">학습 완료</a>
 					</nav>
 					
-					<%-- 강의 목록 --%>
+					<%-- 강의 목록 (JavaScript가 동적으로 채울 영역) --%>
 					<ul class="course-list">
-						<li class="course-item">
-							<div class="play-icon">▶</div>
-							<div class="course-details">
-								<h3 class="course-title">오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선</h3>
-								<p class="course-progress-text">10 / 10회차 (100%)</p>
-								<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar" style="width: 100%;"></div>
-								</div>
-							</div>
-						</li>
-						<li class="course-item">
-							<div class="play-icon">▶</div>
-							<div class="course-details">
-								<h3 class="course-title">너도 할 수 있다! 스프링 기초</h3>
-								<p class="course-progress-text">10 / 10회차 (100%)</p>
-								<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar" style="width: 100%;"></div>
-								</div>
-							</div>
-						</li>
-						<li class="course-item">
-							<div class="play-icon">▶</div>
-							<div class="course-details">
-								<h3 class="course-title">오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선</h3>
-								<p class="course-progress-text">10 / 10회차 (100%)</p>
-								<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar" style="width: 100%;"></div>
-								</div>
-							</div>
-						</li>
-						<li class="course-item">
-							<div class="play-icon">▶</div>
-							<div class="course-details">
-								<h3 class="course-title">오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선</h3>
-								<p class="course-progress-text">10 / 10회차 (100%)</p>
-								<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-									<div class="progress-bar" style="width: 100%;"></div>
-								</div>
-							</div>
-						</li>
+						<!-- 이 곳의 내용은 my_class2.js가 동적으로 생성합니다. -->
 					</ul>
-					
 				</section>
-				
 			</article>
 			
 			<footer>
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
-			
 		</div>
+
+        <%-- 공통 데이터 스크립트를 먼저 로드 --%>
+        <script src="${pageContext.request.contextPath}/resources/js/usermain/course_data.js"></script>
+        <%-- 그 다음, 이 페이지의 동작을 담당하는 스크립트를 로드 --%>
+        <script src="${pageContext.request.contextPath}/resources/js/usermain/my_class2.js"></script>
 	</body>
-	
 </html>

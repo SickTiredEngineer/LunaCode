@@ -6,7 +6,7 @@
 <html>
 
 	<head>
-		<title>ModifyDelete</title>
+		<title>계정 탈퇴</title>
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_delete.css" rel="stylesheet">      

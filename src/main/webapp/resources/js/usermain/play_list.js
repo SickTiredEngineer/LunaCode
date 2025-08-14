@@ -23,8 +23,8 @@ document.addEventListener('DOMContentLoaded', function() {
         newListItem.setAttribute('data-id', playlist.id); // 고유 ID를 데이터 속성으로 저장
 
         const newLink = document.createElement('a');
-        // 링크를 생성할 때 고유 ID를 사용하도록 변경 (더 좋은 방식)
-        newLink.href = `${contextPath}/PlayListPlus?id=${playlist.id}`; 
+        // 링크를 생성할 때 고유 ID를 사용하도록 변경
+         newLink.href = `${contextPath}/PlayListPlus?id=${playlist.id}&name=${encodeURIComponent(playlist.name)}`;
         
         const newFolderIcon = document.createElement('div');
         newFolderIcon.className = 'folder-icon';

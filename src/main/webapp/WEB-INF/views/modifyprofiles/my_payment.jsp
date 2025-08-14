@@ -6,7 +6,7 @@
 <html>
 
 	<head>
-		<title>MyPayment</title>
+		<title>결제 내역</title>
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/my_payment.css" rel="stylesheet">      
