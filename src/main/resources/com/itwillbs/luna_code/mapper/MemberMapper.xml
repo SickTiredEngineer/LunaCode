@@ -7,25 +7,37 @@
 <!-- 인터페이스 경로 -->	
 <mapper namespace="com.itwillbs.luna_code.mapper.MemberMapper">
 
-	<select id="checkIdDuplication">
-		with tmp_cnt as(
-			select count(*) as cnt from member where user_id = #{id}	
-		)select case when cnt =  1 then '중복된 아이디입니다.' else '사용 가능한 아이디입니다.' end as text,
-		case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
-		case when cnt = 1 then 'false' else 'true' end as dupResult from tmp_cnt
+	<select id="checkDuplication">
+		with tmp_cnt as (
+			select count(*) as cnt from member
+			<choose>
+				<when test="type == 'id'">
+					where user_id = #{value}
+				</when>
+				<when test="type == 'nickname'">
+					where nickname = #{value}
+				</when>
+				<when test="type == 'email'">
+					where email = #{value}
+				</when>
+			</choose>
+		)
+		select case when cnt = 1 then 
+				case when #{type} = 'id' then '중복된 아이디입니다.'
+				when #{type} = 'nickname' then '중복된 닉네임입니다.'
+				when #{type} = 'email' then '중복된 이메일입니다.'
+				end
+				
+				else case when #{type} = 'id' then '사용 가능한 아이디입니다.'
+				when #{type} = 'nickname' then '사용 가능한 닉네임입니다.'
+				when #{type} = 'email' then '사용 가능한 이메일입니다.'
+				end
+			end as text,
+			case when cnt = 1 then '#FF0000' else '#839FD1' end as color,
+			case when cnt = 1 then 'false' else 'true' end as dupResult
+		from tmp_cnt
 	</select>
-	
-	
-	<select id="checkNickNameDuplication">
-		with tmp_cnt as(
-			select count(*) as cnt from member where nickname = #{nickname}
-		)select case when cnt =  1 then '중복된 닉네임입니다.' else '사용 가능한 닉네임입니다.' end as text,
-		case when cnt = 1 then '#FF0000' else ' #839FD1' end as color,
-		case when cnt = 1 then 'false' else 'true' end as dupResult from tmp_cnt
-	</select>
-	
-	
-	
+
 	<insert id="insertNewMember">
 		insert into member(
 			user_id,

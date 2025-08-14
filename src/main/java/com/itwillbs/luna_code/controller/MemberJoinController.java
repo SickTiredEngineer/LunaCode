@@ -60,22 +60,9 @@ public class MemberJoinController {
 	
 	
 	@ResponseBody
-	@GetMapping("CheckIdDuplication")
-	public  Map<String, String> checkIdDuplication(@RequestParam("id") String id) {
-		System.out.println("checkIdDuplication: " + id);
-		return memberService.checkIdDuplication(id);
+	@GetMapping("CheckDuplication")
+	public Map<String, String> checkDuplication(@RequestParam("value") String value, @RequestParam("type") String type){
+		return memberService.checkDuplication(value, type);
 	}
-	
-	
-	@ResponseBody
-	@GetMapping("CheckNickNameDuplication")
-	public Map<String, String> checkNickNameDuplication(@RequestParam("nickname") String nickname){
-		System.out.println("checkNickNameDupliation: " + nickname);
-		return memberService.checkNickNameDuplication(nickname);
-	}
-	
-	
-	
-	
-	
+
 }

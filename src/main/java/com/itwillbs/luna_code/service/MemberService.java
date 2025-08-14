@@ -19,12 +19,10 @@ public class MemberService {
 		return memberMapper.insertNewMember(vo);
 	}
 	
-	public Map<String, String> checkIdDuplication(String id) {
-		return memberMapper.checkIdDuplication(id);
+	/* 입력값 중복 검사 */
+	public Map<String, String> checkDuplication(String value, String type){
+		return memberMapper.checkDuplication(value, type);
 	}
 
-	public Map<String, String> checkNickNameDuplication(String nickname){
-		return memberMapper.checkNickNameDuplication(nickname);
-	}
 	
 }

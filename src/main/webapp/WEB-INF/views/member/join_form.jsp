@@ -105,6 +105,10 @@
 						
 					</div>
 					
+					<div class="d-flex flex-column justify-content-center span-layout">
+						<span class="info-span" id="span_email_check">●Test Span Email</span>
+					</div>
+					
 					<br>
 					<div class="horizontal-line"></div>
 					
