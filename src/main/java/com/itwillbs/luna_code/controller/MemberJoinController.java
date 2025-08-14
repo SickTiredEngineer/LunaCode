@@ -41,6 +41,7 @@ public class MemberJoinController {
 	@PostMapping("JoinForm")
 	public String checkAndJoin(Model model, MemberVO vo) {
 		
+//		vo.setEmail(vo.getEmail1() + "@" + vo.getEmail2());
 		vo.setEmail(vo.getEmail1() + "@" + vo.getEmail2());
 		int result = memberService.insertNewMember(vo);
 		

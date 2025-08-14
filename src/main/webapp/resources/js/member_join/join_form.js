@@ -1,7 +1,13 @@
 /* 회원가입 입력 페이지 유효성 검사를 위한 JS파일 */
+
+/* ID, 닉네임 최소, 최대 글짜 수 */
+const MIN = 6;
+const MAX = 12;
+
 $(function (){
 	
-	let totalResult = false;
+	/* ====================================================== */
+	/* 입력 정보 검사 결과 */
 	/* 사용 가능한 아이디인가? */
 	let isCurrentId = false;
 	/* 비밀번호 유효성 */
@@ -12,11 +18,6 @@ $(function (){
 	let isCurrentNickName = false;
 	/* (강사 한정) 첨부파일 유무 */
 	let isCurrentAttach = false;
-
-	function setIdRes(res){
-		isCurrentId = res;
-		console.log("setIdRes: " + isCurrentId);
-	}
 	
 	function setPassRes(res){
 		isCurrentPass = res;
@@ -26,26 +27,24 @@ $(function (){
 		isEqualPass = res;
 	}
 	
-	function setNickRes(res){
-		isCurrentNickName = res;
-	}
-
 	/* ====================================================== */
 	/* ID, PASS SPAN */
 	/* 아이디 검사 연결 */
-	$("#input_id").on("keyup", function(event){
-		checkIdDuplication($(this).val(), setIdRes);
-		console.log("isCurrentId: " + isCurrentId);
+	$("#input_id").on("input", async function(event){
+		const res = await checkIdDuplication($(this).val()); 
+		isCurrentId = res;
+		
+		console.log("isCurrentId:", isCurrentId);
 	});
 	
 	/* 비밀번호 Input 검사 연결 */
-	$("#input_pass").on("keyup", function(event){
+	$("#input_pass").on("input", function(event){
 		passwordHandler($(this).val(), setPassRes);
 		checkPassEqual(setPassEqRes);
 	});
 	
 	/* 작성한 비밀번호가 동일한지 확인 */
-	$("#input_pass_check").on("keyup", function(event){
+	$("#input_pass_check").on("input", function(event){
 		checkPassEqual(setPassEqRes);
 	});
 	
@@ -57,43 +56,38 @@ $(function (){
 	
 	/* ====================================================== */
 	/* 닉네임 검사 */
-	$("#input_nickname").on("keyup", function(event){
-		checkNickNameDuplication($(this).val(), setNickRes);
+	$("#input_nickname").on("input", async function(event){
+		const res = await checkNickNameDuplication($(this).val());
+		isCurrentNickName = res;
+		
+		console.log("isCurrentNickName: " + isCurrentNickName);
 	});
 	
 	/* ====================================================== */
 	/* 이메일 검사 */
-	$("#input_email_1").on("keyup", function(){
-		checkEmailDuplication();
+	$("#input_email_1, #input_email_2").on("input", function () {
+	  checkEmailDuplication();
 	});
-	
-	$("#input_email_2").on("keyup", function(){
-		checkEmailDuplication();
-	});
+
 	
 	/* ====================================================== */
-	$("#join_form").on("submit", function(event){
+	/* submit 버튼 -> 클릭 시 유효성 검사 후 submit 진행 */
+	
+	$("#submit_button").on("click", function(){
 		
+		const form = $("#join_form");
 		
-		console.log("Last Check: " + isCurrentId);
-		console.log("Last Check: " + isCurrentPass);
-		console.log("Last Check: " + isEqualPass);
-		console.log("Last Check: " + isCurrentNickName);
-		
-		const form = this;
 		let isNotNull = true;
 		let isCurrent = true;
-		
-		event.preventDefault();
 
-		$("#join_form").find('input[type="text"], input[type="password"]').each(function(){
+		form.find('input[type="text"], input[type="password"]').each(function(){
 		
-			if(!$(this).val().trim()){
-				alert("정보가 비어있습니다. 해당 정보를 정확히 입력해주세요!");
-				$(this).focus();
-				isNotNull = false;
-				return false;
-			}
+			if (!$(this).val() || !$(this).val().toString().trim()) {
+		        alert("정보가 비어있습니다. 해당 정보를 정확히 입력해주세요!");
+		        $(this).focus();
+		        isNotNull = false;
+		        return false; 
+		      }
 		});
 		
 		if(!isNotNull) return false;
@@ -116,70 +110,69 @@ $(function (){
 			}	
 		}
 		
-		if(!isCurrent) {return false} else {form.submit()};
+		if(!isCurrent) {return false} 
+		else {
+			const url = new URL(window.location.href)
+			const params = url.searchParams;
+			const type = params.get("type");
+			
+			console.log("Member Type: " + type);
+			
+			form.submit()
+		};
 		
-		const url = new URL(window.location.href)
-		const params = url.searchParams;
-		const type = params.get("type");
-		
-		console.log("Member Type: " + type);
-		
-		form.submit()
-
 	});
 	
 });
 
-/* ====================================================== */
-/* 아이디, 닉네임 정규식 검사 함수 */
-function regexHandler(input, span){
-	const regex = /^[A-Za-z0-9]+$/;
-	
-	let result = regex.test(input);
 
+
+/* ====================================================== */
+// 정규식 검사
+/* ====================================================== */
+/* 아이디: 영어 시작, 영어 + 숫자 조합만 */
+/* 닉네임: 영어, 한글 시작 + 숫자 조합만 */
+
+/* 아이디, 닉네임 정규식 검사 함수 */
+function regexHandler(input, span, type){
+
+	let mainColor = "#839FD1"; 
+	
+	let val = (input ?? "").toString().trim();
+	let regex;
 	let msg;
-	let color;
+	let failMsg;
+	
+	switch(type){
+		
+		case "id":
+			regex = new RegExp(`^[A-Za-z][A-Za-z0-9]{${MIN-1},${MAX-1}}$`);
+    		failMsg = `아이디는 영어로 시작하고 영어/숫자만 사용 (${MIN}~${MAX}자)`;
+    		break;
+		
+		case "nickname":
+			regex = new RegExp(`^[가-힣A-Za-z][가-힣A-Za-z0-9]{${MIN-1},${MAX-1}}$`);
+		    failMsg = `닉네임은 한글/영어 시작, 한글/영어/숫자만 사용 (${MIN}~${MAX}자)`;
+    		break;
+	}
+		
+	let result = regex.test(val);
 	
 	if(!result){
-		msg = "숫자, 영어 조합만 사용가능"
-		color = "#ff0000"
+		msg = failMsg;
+		color = "#ff0000";
+		$(span).text(msg).css("color", color);
 	}
-	
-	$(span).text(msg).css("color", color);
 	
 	return result;
 }
 
-/* 아이디 중복 검사 함수 */
-function checkIdDuplication(user_id, callback){
-	
-	let regexResult = regexHandler(user_id, '#span_id');
-	
-	if(!regexResult){
-		callback(regexResult);
-		return false;
-	}
-	
-	$.ajax({
-		type: "GET",
-		url: "CheckIdDuplication",
-		dataType: "json",
-		data: {
-			id: user_id
-		},
-		
-		/* 결과에 따라 span 적용 */
-		success: function(res){
-			/* 결과를 통해 span css 수정 */
-			$('#span_id').text(res.text).css("color", res.color);
-			callback(res.dupResult);
-		},
-		error: function(xhr, textStatus, errorThrown){}
-	});
+/* boolean 처리가 String으로 되어서, 임시 방편으로 작성한 함수 */
+function tempSwitchBool(r){
+	return r=='true'? true:false;
 }
 
-/* ====================================================== */
-/* 입력받은 비밀번호의 유효성 검사 및 Span에 표시 */ 
+/* 입력받은 비밀번호의 정규식 검사 및 Span에 표시 */ 
 function passwordHandler(pass, callback){
 	// 정규식 => 비밀번호 조건: 대문자, 소문자, 특수문자 포함 10 글자 이상
 	const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{10,}$/;
@@ -192,6 +185,59 @@ function passwordHandler(pass, callback){
 	$("#span_pass").text(msg).css("color", color);
 	callback(result);
 }
+
+
+/* ====================================================== */
+// 중복 검사
+/* ====================================================== */
+
+/* id 중복 검사 함수 */
+async function checkIdDuplication(user_id) {
+  
+	const regexRes = regexHandler(user_id, '#span_id', 'id');
+	if (!regexRes) return false; 
+
+ 	try {
+	    const res = await $.ajax({
+			type: "GET",
+			url: "CheckIdDuplication",
+			dataType: "json",
+			data: { id: user_id },
+	    });
+	
+	    $('#span_id').text(res.text).css("color", res.color);
+	    return tempSwitchBool(res.dupResult);
+    
+	} catch (e) {return false};
+}
+
+/* 닉네임 중복 검사 함수 */
+async function checkNickNameDuplication(input_nickname){
+	
+	const regexRes = regexHandler(input_nickname, '#span_nickname', 'nickname');
+	if(!regexRes)return false;
+	
+	try{
+		const res = await $.ajax({
+			type: "GET",
+			url: "CheckNickNameDuplication",
+			dataType: "json",
+			data: {nickname: input_nickname},
+		});
+		
+		$('#span_nickname').text(res.text).css("color", res.color);
+		return tempSwitchBool(res.dupResult);
+		
+	}catch (e){return false};
+}
+
+/* 이메일 중복 검사 함수 */
+function checkEmailDuplication(){
+	let email =  $("#input_email_1").val() +  $("#input_email_2").val();
+	console.log(email);
+}
+
+
 
 /* ====================================================== */
 /* 입력받은 비밀번호 두개가 동일한지 검사 및 Span에 표시 */
@@ -216,40 +262,9 @@ function emailSelector(){
 	 $("#input_email_2").attr("readonly", !isInputSelf).val(selectedEmail);
 }
 
-/* 이메일 중복 검사 함수 */
-function checkEmailDuplication(){
-	let email =  $("#input_email_1").val() +  $("#input_email_2").val();
-	console.log(email);
-}
 
-/* ====================================================== */
-/* 닉네임 중복 검사 함수 */
-function checkNickNameDuplication(input_nickname, callback){
-	
-	let regexResult = regexHandler(input_nickname, '#span_nickname');
-	
-	if(!regexResult){
-		return;
-	}
-	
-	$.ajax({
-		type: "GET",
-		url: "CheckNickNameDuplication",
-		dataType: "json",
-		data: {
-			nickname: $("#input_nickname").val()
-		},
-		
-		/* 결과에 따라 span 적용 */
-		success: function(res){
-			/* 결과를 통해 span css 수정 */
-			$('#span_nickname').text(res.text).css("color", res.color);
-			/* 중복 결과 저장 변수에 결과 반영 */
-			callback(res.dupResult);
-		},
-		error: function(xhr, textStatus, errorThrown){}
-	});
-}
+
+
 
 
 

@@ -112,7 +112,7 @@
 					<c:if test="${param.type eq 'MB02'}">
 						<div class="d-flex flex-row  input-form-layout">
 							<p class="info-text">강사자격 첨부</p>
-							<input type="text" class="input-form-size common-input-form" placeholder="">
+							<input type="text" class="input-form-size common-input-form" placeholder="" readonly="readonly">
 							<button class="positive-button">파일 첨부</button>
 						</div>
 					</c:if>
@@ -124,7 +124,7 @@
 
 					<div class="d-flex flex-row justify-content-end input-form-layout-last">
 						<button type="button" class="negative-button">취소</button>
-						<button id="submit_button" type="submit" class="positive-button">가입</button>
+						<button id="submit_button" type="button" class="positive-button">가입</button>
 					</div>
 
 				</form>						
