@@ -5,14 +5,14 @@
     
 <!DOCTYPE html>
 
-
-<!-- 공통 사용 요소들 -->
-<link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/common/component.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/common/base.css" rel="stylesheet">
-
 <!-- jquery -->
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.7.1.js"></script>
+<!-- jQuery UI CSS -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<!-- jQuery UI JS (jQuery 3.7.1 호환됨) -->
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+
 <!-- 폰트 관련 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,3 +23,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
 
+<!-- 공통 사용 요소들 -->
+<link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/common/component.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/common/base.css" rel="stylesheet">

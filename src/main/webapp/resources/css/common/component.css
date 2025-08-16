@@ -70,13 +70,11 @@ textarea{
 	font-family: var(--font-main);
 }
 
-
 .common-input-form:focus{
 	box-shadow: none !important;
 	outline: 0;
 	border: 2px solid var(--color-main) !important;
 }
-
 
 /* 사용자 입력 폼 기본 : 테두리 메인색 */
 .common-input-form-main-color{
@@ -126,7 +124,6 @@ textarea{
 	border-radius: var(--common-radius);
 }
 
-
 /* ================================== */
 /* 이미지 버튼 기본 크기 */
 /* ================================== */
@@ -134,8 +131,6 @@ textarea{
 	width: 30px;
 	height: 30px;
 }
-
-
 
 /* ================================== */
 /* 검색창 */
@@ -150,7 +145,6 @@ textarea{
 /* 	margin-bottom: var(--common-margin); */
 	align-self: center;
 }
-
 
 .search-form-input{
 	font-family: var(--font-main);
@@ -171,9 +165,6 @@ textarea{
 	text-decoration: none;
 	margin-right: 2em;	
 }
-
-
-
 
 /* ================================== */
 /* 강의 카테고리 */
@@ -211,10 +202,6 @@ textarea{
   z-index: 10
   }
 
-
-
-
-
 /* ================================== */
 /* 수평선, 빈 깡통 div에 작용 하세요 */
 /* ================================== */
@@ -225,11 +212,71 @@ textarea{
 	border: none;
 }
 
+/* ================================================ */
+/* JS DatePicker Custom CSS -> 필요시 의논 후 변경 */
+.date_picker_luna .ui-datepicker {
+  font-family: var(--font-main);
+  background: var(--color-sub);
+  border: 1px solid var(--color-main);
+  border-radius: var(--common-radius);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+}
 
+/* 헤더 (연/월 드롭다운 줄) */
+.date_picker_luna .ui-datepicker-header {
+  background: #f7f8fb;
+  border: none;
+  border-radius: var(--common-radius);
+}
 
+/* 연/월 select 크기 & 간격 */
+.date_picker_luna .ui-datepicker-title select {
+  height: 20px;
+  padding: 2px 8px;
+  border: 1px solid var(--color-black);
+  border-radius: var(--common-radius);
+  background: #fff;
+}
 
+/* 기본 날짜 버튼 */
+.date_picker_luna .ui-state-default {
+  display: inline-flex;
+  align-items: center; justify-content: center;
+  width: 32px; height: 32px;
+  border: 1px solid transparent;
+  border-radius: var(--common-radius);
+  color: var(--color-black);
+  background: transparent;
+  text-decoration: none;
+}
 
+/* 호버 */
+.date_picker_luna .ui-state-default:hover {
+  border-color: var(--color-main);
+/*   background: ; */
+}
 
+/* 선택된 날짜 */
+.date_picker_luna .ui-state-active {
+  background: var(--color-main);
+  color: var(--color-white) !important;
+  border-color: var(--color-main);
+}
+
+/* 오늘 */
+.date_picker_luna .ui-datepicker-today .ui-state-default {
+  border-color: var(--color-main);
+  color: var(--color-font-main);
+}
+
+/* 선택 불가(이전/다음달 등) */
+.date_picker_luna .ui-state-disabled .ui-state-default {
+  color: #c3c7d5 !important;
+  border-color: transparent !important;
+  background: transparent !important;
+  cursor: default;
+}
+/* ================================================ */
 
 
 

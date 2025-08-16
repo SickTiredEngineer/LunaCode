@@ -20,17 +20,22 @@
 				<when test="type == 'email'">
 					where email = #{value}
 				</when>
+				<when test="type == 'phone'">
+					where phone = #{value}
+				</when>
 			</choose>
 		)
 		select case when cnt = 1 then 
 				case when #{type} = 'id' then '중복된 아이디입니다.'
 				when #{type} = 'nickname' then '중복된 닉네임입니다.'
 				when #{type} = 'email' then '중복된 이메일입니다.'
+				when #{type} = 'phone' then '중복된 전화번호입니다.'
 				end
 				
 				else case when #{type} = 'id' then '사용 가능한 아이디입니다.'
 				when #{type} = 'nickname' then '사용 가능한 닉네임입니다.'
 				when #{type} = 'email' then '사용 가능한 이메일입니다.'
+				when #{type} = 'phone' then '사용 가능한 전화번호입니다.'
 				end
 			end as text,
 			case when cnt = 1 then '#FF0000' else '#839FD1' end as color,

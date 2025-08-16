@@ -32,7 +32,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_id">●Test Span (1)</span>
+						<span class="info-span" id="span_id">●Test Span</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
@@ -43,7 +43,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_pass">●Test Span (2)</span>
+						<span class="info-span" id="span_pass">●Test Span</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
@@ -54,7 +54,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_pass_check">●Test Span (3)</span>
+						<span class="info-span" id="span_pass_check">●Test Span</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
@@ -62,33 +62,37 @@
 					<!-- =================================================== -->
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">이름</p>
-						<input type="text" id="input_name" name="user_name" class="input-form-size common-input-form" placeholder="">
+						<input type="text" id="input_name" name="user_name" class="input-form-size common-input-form" placeholder="한글, 영어만 입력하세요">
 					</div>
 
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">전화번호</p>
-						<input type="text" id="input_phone" name="phone" class="input-form-size common-input-form" placeholder="">
-					</div>
-					
-
-					<div class="d-flex flex-row  input-form-layout">
-						<p class="info-text">별명</p>
-						<input type="text" name="nickname" id="input_nickname" class="input-form-size common-input-form" placeholder="">
+						<input type="text" id="input_phone" name="phone" class="input-form-size common-input-form" maxlength="11" placeholder="(-) 없이 입력하세요">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_nickname">●Test Span (1)</span>
+						<span class="info-span" id="span_phone">●Test Span</span>
+					</div>
+
+					<div class="d-flex flex-row  input-form-layout">
+						<p class="info-text">별명</p>
+						<input type="text" name="nickname" id="input_nickname" class="input-form-size common-input-form" placeholder="영어, 한글로 시작">
+					</div>
+					
+					<div class="d-flex flex-column justify-content-center span-layout">
+						<span class="info-span" id="span_nickname">●Test Span</span>
 					</div>
 					
 					<div class="horizontal-line"></div>
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">생년월일</p>
-						<input type="text" id="input_birth" name="birth" class="input-form-size common-input-form" placeholder="">
-						<i class="bi bi-calendar icon"></i>
+						<input type="text" id="input_birth" name="birth" class="input-form-size common-input-form" placeholder="캘린더를 이용하여 선택" readonly="readonly">
+						<button type="button" id="date_picker" class="bi bi-calendar icon positive-button"></button>
 					</div>
-
+					
+					<div id="calendar_box" class="date_picker_luna" style="display:none; position:absolute; z-index:999;"></div>
 					
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">이메일</p>
@@ -106,7 +110,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_email_check">●Test Span Email</span>
+						<span class="info-span" id="span_email">●Test Span</span>
 					</div>
 					
 					<br>

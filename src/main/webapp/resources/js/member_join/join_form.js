@@ -20,84 +20,100 @@ function debounce(fn, delay) {
 $(function (){
 	/* 단위: ms */
 	const DEBOUNCE_DELAY = 300;
+	const DEBOUNCE_DELAY_PHONE = 100;
 	
-	/* ====================================================== */
-	/* 입력 정보 검사 결과 */
-	/* 사용 가능한 아이디인가? */
-	let isCurrentId = false;
-	/* 비밀번호 유효성 */
-	let isCurrentPass = false;
-	/* 비밀번호 확인 결과 */
-	let isEqualPass = false;
-	/* 사용 가능한 닉네임인가? */
-	let isCurrentNickName = false;
-	/* 사용 가능한 이메일인가? */
-	let isCurrentEmail = false;
-	
-	/* (강사 한정) 첨부파일 유무 */
-	let isCurrentAttach = false;
-	
-	/* password는 ajax 필요 없어서 콜백 함수에 사용할 setter 들 정의했음 */
-	function setPassRes(res){
-		isCurrentPass = res;
+	/* Date Picker Option */
+	const datePickerOptions = {
+		dateFormat: "yy-mm-dd",
+		maxDate: new Date(),
+		showOtherMonths: true,        
+		selectOtherMonths: true, 
+		changeMonth: true,
+		changeYear: true,      
+		prevText: '이전 달',
+		nextText: '다음 달',
+		monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'],
+		dayNames: ['일', '월', '화', '수', '목', '금', '토'],
+		dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'],
+		dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'],
+		showMonthAfterYear: true,
+		yearSuffix: '년',
+		onSelect: function(dateText){
+			$("#input_birth").val(dateText);
+    		$("#calendar_box").hide(); 
+		}
 	}
-	
-	function setPassEqRes(res){
-		isEqualPass = res;
-	}
-	
+
 	/* ====================================================== */
 	/* 아이디 검사 -> debounce 0.3초 */
 	$("#input_id").on("input", debounce(async function(event){
+		this.value = this.value
+			.replace(/[^a-zA-Z0-9]/g, "")   // 영문/숫자 이외 제거
+			.replace(/^([^a-zA-Z])/, "");   // 맨 앞이 영문 아니면 제거
 		const res = await checkRegexAndDuplication($(this).val(), 'id', '#span_id'); 
-		isCurrentId = res;
-		console.log("isCurrentId:", isCurrentId);
 	}, DEBOUNCE_DELAY));
 	
 	/* 비밀번호 Input 검사 연결 */
 	$("#input_pass").on("input", function(event){
-		passwordHandler($(this).val(), setPassRes);
-		checkPassEqual(setPassEqRes);
+		passwordHandler($(this).val());
+		checkPassEqual();
 	});
 	
 	/* 작성한 비밀번호가 동일한지 확인 */
 	$("#input_pass_check").on("input", function(event){
-		checkPassEqual(setPassEqRes);
+		checkPassEqual();
 	});
 	
-	/* 이메일을 직접 입력 / 선택하여 자동 완성 */
+	/* 이름 정규식 핸들러 -> 한글, 영어만 허용하게 설정해둠 */
+	$("#input_name").on("keyup", function(event){
+		this.value = this.value.replace(/[^가-힣a-zA-Z]/g, "");
+	});
+	
+	/* 선택자로 이메일 선택해도 검사 진행해야 하니까.. */
 	$("#email_selector").on("change", debounce(async function(event){
 		emailSelector();
 		let email = $("#input_email_1").val() + "@" + $("#input_email_2").val();
 		const res = await checkRegexAndDuplication(email, 'email', '#span_email');
-		isCurrentEmail = res;
-		console.log("isCurrentEamil: " + isCurrentEmail);
 	},DEBOUNCE_DELAY));
 	
 	/* 이메일 검사 */
 	$("#input_email_1, #input_email_2").on("input", debounce(async function () {
 		let email = $("#input_email_1").val() + "@" + $("#input_email_2").val();
 		const res = await checkRegexAndDuplication(email, 'email', '#span_email');
-	  	isCurrentEmail = res;
-	  	console.log("isCurrentEamil: " + isCurrentEmail);
 	}, DEBOUNCE_DELAY));
 	
 	/* 닉네임 검사 -> debounce 0.3초 */
 	$("#input_nickname").on("input", debounce(async function(event){
 		const res = await checkRegexAndDuplication($(this).val(), 'nickname', '#span_nickname'); 
-		isCurrentNickName = res;
-		console.log("isCurrentNickName: " + isCurrentNickName);
 	}, DEBOUNCE_DELAY));
 	
-	/* ====================================================== */
-	/* submit 버튼 -> 클릭 시 유효성 검사 후 submit 진행 */
-	$("#submit_button").on("click", function(){
+	/* 전화번호 정규식 및 중복 검사 -> 전화번호는 replace ()string -> "") 과정 필요하여 0.1초로 지정했음 */
+	$("#input_phone").on("input", debounce(async function(){
+		this.value = this.value.replace(/[^0-9]/g, "");
+		const res = await checkRegexAndDuplication($(this).val(),'phone', '#span_phone');
+	},DEBOUNCE_DELAY_PHONE));
+	
+	/* 생일 날짜 선택 */
+	$("#calendar_box").datepicker(datePickerOptions);
+	
+	$("#date_picker").on("click", function(){
+		$("#calendar_box").toggle();
+		
+		let offset = $(this).offset();
+	    $("#calendar_box").css({
+	      top: offset.top + $(this).outerHeight(),
+	      left: offset.left
+	    });
+	});
+	
+	/* TODO: 최종 검사 중복 부분 함수화 필요 */
+	$("#submit_button").on("click", async function(){
 		
 		const form = $("#join_form");
-		
 		let isNotNull = true;
-		let isCurrent = true;
-
+		/* =============== */
+		/* 빈칸 검사 */
 		form.find('input[type="text"], input[type="password"]').each(function(){
 		
 			if (!$(this).val() || !$(this).val().toString().trim()) {
@@ -105,40 +121,48 @@ $(function (){
 		        $(this).focus();
 		        isNotNull = false;
 		        return false; 
-		      }
+		    }
 		});
 		
 		if(!isNotNull) return false;
-			
-		let checks = [
-			{ ok: isCurrentId,        msg: "아이디가 올바르게 작성 되었는지 확인하세요!",     focus: "#input_id" },
-			{ ok: isCurrentPass,      msg: "비밀번호가 올바르게 작성 되었는지 확인하세요!",   focus: "#input_pass" },
-			{ ok: isEqualPass,        msg: "비밀번호 확인이 올바르지 않습니다!",             focus: "#input_pass_check" },
-			{ ok: isCurrentNickName,  msg: "닉네임이 올바르게 작성 되었는지 확인하세요!",     focus: "#input_nickname" },
-		];
 		
-		console.log(checks);
-	
-		for (var c of checks) {
-			if (!c.ok) {
-			  alert(c.msg);
-			  $(c.focus).focus();
-			  isCurrent = false;
-			  break;
-			}	
+		/* =============== */
+		/* 중복 및 정규식 검사 TODO: 함수화 해서 코드 간소화 필요 */
+		
+		/* ID 최종 결과 핸들링 */	
+		if(!await checkRegexAndDuplication($("#input_id").val(), 'id', '#span_id')){
+			alert($("#span_id").text());
+			$("#input_id").focus();
+			return false;
 		}
 		
-		if(!isCurrent) {return false} 
-		else {
-			const url = new URL(window.location.href)
-			const params = url.searchParams;
-			const type = params.get("type");
-			
-			console.log("Member Type: " + type);
-			
-			form.submit()
-		};
+		/* 비밀번호 최종 결과 핸들링 */
+		if(!passwordHandler($("#input_pass").val())||!checkPassEqual()){
+			alert($("#span_pass").text());
+			return false;
+		}
 		
+		if(!await checkRegexAndDuplication($("#input_phone").val(), 'phone', '#span_phone')){
+			alert($("#span_phone").text());
+			$("#input_phone").focus();
+			return false;
+		}
+		
+		if(!await checkRegexAndDuplication($("#input_nickname").val(), 'nickname', '#span_nickname')){
+			alert($("#span_nickname").text());
+			$("#input_nickname").focus();
+			return false;
+		}
+		
+		if(!await checkRegexAndDuplication($("#input_email_1").val() + "@" + $("#input_email_2").val(), 'email', '#span_email')){
+			alert($("#span_email").text());
+			$("#input_email_1").focus();
+			return false;
+		}
+		
+		/* 검사 결과 문제 없으면 submit 진행 */
+		form.submit();
+
 	});
 	
 });
@@ -178,6 +202,13 @@ function regexHandler(value, type, span){
             regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             failMsg = `올바른 이메일 형식이 아닙니다.`;
             break;	
+            
+        /* phone 정규식 검사 */
+    	case "phone":
+    		// 010 으로 시작, 총 11자리 숫자
+    		regex = /^010\d{8}$/;
+    		failMsg = `전화번호는 010으로 시작하는 11자리 숫자여야 합니다.`;
+    		break;    
 	}
 		
 	let result = regex.test(val);
@@ -197,7 +228,7 @@ function tempSwitchBool(r){
 }
 
 /* 입력받은 비밀번호의 정규식 검사 및 Span에 표시 */ 
-function passwordHandler(pass, callback){
+function passwordHandler(pass){
 	// 정규식 => 비밀번호 조건: 대문자, 소문자, 특수문자 포함 10 글자 이상
 	const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^a-zA-Z0-9]).{10,}$/;
 	// 입력받은 비밀번호 검사
@@ -207,11 +238,12 @@ function passwordHandler(pass, callback){
 	let color = result? "#839FD1":"#ff0000";
 	
 	$("#span_pass").text(msg).css("color", color);
-	callback(result);
+	
+	return result;
 }
 
 /* 입력받은 비밀번호 두개가 동일한지 검사 및 Span에 표시 */
-function checkPassEqual(callback){
+function checkPassEqual(){
 	// 처음 작성한 비밀번호와 확인 폼에 작성한 비밀번호가 동일한가?
 	let isEqual = $("#input_pass").val() == $("#input_pass_check").val();
 	// 동일 여부에 따라 Text, Color 지정
@@ -219,7 +251,8 @@ function checkPassEqual(callback){
 	let color = isEqual? "#839FD1": "#FF0000";
 	
 	$("#span_pass_check").text(msg).css("color", color);
-	callback(isEqual);
+
+	return isEqual;
 }
 
 /* ====================================================== */
@@ -245,9 +278,7 @@ async function checkRegexAndDuplication(value, type, span){
 		return tempSwitchBool(res.dupResult);
 		
 	}catch(e){return false};
-	
 }
-
 
 /* ====================================================== */
 /* 두 번째 이메일 선택 */
