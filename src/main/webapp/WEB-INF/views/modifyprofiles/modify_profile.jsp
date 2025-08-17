@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 
@@ -10,7 +10,7 @@
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_profile.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_category.css" rel="stylesheet">      
+		<link href="${pageContext.request.contextPath }/resources/css/page/modifyprofiles/modify_category.css" rel="stylesheet">
 	</head>
 	
 	<body>
@@ -18,13 +18,13 @@
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp" />
 			</header>
-
+	
 			<article>
 				<%-- 페이지 제목 --%>
 				<div class="title-layout">
 					<h2 class="page-main-title">프로필 설정</h2>
 				</div>
-
+	
 				<%-- 메인 콘텐츠 레이아웃 --%>
 				<div class="content-layout">
 				
@@ -38,7 +38,7 @@
 					
 					<%-- 메인 폼 영역 --%>
 					<section class="form-container">
-						<form>
+						<form id="profile_form" enctype="multipart/form-data">
 						
 							<%-- 프로필 사진 및 닉네임 행 (수정된 구조) --%>
 							<div class="form-row profile-area">
@@ -47,21 +47,26 @@
 									
 									<!-- 사진과 업로드 버튼을 수직으로 묶는 그룹 -->
 									<div class="profile-photo-group">
-										<label class="profile-photobox">
+										<label class="profile-photobox" id="profile_photobox" for="profile_image_input">
 											<span>사진</span>
-											<input name="profileImage" style="display: none;">
 										</label>
+										<!-- '사진 업로드' 버튼 클릭 시 실제로 동작할 숨겨진 파일 input -->
+										<input type="file" name="profileImage" id="profile_image_input" accept="image/*" style="display: none;">
 										<button type="button" class="positive-button" id="photo-upload-btn">사진 업로드</button>
 									</div>
-				
+			
 									<!-- 닉네임 입력 그룹 -->
-									<div class="profile-nickname">
-										<input type="text" name="nickname" placeholder="닉네임" class="common-input-form-main-color">
-										<button type="button" class="positive-button">중복 체크</button>
+									<div class="profile-nickname-group">
+										<div class="profile-nickname">
+											<input type="text" name="nickname" id="input_nickname" placeholder="닉네임" class="common-input-form-main-color">
+											<button type="button" class="positive-button" id="check_nickname_btn">중복 체크</button>
+										</div>
+										<!-- 닉네임 유효성 검사 메시지를 표시할 영역 -->
+										<span class="validation-message" id="span_nickname"></span>
 									</div>
 								</div>
 							</div>
-				
+			
 							<div class="horizontal-line"></div>
 							
 							<%-- 이메일 행 --%>
@@ -71,38 +76,48 @@
 							</div>
 							
 							<div class="horizontal-line"></div>
-				
+			
 							<%-- 자기소개 행 --%>
 							<div class="form-row">
 								<label for="bio" class="form-label">자기소개</label>
-								<textarea id="bio" name="bio" class="common-input-form-main-color"></textarea>
+								<div class="input-wrapper">
+									<textarea id="bio" name="bio" class="common-input-form-main-color" placeholder="최대 200자까지 입력 가능합니다."></textarea>
+									<!-- 자기소개 글자 수를 표시할 영역 -->
+									<span class="char-counter" id="bio_char_count">(0 / 200)</span>
+								</div>
 							</div>
-				
+			
 							<div class="horizontal-line"></div>
-				
+			
 							<%-- 깃허브 행 --%>
 							<div class="form-row">
 								<label for="github" class="form-label">깃허브</label>
-								<input type="text" id="github" name="github" class="common-input-form-main-color" placeholder="https://github.com/username">
+								<div class="input-wrapper">
+									<input type="text" id="github" name="github" class="common-input-form-main-color" placeholder="https://github.com/username">
+									<!-- 깃허브 URL 유효성 검사 메시지를 표시할 영역 -->
+									<span class="validation-message" id="span_github"></span>
+								</div>
 							</div>
 							
 							<div class="horizontal-line"></div>
-				
+			
 							<%-- 하단 버튼 영역 --%>
 							<div class="action-buttons">
-<!-- 								<button type="button" class="negative-button">취소</button> -->
-								<button type="submit" class="positive-button">변경 완료</button>
+								<!-- <button type="button" class="negative-button">취소</button> -->
+								<button type="button" class="positive-button" id="submit_button">변경 완료</button>
 							</div>
 						</form>
 					</section>
 				</div>
 			</article>
-
+	
 			<footer>
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 			</footer>
 		</div>
+
+		<script src="${pageContext.request.contextPath}/resources/js/modifyprofiles/modify_profile.js"></script>
+		
 	</body>
 
 </html>
-

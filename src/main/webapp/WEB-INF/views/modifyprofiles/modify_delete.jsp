@@ -38,30 +38,36 @@
 					
 					<%-- 메인 폼 영역 --%>
 					<section class="form-container">
-						<form>
+						<form id="delete_form">
 						
 							<div class="form-row">
 								<label for="currentPassword" class="form-label">현재 비밀번호</label>
-								<input type="password" class="common-input-form-main-color">
+								<div class="input-wrapper">
+									<input type="password" id="password" name="password" class="common-input-form-main-color">
+									<span class="validation-message" id="span_password"></span>
+								</div>
 							</div>
 						
 							<div class="form-row">
 								<label for="confirmPassword" class="form-label">비밀번호 확인</label>
-								<input type="password" class="common-input-form-main-color">
+								<div class="input-wrapper">
+									<input type="password" id="password_check" name="password_check" class="common-input-form-main-color">
+									<span class="validation-message" id="span_password_check"></span>
+								</div>
 							</div>
 							
 							<%-- 유의사항 안내 영역 --%>
 							<div class="notice-area">
 								<p class="notice-title">유의사항</p>
 								<label class="notice-agreement">
-									<input type="checkbox" name="agree">
+									<input type="checkbox" id="agree_checkbox" name="agree">
 									계정 탈퇴를 진행하여 모든 정보를 삭제하는 데 동의합니다.
 								</label>
 							</div>
 							
 							<%-- 하단 버튼 영역 --%>
 							<div class="action-buttons">
-								<button type="submit" class="positive-button">회원 탈퇴</button>
+								<button type="button" id="submit_button" class="positive-button">회원 탈퇴</button>
 							</div>
 						</form>
 					</section>
@@ -73,5 +79,7 @@
 			</footer>
 		</div>
 	</body>
-
+	
+	<script src="${pageContext.request.contextPath}/resources/js/modifyprofiles/modify_delete.js"></script>
+	
 </html>

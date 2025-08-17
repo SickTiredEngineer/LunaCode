@@ -76,15 +76,15 @@
 						<div class="section-title-box">결제 수단 선택</div>
 						<div class="payment-options">
 							<div class="payment-option">
-								<img src="" alt="카카오페이">
+								<img src="${pageContext.request.contextPath }/resources/image/kakao.png" alt="카카오페이">
 								<span>카카오 페이</span>
 							</div>
 							<div class="payment-option">
-								<img src="" alt="네이버페이">
+								<img src="${pageContext.request.contextPath }/resources/image/naver.png" alt="네이버페이">
 								<span>네이버 페이</span>
 							</div>
 							<div class="payment-option">
-								<img src="" alt="신용/체크카드">
+								<img src="" alt="신용 / 체크카드">
 								<span>신용 / 체크카드</span>
 							</div>
 						</div>
@@ -141,4 +141,7 @@
 		</div>
 	</body>
 
+		<script src="https://cdn.iamport.kr/v1/iamport.js"></script>
+		<script src="${pageContext.request.contextPath }/resources/js/cart/cart_pay.js"></script>
+	
 </html>

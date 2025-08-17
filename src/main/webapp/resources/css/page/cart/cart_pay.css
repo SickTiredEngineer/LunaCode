@@ -203,6 +203,19 @@ body {
 	border-color: var(--color-main);
 }
 
+/* 선택된 결제 수단(.selected 클래스가 추가된 경우)의 기본 스타일 */
+.payment-option.selected {
+	border: 2px solid var(--color-main);
+	background-color: #f5faff;
+	box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
+}
+
+/* 선택된 결제 수단 안의 글씨 스타일 */
+.payment-option.selected span {
+	color: var(--color-main);
+s
+}
+
 /* 환불 정책 안내 */
 .refund-policy-item {
 	display: flex;

@@ -82,6 +82,18 @@ body {
 	/* accent-color: var(--color-main); 최신 브라우저에서 체크박스 색상 변경 시 사용 */
 }
 
+.input-wrapper {
+	width: 100%;
+	max-width: 450px;
+	display: flex;
+	flex-direction: column;
+}
+
+.validation-message {
+	margin-top: 8px; 
+	font-size: 13px;
+}
+
 /* 버튼 및 기타 */
 .action-buttons {
 	display: flex;
