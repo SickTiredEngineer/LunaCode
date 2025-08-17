@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+/* 모달 콘텐츠 박스 */
+.modal-content,
+.course-modal-content {
+    border-radius: 1rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    max-width: 900px;
+    width: 100%;
+}
+
+/* 모달 타이틀 */
+.course-modal-title,
+.modal-body .modal-title {
+    font-weight: bold;
+    color: #1a2c53;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* 모달 본문 패딩 */
+.course-modal-body {
+    padding-top: 1rem;
+}
+
+/* 강의 이미지 */
+.modal-body .col-md-5 img,
+.course-modal-image {
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+/* 강의 정보 리스트 */
+.modal-body .col-md-7 ul {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    padding-left: 0;
+}
+.modal-body .col-md-7 ul li {
+    margin-bottom: 0.5rem;
+    font-size: 1.2em;
+    list-style: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.modal-body .col-md-7 ul strong {
+    min-width: 70px;
+    display: inline-block;
+    font-weight: 600;
+    color: #1a2c53;
+}
+
+/* 수강 신청 버튼 */
+.course-modal-apply-btn,
+.btn-primary.w-100 {
+    background-color: #4372cc;
+    border: none;
+    font-weight: 600;
+    margin: 1rem;
+    font-size: 1.09em;
+    transition: background 0.2s;
+}
+.course-modal-apply-btn:hover,
+.btn-primary.w-100:hover {
+    background-color: #2953a5;
+}
+
+/* 네비게이션 바, 탭 중앙정렬 및 디자인 */
+#navbar-example2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 56px;
+    background: #f7f8fa;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+}
+#navbar-example2 .nav {
+    gap: 2.5rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+#navbar-example2 .nav-link {
+    padding: 0.5rem 1.1rem;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 0.5rem;
+    color: #1a2c53;
+    transition: background 0.18s, color 0.18s;
+}
+
+/* scrollspy 영역 */
+.scrollspy-example {
+    background: #f7f8fa;
+    border-radius: 0.75rem;
+    padding: 1.2rem;
+    font-size: 1rem;
+    margin-top: 0.6rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+.scrollspy-example h4 {
+    color: #2752cd;
+    font-weight: 700;
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+    font-size: 1.15em;
+}
+.scrollspy-example p {
+    margin-bottom: 0.3em;
+}

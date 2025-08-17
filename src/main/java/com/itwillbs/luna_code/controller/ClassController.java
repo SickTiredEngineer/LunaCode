@@ -44,4 +44,9 @@ public class ClassController {
 	public String classStudentManagement() {
 		return "class/class_student_management";
 	}
+	
+	@GetMapping("ClassDetail")
+	public String classdetail() {
+		return "class_shop/class_detail";
+	}
 }

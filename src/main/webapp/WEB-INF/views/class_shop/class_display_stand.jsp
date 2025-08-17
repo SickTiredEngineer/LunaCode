@@ -19,6 +19,7 @@
 	
 	<body>
 		
+
 		<div class="page-base container">
 			
 			<!-- 헤더 -->		
@@ -53,6 +54,7 @@
 								<a href="#" class="btn btn-outline-secondary w-100">
 								   수강신청 하러가기
 								</a>
+
 							</div>
 						</div>
 					</div>
@@ -301,6 +303,8 @@
 					
 					</div>
 				
+				<!-- 모달 띄우기 -->				
+				<jsp:include page="/WEB-INF/views/class_shop/class_detail.jsp"/>
 			</article>
 
 			
@@ -314,3 +318,4 @@
 	</body>
 	
 </html>
+								
