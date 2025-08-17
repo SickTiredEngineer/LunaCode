@@ -10,6 +10,6 @@ const playlistTitleElement = document.querySelector('.playlist-title');
 
 // 파라미터로 받은 이름이 있고, h2 태그도 존재한다면,
 if (playlistName && playlistTitleElement) {
-    // h2 태그의 내용을 URL에서 가져온 이름으로 변경합니다.
-    playlistTitleElement.textContent = decodeURIComponent(playlistName.replace(/\+/g, ' '));
+	// h2 태그의 내용을 URL에서 가져온 이름으로 변경합니다.
+	playlistTitleElement.textContent = decodeURIComponent(playlistName.replace(/\+/g, ' '));
 }

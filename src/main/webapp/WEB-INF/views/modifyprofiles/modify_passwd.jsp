@@ -38,30 +38,40 @@
 					
 					<%-- 메인 폼 영역 --%>
 					<section class="form-container">
-						<form>
-						
-							<%-- 각 입력 행 --%>
-							<div class="form-row">
-								<label class="form-label">현재 비밀번호</label>
-								<input type="password" class="common-input-form-main-color form-input-size">
-							</div>
 					
-							<div class="form-row">
-								<label class="form-label">새 비밀번호</label>
-								<input type="password" class="common-input-form-main-color form-input-size">
+						<form id="passwd_form">
+					
+						<div class="form-row">
+							<label class="form-label" for="current_pass">현재 비밀번호</label>
+							<div class="input-wrapper">
+								<input type="password" id="current_pass" name="current_pass" class="common-input-form-main-color form-input-size">
+								<!-- 유효성 검사 메시지 영역 -->
+								<span class="validation-message" id="span_current_pass"></span>
 							</div>
+						</div>
+				
+						<div class="form-row">
+							<label class="form-label" for="new_pass">새 비밀번호</label>
+							<div class="input-wrapper">
+								<input type="password" id="new_pass" name="new_pass" class="common-input-form-main-color form-input-size">
+								<!-- 유효성 검사 메시지 영역 -->
+								<span class="validation-message" id="span_new_pass"></span>
+							</div>
+						</div>
 
-							<div class="form-row">
-								<label class="form-label">새 비밀번호 확인</label>
-								<input type="password" class="common-input-form-main-color form-input-size">
+						<div class="form-row">
+							<label class="form-label" for="new_pass_check">새 비밀번호 확인</label>
+							<div class="input-wrapper">
+								<input type="password" id="new_pass_check" name="new_pass_check" class="common-input-form-main-color form-input-size">
+								<!-- 유효성 검사 메시지 영역 -->
+								<span class="validation-message" id="span_new_pass_check"></span>
 							</div>
-							
-							<%-- 하단 버튼 영역 --%>
-							<div class="action-buttons">
-<!-- 								<button type="button" class="negative-button">취소</button> -->
-								<button type="submit" class="positive-button">변경 완료</button>
-							</div>
-						</form>
+						</div>
+						
+						<div class="action-buttons">
+							<button type="button" id="submit_button" class="positive-button">변경 완료</button>
+						</div>
+					</form>
 					</section>
 				</div>
 			</article>
@@ -70,6 +80,9 @@
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 			</footer>
 		</div>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/modifyprofiles/modify_passwd.js"></script>
+		
 	</body>
 
 </html>

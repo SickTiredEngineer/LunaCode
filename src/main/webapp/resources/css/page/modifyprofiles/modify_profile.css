@@ -101,6 +101,13 @@ body {
 	height: 45px;
 }
 
+/* 닉네임 입력창+버튼과 그 아래 유효성 메시지를 묶는 그룹 */
+.profile-nickname-group {
+	width: 100%; /* 부모(.profile-inputs)의 너비를 채움 */
+	display: flex;
+	flex-direction: column; /* 내부 요소(닉네임 입력 그룹, 메시지)를 수직 정렬 */
+}
+
 /* 일반 입력창 스타일 */
 .form-row input,
 .form-row textarea {
@@ -111,6 +118,27 @@ body {
 .form-row textarea {
 	height: 120px;
 	resize: vertical;
+}
+
+.input-wrapper {
+	width: 100%;
+	max-width: 450px; /* 다른 입력창들과 최대 너비를 맞춥니다. */
+	display: flex;
+	flex-direction: column; /* 내부 요소(textarea, span)를 수직으로 정렬합니다. */
+}
+
+/* 글자 수 카운터 스타일 */
+.char-counter {
+	margin-top: 8px; 
+	text-align: right; 
+	font-size: 13px; 
+	color: var(--color-font);
+}
+
+/* 유효성 검사 메시지 스타일 (입력창과 간격 추가) */
+.validation-message {
+	margin-top: 8px; 
+	font-size: 13px;
 }
 
 /* 버튼 및 기타 */

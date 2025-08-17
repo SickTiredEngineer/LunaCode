@@ -54,7 +54,7 @@
 					
 						<div class="cart-item">
 							<div class="item-cell product-info">
-								<input type="checkbox" checked>
+								<input type="checkbox">
 								<div class="product-image">
 									<img src="https://via.placeholder.com/80x60/E0E8F8/444444?text=Course" alt="자바 단기간 완성">
 								</div>
@@ -122,5 +122,7 @@
 			</footer>
 		</div>
 	</body>
-
+	
+	<script src="${pageContext.request.contextPath }/resources/js/cart/cart.js"></script>
+	
 </html>
