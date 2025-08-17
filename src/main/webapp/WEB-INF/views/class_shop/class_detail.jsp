@@ -56,37 +56,44 @@
 		            
 		          </div>
 		          
-		            <nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3">
-					  <ul class="nav nav-pills">
-					    <li class="nav-item">
-					      <a class="nav-link" href="#scrollspyHeading1">과목 소개</a>
-					    </li>
-					    <li class="nav-item">
-					      <a class="nav-link" href="#scrollspyHeading2">강사 소개</a>
-					    </li>
-					    <li class="nav-item">
-					      <a class="nav-link" href="#scrollspyHeading3">수강 후기</a>
-					    </li>
-					  </ul>
-					</nav>
-					<div data-bs-spy="scroll" data-bs-target="#navbar-example2" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true" class="scrollspy-example bg-body-tertiary p-3 rounded-2" tabindex="0">
-					  <h4 id="scrollspyHeading1">과목 소개</h4>
-					  <p>제 1강 백드 개발 개요와 개발 환경 설정</p>
-					  <p>제 2강 Java 문법 기초와 객체지향 이해</P>
-					  <p>제 3강 서블릿(Servlet)과 웹 요청 흐름</P>
-					  <h4 id="scrollspyHeading2">강사 소개</h4>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <p>...</p>
-					  <h4 id="scrollspyHeading3">수강 후기</h4>
-					  <p>...</p>
-					</div>
+		            <div class="modal-content">
+
+				    <!-- 네비게이션 바 (탭) -->
+				    <nav id="modal-navbar" class="navbar bg-body-tertiary px-3 mb-3">
+				      <ul class="nav nav-pills">
+				        <li class="nav-item">
+				          <a class="nav-link" href="#modalSection1">과목 소개</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#modalSection2">강사 소개</a>
+				        </li>
+				        <li class="nav-item">
+				          <a class="nav-link" href="#modalSection3">수강 후기</a>
+				        </li>
+				      </ul>
+				    </nav>
+				
+				    <!-- 스크롤 영역 -->
+				    <div id="modal-scrollspy" data-bs-spy="scroll" data-bs-target="#modal-navbar"
+				      data-bs-offset="0" class="scrollspy-example bg-body-tertiary p-3 rounded-2"
+				      tabindex="0" style="max-height: 400px; overflow-y:auto;">
+				      
+				      <h4 id="modalSection1">과목 소개</h4>
+				        <div class="course-intro-video" style="margin : 1rem;">
+				          <iframe width="100%" height="300" src="https://www.youtube.com/embed/Tt_tKhhhJqY"
+				            title="샘플 강의 동영상" frameborder="0" allowfullscreen></iframe>
+				        </div>
+				        <p>제 1강 백드 개발 개요와 개발 환경 설정</p>
+				        <p>제 2강 Java 문법 기초와 객체지향 이해</p>
+				        <p>제 3강 서블릿(Servlet)과 웹 요청 흐름</p>
+				      <h4 id="modalSection2">강사 소개</h4>
+				        <p>여기에 강사 소개...</p>
+				      <h4 id="modalSection3">수강 후기</h4>
+				        <p>여기에 후기...</p>
+				    </div>
+				  </div>
+				</div>
+
 					
 		      </div>
 		      

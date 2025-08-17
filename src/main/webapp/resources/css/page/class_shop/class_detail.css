@@ -73,27 +73,37 @@
 
 /* 네비게이션 바, 탭 중앙정렬 및 디자인 */
 #navbar-example2 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 56px;
-    background: #f7f8fa;
-    border-radius: 0.75rem;
-    margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 56px;
+  background: #F2F4F8;
+  border-radius: 0.75rem;
+  margin-bottom: 1.5rem;
 }
+
 #navbar-example2 .nav {
-    gap: 2.5rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
+  display: flex;
+  gap: 3rem !important;            /* 메뉴 간 간격 */
+  align-items: center;
+  justify-content: center;
 }
+
 #navbar-example2 .nav-link {
-    padding: 0.5rem 1.1rem;
-    font-weight: 700;
-    font-size: 18px;
-    border-radius: 0.5rem;
-    color: #1a2c53;
-    transition: background 0.18s, color 0.18s;
+  padding: 0.75rem 1.5rem;
+  font-weight: 700;
+  font-size: 20px;       
+  border-radius: 0.75rem;
+  color: #1a2c53;
+  transition: background 0.25s, color 0.25s;
+}
+
+#navbar-example2 .nav-link.active,
+#navbar-example2 .nav-link:focus,
+#navbar-example2 .nav-link:hover {
+  background-color: #4372cc !important;  
+  color: #fff !important;
+  box-shadow: 0 4px 10px rgba(67, 114, 204, 0.5);
 }
 
 /* scrollspy 영역 */
