@@ -22,7 +22,7 @@
 
 			<article>
 
-				<form action="JoinForm" id="join_form" method="post" class="d-flex flex-column align-items-center justify-content-center">
+				<form action="JoinForm" id="join_form" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center justify-content-center">
 
 					<h2 class="main-msg">회원 정보 입력</h2>
 					<!-- =================================================== -->
@@ -112,17 +112,48 @@
 					<div class="d-flex flex-column justify-content-center span-layout">
 						<span class="info-span" id="span_email">●Test Span</span>
 					</div>
-					
-					<br>
+
 					<div class="horizontal-line"></div>
 					
 					<!-- 강사 회원일 경우, 증빙 서류 제출 UI 출력 -->
 					<c:if test="${param.type eq 'MB02'}">
-						<div class="d-flex flex-row  input-form-layout">
+
+<!-- 						<div id="attachement_area"> -->
+<!-- 							<p class="info-text">강사자격 첨부</p> -->
+							
+<!-- 							<div class="d-flex flex-row  input-form-layout"> -->
+<!-- 								<input type="file" name="certificate_01" id="certificate_01" class="input-form-size common-input-form" style="display:none;"> -->
+<!-- 								<input type="text" id="certificate_01_name" class="input-form-size common-input-form" readonly="readonly">  -->
+								
+<!-- 								<label for="certificate_01"> -->
+<!-- 									<div class="positive-button attach-bt-margin">파일 선택</div> -->
+<!-- 								</label> -->
+<!-- 							</div> -->
+
+<!-- 						</div> -->
+
+
+						<div id="attachement_area">
 							<p class="info-text">강사자격 첨부</p>
-							<input type="text" class="input-form-size common-input-form" placeholder="" readonly="readonly">
-							<button class="positive-button">파일 첨부</button>
+							
+							<div class="d-flex flex-row input-form-layout file-input-box">
+								<input type="file" name="certificate_01" id="certificate_01" class="input-form-size common-input-form" style="display:none;">
+								<input type="text" id="certificate_01_name" class="input-form-size common-input-form" placeholder="선택된 파일 없음" readonly>
+								<label for="certificate_01">
+									<div class="positive-button attach-bt-margin">파일 선택</div>
+								</label>
+<!-- 								<button type="button" class="negative-button remove-attach">삭제</button> -->
+							</div>
 						</div>
+						
+						<div class="d-flex flex-row input-form-layout">
+							<button type="button" id="add_attachment_bt" class="positive-button add_attach_margin">파일 추가</button>
+						</div>
+						
+						<br>
+						
+						<div class="horizontal-line"></div>
+						
 					</c:if>
 					
 					

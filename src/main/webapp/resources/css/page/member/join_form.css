@@ -100,5 +100,8 @@
 }
 
 
+.attach-bt-margin{
+	margin-right: var(--common-margin);
+}
 
 

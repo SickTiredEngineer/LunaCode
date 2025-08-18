@@ -1,5 +1,7 @@
 package com.itwillbs.luna_code.vo;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -21,8 +23,12 @@ public class MemberVO {
 	private int attendance_consecutive;
 	private String attendance_last;
 	private String member_type;
-	private String certificate_01;
-	private String certificate_02;
-	private String certificate_03;
-
+	
+	private MultipartFile certificate_01;
+	private MultipartFile certificate_02;
+	private MultipartFile certificate_03;
+	
+	private String cerPath1;
+	private String cerPath2;
+	private String cerPath3;
 }

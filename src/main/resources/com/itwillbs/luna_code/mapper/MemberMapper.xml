@@ -62,7 +62,7 @@
 			certificate_01,
 		    certificate_02,
 		    certificate_03
-		)values(#{user_id}, #{user_name}, #{nickname}, #{password}, #{email}, #{phone}, "", "", #{birth}, '', 1, 1, now(), #{member_type}, null, null, null)
+		)values(#{user_id}, #{user_name}, #{nickname}, #{password}, #{email}, #{phone}, "", "", #{birth}, '', 1, 1, now(), #{member_type}, #{cerPath1}, #{cerPath2}, #{cerPath3})
 </insert>
 	
 	
