@@ -43,8 +43,8 @@
 							<div class="d-flex flex-column main_layout">
 									
 									<div class="d-flex flex-row justify-content-between tmi-layout">
-										<p class="tmi-text">작성자: 바보뭉충이빵구똥구</p>
-										<p class="tmi-text">조회수: 15000</p>
+										<p class="tmi-text">작성자: ${post.author}</p>
+										<p class="tmi-text">조회수: ${post.view_count}</p>
 										
 										<div class="d-flex flex-row">
 											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
@@ -53,23 +53,14 @@
 									</div>
 									
 									<div class="d-flex flex-row content-layout">
-										<p class="subject-text">응히히히히히힛</p>
+										<p class="subject-text">${post.title}</p>
 										
 									</div>
 									
 									<div class="horizontal-line"></div>
 								
 									<div class="d-flex flex-row content-layout">
-<!-- 										<textarea rows="10" cols="50" class="common-input-form"></textarea> -->
-											<pre class="post-content">게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용
-게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용 게시글 내용  
-											</pre>
+										<pre class="post-content">${post.content}</pre>
 									</div>
 									
 									<div class="horizontal-line"></div>
@@ -182,16 +173,6 @@
 								<div class="horizontal-line comment-line-margin"></div>
 								
 							</div>
-							
-							<!-- 
-							TODO: JS 추가해야함 -> Focus 없애는코드
-							const readonlyAreas = document.querySelectorAll('.readonly-textarea');
-							readonlyAreas.forEach(el => {
-							  el.addEventListener('focus', e => e.target.blur());
-							});
-							 -->
-							
-							
 							
 							
 						<!-- Page Selector Section -->

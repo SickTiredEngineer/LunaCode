@@ -14,8 +14,14 @@ public class CommunityService {
 	@Autowired
 	CommunityMapper mapper;
 	
+	/* 전체 게시물 리스트 가져오는 쿼리 */
 	public List<PostVO> postList(){
 		return mapper.postList();
+	}
+	
+	/* 게시물 클릭 시, 해당 게시물의 상세 내용을 가져오는 쿼리 */
+	public PostVO getPostDetail(int post_idx) {
+		return mapper.getPostDetail(post_idx);
 	}
 	
 }

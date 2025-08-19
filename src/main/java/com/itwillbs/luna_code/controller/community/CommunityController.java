@@ -44,7 +44,12 @@ public class CommunityController {
 	
 	/* 게시글 자세히 보는 사이트로 이동 */
 	@GetMapping("PostDetail")
-	public String postDetail() {
+	public String postDetail(int post_idx, Model model) {
+		
+		PostVO post = service.getPostDetail(post_idx);
+		
+		model.addAttribute("post", post);
+		
 		return "community/post_detail";
 	}
 	

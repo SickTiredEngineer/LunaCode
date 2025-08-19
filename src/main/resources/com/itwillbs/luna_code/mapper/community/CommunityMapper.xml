@@ -21,6 +21,24 @@
 			view_count
 		 from post
 	</select>
+	
+	
+	<select id="getPostDetail">
+		select 
+			post_idx,
+			board_idx,
+			title,
+			content,
+			author_idx,
+			(select nickname from member where idx = author_idx) as author,
+			created_date,
+			update_date,
+			is_update,
+			view_count
+		 from post where post_idx = #{post_idx}
+	</select>
+	
+	
 
 
 </mapper>
