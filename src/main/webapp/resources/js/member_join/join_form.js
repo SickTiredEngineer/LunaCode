@@ -109,24 +109,6 @@ $(function (){
 	      left: offset.left
 	    });
 	});
-	
-	
-//	$("#add_attachment_bt").on("click", function(){
-//		
-//		let attachmentCount = $("#attachement_area .file-input-box").length;
-//
-//		let newBox = `<div class="d-flex flex-row  input-form-layout">
-//							<input type="file" name="certificate_01" id="certificate_01" class="input-form-size common-input-form" style="display:none;">
-//							<input type="text" id="certificate_01_name" class="input-form-size common-input-form" readonly="readonly"> 
-//							
-//							<label for="certificate_01">
-//								<div class="positive-button attach-bt-margin">파일 선택</div>
-//							</label>
-//						</div>`;
-//			
-//		$("#attachement_area").append(newBox);
-//		
-//	});
 
 	$('#add_attachment_bt').on('click', function(){
 		const count = $("#attachement_area .file-input-box").length;
@@ -148,8 +130,6 @@ $(function (){
 	    $(this).closest('.file-input-box').remove();
 	    reindex();
 	});
-
-
 	
 	/* TODO: 최종 검사 중복 부분 함수화 필요 */
 	$("#submit_button").on("click", async function(){

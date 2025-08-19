@@ -52,6 +52,12 @@ insert into group_code(
 ) values
 ("QUIZE_RESULT", "퀴즈 정답 결과 상태를 저장하는 그룹입니다.", true, now(), null);
 
+-- 첨부파일 분류 코드 그룹
+insert into group_code(group_code, group_desc, is_using, create_date, creater_idx)
+values
+("ATTACHMENT_GROUP", "첨부파일이 어디 속해있는지 분류하는 코드입니다.", true, now(), null);
+
+select * from group_code;
 
 
 

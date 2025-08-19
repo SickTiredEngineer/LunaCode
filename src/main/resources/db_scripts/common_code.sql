@@ -7,7 +7,7 @@ create table common_code(
 	common_idx int primary key auto_increment,
     group_idx int,
     code varchar(64),
-    code_label varchar(64),
+    code_label varchar(64) unique,
     code_desc varchar(300),
     is_using boolean default true,
     creater_idx int,
@@ -19,6 +19,8 @@ create table common_code(
     foreign key(creater_idx) references member(idx),
     foreign key(updater_idx) references member(idx)
 );
+
+ alter table common_code ADD UNIQUE (code);
 
 -- 데이터 설명충
 desc common_code;
@@ -33,23 +35,29 @@ INSERT INTO common_code (group_idx, code, code_label, code_desc, is_using, creat
 (1, 'MB01', '관리자', '관리자에 대한 코드입니다.', 1, 1, now()),
 (1, 'MB02', '강사', '강사에 대한 코드입니다.', 1, 1, now()),
 (1, 'MB03', '일반회원', '일반회원에 대한 코드입니다.', 1, 1, now()),
+
 (2, 'CT01', '실시간', '실시간에 대한 코드입니다.', 1, 1, now()),
 (2, 'CT02', '온라인', '온라인에 대한 코드입니다.', 1, 1, now()),
 (2, 'CT03', '오프라인', '오프라인에 대한 코드입니다.', 1, 1, now()),
+
 (3, 'BD01', '자유 게시판', '자유 게시판에 대한 코드입니다.', 1, 1, now()),
 (3, 'BD02', '질문 게시판', '질문 게시판에 대한 코드입니다.', 1, 1, now()),
 (3, 'BD03', '고민 게시판', '고민 게시판에 대한 코드입니다.', 1, 1, now()),
+
 (5, 'SP01', '1:1 문의', '1:1 문의에 대한 코드입니다.', 1, 1, now()),
 (5, 'SP02', 'FAQ', 'FAQ에 대한 코드입니다.', 1, 1, now()),
 (5, 'SP03', '공지사항', '공지사항에 대한 코드입니다.', 1, 1, now()),
+
 (6, 'CL01', '초급', '초급에 대한 코드입니다.', 1, 1, now()),
 (6, 'CL02', '중급', '중급에 대한 코드입니다.', 1, 1, now()),
 (6, 'CL03', '고급', '고급에 대한 코드입니다.', 1, 1, now()),
+
 (7, 'MC01', '홈', '홈에 대한 코드입니다.', 1, 1, now()),
 (7, 'MC02', '내강의', '내강의에 대한 코드입니다.', 1, 1, now()),
 (7, 'MC03', '재생목록', '재생목록에 대한 코드입니다.', 1, 1, now()),
 (7, 'MC04', '커뮤니티 활동', '커뮤니티 활동에 대한 코드입니다.', 1, 1, now()),
 (7, 'MC05', '출석', '출석에 대한 코드입니다.', 1, 1, now()),
+
 (4, 'CC01', '전체 강의', '전체 강의에 대한 코드입니다.', 1, 1, now()),
 (4, 'CC02', 'IT 자격증', 'IT 자격증에 대한 코드입니다.', 1, 1, now()),
 (4, 'CC03', '기초 코딩', '기초 코딩에 대한 코드입니다.', 1, 1, now()),
@@ -60,30 +68,44 @@ INSERT INTO common_code (group_idx, code, code_label, code_desc, is_using, creat
 (4, 'CC08', '컴퓨터 비전', '컴퓨터 비전에 대한 코드입니다.', 1, 1, now()),
 (4, 'CC09', '임베디드', '임베디드에 대한 코드입니다.', 1, 1, now()),
 (4, 'CC10', '풀스텍', '풀스텍에 대한 코드입니다.', 1, 1, now()),
-(8, 'CL01', '3개월', '3개월에 대한 코드입니다.', 1, 1, now()),
-(8, 'CL02', '6개월', '6개월에 대한 코드입니다.', 1, 1, now()),
-(8, 'CL03', '9개월', '9개월에 대한 코드입니다.', 1, 1, now()),
-(8, 'CL04', '12개월', '12개월에 대한 코드입니다.', 1, 1, now()),
-(8, 'CL05', '무제한', '무제한에 대한 코드입니다.', 1, 1, now()),
+
+(8, 'CP01', '9개월', '9개월에 대한 코드입니다.', 1, 1, now()),
+(8, 'CP02', '12개월', '12개월에 대한 코드입니다.', 1, 1, now()),
+(8, 'CP03', '무제한', '무제한에 대한 코드입니다.', 1, 1, now()),
+
 (9, 'CR01', '쉬웠어요', '쉬웠어요에 대한 코드입니다.', 1, 1, now()),
 (9, 'CR02', '적당해요', '적당해요에 대한 코드입니다.', 1, 1, now()),
 (9, 'CR03', '어려워요', '어려워요에 대한 코드입니다.', 1, 1, now()),
 (9, 'CR04', '완벽해요', '완벽해요에 대한 코드입니다.', 1, 1, now()),
-(9, 'CR05', '적당해요', '적당해요에 대한 코드입니다.', 1, 1, now()),
-(9, 'CR06', '부족해요', '부족해요에 대한 코드입니다.', 1, 1, now()),
+(9, 'CR05', '부족해요', '부족해요에 대한 코드입니다.', 1, 1, now()),
+
 (10, 'AC01', '강의 관리', '강의 관리에 대한 코드입니다.', 1, 1, now()),
 (10, 'AC02', '회원 관리', '회원 관리에 대한 코드입니다.', 1, 1, now()),
 (10, 'AC03', '사용자 결제 관리', '사용자 결제 관리에 대한 코드입니다.', 1, 1, now()),
 (10, 'AC04', '고객 지원 관리', '고객 지원 관리에 대한 코드입니다.', 1, 1, now()),
 (10, 'AC05', '공통 코드 관리', '공통 코드 관리에 대한 코드입니다.', 1, 1, now()),
 (10, 'AC06', '통계', '통계에 대한 코드입니다.', 1, 1, now()),
+
 (11, 'MS01', '정상', '정상에 대한 코드입니다.', 1, 1, now()),
 (11, 'MS02', '탈퇴', '탈퇴에 대한 코드입니다.', 1, 1, now()),
 (11, 'MS03', '정지', '정지에 대한 코드입니다.', 1, 1, now());
-
 
 INSERT INTO common_code (group_idx, code, code_label, code_desc, is_using, creater_idx, create_date) VALUES
 (12, 'QR01', '정답', '퀴즈 정답 맞추면 쓰는 코드', 1, 1, now()),
 (12, 'QR02', '오답', '퀴즈 정답 틀리면 쓰는 코드', 1, 1, now()),
 (12, 'QR03', '채점 전', '채점전', 1, 1, now());
+
+INSERT INTO common_code (group_idx, code, code_label, code_desc, is_using, creater_idx, create_date) VALUES
+(13, 'AT01', 'Personal Question Attachment', '1:1 문의 질문에 사용되는 첨부파일 입니다.', true, 1, now()),
+(13, 'AT02', 'Personal Answer Attachment', '1:1 문의 대답에 사용되는 첨부파일 입니다.', true, 1, now()),
+(13, 'AT03', 'FAQ Attachement', 'FAQ에 사용되는 첨부파일 입니다.', true, 1, now()),
+(13, 'AT04', 'Notice Attachment', '공지사항에 사용되는 첨부파일 입니다.', true, 1, now()),
+(13, 'AT05', 'Episode Attachment', '강의 Episode에서 사용되는 첨부파일 입니다.', true, 1, now()),
+(13, 'AT06', 'Post Attachment', '게시물에 사용되는 첨부파일 입니다.', 1, true, now()),
+(13, 'AT07', 'Certificate Attachement', '강사 자격 증빙 첨부파일 입니다.', true, 1, now());
+
+select * from common_code;
+
+
+
 
