@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 
 <html>
 
@@ -62,69 +65,26 @@
 	
 							<!-- ============================== -->
 							<!-- Example Start -->
-							
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="PostDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">1</h3>
-									<h3 class="text-subject">첫글 ㅋ[10]</h3>
-									<h3 class="text-writer">구돼지</h3>
-									<h3 class="text-date">2025-01-10</h3>
-									<h3 class="text-view-count">3000</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
 
-							</div>
-							
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="PostDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">2</h3>
-									<h3 class="text-subject">가챠 비틱좀 해봄</h3>
-									<h3 class="text-writer">헤비비틱</h3>
-									<h3 class="text-date">2025-07-30</h3>
-									<h3 class="text-view-count">1000</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+							<c:forEach var="post" items="${postList}">
+								<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="PostDetail" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">1</h3>
+										<h3 class="text-subject">${post.title}</h3>
+										<h3 class="text-writer">${post.author}</h3>
+										<h3 class="text-date">
+											<fmt:formatDate value="${post.created_date}" pattern="yyyy.MM.dd"/>
+											
+										</h3>
+										<h3 class="text-view-count">${post.view_count}</h3>
+									</a>
+									
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
+	
+								</div>
+							</c:forEach>
 
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="PostDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">3</h3>
-									<h3 class="text-subject">버거 뿌림</h3>
-									<h3 class="text-writer">환자</h3>
-									<h3 class="text-date">2025-07-30</h3>
-									<h3 class="text-view-count">100000</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="PostDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">4</h3>
-									<h3 class="text-subject">아 게임하고싶다.[3]</h3>
-									<h3 class="text-writer">게무창</h3>
-									<h3 class="text-date">2025-08-20</h3>
-									<h3 class="text-view-count">5000</h3>
-								</a>
-								
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-								<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-
-							</div>
-							
-							
-							
-							
-							
 							
 						</div>
 						

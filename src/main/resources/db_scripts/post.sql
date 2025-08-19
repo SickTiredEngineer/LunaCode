@@ -12,7 +12,6 @@ create table post(
     created_date datetime default NOW(),
     update_date datetime default null,
     is_update boolean default false,
-    like_count int not null default 0,
     view_count int not null default 0,
     
     foreign key(board_idx) references common_code(common_idx),
@@ -28,6 +27,8 @@ select * from post;
 -- 데이터 초기화용
 delete from post;
 
+-- 이거 그냥 like_record 에서 count로 가져오자
+alter table post drop column like_count;
 
 insert into post(
 	board_idx,

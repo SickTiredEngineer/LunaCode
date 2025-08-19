@@ -5,7 +5,7 @@
 
 
 <!-- 인터페이스 경로 -->	
-<mapper namespace="com.itwillbs.luna_code.mapper.MemberMapper">
+<mapper namespace="com.itwillbs.luna_code.mapper.member_join.MemberJoinMapper">
 
 	<select id="checkDuplication">
 		with tmp_cnt as (
@@ -14,7 +14,7 @@
 				<when test="type == 'id'">
 					where user_id = #{value}
 				</when>
-				<when test="type == 'nickname'">
+				<when test="type == 'nickname'"> vf
 					where nickname = #{value}
 				</when>
 				<when test="type == 'email'">

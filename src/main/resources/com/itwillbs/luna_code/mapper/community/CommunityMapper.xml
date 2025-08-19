@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 인터페이스 경로 -->	
+<mapper namespace="com.itwillbs.luna_code.mapper.community.CommunityMapper">
+
+	<select id="postList">
+		select 
+			post_idx,
+			board_idx,
+			title,
+			content,
+			author_idx,
+			(select nickname from member where idx = author_idx) as author,
+			created_date,
+			update_date,
+			is_update,
+			view_count
+		 from post
+	</select>
+
+
+</mapper>
+	
+
+

@@ -23,6 +23,11 @@ select * from attachment;
 delete from attachment;
 
 
+-- 첨부파일 하나로 일단 통일하자
+drop table class_attachment;
+drop table com_attachment;
+drop table episode_attachment;
+
 
 
 

@@ -1,21 +1,21 @@
-package com.itwillbs.luna_code.service;
+package com.itwillbs.luna_code.service.member_join;
 
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.itwillbs.luna_code.mapper.MemberMapper;
-import com.itwillbs.luna_code.vo.MemberVO;
+import com.itwillbs.luna_code.mapper.member_join.MemberJoinMapper;
+import com.itwillbs.luna_code.vo.member_join.MemberJoinVO;
 
 @Service
-public class MemberService {
+public class MemberJoinService {
 	
 	@Autowired
-	MemberMapper memberMapper;
+	MemberJoinMapper memberMapper;
 	
 	
-	public int insertNewMember(MemberVO vo) {
+	public int insertNewMember(MemberJoinVO vo) {
 		return memberMapper.insertNewMember(vo);
 	}
 	

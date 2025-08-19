@@ -1,4 +1,4 @@
-package com.itwillbs.luna_code.controller;
+package com.itwillbs.luna_code.controller.member_join;
 
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -10,8 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import com.itwillbs.luna_code.service.MemberService;
-import com.itwillbs.luna_code.vo.MemberVO;
+
+import com.itwillbs.luna_code.service.member_join.MemberJoinService;
+import com.itwillbs.luna_code.vo.member_join.MemberJoinVO;
 
 import custom_utills.DirectoryManager;
 
@@ -21,7 +22,7 @@ public class MemberJoinController {
 	String VIRTUAL_PATH = "/resources/attachment_upload";
 	
 	@Autowired
-	MemberService memberService;
+	MemberJoinService memberService;
 	
 	/* 회원 유형 선택 페이지로 이동 */
 	@GetMapping("MemberChoice")
@@ -43,7 +44,7 @@ public class MemberJoinController {
 	
 	/* 입력 정보 데이터 베이스에 저장 후 환영 페이지로 이동 */
 	@PostMapping("JoinForm")
-	public String checkAndJoin(Model model, MemberVO vo, HttpServletRequest req) {
+	public String checkAndJoin(Model model, MemberJoinVO vo, HttpServletRequest req) {
 
 	    System.out.println("Check MemberVo: " + vo);
 	    vo.setEmail(vo.getEmail1() + "@" + vo.getEmail2());
@@ -60,10 +61,10 @@ public class MemberJoinController {
 	        vo.getCertificate_03()
 	    };
 	    
-	    java.util.List<java.util.function.BiConsumer<MemberVO, String>> pathSetters = java.util.List.of(
-	        MemberVO::setCerPath1,
-	        MemberVO::setCerPath2,
-	        MemberVO::setCerPath3
+	    java.util.List<java.util.function.BiConsumer<MemberJoinVO, String>> pathSetters = java.util.List.of(
+	        MemberJoinVO::setCerPath1,
+	        MemberJoinVO::setCerPath2,
+	        MemberJoinVO::setCerPath3
 	    );
 	    
 	    String[] savedNames = new String[3];

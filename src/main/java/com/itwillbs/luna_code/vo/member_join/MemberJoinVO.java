@@ -1,11 +1,11 @@
-package com.itwillbs.luna_code.vo;
+package com.itwillbs.luna_code.vo.member_join;
 
 import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
 @Data
-public class MemberVO {
+public class MemberJoinVO {
 
 	private String user_id;
 	private String user_name;
