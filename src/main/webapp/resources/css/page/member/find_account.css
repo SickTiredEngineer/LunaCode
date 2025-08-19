@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.main-layout{
+	margin: var(--common-margin) 0px;
+}
+
+
+.category-button{
+		
+	margin: 0px var(--common-margin-half);
+	width: 300px;
+	height: 50px;
+		
+}
+
+.category-button:active {
+	border-bottom: 1px solid var(--color-main);
+}
+
+.info-text{
+	width: 20%;
+	height: 20px;
+	font-size: 20px;
+	align-self: center;
+	font-family: var(--font-main);
+}
+
+.find-button{
+	width: auto;
+	height: 50px;
+	margin: var(--common-margin) 0px;
+}
+
+
+.find-layout{
+	margin-top: var(--common-margin);
+/* 	width: auto; */
+	
+}
+
+.find-input{
+	height: auto;
+	width: 80% !important;
+	
+}

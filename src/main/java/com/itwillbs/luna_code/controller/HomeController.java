@@ -37,6 +37,11 @@ public class HomeController {
 	}
 	
 
+	@GetMapping("FindAccount")
+	public String findAccount() {
+		return "member/find_account";
+	}
+	
 	
 	
 }

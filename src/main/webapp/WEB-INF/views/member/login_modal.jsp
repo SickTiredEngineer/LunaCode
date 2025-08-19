@@ -60,11 +60,11 @@
 					          
 					          <div class="modal-footer flex-column bg-transparent border-0 pt-3">
 							 <div class="modal-link-group">
-							    <a href="..." class="footer-link">회원가입</a>
+							    <a href="MemberChoice" class="footer-link">회원가입</a>
 							    <span class="footer-divider">|</span>
-							    <a href="..." class="footer-link">아이디 찾기</a>
-							    <span class="footer-divider">|</span>
-								<a href="..." class="footer-link">비밀번호 찾기</a>
+							    <a href="FindAccount" class="footer-link">아이디/비밀번호 찾기</a>
+<!-- 							    <span class="footer-divider">|</span> -->
+<!-- 								<a href="..." class="footer-link">비밀번호 찾기</a> -->
 							 </div>
 
 							  <div class="social-login-group d-flex justify-content-center gap-2">
