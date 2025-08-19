@@ -17,7 +17,8 @@
 	
 	
 	<body>
-	
+					
+					<script>const contextPath = '${pageContext.request.contextPath}';</script>
 					<!-- 로그인 모달 (Bootstrap 5 모달 형태) -->
 					<div class="modal fade custom-login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
   						<div class="modal-dialog modal-dialog-centered">
@@ -34,22 +35,23 @@
 					        <form action="${pageContext.request.contextPath}/MemberLoginForm" method="post">
 					
 					          <div class="mb-3">
-					            <label for="inputId" class="form-label">아이디</label>
-					            <input type="text" class="form-control" id="inputId" name="id" placeholder="아이디 입력"  />
-					          	<div class="invalid-feedback"> 아이디를 입력하세요 </div>
-					          </div>
-					
-					          <div class="mb-3">
-					            <label for="inputPassword" class="form-label">비밀번호</label>
-					            <input type="password" class="form-control" id="inputPassword" name="pass" placeholder="비밀번호 입력"  />
-					          	<div class="invalid-feedback"> 비밀번호를 입력하세요 </div>
-					          </div>
+								  <label for="inputId" class="form-label">아이디</label>
+								  <input type="text" class="form-control" id="inputId" name="id" placeholder="아이디 입력" />
+								  <div class="invalid-feedback" id="idError">아이디를 입력하세요</div>
+							  </div>
+								
+								<div class="mb-3">
+								  <label for="inputPassword" class="form-label">비밀번호</label>
+								  <input type="password" class="form-control" id="inputPassword" name="pass" placeholder="비밀번호 입력" />
+								  <div class="invalid-feedback" id="passwordError">비밀번호를 입력하세요</div>
+								</div>
+
 					
 					          <div class="mb-3 form-check">
 					            <input type="checkbox" class="form-check-input" id="rememberMe" name="remember" />
 					            <label class="form-check-label" for="rememberMe">로그인 상태 유지</label>
 					          </div>
-					
+							  
 					          <button type="submit" class="btn btn-primary w-100">로그인</button>
 					
 					          <c:if test="${not empty error}">
@@ -90,7 +92,7 @@
 					
 	
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-			
+	<script src="${pageContext.request.contextPath}/resources/js/member/member_login.js"></script>		
 	
 	</body>
 	
