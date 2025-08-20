@@ -87,7 +87,7 @@
 		          <div id="userDropdown" class="user-dropdown-box">
 		          	<div class="user-info">
     					<img src="${pageContext.request.contextPath}/resources/image/profile_image.png" class="user-img" alt="사진">
-      					<span class="user-nickname">${sessionScope.loginUser.nickName}</span>
+      					<span class="user-nickname">${sessionScope.loginUser.nickname}</span>
 	            	</div>
 	            	<a href="${pageContext.request.contextPath}/MemberInfo" class="user-menu-item">마이페이지</a>
     				<a href="${pageContext.request.contextPath}/AccountSetting" class="user-menu-item">계정 설정</a>

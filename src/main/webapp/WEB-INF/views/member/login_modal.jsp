@@ -36,13 +36,13 @@
 					
 					          <div class="mb-3">
 								  <label for="inputId" class="form-label">아이디</label>
-								  <input type="text" class="form-control" id="inputId" name="id" placeholder="아이디 입력" />
+								  <input type="text" class="form-control" id="inputId" name="user_id" placeholder="아이디 입력" />
 								  <div class="invalid-feedback" id="idError">아이디를 입력하세요</div>
 							  </div>
 								
 								<div class="mb-3">
 								  <label for="inputPassword" class="form-label">비밀번호</label>
-								  <input type="password" class="form-control" id="inputPassword" name="pass" placeholder="비밀번호 입력" />
+								  <input type="password" class="form-control" id="inputPassword" name="password" placeholder="비밀번호 입력" />
 								  <div class="invalid-feedback" id="passwordError">비밀번호를 입력하세요</div>
 								</div>
 
@@ -51,13 +51,23 @@
 					            <input type="checkbox" class="form-check-input" id="rememberMe" name="remember" />
 					            <label class="form-check-label" for="rememberMe">로그인 상태 유지</label>
 					          </div>
-							  
+					          
+								<div class="invalid-feedback d-block" id="serverError" style="${not empty error ? 'display:block;' : 'display:none;'}">
+								    ${error}
+								</div>
+								
+								<c:if test="${not empty error}">
+								    <script>
+								        document.addEventListener('DOMContentLoaded', function() {
+								            const loginModalEl = document.getElementById('loginModal');
+								            const loginModal = new bootstrap.Modal(loginModalEl);
+								            loginModal.show();
+								        });
+								    </script>
+								</c:if>
+
 					          <button type="submit" class="btn btn-primary w-100">로그인</button>
 					
-					          <c:if test="${not empty error}">
-					            <p class="text-danger mt-2">${error}</p>
-					          </c:if>
-					          
 					          <div class="modal-footer flex-column bg-transparent border-0 pt-3">
 							 <div class="modal-link-group">
 							    <a href="MemberChoice" class="footer-link">회원가입</a>

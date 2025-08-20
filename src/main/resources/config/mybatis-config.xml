@@ -8,5 +8,9 @@
 		<typeAlias alias="member" type="com.itwillbs.luna_code.vo.member_join.MemberJoinVO"/>
 	</typeAliases>
 	
+	<mappers>
+    	<mapper resource="com/itwillbs/luna_code/mapper/member_login/MemberLoginMapper.xml"/>
+	</mappers>
+	
 	
 </configuration>	

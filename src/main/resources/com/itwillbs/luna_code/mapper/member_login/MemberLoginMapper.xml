@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 인터페이스 경로 -->	
+<mapper namespace="com.itwillbs.luna_code.mapper.MemberLoginMapper">
+	<select id="selectMemberVO" parameterType="map" resultType="com.itwillbs.luna_code.vo.MemberLoginVO">
+	    SELECT
+	    user_id,
+	    password
+	    FROM member
+	    WHERE user_id = #{user_id}
+        AND password = #{password}
+	</select>
+
+</mapper>

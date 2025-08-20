@@ -23,19 +23,19 @@ public class MemberLoginController {
     	return "member/login_modal";
     }
     
-    @PostMapping("/MemberLogin")
-    public String login(@RequestParam String username,
-                        @RequestParam String password,
+    @PostMapping("/MemberLoginForm")
+    public String login(@RequestParam("user_id") String user_id,
+                        @RequestParam("password") String password,
                         HttpSession session,
                         Model model) {
 
-    	MemberLoginVO member = memberLoginService.login(username, password);
+        MemberLoginVO member = memberLoginService.login(user_id, password);
 
         if (member != null) {
-            session.setAttribute("loginUser", member); 
-            return "redirect:/";
+            session.setAttribute("loginUser", member);
+            return "redirect:/GoHome";
         } else {
-            model.addAttribute("msg", "로그인 실패");
+            model.addAttribute("error", "아이디 혹은 비밀번호가 잘못 되었습니다.");
             return "member/login_modal"; 
         }
     }

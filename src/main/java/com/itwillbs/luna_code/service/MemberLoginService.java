@@ -12,8 +12,8 @@ public class MemberLoginService {
     @Autowired
     private MemberLoginMapper memberLoginMapper;
 
-    public MemberLoginVO login(String username, String password) {
-        MemberLoginVO member = memberLoginMapper.selectMemberVO(username, password);
+    public MemberLoginVO login(String user_id, String password) {
+        MemberLoginVO member = memberLoginMapper.selectMemberVO(user_id, password);
         return member;
     }
 
