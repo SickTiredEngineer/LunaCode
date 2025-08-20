@@ -23,10 +23,17 @@
 			
 				<!-- 왼쪽 프로필 영역 -->
 				<aside class="profile-section">
-					<div class="profile-image"></div>
-					<div class="profile-nickname">닉네임</div>
-					<div class="profile-info">자기소개</div>
-					<div class="profile-info">github : aaa111</div>
+					<c:if test="${not empty user.profile_img}">
+						<div class="profile-image" style="background-image: 
+							url('${pageContext.request.contextPath}${user.profile_img}');">
+						</div>
+					</c:if>
+					<c:if test="${empty user.profile_img}">
+						<div class="profile-image"></div>
+					</c:if>
+					<div class="profile-nickname" >${user.nickname}</div>
+					<div class="profile-info">${user.bio}</div>
+					<div class="profile-info">github : ${user.github_url}</div>
 					<!-- 공용 버튼 클래스 적용 -->
 					<a href="ModifyProfile" type="button" class="positive-button">계정 설정</a>
 				</aside>

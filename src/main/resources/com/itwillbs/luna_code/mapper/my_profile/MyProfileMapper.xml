@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.my_profile.MyProfileMapper">
+
+	<select id="selectUserProfile" resultType="com.itwillbs.luna_code.vo.UserVO">
+		SELECT 
+			   nickname
+			,  bio
+			,  github_url
+			,  profile_img
+		  FROM member
+		 WHERE user_id = #{userId}
+	</select>
+
+</mapper>

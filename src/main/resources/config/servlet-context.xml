@@ -39,6 +39,14 @@
 		<beans:property name="defaultEncoding" value="UTF-8"/>
 		
 	</beans:bean>
-		
+	
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/*.ico"/>
+			<beans:bean class="com.itwillbs.luna_code.interceptor.UserInfoInterceptor" />
+		</interceptor>
+	</interceptors>
 	
 </beans:beans>

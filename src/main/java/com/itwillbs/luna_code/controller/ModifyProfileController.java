@@ -31,7 +31,7 @@ public class ModifyProfileController {
 
 		if (userId == null) {
 			model.addAttribute("msg", "로그인이 필요합니다.");
-			return "home";
+			return "error_page/fail";
 		}
 
 		UserVO user = userService.getUserProfile(userId);
@@ -93,19 +93,130 @@ public class ModifyProfileController {
 		return response;
 	}
 	
-	// --- 기타 페이지 이동 메소드 ---
+	// 비밀번호 수정 페이지로 이동 (GET)
 	@GetMapping("ModifyPasswd")
-	public String modifyPasswd() {
+	public String modifyPasswd(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("sId");
+		
+		if (userId == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			return "error_page/fail";
+		}
+			
 		return "modifyprofiles/modify_passwd";
 	}
 	
-	@GetMapping("ModifyDelete")
-	public String modifyDelete() {
-		return "modifyprofiles/modify_delete";
+	// 현재 비밀번호 일치 확인 (AJAX - POST)
+    @PostMapping("CheckCurrentPassword")
+    @ResponseBody
+    public Map<String, Object> checkCurrentPassword(@RequestParam String current_pass, HttpSession session) {
+        Map<String, Object> response = new HashMap<>();
+        String userId = (String) session.getAttribute("sId");
+
+        if (userId == null) {
+            response.put("isValid", false);
+            return response;
+        }
+
+        boolean isPasswordCorrect = userService.isPasswordCorrect(userId, current_pass);
+        response.put("isValid", isPasswordCorrect);
+        
+        return response;
+    }
+
+    // 새 비밀번호로 변경 (AJAX - POST)
+	@PostMapping("UpdatePassword")
+	@ResponseBody
+	public Map<String, Object> updatePassword(@RequestParam String current_pass, @RequestParam String new_pass, HttpSession session) {
+		Map<String, Object> response = new HashMap<>();
+		String userId = (String) session.getAttribute("sId");
+
+		if (userId == null) {
+			response.put("success", false);
+			response.put("message", "세션이 만료되었습니다. 다시 로그인해주세요.");
+			return response;
+		}
+
+		try {
+			boolean isSuccess = userService.updateNewPassword(userId, current_pass, new_pass);
+			
+			if (isSuccess) {
+				response.put("success", true);
+				response.put("message", "비밀번호가 성공적으로 변경되었습니다.");
+				session.invalidate();
+			} else {
+				response.put("success", false);
+				response.put("message", "현재 비밀번호가 일치하지 않습니다.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.put("success", false);
+			response.put("message", "비밀번호 변경 중 오류가 발생했습니다.");
+		}
+		
+		return response;
 	}
 	
+	// 계정 탈퇴 페이지로 이동 (GET)
+	@GetMapping("ModifyDelete")
+	public String modifyDelete(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("sId");
+		
+		if (userId == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			return "error_page/fail";
+		}
+		
+		return "modifyprofiles/modify_delete";
+	}
+
+	// 계정 탈퇴 처리 (AJAX - POST)
+	@PostMapping("DeleteAccount")
+	@ResponseBody
+	public Map<String, Object> deleteAccount(
+			@RequestParam String password,
+			HttpSession session) {
+		
+		Map<String, Object> response = new HashMap<>();
+		String userId = (String) session.getAttribute("sId");
+
+		if (userId == null) {
+			response.put("success", false);
+			response.put("message", "세션이 만료되었습니다. 다시 로그인해주세요.");
+			return response;
+		}
+
+		try {
+			// 서비스 계층에 계정 탈퇴 요청
+			boolean isSuccess = userService.deleteUserAccount(userId, password);
+			
+			if (isSuccess) {
+				response.put("success", true);
+				response.put("message", "회원 탈퇴가 완료되었습니다.");
+				session.invalidate(); // 탈퇴 성공 시, 즉시 세션 무효화
+			} else {
+				response.put("success", false);
+				response.put("message", "비밀번호가 일치하지 않습니다. 다시 확인해주세요.");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			response.put("success", false);
+			response.put("message", "계정 탈퇴 처리 중 오류가 발생했습니다.");
+		}
+		
+		return response;
+	}
+	
+	// 결제 내역 페이지로 이동 (GET)
 	@GetMapping("MyPayment")
-	public String myPayment() {
+	public String myPayment(HttpSession session, Model model) {
+		String userId = (String) session.getAttribute("sId");
+		
+		if (userId == null) {
+			model.addAttribute("msg", "로그인이 필요합니다.");
+			return "error_page/fail";
+		}
+		
 		return "modifyprofiles/my_payment";
 	}
 	
