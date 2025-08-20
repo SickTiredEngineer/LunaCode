@@ -16,6 +16,35 @@ public class MemberLoginService {
         MemberLoginVO member = memberLoginMapper.selectMemberVO(user_id, password);
         return member;
     }
+    
+    // 아이디 찾기
+    public MemberLoginVO findUserId(String name, String email) {
+        String userId = memberLoginMapper.selectUserId(name, email);
+        if (userId != null) {
+            MemberLoginVO result = new MemberLoginVO();
+            result.setUser_id(userId);
+            result.setUser_name(name);
+            result.setEmail(email);
+            return result;
+        }
+        return null;
+    }
+    
+    //비밀번호 찾기
+    public MemberLoginVO findUserPass(String id, String email) {
+        String userPass = memberLoginMapper.selectUserPass(id, email);
+        if (userPass != null) {
+            MemberLoginVO result = new MemberLoginVO();
+            result.setPassword(userPass);
+            result.setUser_name(id);
+            result.setEmail(email);
+            return result;
+        }
+        return null;
+    }
+
+
+
 
 }
 

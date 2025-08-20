@@ -14,5 +14,17 @@
 	    WHERE user_id = #{user_id}
         AND password = #{password}
 	</select>
+	
+	<select id="selectUserId" resultType="string">
+	    SELECT user_id
+	    FROM member
+	    WHERE user_name = #{user_name} AND email = #{email}
+	</select>
+
+	<select id="selectUserPass" resultType="string">
+	    SELECT password
+	    FROM member
+	    WHERE user_id = #{user_id} AND email = #{email}
+	</select>
 
 </mapper>

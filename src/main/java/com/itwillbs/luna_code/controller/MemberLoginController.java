@@ -45,6 +45,37 @@ public class MemberLoginController {
         session.invalidate();
         return "redirect:/";  
     }
+    
+    @GetMapping("FindAccount")
+	public String findAccount() {
+		return "member/find_account";
+	}
+    
+    @PostMapping("/ResultAccount")
+    public String findAccount(@RequestParam("name") String name,
+                              @RequestParam("email") String email,
+                              Model model) {
+        MemberLoginVO findmember = memberLoginService.findUserId(name, email);
+        if (findmember != null) {
+            model.addAttribute("userId", findmember.getUser_id());
+        }
+        return "member/result_account";
+    }
+
+    @PostMapping("/PassFindAccount")
+    public String findPassAccount(@RequestParam("id") String id,
+                              @RequestParam("email") String email,
+                              Model model) {
+        MemberLoginVO findpassmember = memberLoginService.findUserPass(id, email);
+        if (findpassmember != null) {
+            model.addAttribute("userPass", findpassmember.getPassword());
+        }
+        return "member/pass_find_account";
+    }
+
+
+
+
 
 
     

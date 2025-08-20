@@ -80,27 +80,44 @@
         <a href="Community" class="nav-link">커뮤니티</a>
 
         <c:choose>
-            <c:when test="${not empty sessionScope.loginUser}">
-                <a href="ApMemberList" class="nav-link">관리자</a>
-                <div class="profile-menu">
-	            <img src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" alt="프로필" id="profileImg" class="nav-link">
-		          <div id="userDropdown" class="user-dropdown-box">
-		          	<div class="user-info">
-    					<img src="${pageContext.request.contextPath}/resources/image/profile_image.png" class="user-img" alt="사진">
-      					<span class="user-nickname">${sessionScope.loginUser.nickname}</span>
-	            	</div>
-	            	<a href="${pageContext.request.contextPath}/MemberInfo" class="user-menu-item">마이페이지</a>
-    				<a href="${pageContext.request.contextPath}/AccountSetting" class="user-menu-item">계정 설정</a>
-	           		<a href="javascript:void(0)" onclick="logout()" class="user-menu-item">로그아웃</a>
-	              </div>
-	        	</div>
-            </c:when>
+		  <c:when test="${not empty sessionScope.loginUser}">
+		    <c:choose>
+		      <c:when test="${sessionScope.loginUser.member_type eq 'MB02'}">
+		        <!-- 관리자용 메뉴 -->
+		        <a href="ApMemberList" class="nav-link">관리자 페이지</a>
+		      </c:when>
+		      <c:when test="${sessionScope.loginUser.member_type eq 'MB03'}">
+		        <!-- 강사용 메뉴 -->
+		        <a href="TeacherDashboard" class="nav-link">강사 대시보드</a>
+		      </c:when>
+		      <c:otherwise>
+		        <!-- 일반 회원용 메뉴 -->
+		        <a href="UserDashboard" class="nav-link">마이페이지</a>
+		      </c:otherwise>
+		    </c:choose>
+		
+		    <!-- 공통 로그아웃 및 프로필 -->
+		    <div class="profile-menu">
+		      <img src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" alt="프로필" id="profileImg" class="nav-link">
+		      <div id="userDropdown" class="user-dropdown-box">
+		        <div class="user-info">
+		          <img src="${pageContext.request.contextPath}/resources/image/profile_image.png" class="user-img" alt="사진">
+		          <span class="user-nickname">${sessionScope.loginUser.nickname}</span>
+		        </div>
+		        <a href="${pageContext.request.contextPath}/MemberInfo" class="user-menu-item">마이페이지</a>
+		        <a href="${pageContext.request.contextPath}/AccountSetting" class="user-menu-item">계정 설정</a>
+		        <a href="javascript:void(0)" onclick="logout()" class="user-menu-item">로그아웃</a>
+		      </div>
+		    </div>
+		  </c:when>
+		
+		  <c:otherwise>
+		    <!-- 비회원 -->
+		    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
+		    <a href="MemberChoice" class="nav-link">회원가입</a>
+		  </c:otherwise>
+		</c:choose>
 
-            <c:otherwise>
-                <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
-                <a href="MemberChoice" class="nav-link">회원가입</a>
-            </c:otherwise>
-        </c:choose>
     </div>
     
 </header>

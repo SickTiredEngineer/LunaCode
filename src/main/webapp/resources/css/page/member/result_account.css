@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+.inquiry {
+    width: 570px;
+    height: auto; 
+    display: block;
+    margin: 0 auto;
+}
+
+.result-with-image img {
+  width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.result-with-image p {
+  position: absolute;
+  bottom: 10px; /* 이미지 하단에 위치 */
+  left: 10px;
+  font-size: 20px;
+  color: #444444;
+  font-weight: bold;
+  padding: 114px 330px;
+  border-radius: 5px;
+  font: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; 
+}
+
+.result-with-image {
+	position: relative;
+    width: fit-content;
+    display: inline-block;
+}
+
+.center-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
