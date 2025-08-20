@@ -90,7 +90,7 @@
       					<span class="user-nickname">${sessionScope.loginUser.nickname}</span>
 	            	</div>
 	            	<a href="${pageContext.request.contextPath}/MemberInfo" class="user-menu-item">마이페이지</a>
-    				<a href="${pageContext.request.contextPath}/AccountSetting" class="user-menu-item">계정 설정</a>
+    				<a href="ModifyProfile" class="user-menu-item">계정 설정</a>
 	           		<a href="javascript:void(0)" onclick="logout()" class="user-menu-item">로그아웃</a>
 	              </div>
 	        	</div>

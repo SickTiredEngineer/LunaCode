@@ -32,6 +32,8 @@ public class MemberLoginController {
         MemberLoginVO member = memberLoginService.login(user_id, password);
 
         if (member != null) {
+        	session.setAttribute("sId", member.getUser_id());
+        	
             session.setAttribute("loginUser", member);
             return "redirect:/GoHome";
         } else {

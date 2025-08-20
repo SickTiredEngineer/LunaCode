@@ -1,0 +1,34 @@
+package com.itwillbs.luna_code.vo;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import lombok.Data;
+
+@Data
+public class UserVO {
+
+	private String user_id;
+	private String user_name;
+	private String nickname;
+	private String birth;
+	private String password;
+	private String email1;
+	private String email2;
+	private String email;
+	private String phone;
+	private String profile_img;
+	private String bio;
+	private String github_url;
+	private int attendance_count;
+	private int attendance_consecutive;
+	private String attendance_last;
+	private String member_type;
+	
+	private MultipartFile certificate_01;
+	private MultipartFile certificate_02;
+	private MultipartFile certificate_03;
+	
+	private String cerPath1;
+	private String cerPath2;
+	private String cerPath3;
+}
