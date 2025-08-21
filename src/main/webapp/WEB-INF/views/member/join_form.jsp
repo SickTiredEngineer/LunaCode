@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 
 <html>
 
@@ -10,6 +10,10 @@
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>		
 		<link href="${pageContext.request.contextPath }/resources/css/page/member/join_form.css" rel="stylesheet">
+		
+		<meta name="_csrf" content="${_csrf.token}">
+    	<meta name="_csrf_header" content="${_csrf.headerName}">
+		
 	</head>
 	
 	<body>
@@ -22,8 +26,10 @@
 
 			<article>
 
-				<form action="JoinForm" id="join_form" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center justify-content-center">
-
+				<form action="${pageContext.request.contextPath}/JoinForm" id="join_form" method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center justify-content-center">
+					
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						
 					<h2 class="main-msg">회원 정보 입력</h2>
 					<!-- =================================================== -->
 					<div class="d-flex flex-row input-form-layout">
@@ -166,6 +172,8 @@
 						<button id="submit_button" type="button" class="positive-button">가입</button>
 					</div>
 
+					
+			
 				</form>						
 
 
@@ -178,6 +186,21 @@
 		</div>
 		
 		<script src="${pageContext.request.contextPath }/resources/js/member_join/join_form.js"></script>
+		
+		<script type="text/javascript">
+// 			$(function(){
+// 				//  csrf 토큰 보내기 (임시로 사이드바에서 구현) TODO
+// 			    var token = $("meta[name='_csrf']").attr("content");
+// 			    var header = $("meta[name='_csrf_header']").attr("content");
+			   
+// 			    $(document).ajaxSend(function(e, xhr, options) {
+// 			        xhr.setRequestHeader(header, token);
+// 			    });
+				
+// 			});
+		
+		</script>
+		
 	
 	</body>
 	

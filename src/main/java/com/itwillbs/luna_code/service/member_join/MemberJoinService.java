@@ -3,6 +3,7 @@ package com.itwillbs.luna_code.service.member_join;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.luna_code.mapper.member_join.MemberJoinMapper;
@@ -14,8 +15,11 @@ public class MemberJoinService {
 	@Autowired
 	MemberJoinMapper memberMapper;
 	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
 	
 	public int insertNewMember(MemberJoinVO vo) {
+		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
 		return memberMapper.insertNewMember(vo);
 	}
 	

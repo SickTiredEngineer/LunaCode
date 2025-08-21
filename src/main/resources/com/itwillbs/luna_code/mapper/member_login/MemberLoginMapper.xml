@@ -9,15 +9,20 @@
 	<select id="selectMemberVO" parameterType="map" resultType="com.itwillbs.luna_code.vo.MemberLoginVO">
 	    SELECT
 	    user_id,
-	    password,
-	    nickname,
-        email,
-        user_name,
-        member_type
+	    password
 	    FROM member
 	    WHERE user_id = #{user_id}
         AND password = #{password}
 	</select>
+	
+	
+	<select id="selectMemberVOById">
+		select user_id, password, user_name, nickname, email, member_type, profile_img
+		from member
+		where user_id = #{user_id}
+	</select>
+	
+
 	
 	<select id="selectUserId" resultType="string">
 	    SELECT user_id

@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
     <meta charset="UTF-8">
     <title>LunaCode Header</title>
-    
+    <jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/common/header.js"></script>
     <link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
+    
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/layout/header.css" rel="stylesheet">
@@ -70,54 +73,64 @@
         });
     </script>
 
-    <div class="logo-center">
-        <a href="GoHome" class="logo-text">
-            <img alt="로고" class="main_bannder" src="${pageContext.request.contextPath}/resources/image/LunaCode_header.png">
-        </a>
-    </div>
+	    <div class="logo-center">
+	        <a href="GoHome" class="logo-text">
+	            <img alt="로고" class="main_bannder" src="${pageContext.request.contextPath}/resources/image/LunaCode_header.png">
+	        </a>
+	    </div>
+	
+	   <div class="d-flex align-items-center gap-3">
+	  <a href="${pageContext.request.contextPath}/Community" class="nav-link">커뮤니티</a>
+	
+	  <!-- 비로그인(익명) -->
+	  <sec:authorize access="isAnonymous()">
+	    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
+	    <a href="${pageContext.request.contextPath}/MemberChoice" class="nav-link">회원가입</a>
+	  </sec:authorize>
+	
+	  <!-- 로그인 사용자 -->
+	  <sec:authorize access="isAuthenticated()">
+	    <!-- 권한별 메뉴 -->
+	    <sec:authorize access="hasRole('ADMIN')">
+	      <a href="${pageContext.request.contextPath}/ApMemberList" class="nav-link">관리자 페이지</a>
+	    </sec:authorize>
+	
+	    <sec:authorize access="hasAnyRole('INSTRUCTOR')">
+	      <a href="${pageContext.request.contextPath}/TeacherDashboard" class="nav-link">강사 대시보드</a>
+	    </sec:authorize>
+	
+	    <!-- 일반 사용자(관리자/강사 제외) 메뉴가 필요하면: -->
+	    <sec:authorize access="isAuthenticated() and !hasRole('ADMIN') and !hasRole('INSTRUCTOR')">
+	      <a href="${pageContext.request.contextPath}/UserDashboard" class="nav-link">마이페이지</a>
+	    </sec:authorize>
+	
+	    <!-- 프로필/로그아웃 영역 -->
+	    <div class="profile-menu">
+	      <img src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" alt="프로필" id="profileImg" class="nav-link">
+	      <div id="userDropdown" class="user-dropdown-box">
+	
+	        <!-- 닉네임 -->
+	        <sec:authentication property="principal.nickname" var="nickname"/>
+	        <sec:authentication property="principal.profileImg" var="profileImg"/>
+	        <div class="user-info">
+	          <img src="${pageContext.request.contextPath}${profileImg}" class="user-img" alt="사진">
+	          <span class="user-nickname"><c:out value="${nickname}"/></span>
+	        </div>
+	
+	        <a href="${pageContext.request.contextPath}/MyProfile" class="user-menu-item">마이페이지</a>
+	        <a href="${pageContext.request.contextPath}/ModifyProfile" class="user-menu-item">계정 설정</a>
+	
+	        <!-- 로그아웃 -->
+	        <form action="${pageContext.request.contextPath}/MemberLogout" method="post" style="margin:0;">
+	          <button type="submit" class="user-menu-item" style="background:none;border:0;padding:0;">로그아웃</button>
+	          <sec:csrfInput/>
+	        </form>
+	        
+	      </div>
+	    </div>
+	  </sec:authorize>
+	</div>
 
-    <div class="d-flex align-items-center gap-3">
-        <a href="Community" class="nav-link">커뮤니티</a>
-
-        <c:choose>
-         <c:when test="${not empty sessionScope.loginUser}">
-		    <c:choose>
-		      <c:when test="${sessionScope.loginUser.member_type == 'MB03'}">
-		        <!-- 관리자용 메뉴 -->
-		        <a href="ApMemberList" class="nav-link">관리자 페이지</a>
-		      </c:when>
-		      <c:when test="${sessionScope.loginUser.member_type == 'MB02'}">
-		        <!-- 강사용 메뉴 -->
-		        <a href="TeacherDashboard" class="nav-link">강사 대시보드</a>
-		      </c:when>
-		      <c:otherwise>
-		        <!-- 일반 회원용 메뉴 -->
-		        <a href="UserDashboard" class="nav-link">마이페이지</a>
-		      </c:otherwise>
-		    </c:choose>
-		
-		    <!-- 공통 로그아웃 및 프로필 -->
-		    <div class="profile-menu">
-		      <img src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" alt="프로필" id="profileImg" class="nav-link">
-		      <div id="userDropdown" class="user-dropdown-box">
-		        <div class="user-info">
-		          <img src="${pageContext.request.contextPath}${user.profile_img}" class="user-img" alt="사진">
-		          <span class="user-nickname">${user.nickname}</span>
-		        </div>
-		        <a href="MyProfile" class="user-menu-item">마이페이지</a>
-		        <a href="ModifyProfile" class="user-menu-item">계정 설정</a>
-		        <a href="javascript:void(0)" onclick="logout()" class="user-menu-item">로그아웃</a>
-		      </div>
-		    </div>
-		  </c:when>
-		
-		  <c:otherwise>
-		    <!-- 비회원 -->
-		    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
-		    <a href="MemberChoice" class="nav-link">회원가입</a>
-		  </c:otherwise>
-		</c:choose>
-		</div>
     
 </header>
 

@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
  
 <!DOCTYPE html>
@@ -12,6 +13,8 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <!-- jQuery UI JS (jQuery 3.7.1 호환됨) -->
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<!-- 이미 CSS는 있으니 JS만 추가 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
 <!-- 폰트 관련 -->

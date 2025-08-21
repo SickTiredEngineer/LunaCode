@@ -1,6 +1,7 @@
 package com.itwillbs.luna_code.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.itwillbs.luna_code.mapper.MemberLoginMapper;
@@ -8,12 +9,16 @@ import com.itwillbs.luna_code.vo.MemberLoginVO;
 
 @Service
 public class MemberLoginService {
-
+	
+	@Autowired
+	BCryptPasswordEncoder passwordEncoder;
+	
     @Autowired
     private MemberLoginMapper memberLoginMapper;
 
     public MemberLoginVO login(String user_id, String password) {
         MemberLoginVO member = memberLoginMapper.selectMemberVO(user_id, password);
+//        member.setPassword(passwordEncoder.encode(password));
         return member;
     }
     

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="
+               http://www.springframework.org/schema/beans     http://www.springframework.org/schema/beans/spring-beans.xsd
+               http://www.springframework.org/schema/security  http://www.springframework.org/schema/security/spring-security.xsd">
+
+  <!-- BCrypt -->
+  <beans:bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+  <global-method-security pre-post-annotations="enabled" secured-annotations="enabled" jsr250-annotations="enabled"/>
+
+  <!-- 메서드 보안 -->
+<!--   <global-method-security pre-post-annotations="enabled"/> -->
+
+  <!-- URL 보안 규칙 -->
+  <http auto-config="false" use-expressions="true">
+  
+    <!-- 모두에게 허용 -->
+    <intercept-url pattern="/resources/**" access="permitAll"/>
+    
+	<!--     Main And Common -->
+    <intercept-url pattern="/GoHome" access="permitAll"/>
+    <intercept-url pattern="/" access="permitAll"/>
+    <intercept-url pattern="/AccessDenied" access="permitAll"/>
+    
+    
+	<!--     Login -->
+    <intercept-url pattern="/MemberLogin" access="permitAll"/>
+    <intercept-url pattern="/MemberLoginForm" method="POST" access="permitAll"/>
+    <intercept-url pattern="/MemberLogout" access="permitAll"/>
+    <intercept-url pattern="/FindAccount" access="permitAll"/>
+    <intercept-url pattern="/ResultAccount" method="POST" access="permitAll"/>
+    <intercept-url pattern="/PassFindAccount" method="POST" access="permitAll"/>
+    
+	<!-- 	회원가입  -->
+    <intercept-url pattern="/MemberChoice" access="permitAll"/>
+    <intercept-url pattern="/TermsOfMembership" access="permitAll"/>
+    <intercept-url pattern="/JoinForm" method="GET" access="permitAll"/>
+    <intercept-url pattern="/JoinForm" method="POST" access="permitAll"/>
+	<!--     WElcome Page  -->
+	<intercept-url pattern="/WelcomePage" access="permitAll"/>
+
+	<intercept-url pattern="/**" access="isAuthenticated()"/>
+
+    <!-- 폼 로그인 -->
+    <form-login login-page="/MemberLoginTemp"
+                login-processing-url="/MemberLoginForm"
+                username-parameter="user_id"
+                password-parameter="password"
+                default-target-url="/"
+                authentication-failure-url="/MemberLogin?error=true"/>
+
+    <logout logout-url="/MemberLogout"
+        logout-success-url="/GoHome"
+        invalidate-session="true"/>
+
+    
+    <!-- 권한 없을때 이동하는 곳 -->
+    <access-denied-handler error-page="/AccessDenied"/>
+
+<!--     <csrf/>  폼에 CSRF 토큰 추가 필요 -->
+	<csrf disabled="true"/>
+  </http>
+
+  <!-- 인증 매니저: 우리가 만든 서비스 사용 -->
+  <authentication-manager>
+    <authentication-provider user-service-ref="customUserDetailsService">
+      <password-encoder ref="passwordEncoder"/>
+    </authentication-provider>
+  </authentication-manager>
+
+  <!-- CustomUserDetailsService 빈 등록 (Mapper 주입) -->
+  <beans:bean id="customUserDetailsService" class="com.itwillbs.luna_code.security.CustomUserDetailsService">
+    <beans:property name="memberMapper" ref="memberLoginMapper"/>
+  </beans:bean>
+
+  <!-- Mapper 이름은 네 실제 스프링 빈 이름으로 맞춰줘.
+       MapperScannerConfigurer를 썼다면 기본 이름은 인터페이스명에서 소문자 시작(ex: memberLoginMapper) -->
+</beans:beans>

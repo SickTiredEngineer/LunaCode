@@ -1,8 +1,11 @@
 package com.itwillbs.luna_code.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +26,28 @@ public class MemberLoginController {
     	return "member/login_modal";
     }
     
+    @GetMapping("/MemberLoginTemp")
+    public String loginTemp() {
+    	
+    	return "member/login_temp";
+    }
+    
+    
+    
+//    @GetMapping("/MemberLogin")
+//    public String login(HttpServletRequest request) {
+//        SavedRequest saved = new HttpSessionRequestCache().getRequest(request, null);
+//        String target = (saved != null) ? saved.getRedirectUrl() : "GoHome";
+//        // flag를 붙여서 헤더 스크립트가 모달을 열게 한다
+//        if (target.contains("?")) {
+//            target += "&loginRequired=1";
+//        } else {
+//            target += "?loginRequired=1";
+//        }
+//        return "redirect:" + target;
+//    }
+//    
+    
     @PostMapping("/MemberLoginForm")
     public String login(@RequestParam("user_id") String user_id,
                         @RequestParam("password") String password,
@@ -42,11 +67,11 @@ public class MemberLoginController {
         }
     }
     
-    @GetMapping("/MemberLogout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/";  
-    }
+//    @GetMapping("/MemberLogout")
+//    public String logout(HttpSession session) {
+//        session.invalidate();
+//        return "redirect:/GoHome";  
+//    }
     
     @GetMapping("FindAccount")
 	public String findAccount() {

@@ -10,5 +10,6 @@ public class MemberLoginVO {
 	private String nickname;
 	private String email;    
 	private String user_name;
+	private String profile_img;
 	private String member_type; 
 }
