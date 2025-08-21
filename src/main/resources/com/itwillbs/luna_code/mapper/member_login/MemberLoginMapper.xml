@@ -17,7 +17,7 @@
 	
 	
 	<select id="selectMemberVOById">
-		select user_id, password, user_name, nickname, email, member_type, profile_img
+		select idx, user_id, password, user_name, nickname, email, member_type, profile_img
 		from member
 		where user_id = #{user_id}
 	</select>

@@ -1,16 +1,20 @@
 package com.itwillbs.luna_code.controller.community;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.community.CommentService;
 import com.itwillbs.luna_code.service.community.CommunityService;
 import com.itwillbs.luna_code.vo.community.CommentVO;
@@ -67,17 +71,17 @@ public class CommunityController {
 	
 	/* 게시글 업로드 */
 	@PostMapping("PostWrite")
-	public String postWriting(PostVO postVo, Model model, HttpSession session) {
+	public String postWriting(PostVO postVo, Model model, HttpSession session, Authentication auth) {
+		
+		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		
 		System.out.println("PostWriteResult: " + postVo);
-		
-		
-		postVo.setBoard_code("BD01");
-		postVo.setAuthor_id((String)session.getAttribute("sId"));
+		System.out.println("Check User Idx From Post Write: " + user.getIdx());
+//		postVo.setBoard_code("BD01");
+		postVo.setAuthor_idx(user.getIdx());
 
 		int result = service.insertNewPost(postVo);
-		
-		
+
 		return "redirect:Community";
 	}
 	

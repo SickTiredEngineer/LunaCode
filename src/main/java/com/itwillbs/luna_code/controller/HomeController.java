@@ -32,10 +32,8 @@ public class HomeController {
 	}
 	
 	/* 홈 화면 이동 */
-	@GetMapping("GoHome")
+	@GetMapping("/GoHome")
 	public String goHome(Principal principal) {
-		System.out.println("Principal Log: " + principal);
-		System.out.println("Principal Log: " + principal.getName());
 		return "home";
 	}
 	

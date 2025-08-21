@@ -18,7 +18,7 @@
 		</trim>
 		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
 			#{post_idx},
-			(SELECT idx FROM member WHERE user_id = #{author_id}),
+			#{author_idx},
 			#{content},
 			DEFAULT,
 			<if test="parent_idx != null">#{parent_idx},</if>

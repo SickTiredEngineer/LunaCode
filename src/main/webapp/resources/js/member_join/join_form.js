@@ -203,7 +203,7 @@ $(function (){
 /* 중복 검사 전 1차적으로 선행하는 검사임, 따라서 ajax로 2차 검사 후 성공 msg가 지정됨 */
 function regexHandler(value, type, span){
 
-	let mainColor = "#839FD1"; 
+	let mainColor = "#81C147"; 
 	
 	let val = (value ?? "").toString().trim();
 	let regex;
@@ -261,7 +261,7 @@ function passwordHandler(pass){
 	let result = regex.test(pass);
 	// Span에 출력할 Text, Color 지정
 	let msg = result? "사용하기 적합한 비밀번호 입니다.":"비밀번호 조건: 대문자, 소문자, 특수문자, 숫자 포함 10글자 이상";
-	let color = result? "#839FD1":"#ff0000";
+	let color = result? "#81C147":"#ff0000";
 	
 	$("#span_pass").text(msg).css("color", color);
 	
@@ -270,11 +270,17 @@ function passwordHandler(pass){
 
 /* 입력받은 비밀번호 두개가 동일한지 검사 및 Span에 표시 */
 function checkPassEqual(){
+
+	const pass  = $("#input_pass").val().trim();
+	const pass2 = $("#input_pass_check").val().trim();
+	
 	// 처음 작성한 비밀번호와 확인 폼에 작성한 비밀번호가 동일한가?
-	let isEqual = $("#input_pass").val() == $("#input_pass_check").val();
+//	let isEqual = $("#input_pass").val() == $("#input_pass_check").val();
+	let isEqual = pass !== "" && pass2 !== "" && pass === pass2;
+	
 	// 동일 여부에 따라 Text, Color 지정
-	let msg = isEqual? "비밀번호 확인이 완료되었습니다.":"작성한 비밀번호가 동일하지 않습니다";
-	let color = isEqual? "#839FD1": "#FF0000";
+	let msg = isEqual? "비밀번호가 동일합니다.":"작성한 비밀번호가 동일하지 않습니다";
+	let color = isEqual? "#81C147": "#FF0000";
 	
 	$("#span_pass_check").text(msg).css("color", color);
 

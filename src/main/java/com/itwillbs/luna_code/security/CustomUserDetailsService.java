@@ -23,6 +23,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         MemberLoginVO memberVo = memberMapper.selectMemberVOById(user_name);
         if (memberVo == null) throw new UsernameNotFoundException(user_name);
 
+        System.out.println("First Login And Check MemberVo: " + memberVo);
+        
         /* 권한 메핑 */
         String role = null;
         
@@ -41,6 +43,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         
         
         return new CustomUserDetails(
+        		memberVo.getIdx(),
         		memberVo.getUser_name(), 
         		memberVo.getPassword(), 
         		List.of(new SimpleGrantedAuthority(role)), 

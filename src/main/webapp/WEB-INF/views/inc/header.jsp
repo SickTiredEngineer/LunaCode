@@ -74,7 +74,7 @@
     </script>
 
 	    <div class="logo-center">
-	        <a href="GoHome" class="logo-text">
+	        <a href="${pageContext.request.contextPath}/GoHome" class="logo-text">
 	            <img alt="로고" class="main_bannder" src="${pageContext.request.contextPath}/resources/image/LunaCode_header.png">
 	        </a>
 	    </div>

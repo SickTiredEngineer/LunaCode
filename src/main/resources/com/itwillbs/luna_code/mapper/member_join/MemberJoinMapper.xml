@@ -14,7 +14,7 @@
 				<when test="type == 'id'">
 					where user_id = #{value}
 				</when>
-				<when test="type == 'nickname'"> vf
+				<when test="type == 'nickname'">
 					where nickname = #{value}
 				</when>
 				<when test="type == 'email'">
@@ -38,7 +38,7 @@
 				when #{type} = 'phone' then '사용 가능한 전화번호입니다.'
 				end
 			end as text,
-			case when cnt = 1 then '#FF0000' else '#839FD1' end as color,
+			case when cnt = 1 then '#FF0000' else '#81C147' end as color,
 			case when cnt = 1 then 'false' else 'true' end as dupResult
 		from tmp_cnt
 	</select>
@@ -63,7 +63,7 @@
 		    certificate_02,
 		    certificate_03
 		)values(#{user_id}, #{user_name}, #{nickname}, #{password}, #{email}, #{phone}, "", "", #{birth}, '', 1, 1, now(), #{member_type}, #{cerPath1}, #{cerPath2}, #{cerPath3})
-</insert>
+	</insert>
 	
 	
 	

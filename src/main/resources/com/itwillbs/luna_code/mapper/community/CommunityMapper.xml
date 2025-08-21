@@ -8,20 +8,21 @@
 <mapper namespace="com.itwillbs.luna_code.mapper.community.CommunityMapper">
 
 	<select id="postList">
-		select 
-			post_idx,
-			board_code,
-			title,
-			content,
-			author_idx,
-			(select nickname from member where idx = author_idx) as author,
-			created_date,
-			update_date,
-			is_update,
-			view_count
-		 from post
+	  select
+	    p.post_idx,
+	    p.board_code,
+	    p.title,
+	    p.author_idx,
+	    (select m.nickname from member m where m.idx = p.author_idx) as author,
+	    p.created_date,
+	    p.update_date,
+	    p.is_update,
+	    p.view_count,
+	    (select count(*) from comment c where c.post_idx = p.post_idx) as cnt_comment
+	  from post p
+	  order by p.created_date DESC
 	</select>
-	
+
 	
 	<select id="getPostDetail">
 		select 
@@ -38,16 +39,33 @@
 		 from post where post_idx = #{post_idx}
 	</select>
 	
+<!-- 	<select id="getPostDetail"> -->
+<!-- 	  select -->
+<!-- 	    p.post_idx, -->
+<!-- 	    p.board_code, -->
+<!-- 	    p.title, -->
+<!-- 	    p.content, -->
+<!-- 	    p.author_idx, -->
+<!-- 	    coalesce(m.nickname, '탈퇴회원') as author,  -->
+<!-- 	    p.created_date, -->
+<!-- 	    p.update_date, -->
+<!-- 	    p.is_update, -->
+<!-- 	    p.view_count -->
+<!-- 	  from post p -->
+<!-- 	  left join member m on m.idx = p.author_idx -->
+<!-- 	  where p.post_idx = #{post_idx} -->
+<!-- 	  limit 1 -->
+<!-- 	</select> -->
 		
 	<insert id="insertNewPost">
-	  INSERT INTO post (
+	  insert into post (
 		    board_code, title, content, author_idx, created_date, view_count
-		  ) VALUES (
+		  ) values (
 		    'BD01',
 		    #{title},
 		    #{content},
-		    (SELECT idx FROM member WHERE user_id = #{author_id}),
-		    DEFAULT,
+		    #{author_idx},
+		    default,
 		    1
 		  )
 	</insert>

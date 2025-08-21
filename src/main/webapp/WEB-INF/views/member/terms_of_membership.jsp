@@ -2,7 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-
 <html>
 
 	<head>
@@ -48,14 +47,17 @@
 					
 					
 					<div class="d-flex flex-column align-items-center justify-content-center">
-										
-						<div class="d-flex flex-row align-items-center">
 						
-							<input type="checkbox" id="check_agree" >
-							<p class="notice-msg-no-bold" style="align-self: center;">위의 약관에 동의하십니까?
-								동의하지 않을 시, 회원가입을 진행할 수 없습니다.</p>	
+						<br>
+						
+						<div class="d-flex flex-row align-items-center justify-content-center" >
+							<input style="zoom:1.5;" type="checkbox" id="check_agree" class="check-box-margin" >
+							<label for="check_agree" class="notice-msg-no-bold" style="align-self: center;">위의 약관에 동의하십니까?
+								동의하지 않을 시, 회원가입을 진행할 수 없습니다.</label>	
 						</div>
-
+						
+						<br>
+						
 						<button id="bt_confirm" type="button" class="positive-button button-agree">다음으로</button>
 			
 					</div>

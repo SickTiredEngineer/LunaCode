@@ -33,7 +33,15 @@
 .notice-msg-no-bold{
 	font-family: var(--font-main);
 	color: var(--color-font);
+	height: 100%;
 }
+
+
+.check-box-margin{
+/* 	height: 100% !important; */
+	margin-right: var(--common-margin-half) !important;
+}
+
 
 
 .button-agree{

@@ -41,7 +41,6 @@
 	<!--     WElcome Page  -->
 	<intercept-url pattern="/WelcomePage" access="permitAll"/>
 
-	<intercept-url pattern="/**" access="isAuthenticated()"/>
 
     <!-- 폼 로그인 -->
     <form-login login-page="/MemberLoginTemp"

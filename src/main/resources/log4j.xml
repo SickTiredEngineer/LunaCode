@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN"
+  "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
 
 	<!-- Appenders -->
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
@@ -31,6 +33,12 @@
 	<logger name="org.springframework.web">
 		<level value="info" />
 	</logger>
+	
+	<logger name="org.springframework.security" additivity="false">
+	   <level value="WARN"/>
+	   <appender-ref ref="console"/>
+  	</logger>
+	
 	<!-- =========================================== -->
 	<!-- log4jdbc를 활용한 SQL 로그 출력을 위해 SQL Logger 항목 설정 추가 -->
 	<!-- logger 태그의 name 속성에는 관리할 로그 이름 설정 (정해진 이름 사용) -->
@@ -69,7 +77,7 @@
 	<!-- 기본적인 시스템의 로그 설정 (priority 태그로 로그의 심각도 설정) -->
 	<!-- Root Logger -->
 	<root>
-		<priority value="debug" />
+		<priority value="info" />
 <!-- 		<priority value="info" /> -->
 <!-- 		<priority value="warn" /> -->
 		<appender-ref ref="console" />
