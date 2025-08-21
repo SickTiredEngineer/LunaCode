@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.usermain.AttendanceMapper">
+
+	<resultMap id="userResultMap" type="com.itwillbs.luna_code.vo.UserVO">
+		<result property="attendance_count" column="attendance_count"/>
+		<result property="attendance_consecutive" column="attendance_consecutive"/>
+		<result property="attendance_last" column="attendance_last"/>
+	</resultMap>
+
+	<select id="selectUserAttendance" parameterType="string" resultMap="userResultMap">
+		SELECT 
+			   attendance_count
+			 , attendance_consecutive
+			 , attendance_last
+		  FROM member
+		 WHERE user_id = #{user_id}
+	</select>
+	
+	<update id="updateUserAttendance" parameterType="com.itwillbs.luna_code.vo.UserVO">
+		UPDATE member
+		   SET attendance_count = #{attendance_count}
+			 , attendance_consecutive = #{attendance_consecutive}
+			 , attendance_last = NOW()
+		 WHERE user_id = #{user_id}
+	</update>
+
+</mapper>

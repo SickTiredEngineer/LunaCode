@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 
 <html>
 	<head>
@@ -11,7 +10,7 @@
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/attendance.css" rel="stylesheet">  
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/usermain_category.css" rel="stylesheet">    
 	</head>
-
+	
 	<body>
 		<div class="page-base container">
 			<header>
@@ -36,11 +35,11 @@
 						<section class="streak-section">
 							<div class="streak-card">
 								<h3>연속 출석</h3>
-								<div class="streak-circle">5일차</div>
+								<div class="streak-circle">${attendanceInfo.attendance_consecutive}일차</div>
 							</div>
 							<div class="streak-card">
 								<h3>주간 출석</h3>
-								<div class="streak-circle">12주 연속</div>
+								<div class="streak-circle">${attendanceInfo.attendance_count}일</div>
 							</div>
 							<div class="streak-card">
 								<h3>월간 출석</h3>

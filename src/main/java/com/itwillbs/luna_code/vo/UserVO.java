@@ -31,4 +31,5 @@ public class UserVO {
 	private String cerPath1;
 	private String cerPath2;
 	private String cerPath3;
+
 }

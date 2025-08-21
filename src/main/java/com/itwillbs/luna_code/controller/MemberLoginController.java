@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.luna_code.service.MemberLoginService;
+import com.itwillbs.luna_code.service.usermain.AttendanceService;
 import com.itwillbs.luna_code.vo.MemberLoginVO;
 
 @Controller
@@ -20,7 +21,11 @@ public class MemberLoginController {
 
     @Autowired
     private MemberLoginService memberLoginService;
+    
+    @Autowired
+    private AttendanceService attendanceService;
 
+    
     @GetMapping("/MemberLogin")
     public String login() {
     	return "member/login_modal";
@@ -60,6 +65,15 @@ public class MemberLoginController {
         	session.setAttribute("sId", member.getUser_id());
         	
             session.setAttribute("loginUser", member);
+            
+         // 로그인 성공 후, 자동 출석 체크 서비스 호출
+ 			try {
+ 				attendanceService.performAttendanceCheck(member.getUser_id());
+ 			} catch (Exception e) {
+ 				System.out.println("자동 출석 체크 중 오류 발생: " + e.getMessage());
+ 				e.printStackTrace();
+ 			}
+            
             return "redirect:/GoHome";
         } else {
             model.addAttribute("error", "아이디 혹은 비밀번호가 잘못 되었습니다.");

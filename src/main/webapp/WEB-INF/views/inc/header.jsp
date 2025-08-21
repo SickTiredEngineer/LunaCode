@@ -101,7 +101,7 @@
 	
 	    <!-- 일반 사용자(관리자/강사 제외) 메뉴가 필요하면: -->
 	    <sec:authorize access="isAuthenticated() and !hasRole('ADMIN') and !hasRole('INSTRUCTOR')">
-	      <a href="${pageContext.request.contextPath}/UserDashboard" class="nav-link">마이페이지</a>
+	      <a href="${pageContext.request.contextPath}/MyProfile" class="nav-link">마이페이지</a>
 	    </sec:authorize>
 	
 	    <!-- 프로필/로그아웃 영역 -->
