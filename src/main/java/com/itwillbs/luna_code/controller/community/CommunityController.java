@@ -3,13 +3,19 @@ package com.itwillbs.luna_code.controller.community;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.itwillbs.luna_code.service.community.CommentService;
 import com.itwillbs.luna_code.service.community.CommunityService;
+import com.itwillbs.luna_code.vo.community.CommentVO;
 import com.itwillbs.luna_code.vo.community.PostVO;
+import com.mysql.cj.Session;
 
 /* 커뮤니티 컨트롤러 */
 
@@ -19,6 +25,9 @@ public class CommunityController {
 	@Autowired
 	CommunityService service;
 	
+	@Autowired
+	CommentService commentService;
+	
 	/* 커뮤니티 메인(자유 게시판) 이동 */
 	@GetMapping("Community")
 	public String community(Model model) {
@@ -27,17 +36,7 @@ public class CommunityController {
 		List<PostVO> postList = service.postList();
 		System.out.println("PostList: " + postList);
 		
-		/* 게시글 작성일 포멧 -> Detail에서는 시간도 사용할거고 list에서는 yyyymmdd형태로만 보여줄거임 */
-//		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd");
-//		
-//		for(PostVO post:postList) {
-//			post.setCreated_date(simpleDateFormat.format(post.getCreated_date()));
-//		}
-		
-		
-		
 		model.addAttribute("postList", postList);
-		
 
 		return "community/community";
 	}
@@ -47,9 +46,16 @@ public class CommunityController {
 	public String postDetail(int post_idx, Model model) {
 		
 		PostVO post = service.getPostDetail(post_idx);
+		List<CommentVO> comments = commentService.importAllComment(post_idx);
+		
+		for(CommentVO cv:comments) {
+			System.out.println(cv.getNickname());
+		}
+		
 		
 		model.addAttribute("post", post);
-		
+		model.addAttribute("comments", comments);
+
 		return "community/post_detail";
 	}
 	
@@ -58,5 +64,22 @@ public class CommunityController {
 	public String postWrite() {
 		return "community/post_write";
 	}
+	
+	/* 게시글 업로드 */
+	@PostMapping("PostWrite")
+	public String postWriting(PostVO postVo, Model model, HttpSession session) {
+		
+		System.out.println("PostWriteResult: " + postVo);
+		
+		
+		postVo.setBoard_code("BD01");
+		postVo.setAuthor_id((String)session.getAttribute("sId"));
+
+		int result = service.insertNewPost(postVo);
+		
+		
+		return "redirect:Community";
+	}
+	
 	
 }

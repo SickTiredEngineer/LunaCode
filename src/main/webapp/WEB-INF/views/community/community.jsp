@@ -66,10 +66,10 @@
 							<!-- ============================== -->
 							<!-- Example Start -->
 
-							<c:forEach var="post" items="${postList}">
+							<c:forEach var="post" items="${postList}" varStatus="status">
 								<div class="d-flex flex-row align-items-center list-item-root">
 									<a href="PostDetail?post_idx=${post.post_idx}" class="d-flex flex-row align-items-center list-item-layout">
-										<h3 class="text-no">1</h3>
+										<h3 class="text-no">${status.index + 1}</h3>
 										<h3 class="text-subject">${post.title}</h3>
 										<h3 class="text-writer">${post.author}</h3>
 										<h3 class="text-date">

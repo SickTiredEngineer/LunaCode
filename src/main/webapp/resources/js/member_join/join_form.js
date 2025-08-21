@@ -334,7 +334,7 @@ function boxTemplate(idx){
         </label>
         <button type="button" class="negative-button remove-attach">삭제</button>
       </div>`;
-  }
+}
 
 /* 삭제, 추가 등 고려 시 첨부파일에 다시 index 지정하는 함수임 */
 function reindex(){
@@ -354,5 +354,5 @@ function reindex(){
 
     // 추가 버튼 on/off
     $("#add_attachment_bt").prop('disabled', $boxes.length >= MAX_FILES);
-  }
+}
 

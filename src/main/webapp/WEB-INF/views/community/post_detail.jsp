@@ -14,12 +14,17 @@
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath}/resources/css/page/community/post_detail.css" rel="stylesheet">
-
+		<script src="${pageContext.request.contextPath}/resources/js/community/post_detail.js"></script>
 	</head>
 	
 	<body>
+
 		
-		<div class="page-base container">
+		
+		
+		<div id="main_layout" class="page-base container" 
+			data-post-idx="${post.post_idx}"
+		>
 			
 			<!-- 헤더 -->		
 			<header>
@@ -99,77 +104,36 @@
 								<div class="d-flex flex-column">
 									<p class="info-text">댓글 작성</p>			
 									<!-- TODO: JS로 댓글 최대글짜수 제한걸기 -->
-									<textarea rows="3" cols="5" class="common-input-form comment-input-layout"></textarea>
+									<textarea id="input_comment" rows="3" cols="5" class="common-input-form comment-input-layout"></textarea>
 									
 									<div class="d-flex button-container">
-										<a href="PostDetail" class="positive-button">댓글 작성</a>
+										<button id="write_comment_bt" type="button" class="positive-button">댓글 작성</button>
 									</div>
 								</div>
 								
 								
 								<div class="horizontal-line"></div>
 								
-								<div class="d-flex flex-row">
+								<c:forEach items="${comments}" var="comment">
+									<div class="d-flex flex-row">
 									
-									<div class="d-flex flex-column writer-layout">
-										<p class="comment-writer-text">닉네임(1)</p>
-										
-										<div class="d-flex flex-row">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
-										</div>	
-
+										<div class="d-flex flex-column writer-layout">
+											<p class="comment-writer-text">${comment.nickname}</p>
+											
+											<div class="d-flex flex-row">
+												<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
+												<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
+											</div>	
+	
+										</div>
+	
+										<textarea rows="3" cols="5" class="common-input-form comment-layout" readonly="readonly">${comment.content}</textarea>
 									</div>
 
-									<textarea rows="3" cols="5" class="common-input-form comment-layout" readonly="readonly">댓글내용댓글내용댓글내용
-댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용							
-									</textarea>
-									
-								</div>
-								
-								<div class="horizontal-line comment-line-margin"></div>
+								</c:forEach>
 								
 								
-								<div class="d-flex flex-row">
-									
-									<div class="d-flex flex-column writer-layout">
-										<p class="comment-writer-text">닉네임(2)</p>
-										
-										<div class="d-flex flex-row">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
-										</div>	
 
-									</div>
-
-									<textarea rows="3" cols="5" class="common-input-form comment-layout" readonly="readonly">댓글내용댓글내용댓글내용
-댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용							
-									</textarea>
-									
-								</div>
-								
-								
-								<div class="horizontal-line comment-line-margin"></div>
-								
-								
-								<div class="d-flex flex-row">
-									
-									<div class="d-flex flex-column writer-layout">
-										<p class="comment-writer-text">닉네임(3)</p>
-										
-										<div class="d-flex flex-row">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
-										</div>	
-
-									</div>
-
-									<textarea rows="3" cols="5" class="common-input-form comment-layout" readonly="readonly">댓글내용댓글내용댓글내용
-댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용댓글내용							
-									</textarea>
-									
-								</div>
-								
 								<div class="horizontal-line comment-line-margin"></div>
 								
 							</div>

@@ -6,13 +6,17 @@ drop table comment;
 create table comment(
 	comment_idx int primary key auto_increment,
     post_idx int,
-    author_id int,
+    author_idx int,
     content text,
     create_date datetime default now(),
     update_date datetime,
-    parend_id int,
-    like_count int default 0
+    parent_idx int default null
+    -- like_count int default 0
 );
+
+alter table comment rename column author_id to author_idx;
+alter table comment rename column parend_idx to parent_idx;
+alter table comment drop column like_count;
 
 -- 데이터 설명충
 desc comment;

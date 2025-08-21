@@ -54,7 +54,7 @@ $(function (){
 		// 3. 모든 검사를 통과하면 서버로 폼 데이터 전송
 		$.ajax({
 			type: "POST",
-			url: "/user/updatePassword", // 비밀번호를 최종 변경하는 API 주소
+			url: "UpdatePassword", // 비밀번호를 최종 변경하는 API 주소
 			data: {
 				current_pass: $("#current_pass").val(),
 				new_pass: $("#new_pass").val()
@@ -62,7 +62,7 @@ $(function (){
 			success: function(response) {
 				if(response.success) {
 					alert("비밀번호가 성공적으로 변경되었습니다. 다시 로그인해주세요.");
-					location.href = "/login"; // 로그인 페이지로 리다이렉트
+					location.href = "/luna_code/GoHome";
 				} else {
 					alert(response.message || "비밀번호 변경에 실패했습니다.");
 				}
@@ -89,7 +89,7 @@ async function checkCurrentPassword(currentPass) {
 	try {
 		const response = await $.ajax({
 			type: "POST",
-			url: "/user/checkCurrentPassword", // 현재 비밀번호를 검증하는 API 주소
+			url: "CheckCurrentPassword", // 현재 비밀번호를 검증하는 API 주소
 			data: { current_pass: currentPass }
 		});
 

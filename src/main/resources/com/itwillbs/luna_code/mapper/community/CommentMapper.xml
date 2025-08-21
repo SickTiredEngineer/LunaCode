@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 인터페이스 경로 -->	
+<mapper namespace="com.itwillbs.luna_code.mapper.community.CommentMapper">
+	
+	<insert id="insertNewComment">
+		INSERT INTO comment
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			post_idx,
+			author_idx,
+			content,
+			create_date,
+			<if test="parent_idx != null">parent_idx,</if>
+		</trim>
+		<trim prefix="VALUES (" suffix=")" suffixOverrides=",">
+			#{post_idx},
+			(SELECT idx FROM member WHERE user_id = #{author_id}),
+			#{content},
+			DEFAULT,
+			<if test="parent_idx != null">#{parent_idx},</if>
+		</trim>
+	</insert>
+	
+	
+	<select id="importAllComment">
+		select comment_idx, author_idx, (select nickname from member where idx = author_idx) as nickname,  content, create_date, update_date from comment
+		where post_idx = #{post_idx} order by coalesce(update_date, create_date) desc, comment_idx desc
+	</select>
+
+
+</mapper>

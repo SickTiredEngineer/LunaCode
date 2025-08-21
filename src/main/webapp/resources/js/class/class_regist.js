@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 켜질 영역 id 매칭용 맵 (data-value → 표시할 div id)
   const typeToDivId = {
-    '현장': 'type-hyunsang',
-    '온라인': 'type-online',
-    '실시간': 'type-live'
+    '1': 'type-hyunsang',
+    '2': 'type-online',
+    '3': 'type-live'
   };
 
   // 모든 type-details div 숨기기
@@ -296,4 +296,3 @@ supplyInput.addEventListener('input', function() {
   let sellingValue = Math.round(supplyValue * 1.1); // 10% 부가세 포함
   sellingInput.value = sellingValue > 0 ? sellingValue : '';
 });
-

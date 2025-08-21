@@ -80,13 +80,13 @@
         <a href="Community" class="nav-link">커뮤니티</a>
 
         <c:choose>
-		  <c:when test="${not empty sessionScope.loginUser}">
+         <c:when test="${not empty sessionScope.loginUser}">
 		    <c:choose>
-		      <c:when test="${sessionScope.loginUser.member_type eq 'MB02'}">
+		      <c:when test="${sessionScope.loginUser.member_type == 'MB03'}">
 		        <!-- 관리자용 메뉴 -->
 		        <a href="ApMemberList" class="nav-link">관리자 페이지</a>
 		      </c:when>
-		      <c:when test="${sessionScope.loginUser.member_type eq 'MB03'}">
+		      <c:when test="${sessionScope.loginUser.member_type == 'MB02'}">
 		        <!-- 강사용 메뉴 -->
 		        <a href="TeacherDashboard" class="nav-link">강사 대시보드</a>
 		      </c:when>
@@ -101,11 +101,11 @@
 		      <img src="${pageContext.request.contextPath}/resources/icons/icon_profile.png" alt="프로필" id="profileImg" class="nav-link">
 		      <div id="userDropdown" class="user-dropdown-box">
 		        <div class="user-info">
-		          <img src="${pageContext.request.contextPath}/resources/image/profile_image.png" class="user-img" alt="사진">
-		          <span class="user-nickname">${sessionScope.loginUser.nickname}</span>
+		          <img src="${pageContext.request.contextPath}${user.profile_img}" class="user-img" alt="사진">
+		          <span class="user-nickname">${user.nickname}</span>
 		        </div>
-		        <a href="${pageContext.request.contextPath}/MemberInfo" class="user-menu-item">마이페이지</a>
-		        <a href="${pageContext.request.contextPath}/AccountSetting" class="user-menu-item">계정 설정</a>
+		        <a href="MyProfile" class="user-menu-item">마이페이지</a>
+		        <a href="ModifyProfile" class="user-menu-item">계정 설정</a>
 		        <a href="javascript:void(0)" onclick="logout()" class="user-menu-item">로그아웃</a>
 		      </div>
 		    </div>
@@ -117,10 +117,10 @@
 		    <a href="MemberChoice" class="nav-link">회원가입</a>
 		  </c:otherwise>
 		</c:choose>
-
-    </div>
+		</div>
     
 </header>
 
 </body>
 </html>
+		

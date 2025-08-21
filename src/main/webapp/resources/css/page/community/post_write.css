@@ -85,6 +85,16 @@ textarea::-webkit-resizer {
 	font-weight: bold;
 }
 
+
+.info-text-attachment{
+	align-content:center;
+	color: var(--color-main) !important;
+	width: auto;
+	height: 30px;
+	font-weight: bold;
+}
+
+
 /* 안내문 사이즈 */
 .form-size{
 	width: 300px;

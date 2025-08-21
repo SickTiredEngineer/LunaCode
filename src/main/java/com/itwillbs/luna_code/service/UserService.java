@@ -59,7 +59,58 @@ public class UserService {
 	
 	// 닉네임 중복 확인을 위한 메소드
 	public boolean isNicknameDuplicate(String nickname) {
-		// userMapper.countNickname(nickname)이 0보다 크면 true(중복)를 반환
+		// 0보다 크면 true(중복)를 반환
 		return userMapper.countNickname(nickname) > 0;
+	}
+
+	// 현재 비밀번호가 맞는지 확인하는 메소드
+	public boolean isPasswordCorrect(String userId, String currentPass) {
+		// 현재 비밀번호를 가져옴
+		String storedPassword = userMapper.selectPassword(userId);
+		
+		if (storedPassword == null) {
+			return false; // 사용자가 존재하지 않는 경우
+		}
+		
+		// 비밀번호 비교
+		return storedPassword.equals(currentPass);
+	}
+	
+	// 새 비밀번호로 업데이트하는 메소드
+	@Transactional(rollbackFor = Exception.class)
+	public boolean updateNewPassword(String userId, String currentPass, String newPass) throws Exception {
+		// 현재 비밀번호 확인
+		if (!isPasswordCorrect(userId, currentPass)) {
+			return false; // 현재 비밀번호가 틀리면 false 반환
+		}
+
+		// Mapper로 전달
+		int updateCount = userMapper.updatePassword(userId, newPass);
+
+		if (updateCount == 0) {
+			// 업데이트가 실패하면 예외 발생시켜 롤백
+			throw new Exception("비밀번호 업데이트에 실패했습니다.");
+		}
+		
+		return true; // 성공 시 true 반환
+	}
+
+	// 계정 탈퇴 처리 메소드
+	@Transactional(rollbackFor = Exception.class)
+	public boolean deleteUserAccount(String userId, String password) throws Exception {
+		// 현재 비밀번호 확인
+		if (!isPasswordCorrect(userId, password)) {
+			return false; // 비밀번호가 틀리면 탈퇴 실패
+		}
+
+		// 계정 정보 삭제
+		int deleteCount = userMapper.deleteUser(userId);
+
+		if (deleteCount == 0) {
+			// 삭제된 행이 없으면 예외를 발생시켜 롤백 처리
+			throw new Exception("계정 삭제에 실패했습니다.");
+		}
+		
+		return true; // 성공 시 true 반환
 	}
 }

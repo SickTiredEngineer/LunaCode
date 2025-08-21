@@ -14,6 +14,7 @@
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath}/resources/css/page/community/post_write.css" rel="stylesheet">
+		<script src="${pageContext.request.contextPath}/resources/js/community/post_write.js"></script>
 
 	</head>
 	
@@ -40,39 +41,64 @@
 						
 						<div class="d-flex flex-column">
 						
-							<div class="d-flex flex-column write_main_layout">
+							<form action="PostWrite" method="post" class="d-flex flex-column write_main_layout">
 								
 							
 									<div class="d-flex flex-row write-layout">
-											<p class="info-text">제목</p>
-											<input type="text" class="common-input-form form-size">
+											<p class="info-text" >제목</p>
+											<input type="text" name="title" class="common-input-form form-size">
 									</div>
 									
 									<div class="horizontal-line"></div>
 								
 									<div class="d-flex flex-row write-layout-content">
 											<p class="info-text-content">내용</p>
-											<textarea rows="10" cols="50" class="common-input-form"></textarea>
+											<textarea name="content" rows="10" cols="50" class="common-input-form"></textarea>
 									</div>
 									
 									<div class="horizontal-line"></div>
 									
-									<div class="d-flex flex-row  write-layout">
-											<p class="info-text">첨부 파일</p>
-											<input type="text" class="common-input-form form-size">
-											<a href="#" class="positive-button button-detail">파일 선택</a>
+<!-- 									<div class="d-flex flex-row  write-layout"> -->
+<!-- 											<p class="info-text">첨부 파일</p> -->
+<!-- 											<input type="text" class="common-input-form form-size"> -->
+<!-- 											<a href="#" class="positive-button button-detail">파일 선택</a> -->
+<!-- 									</div> -->
+									
+<!-- 									<div class="d-flex flex-row"> -->
+<!-- 											<a href="#" class="positive-button button-detail add-attachment-bt">첨부 파일 추가</a> -->
+<!-- 									</div> -->
+
+									<div id="attachement_area">
+										<div class="d-flex flex-row">
+											<p class="info-text-attachment">첨부파일 추가(첨부파일 업로드는 10MB 이하의 파일 3개만 가능합니다.)</p>	
+										</div>
+
+										<div class="d-flex flex-row input-form-layout file-input-box">
+											<input type="file" name="certificate_01" id="certificate_01" class="input-form-size common-input-form" style="display:none;">
+											<input type="text" id="certificate_01_name" class="input-form-size common-input-form" placeholder="선택된 파일 없음" readonly>
+											<label for="certificate_01">
+												<div class="positive-button attach-bt-margin">파일 선택</div>
+											</label>
+			<!-- 								<button type="button" class="negative-button remove-attach">삭제</button> -->
+										</div>
+									</div>
+						
+									<div class="d-flex flex-row input-form-layout">
+										<button type="button" id="add_attachment_bt" class="positive-button add_attach_margin">파일 추가</button>
 									</div>
 									
-									<div class="d-flex flex-row">
-											<a href="#" class="positive-button button-detail add-attachment-bt">첨부 파일 추가</a>
+									<br>
+									
+									<div class="horizontal-line"></div>
+									
+									<div class="d-flex flex-row button-container">
+										<a href="" class="negative-button">취소</a>
+										<button type="submit" class="positive-button">완료</button>
 									</div>
-								
-								</div>
+
+								</form>
 							
-						<div class="d-flex flex-row button-container">
-							<a href="Community" class="negative-button">취소</a>
-							<a href="Community" class="positive-button">완료</a>
-						</div>
+						
 								
 
 						</div>	

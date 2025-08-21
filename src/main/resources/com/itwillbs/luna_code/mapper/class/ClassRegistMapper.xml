@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 인터페이스 경로 -->	
+<mapper namespace="com.itwillbs.luna_code.mapper.ClassMapper">
+	<insert id="insertClass" parameterType="com.itwillbs.luna_code.vo.ClassVo" useGeneratedKeys="true" keyProperty="class_idx">
+			INSERT INTO class (
+			instructor_idx, 
+			class_title, 
+			class_time, 
+			class_type, 
+			create_date, 
+			class_thumbnail, 
+			class_intro, 
+			class_content, 
+			class_price, 
+			class_category, 
+			class_level, 
+			total_lessons
+		) VALUES (
+   			#{instructor_idx}, 
+			#{class_title}, 
+			#{class_time}, 
+			#{class_type}, 
+			#{create_date}, 
+			#{class_thumbnail}, 
+			#{class_intro}, 
+			#{class_content}, 
+			#{class_price}, 
+			#{class_category}, 
+			#{class_level}, 
+			#{total_lessons}
+		)
+	</insert>
+
+	<select id="selectInstructorIdxByUserId" parameterType="string" resultType="int">
+    	SELECT idx FROM member WHERE user_id = #{userId}
+	</select>
+
+</mapper>

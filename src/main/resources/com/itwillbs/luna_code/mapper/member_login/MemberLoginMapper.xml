@@ -9,7 +9,11 @@
 	<select id="selectMemberVO" parameterType="map" resultType="com.itwillbs.luna_code.vo.MemberLoginVO">
 	    SELECT
 	    user_id,
-	    password
+	    password,
+	    nickname,
+        email,
+        user_name,
+        member_type
 	    FROM member
 	    WHERE user_id = #{user_id}
         AND password = #{password}

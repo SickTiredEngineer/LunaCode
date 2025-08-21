@@ -10,7 +10,7 @@
 	<select id="postList">
 		select 
 			post_idx,
-			board_idx,
+			board_code,
 			title,
 			content,
 			author_idx,
@@ -26,7 +26,7 @@
 	<select id="getPostDetail">
 		select 
 			post_idx,
-			board_idx,
+			board_code,
 			title,
 			content,
 			author_idx,
@@ -37,6 +37,26 @@
 			view_count
 		 from post where post_idx = #{post_idx}
 	</select>
+	
+		
+	<insert id="insertNewPost">
+	  INSERT INTO post (
+		    board_code, title, content, author_idx, created_date, view_count
+		  ) VALUES (
+		    'BD01',
+		    #{title},
+		    #{content},
+		    (SELECT idx FROM member WHERE user_id = #{author_id}),
+		    DEFAULT,
+		    1
+		  )
+	</insert>
+
+	<update id="increaseViewCount">
+	
+		update post set view_count = view_count + 1 where post_idx = #{post_idx}; 
+	
+	</update>
 	
 	
 
