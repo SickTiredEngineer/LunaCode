@@ -9,6 +9,7 @@
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/attendance.css" rel="stylesheet">  
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/usermain_category.css" rel="stylesheet">    
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</head>
 	
 	<body>
@@ -43,54 +44,42 @@
 							</div>
 							<div class="streak-card">
 								<h3>월간 출석</h3>
-								<div class="streak-circle">6달 연속</div>
+								<div class="streak-circle">${attendanceInfo.consecutive_monthly_attendance}달 연속</div>
 							</div>
 						</section>
 
 						<!-- 우측 통계 -->
 						<section class="stats-section">
-							<!-- 일간 출석률 -->
+							<!-- 주간 출석률 -->
 							<div class="chart-container">
-								<h4>일간 출석률</h4>
+								<h4>주간 출석률</h4>
 								<div class="chart">
-									<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>월</span></div>
-									<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>화</span></div>
-									<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>수</span></div>
-									<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>목</span></div>
-									<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>금</span></div>
-									<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>토</span></div>
-									<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>일</span></div>
+									<canvas id="dailyAttendanceChart"></canvas>
 								</div>
 							</div>
 
 							<!-- 결석일 수 -->
 							<div class="stat-item">
 								<h4>결석일 수</h4>
-								<p>0<span>/30 (0%)</span></p>
+								<p>${attendanceInfo.recent_absences}
+									<span>/30 (${attendanceInfo.recent_absences / 30 * 100}%)</span>
+								</p>
 							</div>
 
 							<!-- 월별 출석률 -->
 							<div class="chart-container">
 								<h4 class="myclass-title">월별 출석률</h4>
 								<div class="monthly-area-chart">
-									<svg width="100%" height="100%" viewBox="0 0 300 125" preserveAspectRatio="none">
-										<defs>
-											<linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-												<stop offset="0%" stop-color="#4A90E2" stop-opacity="0.4"/>
-												<stop offset="100%" stop-color="#F0F5FF" stop-opacity="0.1"/>
-											</linearGradient>
-										</defs>
-										<path d="M0,80 L25,50 L50,90 L75,75 L100,60 L125,85 L150,70 L175,40 L200,80 L225,95 L250,65 L275,100 L300,85 L300,125 L0,125 Z" fill="url(#areaGradient)"/>
-										<path d="M0,80 L25,50 L50,90 L75,75 L100,60 L125,85 L150,70 L175,40 L200,80 L225,95 L250,65 L275,100 L300,85" fill="none" stroke="#4A90E2" stroke-width="2"/>
-										<line x1="0" y1="124" x2="300" y2="124" stroke="#E0E7F0" stroke-width="1" />
-									</svg>
+									<canvas id="monthlyAttendanceChart"></canvas>
 								</div>
 							</div>
 
 							<!-- 최대 출석일 수 -->
 							<div class="stat-item max-attendance">
 								<h4>최대 출석일 수</h4>
-								<p>200<span>일째</span></p>
+								<p>${attendanceInfo.max_attendance_consecutive}
+									<span>일째</span>
+								</p>
 							</div>
 						</section>
 					</div>
@@ -101,5 +90,35 @@
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
 		</div>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/usermain/attendance.js"></script>
+		
+		<script>
+			const dailyDataFromServer = [
+				${attendanceInfo.daily_attendance_stats['MON']}, ${attendanceInfo.daily_attendance_stats['TUE']},
+				${attendanceInfo.daily_attendance_stats['WED']}, ${attendanceInfo.daily_attendance_stats['THU']},
+				${attendanceInfo.daily_attendance_stats['FRI']}, ${attendanceInfo.daily_attendance_stats['SAT']},
+				${attendanceInfo.daily_attendance_stats['SUN']}
+			];
+			
+			const dailyChartHeights = dailyDataFromServer.map(count => {
+				// count (출석 횟수)가 0보다 크면 50을, 그렇지 않으면 10을 반환합니다.
+				return count > 0 ? 50 : 10;
+			});
+			
+			const monthlyDataFromServer = [
+				${attendanceInfo.monthly_attendance_stats['1']}, ${attendanceInfo.monthly_attendance_stats['2']},
+				${attendanceInfo.monthly_attendance_stats['3']}, ${attendanceInfo.monthly_attendance_stats['4']},
+				${attendanceInfo.monthly_attendance_stats['5']}, ${attendanceInfo.monthly_attendance_stats['6']},
+				${attendanceInfo.monthly_attendance_stats['7']}, ${attendanceInfo.monthly_attendance_stats['8']},
+				${attendanceInfo.monthly_attendance_stats['9']}, ${attendanceInfo.monthly_attendance_stats['10']},
+				${attendanceInfo.monthly_attendance_stats['11']}, ${attendanceInfo.monthly_attendance_stats['12']}
+			];
+		
+			document.addEventListener("DOMContentLoaded", function() {
+				initAttendanceCharts(dailyDataFromServer, monthlyDataFromServer);
+			});
+		</script>
+		
 	</body>
 </html>

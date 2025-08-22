@@ -30,6 +30,7 @@ body {
 /* 메인 폼 영역 */
 .form-container {
 	flex: 1; /* 남은 공간을 모두 차지하도록 수정 */
+	max-width: 900px;
 	margin-left: var(--common-margin);
 	background-color: var(--color-sub);
 	padding: var(--common-padding);

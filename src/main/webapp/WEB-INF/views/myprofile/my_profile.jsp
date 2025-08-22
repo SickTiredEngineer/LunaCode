@@ -53,13 +53,27 @@
 						<div class="dashboard-panel attendance-panel">
 							<h4>출석</h4>
 							<div class="chart">
-								<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>월</span></div>
-								<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>화</span></div>
-								<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>수</span></div>
-								<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>목</span></div>
-								<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>금</span></div>
-								<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>토</span></div>
-								<div class="bar-container"><div class="bar" style="height: 50%;"></div><span>일</span></div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>월</span>
+								</div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>화</span>
+								</div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>수</span>
+								</div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>목</span>
+								</div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>금</span>
+								</div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>토</span>
+								</div>
+								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+									</div><span>일</span>
+								</div>
 							</div>
 						</div>
 
