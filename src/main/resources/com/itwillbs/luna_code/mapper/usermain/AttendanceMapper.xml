@@ -1,31 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper 
-	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.luna_code.mapper.usermain.AttendanceMapper">
 
-	<resultMap id="userResultMap" type="com.itwillbs.luna_code.vo.UserVO">
-		<result property="attendance_count" column="attendance_count"/>
-		<result property="attendance_consecutive" column="attendance_consecutive"/>
-		<result property="attendance_last" column="attendance_last"/>
-	</resultMap>
+    <resultMap id="userResultMap" type="com.itwillbs.luna_code.vo.UserVO">
+    	<id property="user_id" column="user_id"/> 
+        <result property="attendance_count" column="attendance_count"/>
+        <result property="attendance_consecutive" column="attendance_consecutive"/>
+        <result property="attendance_last" column="attendance_last"/>
+    </resultMap>
 
-	<select id="selectUserAttendance" parameterType="string" resultMap="userResultMap">
-		SELECT 
-			   attendance_count
-			 , attendance_consecutive
-			 , attendance_last
-		  FROM member
-		 WHERE user_id = #{user_id}
+    <select id="selectUserAttendance" parameterType="string" resultMap="userResultMap">
+        select 
+        	   user_id
+             , attendance_count
+             , attendance_consecutive
+             , attendance_last
+          from member
+         where user_id = #{user_id}
+    </select>
+    
+    <update id="updateUserAttendance" parameterType="com.itwillbs.luna_code.vo.UserVO">
+        update member
+           set attendance_count = #{attendance_count}
+             , attendance_consecutive = #{attendance_consecutive}
+             , attendance_last = now()
+         where user_id = #{user_id}
+    </update>
+    
+    <!-- 최대 연속 출석일 조회 -->
+    <select id="selectMaxConsecutiveDays" parameterType="string" resultType="int">
+        select ifnull(max(streak_count), 0)
+	      from (select count(*) as streak_count
+	      from (select attendance_date
+	         , row_number() over (order by attendance_date) as rn
+	         , date_sub(attendance_date, interval row_number() over (order by attendance_date) day) as grp
+	      from attendance_history
+	     where user_id = #{user_id}) as t
+	  group by grp) as final_streaks;
+    </select>
+    
+    <!-- 최근 30일 출석일 수 조회 (결석일 계산용) -->
+    <select id="selectAttendanceCountInLast30Days" parameterType="string" resultType="int">
+        select count(*)
+          from attendance_history
+         where user_id = #{user_id}
+           and attendance_date between curdate() - interval 29 day and curdate()
+    </select>
+    
+    <!-- 요일별 출석 통계 조회 -->
+    <select id="selectDailyStats" parameterType="string" resultType="map">
+        select dayofweek(attendance_date) as day_of_week
+             , count(*) as count
+          from attendance_history
+         where user_id = #{user_id}
+      group by day_of_week
+    </select>
+    
+    <!-- 월별 출석 통계 조회 (올해 기준) -->
+    <select id="selectMonthlyStats" parameterType="string" resultType="map">
+        select month(attendance_date) as month
+             , count(*) as count
+          from attendance_history
+         where user_id = #{user_id}
+           and year(attendance_date) = year(curdate())
+      group by month
+    </select>
+    
+    <!-- 연속 월간 출석일 수 계산 쿼리 -->
+	<select id="selectConsecutiveMonthlyAttendance" parameterType="string" resultType="int">
+		-- 1. 출석 기록에서 '연-월' 만 추출하고 중복을 제거하여 출석한 달 목록을 만듭니다.
+		with monthlyattendance as (
+		    select distinct date_format(attendance_date, '%Y-%m-01') as attendance_month
+		    from attendance_history
+		    where user_id = #{user_id}
+		),
+	    -- 2. 각 출석 월에 순위를 매깁니다. (2025-06 -> 1, 2025-07 -> 2, 2025-08 -> 3...)
+		rankedattendance as (
+		    select attendance_month
+		          , row_number() over (order by attendance_month) as rn
+		    from monthlyattendance
+		)
+	    -- 3. (출석 월)에서 (순위)를 뺀 값으로 그룹핑하여 연속된 그룹을 찾고, 가장 큰 그룹의 크기를 반환합니다.
+	    --    (예: 2025-08 - 3개월 = 2025-05, 2025-07 - 2개월 = 2025-05 => 같은 그룹)
+	    --    (만약 2025-05가 없고 2025-04 - 1개월 = 2025-03 이라면 다른 그룹)
+		select ifnull(max(streak_count), 0)
+		from (
+			select count(*) as streak_count
+			from rankedattendance
+			group by date_sub(attendance_month, interval rn month)
+		) as streaks;
 	</select>
 	
-	<update id="updateUserAttendance" parameterType="com.itwillbs.luna_code.vo.UserVO">
-		UPDATE member
-		   SET attendance_count = #{attendance_count}
-			 , attendance_consecutive = #{attendance_consecutive}
-			 , attendance_last = NOW()
-		 WHERE user_id = #{user_id}
-	</update>
+	<!-- 중복 확인용: 오늘 날짜의 출석 기록 카운트 -->
+    <select id="selectTodayAttendanceHistory" parameterType="string" resultType="int">
+        SELECT COUNT(*)
+          FROM attendance_history
+         WHERE user_id = #{user_id}
+           AND attendance_date = CURDATE()
+    </select>
+    
+    <!-- 기록 추가용: 오늘 날짜로 출석 기록 INSERT -->
+    <insert id="insertAttendanceHistory" parameterType="string">
+        INSERT INTO attendance_history (user_id, attendance_date)
+        VALUES (#{user_id}, CURDATE())
+    </insert>
 
 </mapper>
