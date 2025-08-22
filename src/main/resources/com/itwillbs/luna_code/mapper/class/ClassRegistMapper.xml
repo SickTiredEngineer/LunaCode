@@ -6,7 +6,8 @@
 
 <!-- 인터페이스 경로 -->	
 <mapper namespace="com.itwillbs.luna_code.mapper.ClassMapper">
-	<insert id="insertClass" parameterType="com.itwillbs.luna_code.vo.ClassVo" useGeneratedKeys="true" keyProperty="class_idx">
+
+<insert id="insertClass" parameterType="com.itwillbs.luna_code.vo.ClassVo">
 			INSERT INTO class (
 			instructor_idx, 
 			class_title, 
@@ -18,26 +19,19 @@
 			class_content, 
 			class_price, 
 			class_category, 
-			class_level, 
-			total_lessons
+			class_level
 		) VALUES (
    			#{instructor_idx}, 
 			#{class_title}, 
 			#{class_time}, 
 			#{class_type}, 
-			#{create_date}, 
+			NOW(), 
 			#{class_thumbnail}, 
 			#{class_intro}, 
 			#{class_content}, 
 			#{class_price}, 
 			#{class_category}, 
-			#{class_level}, 
-			#{total_lessons}
+			#{class_level}
 		)
 	</insert>
-
-	<select id="selectInstructorIdxByUserId" parameterType="string" resultType="int">
-    	SELECT idx FROM member WHERE user_id = #{userId}
-	</select>
-
 </mapper>

@@ -12,16 +12,14 @@ public class ClassVo {
     private int instructor_idx;     
     private String class_title;     
     private String class_time;        
-    private Integer class_type;         
+    private String class_type;         
     private Date create_date;       
     private String class_thumbnail; 
     private String class_intro;    
     private String class_content;   
     private int class_price;        
-    private Integer class_category;     
-    private Integer class_level;        
+    private String class_category;     
+    private String class_level;        
     private int total_lessons;     
-	
-	
 	
 }

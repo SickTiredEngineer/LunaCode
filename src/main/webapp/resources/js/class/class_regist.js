@@ -48,6 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         selectedTags.delete(name);
         renderChosenTags();
+        updateClassCategoryInput();
       });
 
       tag.appendChild(btn);
@@ -55,10 +56,29 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  subcategoryList.addEventListener('click', (e) => {
+    const btn = e.target.closest('.reg-cat-btn');
+    if (!btn) return;
+    const name = btn.dataset.name;
+    if (!selectedTags.has(name)) {
+      selectedTags.add(name);
+      renderChosenTags();
+      updateClassCategoryInput();
+    }
+  });
+
+  function updateClassCategoryInput() {
+    const input = document.getElementById('classCategoryInput');
+    if (input) {
+      input.value = Array.from(selectedTags).join(',');
+    }
+  }
+
   // 초기 렌더링
   renderMainCategories();
   renderSubCategories();
   renderChosenTags();
+  updateClassCategoryInput();
 
   // 메인 카테고리 클릭 이벤트 
   categoryList.addEventListener('click', (e) => {
@@ -70,32 +90,30 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMainCategories();
     renderSubCategories();
   });
-
-  // 서브 카테고리 클릭 이벤트 
-  subcategoryList.addEventListener('click', (e) => {
-    const btn = e.target.closest('.reg-cat-btn');
-    if (!btn) return;
-    const name = btn.dataset.name;
-    if (!selectedTags.has(name)) {
-      selectedTags.add(name);
-      renderChosenTags();
-    }
-  });
 });
 
-	// 강의 유형 밎 난이도
+// 강의 유형 밎 난이도
 document.addEventListener('DOMContentLoaded', () => {
   const difficultyGroup = document.getElementById('difficulty-group');
   const typeGroup = document.getElementById('type-group');
+  const classTypeInput = document.getElementById('classTypeInput'); 
+  const classLevelInput = document.getElementById('classLevelInput'); 
 
   // 단일 선택 처리 함수
   function handleSingleSelect(group, clickedBtn) {
     if (!clickedBtn.classList.contains('reg-toggle-btn')) return;
     group.querySelectorAll('.reg-toggle-btn.selected').forEach(btn => btn.classList.remove('selected'));
     clickedBtn.classList.add('selected');
-    // 접근성용 aria-pressed 업데이트
     group.querySelectorAll('.reg-toggle-btn').forEach(btn => btn.setAttribute('aria-pressed', 'false'));
     clickedBtn.setAttribute('aria-pressed', 'true');
+
+    if (group.id === 'type-group' && classTypeInput) {
+      classTypeInput.value = clickedBtn.dataset.value;
+    }
+
+    if (group.id === 'difficulty-group' && classLevelInput) {
+      classLevelInput.value = clickedBtn.dataset.value;
+    }
   }
 
   // 복수 선택 처리 함수
@@ -124,12 +142,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-	// 강의 유형 상세 선택
+// 강의 유형 상세 선택
 document.addEventListener('DOMContentLoaded', () => {
   const typeGroup = document.getElementById('type-group');
   const typeDetailsList = document.querySelectorAll('.type-details');
 
-  // 켜질 영역 id 매칭용 맵 (data-value → 표시할 div id)
   const typeToDivId = {
     '1': 'type-hyunsang',
     '2': 'type-online',
@@ -160,44 +177,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // 초기 숨기기
   hideAllTypeDetails();
 
-  // 버튼 클릭 이벤트 처리 (단일 선택으로 가정)
+  // 버튼 클릭 이벤트 처리
   typeGroup.addEventListener('click', (e) => {
     const btn = e.target.closest('.reg-toggle-btn');
     if (!btn) return;
 
-    // 단일 선택 가정: 모든 버튼 selected 제거
     typeGroup.querySelectorAll('.reg-toggle-btn').forEach(button => {
       button.classList.remove('selected');
       button.setAttribute('aria-pressed', 'false');
       button.querySelector('.chk-ico').textContent = '';
     });
 
-    // 클릭한 버튼만 선택 표시 추가
     btn.classList.add('selected');
     btn.setAttribute('aria-pressed', 'true');
     btn.querySelector('.chk-ico').textContent = '\u2713';
 
-    // 해당 유형에 맞는 UI 보여주기
     showTypeDetail(btn.dataset.value);
   });
 
-  // 페이지 로드 시 기본 선택 (있으면)
   const initiallySelected = typeGroup.querySelector('.reg-toggle-btn.selected');
   if (initiallySelected) {
     showTypeDetail(initiallySelected.dataset.value);
   }
 });
 
-	// 강의 등록 날짜
+// 강의 등록 날짜
 document.addEventListener('DOMContentLoaded', function() {
   const today = new Date();
   const yyyy = today.getFullYear();
-  const mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0부터 시작하므로 +1 필요
+  const mm = String(today.getMonth() + 1).padStart(2, '0'); 
   const dd = String(today.getDate()).padStart(2, '0'); 
 
   const todayStr = `${yyyy}-${mm}-${dd}`;
 
-  // 시작일과 종료일 input 요소 찾기
   const startDateInput = document.getElementById('start-date');
   const endDateInput = document.getElementById('end-date');
 
@@ -208,7 +220,6 @@ document.addEventListener('DOMContentLoaded', function() {
     endDateInput.value = todayStr;
   }
 });
-
 
 // 강의 기한
 document.addEventListener('DOMContentLoaded', function () {
@@ -231,10 +242,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const start = new Date(startStr);
     if (isNaN(start)) return null;
 
-    // 1개월을 30일로 가정해 더함
     const newEnd = new Date(start.getTime() + months * 30 * 24 * 60 * 60 * 1000);
 
-    // yyyy-MM-dd 포맷으로 변경
     const yyyy = newEnd.getFullYear();
     const mm = String(newEnd.getMonth() + 1).padStart(2, '0');
     const dd = String(newEnd.getDate()).padStart(2, '0');
@@ -245,7 +254,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function onDateChange() {
     const months = calculateMonths(startInput.value, endInput.value);
     if (months && periodSelect) {
-      // 범위내 가장 가까운 옵션 찾기
       const options = Array.from(periodSelect.options);
       const closest = options.reduce((prev, curr) => {
         return (Math.abs(parseInt(curr.value) - months) < Math.abs(parseInt(prev.value) - months)) ? curr : prev;
@@ -281,7 +289,6 @@ document.addEventListener('DOMContentLoaded', function () {
     endInput.addEventListener('change', onDateChange);
     periodSelect.addEventListener('change', onPeriodChange);
 
-    // 초기 로드 시 동기화
     onDateChange();
   }
 });

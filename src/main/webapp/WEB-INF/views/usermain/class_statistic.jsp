@@ -21,6 +21,7 @@
 				<%-- 좌측 공통 카테고리 --%>
 				<aside class="common-category">
 					<a href="UserMain" class="common-category-element active">홈</a>
+					<a href="ClassRegist" class="common-category-element">강의 등록</a>
 					<a href="MyClass" class="common-category-element">내 강의</a>
 					<a href="PlayList" class="common-category-element">재생목록</a>
 					<a href="Attendance" class="common-category-element">출석</a>
