@@ -85,6 +85,8 @@ alter table member modify column member_type varchar(30);
 -- update common code
 update member set member_type = 'MB01';
 
+SELECT LENGTH(password), HEX(password), CONCAT('[',password,']')
+FROM member WHERE user_id='admin123';
 
 
 

@@ -75,6 +75,7 @@ public class CommunityController {
 		
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		
+		
 		System.out.println("PostWriteResult: " + postVo);
 		System.out.println("Check User Idx From Post Write: " + user.getIdx());
 //		postVo.setBoard_code("BD01");

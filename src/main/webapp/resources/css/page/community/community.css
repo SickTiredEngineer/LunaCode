@@ -10,7 +10,7 @@
 /* 카테고리에 해당되는 게시판 이름 출력 H2에 적용 */
 .main-text{
 	width: 300px;
-	text-align: left;
+	text-align: center;
 /* 	font-size:20px; */
 	font-family: var(--font-main);
 	color: var(--color-main)  !important;

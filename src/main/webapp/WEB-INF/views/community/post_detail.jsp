@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
 
@@ -89,10 +89,18 @@
 								
 									<div class="content-layout">
 										<div class="d-flex justify-content-center">
-											<img class="great-button" alt="..." src="${pageContext.request.contextPath}/resources/icons/icon_great.png">
+										
+										<sec:authorize access="isAuthenticated()">
+									    	<img id="greate_bt" class="great-button" alt="..." src="${pageContext.request.contextPath}/resources/icons/icon_great.png">
+									    </sec:authorize>
+									    
+										<sec:authorize access="isAnonymous()">
+									    	<img id="" class="great-button" alt="..." src="${pageContext.request.contextPath}/resources/icons/icon_great.png">
+									    </sec:authorize>
+										
 										</div>
 										
-										<p class="greate-text">100</p>
+										<p id="like_text" class="greate-text">0</p>
 									</div>
 								
 							</div>

@@ -24,7 +24,7 @@ body {
 .payment-history-container {
     flex: 1;
     margin-left: var(--common-margin);
-    max-width: 800px;
+    max-width: 900px;
     /* 이 컨테이너는 배경색 없이 내부 아이템이 디자인을 갖도록 함 */
 }
 

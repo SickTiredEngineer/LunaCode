@@ -49,9 +49,10 @@ public class UserMainController {
 	@GetMapping("Attendance")
 	public String attendance(Principal principal, Model model) {
 		String userId = principal.getName();
-		UserVO attendanceInfo = attendanceService.getUserAttendance(userId);
+		
+		UserVO attendanceInfo = attendanceService.getAttendancePageData(userId);
 		model.addAttribute("attendanceInfo", attendanceInfo);
-
+		
 		return "usermain/attendance";
 	}
 

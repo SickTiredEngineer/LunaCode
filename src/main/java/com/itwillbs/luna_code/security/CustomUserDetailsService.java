@@ -44,6 +44,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         
         return new CustomUserDetails(
         		memberVo.getIdx(),
+        		memberVo.getUser_id(),
         		memberVo.getUser_name(), 
         		memberVo.getPassword(), 
         		List.of(new SimpleGrantedAuthority(role)), 
