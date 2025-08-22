@@ -116,16 +116,15 @@
 	          <img src="${pageContext.request.contextPath}${profileImg}" class="user-img" alt="사진">
 	          <span class="user-nickname"><c:out value="${nickname}"/></span>
 	        </div>
-			
-			<a href="${pageContext.request.contextPath}/UserMain" class="user-menu-item">홈</a>
+	
 	        <a href="${pageContext.request.contextPath}/MyProfile" class="user-menu-item">마이페이지</a>
 	        <a href="${pageContext.request.contextPath}/ModifyProfile" class="user-menu-item">계정 설정</a>
-	
+			<a href="${pageContext.request.contextPath}/MemberLogout" class="user-menu-item">로그아웃</a>
 	        <!-- 로그아웃 -->
-	        <form action="${pageContext.request.contextPath}/MemberLogout" method="post" style="margin:0;">
-	          <button type="submit" class="user-menu-item" style="background:none;border:0;padding:0;">로그아웃</button>
-	          <sec:csrfInput/>
-	        </form>
+<%-- 	        <form action="${pageContext.request.contextPath}/MemberLogout" method="post" style="margin:0;"> --%>
+<!-- 	          <button type="submit" class="user-menu-item" style="background:none;border:0;padding:0;">로그아웃</button> -->
+<%-- 	          <sec:csrfInput/> --%>
+<!-- 	        </form> -->
 	        
 	      </div>
 	    </div>

@@ -1,21 +1,80 @@
 
 
-$(function(){
+$(async function(){
+	
+	let likeState = await importLikes();
 	
 	$("#write_comment_bt").on("click", async function(){
 		var result = await writeComment(null);
 		console.log(result);
 	});
-	
-	
+
+	$("#greate_bt").on("click", async function(){
+		
+		
+		const res = await toggleLike(likeState);
+		
+		
+		
+		
+		result = res;
+
+				
+	});
+
+
 });
 
 
-
-
-async function importComment(){
-	$("#main_layout").data("postIdx");
+function tempSwitchBool(r){
+	return r=='true'? true:false;
 }
+
+async function importLikes(){
+
+	try{
+		const res = await $.ajax({
+			type: "post",
+			url: "ImportPostLike",
+			dataType: "json",
+			data:{
+				post_idx: $("#main_layout").data("postIdx")
+			}
+		});
+		
+		$("#like_text").text(res.cnt);
+		$("#greate_bt").css("background-color", res.bg_color);
+		return tempSwitchBool(res.dup_res);
+	}catch(e){return false}	
+	
+}
+
+//
+//async function toggleLike(){
+//	
+//	
+//	try{
+//		
+//		const res = await $.ajax({
+//			
+//			type: "post",
+//			url: 
+//
+//			
+//		});
+//		
+//		
+//		
+//		
+//	}catch(e){return false}
+//	
+//	
+//	
+//	
+//	
+//	
+//}
+
 
 
 
@@ -40,7 +99,7 @@ async function writeComment(parent_idx){
 			dataType: "json",
 			data:payload
 		});
-		
+
 		$("#comment-root-layout");
 		
 	}catch(e){return false};

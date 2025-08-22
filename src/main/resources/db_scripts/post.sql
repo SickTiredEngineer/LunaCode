@@ -53,3 +53,8 @@ insert into post(
 ('BD01', '게시글 1', '게시글 내용1', 1, default, 5550),
 ('BD01', '게시글 2', '게시글 내용2', 2, default, 21),
 ('BD01', '게시글 3', '게시글 내용3', 3, default, 300);
+
+
+
+select * from post;
+

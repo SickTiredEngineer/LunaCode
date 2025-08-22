@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page session="false" %>
 
 
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 
@@ -28,20 +28,27 @@
 
 			<article>
 				
-				<div class="d-flex flex-row justify-content-between top-layout">
-				
-					<div class="d-flex justify-content-center">
-						<h2 class="main-text">커뮤니티</h2>
-					</div>
+				<div class="d-flex flex-column justify-content-center top-layout">
 					
-					<div class="d-flex flex-row">
-						<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
-							<input type="text" class="search-form-input" maxlength="10">
-							<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
+					<div class="d-flex">
+						<h2 class="main-text" style="width: 100%;">커뮤니티</h2>
+					</div>
+										
+					<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
+						<input type="text" class="search-form-input" maxlength="10">
+						<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
+					</div>
+						
+					
+					<div class="d-flex flex-column justify-content-between">
+
+						<div class="d-flex flex-row justify-content-end">
+							<sec:authorize access="isAuthenticated()">
+								<a href="PostWrite" class="positive-button write-button-size">게시글 작성</a>
+							</sec:authorize>
 						</div>
-					</div>
 					
-					<a href="PostWrite" class="positive-button write-button-size">게시글 작성</a>
+					</div>
 					
 				</div>
 				

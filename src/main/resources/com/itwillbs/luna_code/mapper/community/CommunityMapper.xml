@@ -20,7 +20,7 @@
 	    p.view_count,
 	    (select count(*) from comment c where c.post_idx = p.post_idx) as cnt_comment
 	  from post p
-	  order by p.created_date DESC
+	  order by p.created_date DESC, post_idx DESC
 	</select>
 
 	
