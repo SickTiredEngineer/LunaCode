@@ -29,6 +29,7 @@
 <!-- 	<context:component-scan base-package="com.itwillbs.mvc_board" /> -->
 	
 	<context:component-scan base-package="com.itwillbs.luna_code.controller" />
+<!-- 	<context:component-scan base-package="com.itwillbs.luna_code.config"/> -->
 	
 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
 	
@@ -47,6 +48,15 @@
 			<exclude-mapping path="/*.ico"/>
 			<beans:bean class="com.itwillbs.luna_code.interceptor.UserInfoInterceptor" />
 		</interceptor>
+		
+		<!-- JSP에서 사용자 규칙 쉽게 꺼내쓸 수 있게 세팅한 인터셉트 -->
+		<interceptor>
+			<mapping path="/**"/>
+			<exclude-mapping path="/resources/**"/>
+			<exclude-mapping path="/*.ico"/>
+			<beans:bean class="com.itwillbs.luna_code.interceptor.UserRoleInterceptor"/>
+		</interceptor>
+		
 	</interceptors>
 	
 </beans:beans>

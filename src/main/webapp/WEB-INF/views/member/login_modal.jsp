@@ -32,7 +32,7 @@
 					      </div>
 					
 					      <div class="modal-body">
-					        <form action="${pageContext.request.contextPath}/MemberLoginForm" method="post">
+					        <form action="<c:url value='/MemberLoginForm'/>" method="post">
 					
 					          <div class="mb-3">
 								  <label for="inputId" class="form-label">아이디</label>

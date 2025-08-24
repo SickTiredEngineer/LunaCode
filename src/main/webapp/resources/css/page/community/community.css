@@ -20,12 +20,12 @@
 
 /* ========================================= */
 /* 수평선 -> 공용으로 뺏음 */
-.horizontal-line {
-	width: 100%;
-	height: 1px; /* 원하는 높이로 고정 */
-	background-color: var(--color-border);
-	border: none;
-}
+/* .horizontal-line { */
+/* 	width: 100%; */
+/* 	height: 1px; 원하는 높이로 고정 */
+/* 	background-color: var(--color-border); */
+/* 	border: none; */
+/* } */
 
 
 /* ========================================= */
@@ -152,7 +152,20 @@ list-main-layout{
 	border: 1px solid var(--color-border);
 	border-radius: var(--common-radius);
 	background-color: var(--color-sub);
+
 }
+
+.align-form{
+	display: inline;
+	margin: 0px;
+	
+}
+
+/* .edit-image-size{ */
+/* 	width: 100%; */
+/* 	height: 100%; */
+/* } */
+
 
 .edit-icon:hover, .search-icon:hover{
 	border: 1px solid var(--color-main);

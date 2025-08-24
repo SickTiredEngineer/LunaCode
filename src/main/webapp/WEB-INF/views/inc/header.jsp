@@ -73,18 +73,28 @@
         });
     </script>
 
-	    <div class="logo-center">
-	        <a href="${pageContext.request.contextPath}/GoHome" class="logo-text">
-	            <img alt="로고" class="main_bannder" src="${pageContext.request.contextPath}/resources/image/LunaCode_header.png">
-	        </a>
-	    </div>
+		<sec:authorize access="isAuthenticated()">
+			<c:set var="logoHref" value="/UserMain"/>
+		</sec:authorize>
+		
+		<sec:authorize access="isAnonymous()">
+			<c:set var="logoHref" value="/GoHome"/>
+		</sec:authorize>
+		
+		<div class="logo-center">
+			<a href="<c:url value='${logoHref}'/>" class="logo-text">
+				<img alt="로고" class="main_bannder" src="<c:url value='/resources/image/LunaCode_header.png'/>">
+			</a>
+		</div>
+
 	
 	   <div class="d-flex align-items-center gap-3">
-	  <a href="${pageContext.request.contextPath}/Community" class="nav-link">커뮤니티</a>
+	   	<a href="${pageContext.request.contextPath}/Community" class="nav-link">커뮤니티</a>
 	
 	  <!-- 비로그인(익명) -->
 	  <sec:authorize access="isAnonymous()">
 	    <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">로그인</a>
+<%-- 	    <a href="${pageContext.request.contextPath}/MemberLoginTemp" class="nav-link">로그인</a> --%>
 	    <a href="${pageContext.request.contextPath}/MemberChoice" class="nav-link">회원가입</a>
 	  </sec:authorize>
 	

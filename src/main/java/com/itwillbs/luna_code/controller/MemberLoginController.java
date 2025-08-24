@@ -1,9 +1,13 @@
 package com.itwillbs.luna_code.controller;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.web.savedrequest.HttpSessionRequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
@@ -12,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.MemberLoginService;
 import com.itwillbs.luna_code.service.usermain.AttendanceService;
 import com.itwillbs.luna_code.vo.MemberLoginVO;
@@ -32,11 +37,20 @@ public class MemberLoginController {
     }
     
     @GetMapping("/MemberLoginTemp")
-    public String loginTemp() {
-    	
+    public String loginTemp(Model model) {
+//    	model.addAttribute(error);
     	return "member/login_temp";
     }
     
+    
+    @GetMapping("/UpdateAttendance")
+    public String updateAttendance(Authentication auth) {
+    	
+    	CustomUserDetails user = (CustomUserDetails)auth.getPrincipal();
+    	attendanceService.performAttendanceCheck(user.getUserId());
+    	
+    	return "usermain/usermain";
+    }
     
     
 //    @GetMapping("/MemberLogin")

@@ -22,14 +22,22 @@ public class CommunityService {
 	/* 게시물 클릭 시, 해당 게시물의 상세 내용을 가져오는 쿼리 */
 	public PostVO getPostDetail(int post_idx) {
 		
-		int result = mapper.increaseViewCount(post_idx);
-		if(result == 0) throw new IllegalArgumentException("post not found: " + post_idx);
+		int viewResult = mapper.increaseViewCount(post_idx);
+		if(viewResult == 0) throw new IllegalArgumentException("post not found: " + post_idx);
 		
 		return mapper.getPostDetail(post_idx);
 	}
 	
 	public int insertNewPost(PostVO postVo) {
 		return mapper.insertNewPost(postVo);
+	}
+	
+	public int deletePost(int post_idx, int idx) {
+		return mapper.deletePost(post_idx, idx);
+	}
+	
+	public int modifyPost(PostVO vo, int idx) {
+		return mapper.modifyPost(vo, idx);
 	}
 	
 }

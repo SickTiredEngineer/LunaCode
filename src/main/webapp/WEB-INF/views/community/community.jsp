@@ -21,6 +21,15 @@
 	
 		<div class="page-base container">
 			
+			<!-- 자기 자신 -->
+			<sec:authorize access="isAuthenticated()">
+				<sec:authentication property="principal" var="me"/>
+			</sec:authorize>
+			
+			<sec:authorize access="hasRole('ADMIN')">
+		    	<c:set var="isAdmin" value="true"/>
+		    </sec:authorize>
+			
 			<!-- 헤더 -->		
 			<header>
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
@@ -65,7 +74,8 @@
 								<h3 class="text-writer info-text">작성자</h3>
 								<h3 class="text-date info-text">작성일</h3>
 								<h3 class="text-view-count info-text">조회수</h3>
-							</div>
+						</div>
+							
 							
 							
 						<div class="d-flex flex-column list-layout">
@@ -85,9 +95,17 @@
 										<h3 class="text-view-count">${post.view_count}</h3>
 									</a>
 									
-									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
-									<a><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon"></a>
-	
+									<c:if test="${me.idx == post.author_idx}">
+										<a href="ModifyPost?post_idx=${post.post_idx}" onclick="return confirm('수정 하시겠습니까?');"><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+									</c:if>
+									
+									<c:if test="${isAdmin or (me ne null and me.idx == post.author_idx)}">
+										<form action="DeletePost" method="post" class="align-form">
+											<input type="hidden" name="post_idx" value="${post.post_idx}">
+											<input type="image" onclick="return confirm('정말 해당 글을 삭제 하시겠습니까?');" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon">
+										</form>
+									</c:if>
+
 								</div>
 							</c:forEach>
 
@@ -123,6 +141,21 @@
 		</div>
 		
 		<script defer src="${pageContext.request.contextPath }/resources/js/support_center/faq_list.js"></script>
+		<script type="text/javascript">
+			window.addEventListener('pageshow', function (e) {
+			    // bfcache에서 복원된 경우 또는 back/forward 내비게이션이면 새로고침
+			    if (e.persisted || (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
+			      location.reload();
+			    }
+			  });
+		</script>
+		
+		
+		
+		
+		
+		
+		
 	</body>
 	
 </html>

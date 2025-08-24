@@ -38,24 +38,6 @@
 			view_count
 		 from post where post_idx = #{post_idx}
 	</select>
-	
-<!-- 	<select id="getPostDetail"> -->
-<!-- 	  select -->
-<!-- 	    p.post_idx, -->
-<!-- 	    p.board_code, -->
-<!-- 	    p.title, -->
-<!-- 	    p.content, -->
-<!-- 	    p.author_idx, -->
-<!-- 	    coalesce(m.nickname, '탈퇴회원') as author,  -->
-<!-- 	    p.created_date, -->
-<!-- 	    p.update_date, -->
-<!-- 	    p.is_update, -->
-<!-- 	    p.view_count -->
-<!-- 	  from post p -->
-<!-- 	  left join member m on m.idx = p.author_idx -->
-<!-- 	  where p.post_idx = #{post_idx} -->
-<!-- 	  limit 1 -->
-<!-- 	</select> -->
 		
 	<insert id="insertNewPost">
 	  insert into post (
@@ -71,14 +53,19 @@
 	</insert>
 
 	<update id="increaseViewCount">
-	
 		update post set view_count = view_count + 1 where post_idx = #{post_idx}; 
+	</update>
 	
+	<delete id="deletePost">
+		delete from post where post_idx = #{post_idx} and author_idx = #{idx}
+	</delete>
+	
+	<update id="modifyPost">
+		update post set title = #{vo.title}, content = #{vo.content},  is_update = true, update_date = now() where post_idx = #{vo.post_idx} and author_idx = #{idx}
 	</update>
 	
 	
-
-
+	
 </mapper>
 	
 

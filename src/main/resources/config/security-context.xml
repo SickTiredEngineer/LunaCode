@@ -27,6 +27,8 @@
     
 	<!--     Login -->
     <intercept-url pattern="/MemberLogin" access="permitAll"/>
+	<intercept-url pattern="/MemberLoginTemp" access="permitAll"/>	
+    
     <intercept-url pattern="/MemberLoginForm" method="POST" access="permitAll"/>
     <intercept-url pattern="/MemberLogout" access="permitAll"/>
     <intercept-url pattern="/FindAccount" access="permitAll"/>
@@ -38,6 +40,9 @@
     <intercept-url pattern="/TermsOfMembership" access="permitAll"/>
     <intercept-url pattern="/JoinForm" method="GET" access="permitAll"/>
     <intercept-url pattern="/JoinForm" method="POST" access="permitAll"/>
+	
+	<intercept-url pattern="/ModifyPostForm" method="POST" access="permitAll"/>
+
 	<!--     WElcome Page  -->
 	<intercept-url pattern="/WelcomePage" access="permitAll"/>
 
@@ -48,8 +53,8 @@
                 username-parameter="user_id"
                 password-parameter="password"
                 default-target-url="/"
-                authentication-failure-url="/MemberLogin?error=true"/>
-
+                authentication-failure-url="/MemberLoginTemp?error=true"
+                authentication-success-handler-ref="LoginSuccessHandler"/>
     <logout logout-url="/MemberLogout"
         logout-success-url="/GoHome"
         invalidate-session="true"/>
@@ -63,17 +68,14 @@
   </http>
 
   <!-- 인증 매니저: 우리가 만든 서비스 사용 -->
-  <authentication-manager>
-    <authentication-provider user-service-ref="customUserDetailsService">
-      <password-encoder ref="passwordEncoder"/>
-    </authentication-provider>
-  </authentication-manager>
+	  <authentication-manager>
+	    <authentication-provider user-service-ref="customUserDetailsService">
+	      <password-encoder ref="passwordEncoder"/>
+	    </authentication-provider>
+	  </authentication-manager>
 
   <!-- CustomUserDetailsService 빈 등록 (Mapper 주입) -->
-  <beans:bean id="customUserDetailsService" class="com.itwillbs.luna_code.security.CustomUserDetailsService">
-    <beans:property name="memberMapper" ref="memberLoginMapper"/>
-  </beans:bean>
-
-  <!-- Mapper 이름은 네 실제 스프링 빈 이름으로 맞춰줘.
-       MapperScannerConfigurer를 썼다면 기본 이름은 인터페이스명에서 소문자 시작(ex: memberLoginMapper) -->
+	 <beans:bean id="customUserDetailsService" class="com.itwillbs.luna_code.security.CustomUserDetailsService">
+	   <beans:property name="memberMapper" ref="memberLoginMapper"/>
+	 </beans:bean>
 </beans:beans>

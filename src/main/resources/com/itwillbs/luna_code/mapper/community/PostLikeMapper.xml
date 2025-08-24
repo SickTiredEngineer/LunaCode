@@ -9,19 +9,27 @@
 	
 <!-- 	<select id="selectLikeCount"> -->
 <!-- 		select count(*) from like_record where post_idx = #{post_idx} -->
-<!-- 	</select> -->
-	
+	<!-- 	</select> -->
+		
 	<select id="selectLikeCount">
-		with tmp_like as(
-			select count(*) as cnt,
-			exists(select * from like_record where (user_idx = #{user_idx} and post_idx = #{post_idx})) as result
-			from like_record where post_idx = #{post_idx}
-		)select cnt, 
-			case when result = 1 then 'true' else 'false' end  as dup_res,
-		    case when result = 1 then '#E6F5FF' else '#F2F4F8' end as bg_color
-		    from tmp_like;
+	  with tmp_like as (
+	    select
+	      count(*) as cnt,
+	      case
+	        when #{user_idx} is null then 0
+	        else exists(
+	          select 1 from like_record
+	          where post_idx = #{post_idx} and user_idx = #{user_idx}
+	        )
+	      end as result 
+	      from like_record where post_idx = #{post_idx}
+	  )
+	  select
+	    cnt,
+	    case when result = 1 then 'true' else 'false' end as dup_res,
+	    case when result = 1 then '#e6f5ff' else '#f2f4f8' end as bg_color
+	  from tmp_like
 	</select>
-
 
 	<insert id="insertNewLike">
 		insert into like_record(user_idx, post_idx)

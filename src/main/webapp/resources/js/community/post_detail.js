@@ -2,7 +2,7 @@
 
 $(async function(){
 	
-	let likeState = await importLikes();
+	let isLike = await importLikes();
 	
 	$("#write_comment_bt").on("click", async function(){
 		var result = await writeComment(null);
@@ -10,16 +10,7 @@ $(async function(){
 	});
 
 	$("#greate_bt").on("click", async function(){
-		
-		
-		const res = await toggleLike(likeState);
-		
-		
-		
-		
-		result = res;
-
-				
+		const res = await toggleLike(isLike);		
 	});
 
 
@@ -49,34 +40,25 @@ async function importLikes(){
 	
 }
 
-//
-//async function toggleLike(){
-//	
-//	
-//	try{
-//		
-//		const res = await $.ajax({
-//			
-//			type: "post",
-//			url: 
-//
-//			
-//		});
-//		
-//		
-//		
-//		
-//	}catch(e){return false}
-//	
-//	
-//	
-//	
-//	
-//	
-//}
-
-
-
+async function toggleLike(isLike){
+	
+	try{
+		const res = await $.ajax({
+			
+			type: "post",
+			url: "ToggleLike",
+			dataType: "json",
+			data:{
+				post_idx: $("#main_layout").data("postIdx"),
+				is_like: isLike
+			}
+		});
+		
+		importLikes();
+		
+	}catch(e){return false}
+	
+}
 
 
 async function writeComment(parent_idx){

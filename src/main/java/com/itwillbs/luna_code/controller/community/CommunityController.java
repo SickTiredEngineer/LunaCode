@@ -51,40 +51,70 @@ public class CommunityController {
 		
 		PostVO post = service.getPostDetail(post_idx);
 		List<CommentVO> comments = commentService.importAllComment(post_idx);
-		
-		for(CommentVO cv:comments) {
-			System.out.println(cv.getNickname());
-		}
-		
-		
+
 		model.addAttribute("post", post);
 		model.addAttribute("comments", comments);
 
 		return "community/post_detail";
 	}
 	
-	/* 계시글 작성/수정 페이지로 이동 */
+	/* 게시글 작성/수정 페이지로 이동 */
 	@GetMapping("PostWrite")
 	public String postWrite() {
 		return "community/post_write";
 	}
-	
+
 	/* 게시글 업로드 */
 	@PostMapping("PostWrite")
 	public String postWriting(PostVO postVo, Model model, HttpSession session, Authentication auth) {
 		
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
-		
-		
-		System.out.println("PostWriteResult: " + postVo);
-		System.out.println("Check User Idx From Post Write: " + user.getIdx());
-//		postVo.setBoard_code("BD01");
 		postVo.setAuthor_idx(user.getIdx());
-
 		int result = service.insertNewPost(postVo);
 
 		return "redirect:Community";
 	}
+	
+	/* 게시글 삭제 */
+	@PostMapping("DeletePost")
+	public String deletePost(int post_idx,  Authentication auth) {
+		
+		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
+		int result = service.deletePost(post_idx, user.getIdx());
+		
+		return "redirect:Community";
+	}
+	
+	/* 게시글 수정 */
+	@GetMapping("ModifyPost")
+	public String modifyPost(int post_idx, Model model, Authentication auth) {
+		
+		CustomUserDetails user = (CustomUserDetails)auth.getPrincipal();
+		PostVO post = service.getPostDetail(post_idx);
+		
+		/* 다른 사람이 수정을 시도하면 접근 거부 */
+		if(post.getAuthor_idx() != user.getIdx()) return "AccessDenied";
+		
+		model.addAttribute("isModify", true);
+		model.addAttribute("post", post);
+		return "community/post_write";
+	}
+	
+	@PostMapping("ModifyPostForm")
+	public String modifyPostForm(PostVO vo, Authentication auth) {
+		
+		CustomUserDetails user = (CustomUserDetails)auth.getPrincipal();
+		int userIdx = user.getIdx();
+		
+		System.out.println("Check Author and user idx" + vo.getAuthor_idx() + ", " + user.getIdx());
+		
+		if(vo.getAuthor_idx() != user.getIdx()) return "AccessDenied";
+		
+		int result = service.modifyPost(vo, userIdx);
+		
+		return "redirect:PostDetail?post_idx="+vo.getPost_idx();
+	}
+
 	
 	
 }

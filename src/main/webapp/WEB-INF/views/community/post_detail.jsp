@@ -52,8 +52,18 @@
 										<p class="tmi-text">조회수: ${post.view_count}</p>
 										
 										<div class="d-flex flex-row">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
-											<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
+											
+											<c:if test="${post.author_idx eq me.idx}">
+												<a href="ModifyPost?post_idx=${post.post_idx}" onclick="return confirm('수정 하시겠습니까?');"><img class="edit-icon" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png"></a>
+											</c:if>
+											
+											<c:if test="${isAdmin or post.author_idx eq me.idx}">
+												<form action="DeletePost" method="post" class="align-form">
+													<input type="hidden" name="post_idx" value="${post.post_idx}">
+													<input type="image" onclick="return confirm('정말 해당 글을 삭제 하시겠습니까?');" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon">
+												</form>
+											</c:if>
+												
 										</div>	
 									</div>
 									
@@ -68,24 +78,23 @@
 										<pre class="post-content">${post.content}</pre>
 									</div>
 									
-									<div class="horizontal-line"></div>
+									<br>
 									
-									<div class="d-flex flex-row content-layout">
-										<p class="info-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-									</div>
+<!-- 									<div class="d-flex flex-row content-layout"> -->
+<!-- 										<p class="info-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
+<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
+<!-- 									</div> -->
 									
-									<div class="d-flex flex-row content-layout">
-										<p class="info-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-									</div>
+<!-- 									<div class="d-flex flex-row content-layout"> -->
+<!-- 										<p class="info-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
+<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
+<!-- 									</div> -->
 									
-									<div class="d-flex flex-row content-layout">
-										<p class="info-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-									</div>
-									
-									<div class="horizontal-line"></div>
+<!-- 									<div class="d-flex flex-row content-layout"> -->
+<!-- 										<p class="info-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
+<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
+<!-- 									</div> -->
+								
 								
 									<div class="content-layout">
 										<div class="d-flex justify-content-center">

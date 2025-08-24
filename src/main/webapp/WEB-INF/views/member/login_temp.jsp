@@ -6,11 +6,12 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인 - LunaCode</title>
-
+	<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>	
     <!-- CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/layout/member_login.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
+
 
     <!-- 폰트(선택) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +19,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
 
     <style>
-      /* 페이지 전용 간단 정렬 (필요시 member_login.css로 이동) */
+      /* 페이지 전용 간단 정렬 (필요시 member_login.css 사용) */
       body { min-height: 100vh; display:flex; align-items:center; justify-content:center; background:#f8f9fa; }
       .login-card { width:100%; max-width:420px; }
       .modal-logo { display:block; margin:16px auto 0; height:56px; }
@@ -62,6 +63,11 @@
           <label for="inputPassword" class="form-label">비밀번호</label>
           <input type="password" class="form-control" id="inputPassword" name="password" placeholder="비밀번호 입력" required />
         </div>
+        
+<%--         <c:if test="${error eq true}"></c:if> --%>
+<!--         <div class="mb-3"> -->
+<!--         	<span style="color:#ff0000">아이디 혹은 비밀번호가 잘못 되었습니다.</span> -->
+<!--         </div> -->
 
         <div class="mb-3 form-check">
           <input type="checkbox" class="form-check-input" id="rememberMe" name="remember" />
