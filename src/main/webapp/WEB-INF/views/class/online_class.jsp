@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 
 <head>
@@ -37,39 +36,37 @@
 	    </div>
 	
 	    <!-- 영상 영역 + 강의명(캡션) -->
-	 	<div class="video-section">  
-	    <div class="video-wrapper">
-	      <video id="video" class="video_play" controls controlsList="nodownload">
-	        <source src="${pageContext.request.contextPath}/resources/video_upload/video1.mp4" type="video/mp4" />
-	      </video>
-	      <div class="lecture-caption">3 - 2. 생성자 배우기</div>
-	    </div>
-	  </div>
-	  
+	  <div class="video-section">  
+		  <div class="video-wrapper">
+		    <c:choose>
+		      <c:when test="${not empty video_url}">
+		        <video id="video" class="video_play" controls controlsList="nodownload">
+		          <source src="${video_url}" type="video/mp4" />
+		        </video>
+		      </c:when>
+		      <c:otherwise>
+<%-- 		      	<img src="${pageContext.request.contextPath}/resources/image/video_unavailable.png" alt="영상 준비중" /> --%>
+		        <p>영상이 준비되지 않았습니다.</p>
+		      </c:otherwise>
+		    </c:choose>
+		    <div class="lecture-caption">3 - 2. 생성자 배우기</div>
+		  </div>
+		</div>
+
 	  <!-- 강의 리스트 (썸네일+강의명) -->
 	  <div class="video-toc">
 		<ul>
-		 <li>
-			<a href="#" onclick="changeVideo('video1.mp4'); return false;">
-				<img src="${pageContext.request.contextPath}/resources/image/banner3.png" alt="1강 썸네일" class="thumb" />
-				<span class="toc-title">1강: 오리엔테이션</span>
-			</a>
-		 </li>
-		 <li>
-			<a href="#" onclick="changeVideo('video2.mp4'); return false;">
-				<img src="${pageContext.request.contextPath}/resources/image/banner3.png" alt="2강 썸네일" class="thumb" />
-				<span class="toc-title">2강: 이론 설명</span>
-			</a>
-		 </li>
-		 <li>
-			<a href="#" onclick="changeVideo('video3.mp4'); return false;">
-				<img src="${pageContext.request.contextPath}/resources/image/banner3.png" alt="3강 썸네일" class="thumb" />
-				<span class="toc-title">3강: 실전 예제</span>
-			</a>
-		 </li>
+		  <c:forEach var="classVo" items="${classList}">
+		    <li>
+		      <a href="${pageContext.request.contextPath}/OnlineClass?classId=${classVo.class_idx}">
+		        ${classVo.class_title}
+		      </a>
+		    </li>
+		  </c:forEach>
 		</ul>
 	  </div>
-	  </div>
+	 
+	 </div>
 	  <!-- 추가하기 버튼 -->
 	  <div class="add-button-wrapper" style="margin-top:20px;">
 	    <button type="button" class="btn btn-outline-success" id="addAccordionBtn">메모 추가</button>

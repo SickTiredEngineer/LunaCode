@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,19 +24,24 @@ import com.itwillbs.luna_code.vo.ClassVo;
 @Controller
 public class ClassController {
 
-	@GetMapping("OnlineClass")
-	public String onlineclass() {
-		return "class/online_class";
-	}
+	@Autowired
+    private ClassService classService;
+
+    @GetMapping("/OnlineClass")
+    public String onlineClass(@RequestParam("classId") int class_idx, Model model) {
+    	    String Url = classService.getUrlByClassId(class_idx);
+    	    model.addAttribute("url", Url);
+
+        return "class/online_class";
+    }
+
+
 	
 	@GetMapping("ClassRegist")
 	public String classregist() {
 		return "class/class_regist";
 	}
 	
-	@Autowired
-	private ClassService classService;
-
 	@PostMapping("/ClassRegist")
 	public String classregist(
 	        ClassVo classVo,
@@ -77,7 +83,7 @@ public class ClassController {
 
 	    classService.registerClass(classVo);
 
-	    return "redirect:/GoHome";
+	    return "redirect:/CourseRegistration";
 	}
 
 

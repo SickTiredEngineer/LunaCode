@@ -5,11 +5,10 @@ import java.sql.Date;
 import lombok.Data;
 
 @Data
-public class ClassVo {
+public class OnlineClassVo {
 
 	private int member_idx;          
-    private int class_idx;          
-    private int instructor_idx;     
+    private int class_idx;
     private String class_title;     
     private String class_time;        
     private String class_type;         
@@ -22,5 +21,4 @@ public class ClassVo {
     private String class_level;        
     private int total_lessons;
     private String url;
-	
 }

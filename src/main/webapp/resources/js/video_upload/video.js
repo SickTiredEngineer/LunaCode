@@ -47,11 +47,10 @@ document.addEventListener('DOMContentLoaded', () => {
       </div>
     `;
 
-    // 제목 input 요소를 찾아서 JS로 스타일 직접 적용 (글자 크기, 굵기 등)
+    // 제목 스타일
     const input = newItem.querySelector('.memo-title-input');
-    input.style.fontSize = '1.3rem';   // 원하는 글자 크기 (예: 1.5rem)
-    input.style.fontWeight = '700';    // 굵게 처리
-
+    input.style.fontSize = '1.1rem';   
+    input.style.fontWeight = '700';    
     // 삭제 버튼 이벤트 연결
     const deleteBtn = newItem.querySelector('.delete-accordion-btn');
     deleteBtn.addEventListener('click', (e) => {

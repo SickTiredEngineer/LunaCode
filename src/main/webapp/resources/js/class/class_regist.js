@@ -90,16 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMainCategories();
     renderSubCategories();
   });
-});
 
-// 강의 유형 밎 난이도
-document.addEventListener('DOMContentLoaded', () => {
+  // 강의 유형 밎 난이도
   const difficultyGroup = document.getElementById('difficulty-group');
   const typeGroup = document.getElementById('type-group');
   const classTypeInput = document.getElementById('classTypeInput'); 
   const classLevelInput = document.getElementById('classLevelInput'); 
 
-  // 단일 선택 처리 함수
   function handleSingleSelect(group, clickedBtn) {
     if (!clickedBtn.classList.contains('reg-toggle-btn')) return;
     group.querySelectorAll('.reg-toggle-btn.selected').forEach(btn => btn.classList.remove('selected'));
@@ -116,14 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 복수 선택 처리 함수
   function handleMultiSelect(clickedBtn) {
     if (!clickedBtn.classList.contains('reg-toggle-btn')) return;
     const selected = clickedBtn.classList.toggle('selected');
     clickedBtn.setAttribute('aria-pressed', selected ? 'true' : 'false');
   }
 
-  // 난이도(단일 선택) 
   if (difficultyGroup) {
     difficultyGroup.addEventListener('click', e => {
       const btn = e.target.closest('.reg-toggle-btn');
@@ -132,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 강의 유형(복수 선택)
   if (typeGroup) {
     typeGroup.addEventListener('click', e => {
       const btn = e.target.closest('.reg-toggle-btn');
@@ -140,27 +134,21 @@ document.addEventListener('DOMContentLoaded', () => {
       handleMultiSelect(btn);
     });
   }
-});
 
-// 강의 유형 상세 선택
-document.addEventListener('DOMContentLoaded', () => {
-  const typeGroup = document.getElementById('type-group');
+  // 강의 유형 상세 선택
   const typeDetailsList = document.querySelectorAll('.type-details');
-
   const typeToDivId = {
     '1': 'type-hyunsang',
     '2': 'type-online',
     '3': 'type-live'
   };
 
-  // 모든 type-details div 숨기기
   function hideAllTypeDetails() {
     typeDetailsList.forEach(div => {
       div.style.display = 'none';
     });
   }
 
-  // 단일 선택 강의 유형일 때 내용 보여주기, 선택 없으면 모두 숨김
   function showTypeDetail(selectedValue) {
     hideAllTypeDetails();
     if (!selectedValue) return;
@@ -174,10 +162,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 초기 숨기기
   hideAllTypeDetails();
 
-  // 버튼 클릭 이벤트 처리
   typeGroup.addEventListener('click', (e) => {
     const btn = e.target.closest('.reg-toggle-btn');
     if (!btn) return;
@@ -199,10 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (initiallySelected) {
     showTypeDetail(initiallySelected.dataset.value);
   }
-});
 
-// 강의 등록 날짜
-document.addEventListener('DOMContentLoaded', function() {
+  // 강의 등록 날짜
   const today = new Date();
   const yyyy = today.getFullYear();
   const mm = String(today.getMonth() + 1).padStart(2, '0'); 
@@ -219,40 +203,30 @@ document.addEventListener('DOMContentLoaded', function() {
   if (endDateInput) {
     endDateInput.value = todayStr;
   }
-});
 
-// 강의 기한
-document.addEventListener('DOMContentLoaded', function () {
-  const startInput = document.getElementById('start-date');
-  const endInput = document.getElementById('end-date');
+  // 강의 기한
   const periodSelect = document.getElementById('period-select');
-
-  // 시작일 ~ 종료일 차이로 개월 수 계산 (30일 기준)
   function calculateMonths(startStr, endStr) {
     const start = new Date(startStr);
     const end = new Date(endStr);
     if (isNaN(start) || isNaN(end) || end < start) return null;
-
     const diffDays = (end - start) / (1000 * 60 * 60 * 24);
     return Math.round(diffDays / 30);
   }
 
-  // 시작일에 개월 수 더해서 종료일 계산 (월 단순 계산)
   function calculateEndDate(startStr, months) {
     const start = new Date(startStr);
     if (isNaN(start)) return null;
 
     const newEnd = new Date(start.getTime() + months * 30 * 24 * 60 * 60 * 1000);
-
     const yyyy = newEnd.getFullYear();
     const mm = String(newEnd.getMonth() + 1).padStart(2, '0');
     const dd = String(newEnd.getDate()).padStart(2, '0');
     return `${yyyy}-${mm}-${dd}`;
   }
 
-  // 날짜 변경 -> 수강기한 셀렉트 값 자동 변경
   function onDateChange() {
-    const months = calculateMonths(startInput.value, endInput.value);
+    const months = calculateMonths(startDateInput.value, endDateInput.value);
     if (months && periodSelect) {
       const options = Array.from(periodSelect.options);
       const closest = options.reduce((prev, curr) => {
@@ -262,44 +236,81 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // 수강기한 변경 -> 종료일 자동 변경
   function onPeriodChange() {
-    if (startInput && endInput && periodSelect) {
+    if (startDateInput && endDateInput && periodSelect) {
       const selectedMonths = parseInt(periodSelect.value);
       if (!isNaN(selectedMonths)) {
-        const newEnd = calculateEndDate(startInput.value, selectedMonths);
+        const newEnd = calculateEndDate(startDateInput.value, selectedMonths);
         if (newEnd) {
-          endInput.value = newEnd;
+          endDateInput.value = newEnd;
         }
       }
     }
   }
 
-  // 이벤트 바인딩
-  if (startInput && endInput && periodSelect) {
-    startInput.addEventListener('change', function () {
-      // 종료일이 시작일 이전이면 종료일 = 시작일 + 선택된 기간(기본 3개월)
-      if (new Date(endInput.value) < new Date(startInput.value)) {
+  if (startDateInput && endDateInput && periodSelect) {
+    startDateInput.addEventListener('change', function () {
+      if (new Date(endDateInput.value) < new Date(startDateInput.value)) {
         const defaultMonths = parseInt(periodSelect.value) || 3;
-        endInput.value = calculateEndDate(startInput.value, defaultMonths);
+        endDateInput.value = calculateEndDate(startDateInput.value, defaultMonths);
       }
       onDateChange();
     });
 
-    endInput.addEventListener('change', onDateChange);
+    endDateInput.addEventListener('change', onDateChange);
     periodSelect.addEventListener('change', onPeriodChange);
 
     onDateChange();
   }
-});
 
-// 판매가 자동 계산
-const supplyInput = document.getElementById('supply-amount');
-const sellingInput = document.getElementById('selling-amount');
+  // 판매가 자동 계산
+  const supplyInput = document.getElementById('supply-amount');
+  const sellingInput = document.getElementById('selling-amount');
 
-supplyInput.addEventListener('input', function() {
-  let supplyValue = Number(supplyInput.value);
-  if (isNaN(supplyValue)) supplyValue = 0;
-  let sellingValue = Math.round(supplyValue * 1.1); // 10% 부가세 포함
-  sellingInput.value = sellingValue > 0 ? sellingValue : '';
+  supplyInput.addEventListener('input', function() {
+    let supplyValue = Number(supplyInput.value);
+    if (isNaN(supplyValue)) supplyValue = 0;
+    let sellingValue = Math.round(supplyValue * 1.1); // 10% 부가세 포함
+    sellingInput.value = sellingValue > 0 ? sellingValue : '';
+  });
+
+  // 유효성 검사
+  function validateForm() {
+    const title = document.getElementById('lec-title').value.trim();
+    const summary = document.getElementById('lec-summary').value.trim();
+    const classCategoryInput = document.getElementById('classCategoryInput').value.trim();
+    const supplyAmount = document.getElementById('supply-amount').value.trim();
+
+    if (title === "") {
+      alert("강의 제목을 입력하세요.");
+      document.getElementById('lec-title').focus();
+      return false;
+    }
+    if (summary === "") {
+      alert("강의 요약을 입력하세요.");
+      document.getElementById('lec-summary').focus();
+      return false;
+    }
+    if (classCategoryInput === "") {
+      alert("카테고리를 선택하세요.");
+      return false;
+    }
+    if (supplyAmount === "" || isNaN(Number(supplyAmount)) || Number(supplyAmount) <= 0) {
+      alert("공급가액을 올바르게 입력하세요.");
+      document.getElementById('supply-amount').focus();
+      return false;
+    }
+    return true;
+  }
+
+  const form = document.getElementById('class-regist-form');
+  if (form) {
+    form.addEventListener('submit', function(event) {
+      if (!validateForm()) {
+        event.preventDefault();
+      } else if (!confirm('등록하시겠습니까?')) {
+        event.preventDefault();
+      }
+    });
+  }
 });

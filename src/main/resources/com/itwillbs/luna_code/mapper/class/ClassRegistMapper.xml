@@ -19,7 +19,8 @@
 			class_content, 
 			class_price, 
 			class_category, 
-			class_level
+			class_level,
+			url
 		) VALUES (
    			#{instructor_idx}, 
 			#{class_title}, 
@@ -31,7 +32,8 @@
 			#{class_content}, 
 			#{class_price}, 
 			#{class_category}, 
-			#{class_level}
+			#{class_level},
+			#{url}
 		)
 	</insert>
 </mapper>
