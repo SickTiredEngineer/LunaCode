@@ -10,6 +10,20 @@ body{
 	margin: 40px 0px;
 }
 
+
+.tmi-layout{
+	margin:  var(--common-margin);
+	height: 15px;
+	
+}
+
+.content-layout{
+	margin-top: var(--common-margin);
+	margin-left: var(--common-margin);
+	align-content: center;
+}
+
+
 /* ======================================= */
 /* 카테고리 사이즈 */
 .category-size{
@@ -101,7 +115,14 @@ body{
 }
 
 
-
+.edit-icon{
+	width: 30px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	background-color: var(--color-sub);
+}
 
 
 

@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import lombok.Data;
 
+/* 회원가입 프로세싱에서 정보 담을 때 사용하는 VO */
 @Data
 public class MemberJoinVO {
 

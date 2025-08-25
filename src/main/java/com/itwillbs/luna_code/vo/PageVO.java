@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
+/* 페이징 할 때 필요한 정보 담는 VO */
 @NoArgsConstructor
 @AllArgsConstructor
 @Data

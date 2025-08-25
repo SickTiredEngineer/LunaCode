@@ -153,7 +153,7 @@
 			    if (e.persisted || (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
 			      location.reload();
 			    }
-			  });
+			 });
 		</script>
 
 	</body>

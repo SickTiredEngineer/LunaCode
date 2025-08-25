@@ -20,6 +20,10 @@
 	border: none;
 }
 
+.align-form{
+	display: inline;
+	margin: 0px;	
+}
 
 /* ========================================= */
 /* 목록이 담길 레이아웃 큰 틀 */

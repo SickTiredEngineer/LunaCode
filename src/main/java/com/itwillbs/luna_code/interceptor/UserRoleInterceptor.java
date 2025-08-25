@@ -12,6 +12,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
+/* Spring Security 커스텀 유저 디테일 정보를 전역에 제공해주는 인터셉트 */
+/* 다른 필요한 정보가 있다면 말해주길 바람 */
 @Component
 public class UserRoleInterceptor implements HandlerInterceptor {
 

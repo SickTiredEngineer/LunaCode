@@ -19,8 +19,7 @@
 	</head>
 	
 	<body>
-	
-		
+
 		<c:set var="isModify" value="${isModify}"/>
 
 		<c:choose>

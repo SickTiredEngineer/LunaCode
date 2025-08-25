@@ -42,39 +42,48 @@
 						
 							<div class="d-flex flex-column write_main_layout">
 									
-									<div class="d-flex">
-										<p class="view-count-text">조회수: 15000</p>
+									<div class="d-flex flex-row justify-content-between tmi-layout">
+										<p class="tmi-text">조회수: ${noticeVo.view_count}</p>
+										
+										<div class="d-flex flex-row">
+											
+											<c:if test="${isAdmin}">
+												<a href="ModifyNotice?notice_idx=${noticeVo.notice_idx}"><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+												
+												<form action="DeleteNotice" method="post" class="align-form">
+													<input type="hidden" name="notice_idx" value="${noticeVo.notice_idx}">
+													<input type="image" onclick="return confirm('정말 해당 공지사항을 삭제 하시겠습니까?');" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon">
+												</form>
+
+											</c:if>
+												 
+										</div>	
 									</div>
-									
-							
+	
 									<div class="d-flex flex-row write-layout">
-										
-										
-										<p class="info-text">제목</p>
-										<input type="text" class="common-input-form form-size" readonly="readonly">
+										<p class="info-text">${noticeVo.notice_subject}</p>
 									</div>
 									
 									<div class="horizontal-line"></div>
-								
-									<div class="d-flex flex-row write-layout-content">
+									
+									<div class="d-flex flex-row content-layout">
+										<pre class="post-content">${noticeVo.notice_content}</pre>
+									</div>
+<!-- 									<div class="d-flex flex-row write-layout-content"> -->
+									
+										
 <!-- 										<p class="info-text-content">내용</p> -->
 <!-- 										<textarea rows="10" cols="50" class="common-input-form"></textarea> -->
-											<pre class="notice-content">공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 
-공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용
-공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용공지사항 내용 공지사항 내용 공지사항 내용 
-
-											
-											
-											</pre>
-									</div>
+<%-- 											<pre class="notice-content">${noticeVo.notice_content}</pre> --%>
+<!-- 									</div> -->
 									
-									<div class="horizontal-line"></div>
+<!-- 									<div class="horizontal-line"></div> -->
 									
-									<div class="d-flex flex-row write-layout">
-										<p class="info-text">첨부 파일1:</p>
-										<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg">
-										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-									</div>
+<!-- 									<div class="d-flex flex-row write-layout"> -->
+<!-- 										<p class="info-text">첨부 파일1:</p> -->
+<!-- 										<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
+<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
+<!-- 									</div> -->
 								
 								</div>
 							

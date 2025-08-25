@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.usermain.AttendanceService;
 
+/* 로그인 성공 시 하는 동작인데, 그냥 로그인 성공하면 사용자 메인 홈으로 보내는 역할임 */
+/* security-config 에 내용 있음 */
 @Component("LoginSuccessHandler")
 public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessHandler{
 	
@@ -34,9 +36,5 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 		
 //		super.onAuthenticationSuccess(request, response, authentication);
 	}
-	
-	
-	
-	
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.community.PostLikeService;
 
+/* 커뮤니티 게시글 좋아요 관련 컨트롤러 */
 @Controller
 public class PostLikeController {
 	

@@ -17,6 +17,5 @@ public class PostVO {
 	private Timestamp update_date;
 	private boolean is_update;
 	private int view_count;
-	
 	private int cnt_comment;
 }

@@ -25,7 +25,6 @@ import com.itwillbs.luna_code.vo.community.PostVO;
 import com.mysql.cj.Session;
 
 /* 커뮤니티 컨트롤러 */
-
 @Controller
 public class CommunityController {
 
@@ -105,6 +104,7 @@ public class CommunityController {
 		return "community/post_write";
 	}
 	
+	/* 게시글 수정 Post */
 	@PostMapping("ModifyPostForm")
 	public String modifyPostForm(PostVO vo, Authentication auth) {
 		

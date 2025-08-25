@@ -16,7 +16,7 @@ import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.community.CommentService;
 import com.itwillbs.luna_code.vo.community.CommentVO;
 
-
+/* 댓글 관련 컨트롤런데, 댓글은 어차피 다 AJAX 사용해서 ALL ResponseBody */
 @RestController
 public class CommentController {
 

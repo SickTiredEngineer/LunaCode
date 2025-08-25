@@ -17,6 +17,7 @@ import com.itwillbs.luna_code.vo.member_join.MemberJoinVO;
 
 import custom_utills.DirectoryManager;
 
+/* 회원가입 로직 처리 컨트롤러 */
 @Controller
 public class MemberJoinController {
 	

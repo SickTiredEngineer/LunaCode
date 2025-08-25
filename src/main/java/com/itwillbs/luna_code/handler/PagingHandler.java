@@ -3,6 +3,7 @@ package com.itwillbs.luna_code.handler;
 import java.util.function.IntSupplier;
 import com.itwillbs.luna_code.vo.PageVO;
 
+/* 페이징 기능 구현 유틸 클래스 */
 public class PagingHandler {
 	
 	/* 한 페이지당 표시할 게시물 수 */
@@ -13,7 +14,7 @@ public class PagingHandler {
 	
 	public static PageVO pageHandler(int pageNum, IntSupplier count) {
 		
-		
+		/* 공식은 그냥 그러려니 하고 넘기고, 사용만 잘 하면 됨 */
 		int startRow = (pageNum - 1) * LIST_LIMIT;
 		int countRes = count.getAsInt();
 		
