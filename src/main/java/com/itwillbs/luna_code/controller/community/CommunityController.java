@@ -13,10 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.itwillbs.luna_code.handler.PagingHandler;
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.community.CommentService;
 import com.itwillbs.luna_code.service.community.CommunityService;
+import com.itwillbs.luna_code.vo.PageVO;
 import com.itwillbs.luna_code.vo.community.CommentVO;
 import com.itwillbs.luna_code.vo.community.PostVO;
 import com.mysql.cj.Session;
@@ -34,12 +37,14 @@ public class CommunityController {
 	
 	/* 커뮤니티 메인(자유 게시판) 이동 */
 	@GetMapping("Community")
-	public String community(Model model) {
+	public String community(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+		
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllPost);
+		System.out.println("Check Page VO: " + pageVo);
 		
 		/* 게시물 리스트 불러온 뒤 model에 추가 */
-		List<PostVO> postList = service.postList();
-		System.out.println("PostList: " + postList);
-		
+		List<PostVO> postList = service.postList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("postList", postList);
 
 		return "community/community";

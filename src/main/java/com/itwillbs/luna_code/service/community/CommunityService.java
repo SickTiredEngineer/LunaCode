@@ -15,8 +15,13 @@ public class CommunityService {
 	CommunityMapper mapper;
 	
 	/* 전체 게시물 리스트 가져오는 쿼리 */
-	public List<PostVO> postList(){
-		return mapper.postList();
+	public List<PostVO> postList(int start_row, int list_limit){
+		return mapper.postList(start_row, list_limit);
+	}
+	
+	/* 페이징을 위한 게시글 갯수 불러오기 */
+	public int countAllPost() {
+		return mapper.countAllPost();
 	}
 	
 	/* 게시물 클릭 시, 해당 게시물의 상세 내용을 가져오는 쿼리 */
