@@ -42,6 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         
         
+        
         return new CustomUserDetails(
         		memberVo.getIdx(),
         		memberVo.getUser_id(),

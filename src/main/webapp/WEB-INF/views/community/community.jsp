@@ -113,16 +113,22 @@
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">
+						
+							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 							
-							<a class="page-selector">&lt;</a>
+							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+								<c:choose>
+									<c:when test="${i eq pageVo.pageNum }">
+										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}'">${i}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 							
-							<a class="page-selector">1</a>
-							<a class="page-selector">2</a>
-							<a class="page-selector">3</a>
-							<a class="page-selector">4</a>
-							<a class="page-selector">5</a>
-							
-							<a class="page-selector">&gt;</a>
+							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum+1}'" 
+							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 					
 						</div>
 
@@ -149,13 +155,7 @@
 			    }
 			  });
 		</script>
-		
-		
-		
-		
-		
-		
-		
+
 	</body>
 	
 </html>

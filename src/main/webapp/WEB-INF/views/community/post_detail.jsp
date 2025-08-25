@@ -131,45 +131,71 @@
 								
 								<div class="horizontal-line"></div>
 								
-								<c:forEach items="${comments}" var="comment">
-									<div class="d-flex flex-row">
-									
-										<div class="d-flex flex-column writer-layout">
-											<p class="comment-writer-text">${comment.nickname}</p>
+								<div id="comment_list">
+									<c:forEach items="${comments}" var="comment">
+								
+										<div id="" class="d-flex flex-row comment-row"
+										data-comment-idx="${comment.comment_idx}" data-author-idx="${comment.author_idx}">
+										
+											<div class="d-flex flex-column writer-layout">
+												
+												
+												<div class="d-flex flex-row justify-content-between">
+													
+													<p class="comment-writer-text">작성자: ${comment.nickname}</p>
+													
+													<div class="comment-actions">
+														<c:if test="${me.idx == comment.author_idx}">
+															<img class="icon-button-size comment-edit" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
+														</c:if>
+
+														<c:if test="${isAdmin or (me ne null and me.idx == comment.author_idx)}">
+															<img class="icon-button-size comment-delete" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">
+														</c:if>
+
+													</div>
+													
+												</div>	
+																						
+												<textarea rows="3" cols="30" class="common-input-form comment-layout" readonly="readonly">${comment.content}</textarea>
+												
+												<c:if test="${me.idx == comment.author_idx}">
+													<div class="comment-modify-actions">
+														<img class="confirm-bt comment-cancel d-none" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png">	
+														<img class="confirm-bt comment-save d-none" src="${pageContext.request.contextPath}/resources/icons/icon_check.png">
+													</div>
+												</c:if>
+											</div>
 											
-											<div class="d-flex flex-row">
-												<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_edit.png">
-												<img class="icon-button-size" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_delete.png">	
-											</div>	
-	
 										</div>
+										
+										<br>
+										
+										<div class="horizontal-line"></div>
 	
-										<textarea rows="3" cols="5" class="common-input-form comment-layout" readonly="readonly">${comment.content}</textarea>
-									</div>
+									</c:forEach>
 
-								</c:forEach>
+								</div>
 								
-								
-
 								<div class="horizontal-line comment-line-margin"></div>
 								
 							</div>
 							
 							
-						<!-- Page Selector Section -->
-							<div class="d-flex flex-row justify-content-center page-selector-layout">
+<!-- 						Page Selector Section -->
+<!-- 							<div class="d-flex flex-row justify-content-center page-selector-layout"> -->
 						
-								<a class="page-selector">&lt;</a>
+<!-- 								<a class="page-selector">&lt;</a> -->
 								
-								<a class="page-selector">1</a>
-								<a class="page-selector">2</a>
-								<a class="page-selector">3</a>
-								<a class="page-selector">4</a>
-								<a class="page-selector">5</a>
+<!-- 								<a class="page-selector">1</a> -->
+<!-- 								<a class="page-selector">2</a> -->
+<!-- 								<a class="page-selector">3</a> -->
+<!-- 								<a class="page-selector">4</a> -->
+<!-- 								<a class="page-selector">5</a> -->
 								
-								<a class="page-selector">&gt;</a>
+<!-- 								<a class="page-selector">&gt;</a> -->
 				
-							</div>
+<!-- 							</div> -->
 							
 							
 							<div class="d-flex button-container">

@@ -32,3 +32,25 @@
 <link href="${pageContext.request.contextPath}/resources/css/common/css_variables.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/common/component.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/common/base.css" rel="stylesheet">
+
+
+<script>
+
+	window.isAuthenticated =
+		<sec:authorize access="isAuthenticated()">true</sec:authorize>
+		<sec:authorize access="isAnonymous()">false</sec:authorize>;
+	
+	window.isAdmin =
+		<sec:authorize access="hasRole('ADMIN')">true</sec:authorize>
+		<sec:authorize access="!hasRole('ADMIN')">false</sec:authorize>;
+	
+	window.me = {
+		idx: ${isAuthenticated ? me.idx : 'null'},
+		userId: "${isAuthenticated ? fn:escapeXml(me.userId) : ''}",
+		nickname: "${isAuthenticated ? fn:escapeXml(me.nickname) : ''}",
+		profileImg: "${isAuthenticated ? fn:escapeXml(me.profileImg) : ''}"
+	};
+
+  window.ctx = "${pageContext.request.contextPath}";
+  
+</script>

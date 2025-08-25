@@ -102,15 +102,15 @@
 								<div class="widget-content">
 									<div class="attendance-item">
 										<span>일간 연속 출석</span>
-										<span><strong>5</strong>일</span>
+										<span><strong>${attendanceInfo.attendance_consecutive}</strong>일</span>
 									</div>
 									<div class="attendance-item">
 										<span>주간 연속 출석</span>
-										<span><strong>12</strong>주</span>
+										<span><strong>${attendanceInfo.attendance_count}</strong>주</span>
 									</div>
 									<div class="attendance-item">
 										<span>월간 연속 출석</span>
-										<span><strong>6</strong>달</span>
+										<span><strong>${attendanceInfo.consecutive_monthly_attendance}</strong>달</span>
 									</div>
 								</div>
 							</li>
@@ -124,8 +124,21 @@
 								</h3>
 								<div class="widget-content">
 									<a href="PlayList" class="playlist-add-button">+</a>
-									<div class="playlist-item">재생목록1</div>
-									<div class="playlist-item">재생목록2</div>
+									<c:forEach var="playlist" items="${recentPlaylists}">
+							            <div class="playlist-item">
+							                <a href="<c:url value='/PlayListPlus?id=${playlist.playlist_idx}'/>">
+							                    ${playlist.playlist_name}
+							                </a>
+							            </div>
+							        </c:forEach>
+							
+							        <!-- 만약 재생목록이 하나도 없다면 메시지 표시 -->
+							        <c:if test="${empty recentPlaylists}">
+							            <div class="playlist-item-empty">
+							                재생목록이 없습니다.
+							            </div>
+							        </c:if>
+							        
 								</div>
 							</li>
 						</ul>

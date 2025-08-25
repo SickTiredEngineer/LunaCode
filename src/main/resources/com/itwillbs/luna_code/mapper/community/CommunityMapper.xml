@@ -20,7 +20,13 @@
 	    p.view_count,
 	    (select count(*) from comment c where c.post_idx = p.post_idx) as cnt_comment
 	  from post p
-	  order by p.created_date DESC, post_idx DESC
+	  order by p.created_date DESC, post_idx desc 
+	  limit #{start_row}, #{list_limit}
+	</select>
+	
+	<!-- 총 게시물 수 가져오는 쿼리 -->
+	<select id="countAllPost">
+		select count(*) from post
 	</select>
 
 	

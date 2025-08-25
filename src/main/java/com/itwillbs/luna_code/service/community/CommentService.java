@@ -15,11 +15,20 @@ public class CommentService {
 	CommentMapper mapper;
 	
 	public int insertNewComment(CommentVO commentVo) {
-		return mapper.insertNewComment(commentVo);	
+		mapper.insertNewComment(commentVo);	
+		return commentVo.getComment_idx();
 	}
 	
 	public List<CommentVO> importAllComment(int post_idx){
 		return mapper.importAllComment(post_idx);
+	}
+	
+	public int deleteComment(int comment_idx, int user_idx) {
+		return mapper.deleteComment(comment_idx, user_idx);
+	}
+	
+	public int updateComment(String content, int comment_idx, int user_idx) {
+		return mapper.updateComment(content, comment_idx, user_idx);
 	}
 
 }

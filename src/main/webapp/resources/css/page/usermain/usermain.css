@@ -290,3 +290,12 @@
 .playlist-item {
 	padding: 8px 5px;
 }
+
+.playlist-item a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.playlist-item a:hover {
+	color: var(--color-main) !important;
+}

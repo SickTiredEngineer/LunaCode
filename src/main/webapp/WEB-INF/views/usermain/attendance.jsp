@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 	<head>
@@ -11,6 +12,7 @@
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/attendance.css" rel="stylesheet">  
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/usermain_category.css" rel="stylesheet">    
 		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+		
 	</head>
 	
 	<body>
@@ -63,8 +65,10 @@
 							<div class="stat-item">
 								<h4>결석일 수</h4>
 								<p>${attendanceInfo.recent_absences}
-									<span>/30 (${attendanceInfo.recent_absences / 30 * 100}%)</span>
-								</p>
+							        <span>/30 
+							            (<fmt:formatNumber value="${attendanceInfo.recent_absences / 30 * 100}" pattern="0.0" />%)
+							        </span>
+							    </p>
 							</div>
 
 							<!-- 월별 출석률 -->
@@ -96,29 +100,37 @@
 		
 		<script>
 			const dailyDataFromServer = [
-				${attendanceInfo.daily_attendance_stats['MON']}, ${attendanceInfo.daily_attendance_stats['TUE']},
-				${attendanceInfo.daily_attendance_stats['WED']}, ${attendanceInfo.daily_attendance_stats['THU']},
-				${attendanceInfo.daily_attendance_stats['FRI']}, ${attendanceInfo.daily_attendance_stats['SAT']},
-				${attendanceInfo.daily_attendance_stats['SUN']}
-			];
-			
-			const dailyChartHeights = dailyDataFromServer.map(count => {
-				// count (출석 횟수)가 0보다 크면 50을, 그렇지 않으면 10을 반환합니다.
-				return count > 0 ? 50 : 10;
-			});
-			
-			const monthlyDataFromServer = [
-				${attendanceInfo.monthly_attendance_stats['1']}, ${attendanceInfo.monthly_attendance_stats['2']},
-				${attendanceInfo.monthly_attendance_stats['3']}, ${attendanceInfo.monthly_attendance_stats['4']},
-				${attendanceInfo.monthly_attendance_stats['5']}, ${attendanceInfo.monthly_attendance_stats['6']},
-				${attendanceInfo.monthly_attendance_stats['7']}, ${attendanceInfo.monthly_attendance_stats['8']},
-				${attendanceInfo.monthly_attendance_stats['9']}, ${attendanceInfo.monthly_attendance_stats['10']},
-				${attendanceInfo.monthly_attendance_stats['11']}, ${attendanceInfo.monthly_attendance_stats['12']}
-			];
-		
-			document.addEventListener("DOMContentLoaded", function() {
-				initAttendanceCharts(dailyDataFromServer, monthlyDataFromServer);
-			});
+		        ${attendanceInfo.daily_attendance_stats['MON']}, ${attendanceInfo.daily_attendance_stats['TUE']},
+		        ${attendanceInfo.daily_attendance_stats['WED']}, ${attendanceInfo.daily_attendance_stats['THU']},
+		        ${attendanceInfo.daily_attendance_stats['FRI']}, ${attendanceInfo.daily_attendance_stats['SAT']},
+		        ${attendanceInfo.daily_attendance_stats['SUN']}
+		    ];
+		    
+		    const maxDailyCount = Math.max(...dailyDataFromServer);
+	
+		    let dailyChartMaxY = 5;
+		    if (maxDailyCount > 0) {
+		        dailyChartMaxY = maxDailyCount / 0.75;
+		    }
+		    
+		    const minHeightValue = dailyChartMaxY * 0.10;
+	
+		    const dailyDataForChart = dailyDataFromServer.map(count => {
+		        return count === 0 ? minHeightValue : count;
+		    });
+	
+		    const monthlyDataFromServer = [
+		        ${attendanceInfo.monthly_attendance_stats['1']}, ${attendanceInfo.monthly_attendance_stats['2']},
+		        ${attendanceInfo.monthly_attendance_stats['3']}, ${attendanceInfo.monthly_attendance_stats['4']},
+		        ${attendanceInfo.monthly_attendance_stats['5']}, ${attendanceInfo.monthly_attendance_stats['6']},
+		        ${attendanceInfo.monthly_attendance_stats['7']}, ${attendanceInfo.monthly_attendance_stats['8']},
+		        ${attendanceInfo.monthly_attendance_stats['9']}, ${attendanceInfo.monthly_attendance_stats['10']},
+		        ${attendanceInfo.monthly_attendance_stats['11']}, ${attendanceInfo.monthly_attendance_stats['12']}
+		    ];
+	
+		    document.addEventListener("DOMContentLoaded", function() {
+		        initAttendanceCharts(dailyDataForChart, monthlyDataFromServer, dailyChartMaxY);
+		    });
 		</script>
 		
 	</body>

@@ -19,9 +19,9 @@ public interface AttendanceMapper {
 	
 	public int selectAttendanceCountInLast30Days(@Param("user_id")String userId);
 	
-	List<Map<String, Object>> selectDailyStats(@Param("user_id")String userId);
+	public List<Map<String, Object>> selectDailyStats(@Param("user_id")String userId);
 	
-	List<Map<String, Object>> selectMonthlyStats(@Param("user_id")String userId);
+	public List<Map<String, Object>> selectMonthlyStats(@Param("user_id")String userId);
 
 	public int selectConsecutiveMonthlyAttendance(@Param("user_id")String userId);
 	

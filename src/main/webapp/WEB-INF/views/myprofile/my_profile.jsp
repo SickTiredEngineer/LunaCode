@@ -9,7 +9,8 @@
 		<title>MyProfile</title>
 		<meta charset="UTF-8">
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-		<link href="${pageContext.request.contextPath }/resources/css/page/myprofile/my_profile.css" rel="stylesheet"> 
+		<link href="${pageContext.request.contextPath }/resources/css/page/my_profile/my_profile.css" rel="stylesheet">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</head>
 	
 	<body>
@@ -52,27 +53,34 @@
 					<div class="dashboard-grid">
 						<!-- 출석 패널 -->
 						<div class="dashboard-panel attendance-panel">
-							<h4>출석</h4>
+							<h4><a href="Attendance">출석</a></h4>
 							<div class="chart">
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 75}%;">
 									</div><span>월</span>
 								</div>
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['TUE'] * 75}%;">
 									</div><span>화</span>
 								</div>
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['WED'] * 75}%;">
 									</div><span>수</span>
 								</div>
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['THU'] * 75}%;">
 									</div><span>목</span>
 								</div>
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['FRI'] * 75}%;">
 									</div><span>금</span>
 								</div>
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['SAT'] * 75}%;">
 									</div><span>토</span>
 								</div>
-								<div class="bar-container"><div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['MON'] * 10}%;">
+								<div class="bar-container">
+									<div class="bar" style="height: ${attendanceInfo.daily_attendance_stats['SUN'] * 50}%;">
 									</div><span>일</span>
 								</div>
 							</div>
@@ -94,16 +102,28 @@
 							<h4>커뮤니티 활동</h4>
 							<p>최근 커뮤니티에서 작성한 게시글</p>
 							<ul>
-								<li><a href="#">◦ 게시글 1</a></li>
-								<li><a href="#">◦ 게시글 2</a></li>
-							</ul>
+						        <%-- recentPosts 리스트가 비어있지 않으면, 각 항목을 반복 --%>
+						        <c:forEach var="post" items="${recentPosts}">
+						            <%-- 다른 개발자가 만든 'PostDetail' URL 구조를 활용합니다. --%>
+						            <li><a href="<c.url value='/PostDetail?post_idx=${post.post_idx}'/>">◦ ${post.title}</a></li>
+						        </c:forEach>
+						        <%-- 만약 글이 하나도 없다면 메시지 표시 --%>
+						        <c:if test="${empty recentPosts}">
+						            <li>작성한 게시글이 없습니다.</li>
+						        </c:if>
+						    </ul>
 							<!-- 공용 수평선 클래스 적용 -->
 							<div class="horizontal-line"></div>
 							<p>최근 커뮤니티에서 작성한 댓글</p>
 							<ul>
-								<li><a href="#">◦ 댓글 1</a></li>
-								<li><a href="#">◦ 댓글 2</a></li>
-							</ul>
+						        <c:forEach var="comment" items="${recentComments}">
+						            <%-- 댓글을 클릭하면 해당 댓글이 달린 게시글로 이동합니다. --%>
+						            <li><a href="<c:url value='/PostDetail?post_idx=${comment.post_idx}'/>">◦ ${comment.content}</a></li>
+						        </c:forEach>
+						        <c:if test="${empty recentComments}">
+						            <li>작성한 댓글이 없습니다.</li>
+						        </c:if>
+						    </ul>
 						</div>
 					</div>
 				</section>
@@ -115,6 +135,9 @@
 			</footer>
 			
 		</div>
+		
+		<script src="${pageContext.request.contextPath}/resources/js/my_profile/my_profile.js"></script>
+		
 	</body>
 	
 </html>

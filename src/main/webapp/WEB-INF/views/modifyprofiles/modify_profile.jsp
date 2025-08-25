@@ -46,7 +46,7 @@
 								<div class="profile-photo-group">
 									<label class="profile-photobox" id="profile_photobox" for="profile_image_input"
 										<c:if test="${not empty user.profile_img}">
-											style="background-image: url('<c:url value='/${user.profile_img}'/>');"
+											style="background-image: url('${pageContext.request.contextPath}${user.profile_img}');"
 										</c:if>
 									>
 										<c:if test="${empty user.profile_img}">

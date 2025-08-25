@@ -59,11 +59,23 @@
         </footer>
 
     </div>
+	
+	<script>
 
-    <script>
-        const contextPath = "${pageContext.request.contextPath}";
+		const initialPlayListData = [
+            <c:forEach var="pl" items="${playlist}" varStatus="status">
+                {
+                    playlist_idx: ${pl.playlist_idx},
+                    user_idx: ${pl.user_idx},
+                    playlist_name: '${pl.playlist_name}',
+                    create_date: '${pl.create_date}'
+                }
+                <c:if test="${!status.last}">,</c:if>
+            </c:forEach>
+        ];
+
     </script>
-
+	
     <script src="${pageContext.request.contextPath}/resources/js/usermain/play_list.js"></script>
 
 </body>
