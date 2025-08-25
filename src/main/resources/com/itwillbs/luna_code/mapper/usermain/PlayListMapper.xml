@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.usermain.PlayListMapper">
+	
+	<select id="selectPlayListsByUserIdx" resultType="com.itwillbs.luna_code.vo.usermain.PlayListVO">
+		select
+		       playlist_idx
+		     , user_idx
+		     , playlist_name
+		     , create_date
+		     , update_date
+		  from playlist
+		 where user_idx = #{userIdx}
+	</select>
+
+	<insert id="insertPlayList" parameterType="com.itwillbs.luna_code.vo.usermain.PlayListVO">
+
+	    <selectKey keyProperty="playlist_idx" resultType="int" order="AFTER">
+	        select last_insert_id()
+	    </selectKey>
+	    
+	    insert into 
+	       playlist (
+	                user_idx
+	              , playlist_name ) 
+	         values (
+	                #{user_idx}
+	              , #{playlist_name} )
+	</insert>
+	
+	<delete id="deletePlayList">
+	    delete 
+	      from playlist
+	     where playlist_idx = #{playlistIdx} 
+	       and user_idx = #{userIdx}
+	</delete>
+	
+	<update id="updatePlayList">
+	    update playlist
+	       set 
+	           playlist_name = #{playlistName}
+	         , update_date = now()
+	     where playlist_idx = #{playlistIdx} 
+	       and user_idx = #{userIdx}
+	</update>
+
+</mapper>

@@ -8,11 +8,34 @@
 	<select id="selectUserProfile" resultType="com.itwillbs.luna_code.vo.UserVO">
 		SELECT 
 			   nickname
-			,  bio
-			,  github_url
-			,  profile_img
+			 , bio
+			 , github_url
+			 , profile_img
 		  FROM member
-		 WHERE user_id = #{userId}
+		 WHERE user_id = #{user_id}
 	</select>
-
+	
+	<!-- 최근 게시글 조회 -->
+	<select id="selectRecentPostsByAuthorIdx" resultType="com.itwillbs.luna_code.vo.community.PostVO">
+		SELECT 
+        	   post_idx
+             , title 
+          FROM post
+         WHERE author_idx = #{author_idx}
+      ORDER BY post_idx DESC
+         LIMIT #{limit}
+    </select>
+    
+    <!-- 최근 댓글 조회 -->
+    <select id="selectRecentCommentsByAuthorIdx" resultType="com.itwillbs.luna_code.vo.community.CommentVO">
+        SELECT 
+               comment_idx 
+             , post_idx 
+             , content 
+          FROM comment
+         WHERE author_idx = #{author_idx}
+      ORDER BY comment_idx DESC
+         LIMIT #{limit}
+    </select>
+	
 </mapper>

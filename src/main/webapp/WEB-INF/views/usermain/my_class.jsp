@@ -40,7 +40,6 @@
 					
 					<%-- 강의 목록 (JavaScript가 동적으로 채울 영역) --%>
 					<ul class="course-list">
-						<!-- 이 곳의 내용은 my_class.js가 동적으로 생성합니다. -->
 					</ul>
 				</section>
 			</article>

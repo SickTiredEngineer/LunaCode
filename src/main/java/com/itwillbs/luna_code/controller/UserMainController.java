@@ -1,23 +1,55 @@
 package com.itwillbs.luna_code.controller;
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.usermain.AttendanceService;
+import com.itwillbs.luna_code.service.usermain.PlayListService;
 import com.itwillbs.luna_code.vo.UserVO;
+import com.itwillbs.luna_code.vo.usermain.PlayListVO;
 
 @Controller
 public class UserMainController {
 
 	@Autowired
 	private AttendanceService attendanceService;
+	
+	@Autowired
+	private PlayListService playListService;
 
 	@GetMapping("UserMain")
-	public String userMain() {
+	public String userMain(Authentication auth, Model model) {
+		
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		String userId = userDetails.getUsername();
+		int userIdx = userDetails.getIdx();
+		
+		// 출석 조회
+		UserVO attendanceInfo = attendanceService.getAttendancePageData(userId);
+		model.addAttribute("attendanceInfo", attendanceInfo);
+		
+		// 재생목록 조회
+		List<PlayListVO> allPlaylists = playListService.getPlayList(userIdx);
+		
+		List<PlayListVO> recentPlaylists = allPlaylists.stream()
+                .limit(2)
+                .collect(java.util.stream.Collectors.toList());
+
+		model.addAttribute("recentPlaylists", recentPlaylists);
+		
 		return "usermain/usermain";
 	}
 
@@ -37,7 +69,13 @@ public class UserMainController {
 	}
 
 	@GetMapping("PlayList")
-	public String playList() {
+	public String playList(Authentication auth, Model model) {
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
+		
+		List<PlayListVO> playlist = playListService.getPlayList(userIdx);
+		model.addAttribute("playlist", playlist);
+		
 		return "usermain/play_list";
 	}
 
@@ -55,7 +93,64 @@ public class UserMainController {
 		
 		return "usermain/attendance";
 	}
+	
+	@PostMapping("PlayListAdd")
+	@ResponseBody
+	public Map<String, Object> addPlaylist(
+	        @RequestParam String playlist_name, 
+	        Authentication auth) {
+	    
+	    Map<String, Object> response = new HashMap<>();
+	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int userIdx = userDetails.getIdx();
 
+	    PlayListVO newPlaylist = new PlayListVO();
+	    newPlaylist.setUser_idx(userIdx);
+	    newPlaylist.setPlaylist_name(playlist_name);
+
+	    int result = playListService.addPlaylist(newPlaylist);
+
+	    if (result > 0) {
+	        response.put("success", true);
+
+	        response.put("newPlaylist", newPlaylist); 
+	    } else {
+	        response.put("success", false);
+	    }
+	    
+	    return response;
+	}
+	
+	@PostMapping("PlayListDelete")
+	@ResponseBody
+	public Map<String, Object> deletePlaylist(@RequestParam int playlist_idx, Authentication auth) {
+	    Map<String, Object> response = new HashMap<>();
+	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int userIdx = userDetails.getIdx();
+
+	    int result = playListService.deletePlayList(playlist_idx, userIdx);
+
+	    response.put("success", result > 0);
+	    return response;
+	}
+	
+	@PostMapping("PlayListUpdate")
+	@ResponseBody
+	public Map<String, Object> updatePlaylist(
+	        @RequestParam int playlist_idx, 
+	        @RequestParam String new_name, 
+	        Authentication auth) {
+	    
+	    Map<String, Object> response = new HashMap<>();
+	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int userIdx = userDetails.getIdx();
+
+	    int result = playListService.updatePlayList(playlist_idx, new_name, userIdx);
+	    
+	    response.put("success", result > 0);
+	    return response;
+	}
+	
 	@GetMapping("ClassStatistic")
 	public String classStatistic() {
 		return "usermain/class_statistic";
