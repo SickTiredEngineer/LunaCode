@@ -18,6 +18,8 @@ alter table comment rename column author_id to author_idx;
 alter table comment rename column parend_idx to parent_idx;
 alter table comment drop column like_count;
 
+alter table comment add column is_update boolean default null;
+
 -- 데이터 설명충
 desc comment;
 

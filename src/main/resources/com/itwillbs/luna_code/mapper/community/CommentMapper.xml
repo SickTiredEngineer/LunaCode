@@ -7,7 +7,11 @@
 <!-- 인터페이스 경로 -->	
 <mapper namespace="com.itwillbs.luna_code.mapper.community.CommentMapper">
 	
-	<insert id="insertNewComment">
+	<insert id="insertNewComment"
+		useGeneratedKeys="true"
+		 keyProperty="comment_idx"
+		 keyColumn="comment_idx"
+	>
 		INSERT INTO comment
 		<trim prefix="(" suffix=")" suffixOverrides=",">
 			post_idx,
@@ -26,10 +30,24 @@
 	</insert>
 	
 	
+	
+	
 	<select id="importAllComment">
 		select comment_idx, author_idx, (select nickname from member where idx = author_idx) as nickname,  content, create_date, update_date from comment
 		where post_idx = #{post_idx} order by coalesce(update_date, create_date) desc, comment_idx desc
 	</select>
+	
+	<delete id="deleteComment">
+		delete from comment where comment_idx = #{comment_idx} and author_idx = #{idx}
+	</delete>
+	
+	<update id="updateComment">
+		update comment set content = #{content}, is_update = true, update_date = now() 
+		where comment_idx = #{comment_idx} and author_idx = #{idx}
+	</update>
+	
+	
+	
 
 
 </mapper>

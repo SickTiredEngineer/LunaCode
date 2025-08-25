@@ -6,11 +6,14 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.itwillbs.luna_code.mapper.community.CommentMapper;
 import com.itwillbs.luna_code.security.CustomUserDetails;
+import com.itwillbs.luna_code.service.community.CommentService;
 import com.itwillbs.luna_code.vo.community.CommentVO;
 
 
@@ -21,8 +24,11 @@ public class CommentController {
 	@Autowired
 	CommentMapper mapper;
 	
+	@Autowired
+	CommentService service;
+	
 	@PostMapping("WriteComment")
-	public String writeComment(CommentVO commentVo, HttpSession session, Authentication auth) {
+	public CommentVO writeComment(CommentVO commentVo, HttpSession session, Authentication auth) {
 		
 		CustomUserDetails user =  (CustomUserDetails) auth.getPrincipal();
 		
@@ -33,11 +39,45 @@ public class CommentController {
 		commentVo.setAuthor_id(user.getUsername());
 		commentVo.setAuthor_idx(user.getIdx());
 		
-		int result = mapper.insertNewComment(commentVo);
+		int insertResult = service.insertNewComment(commentVo);
 		
-		String msg = result > 0? "Done": "Fail";
-		return msg;
+		
+		commentVo.setNickname(user.getNickname());
+		
+		System.out.println(commentVo);
+		
+		return commentVo;
 	}
 	
 	
+	@PostMapping("DeleteComment")
+	public int deleteComment(int comment_idx, int author_idx, Authentication auth) {
+		
+		int result = 0;
+		CustomUserDetails user = (CustomUserDetails)auth.getPrincipal();
+		int userIdx = user.getIdx();
+		
+		if(author_idx == userIdx || user.isAdmin()) result = service.deleteComment(comment_idx, author_idx);		
+		
+		
+		return result;
+	}
+	
+	
+	@PostMapping("ModifyComment")
+	public int modifyComment(String content, int comment_idx, int author_idx, Authentication auth) {
+		
+		CustomUserDetails user = (CustomUserDetails)auth.getPrincipal();
+		int userIdx = user.getIdx();
+		
+		System.out.printf("Modify :%s, %d, %d, %d %n", content, comment_idx, author_idx, userIdx);
+		
+		int result = 0;
+		
+		
+		if(author_idx == userIdx)result = service.updateComment(content, comment_idx, userIdx);
+		
+		return result;
+	}
+
 }

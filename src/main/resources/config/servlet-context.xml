@@ -46,7 +46,7 @@
 			<mapping path="/**"/>
 			<exclude-mapping path="/resources/**"/>
 			<exclude-mapping path="/*.ico"/>
-			<beans:bean class="com.itwillbs.luna_code.interceptor.UserInfoInterceptor" />
+			<beans:bean class="com.itwillbs.luna_code.interceptor.UserInfoInterceptor"/>
 		</interceptor>
 		
 		<!-- JSP에서 사용자 규칙 쉽게 꺼내쓸 수 있게 세팅한 인터셉트 -->
