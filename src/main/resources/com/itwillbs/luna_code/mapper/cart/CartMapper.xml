@@ -23,7 +23,7 @@
           join class cl 
             on c.class_idx = cl.class_idx
           join member m
-            on cl.instructor_idx = m.user_id
+            on cl.instructor_idx = m.idx
          where c.user_idx = #{user_idx}
          order by c.cart_idx desc
     </select>
@@ -38,5 +38,28 @@
             #{cart_idx}
         </foreach>
     </delete>
-
+	
+	<select id="selectCartItemsByCartIdx" resultType="com.itwillbs.luna_code.vo.cart.CartVO">
+	    select
+	           c.cart_idx
+	         , c.user_idx
+	         , c.class_idx
+	         , cl.class_thumbnail
+	         , cl.class_title
+	         , cl.total_lessons
+	         , cl.class_type
+	         , m.user_id
+	         , cl.class_price
+	         , 0 AS discount_price
+	         , cl.class_price AS final_price
+	      from cart c
+	      join class cl 
+	        on c.class_idx = cl.class_idx
+	      join member m 
+	        on cl.instructor_idx = m.idx
+	     WHERE c.cart_idx IN
+	        <foreach item="cart_idx" collection="list" open="(" separator="," close=")">
+	            #{cart_idx}
+	        </foreach>
+	</select>
 </mapper>

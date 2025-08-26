@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 
@@ -19,7 +20,20 @@
 			</header>
 
 			<article>
-				<div class="payment-container">
+				<%-- data-cart-idx-list 속성 추가 --%>
+				<c:set var="cartIdxJson">
+				    <c:forEach var="item" items="${orderList}" varStatus="status">
+				        ${item.cart_idx}<c:if test="${!status.last}">,</c:if>
+				    </c:forEach>
+				</c:set>
+			
+				<div class="payment-container"
+					data-total-amount="${totalAmount}"
+					data-order-name="${orderList[0].class_title}<c:if test='${orderList.size() > 1}'>외 ${orderList.size() - 1}건</c:if>"
+					data-buyer-name="${buyerName}"
+					data-buyer-email="${buyerEmail}"
+					data-cart-idx-list="[${cartIdxJson}]">
+					
 					<h1 class="page-title">주문 / 결제</h1>
 					
 					<!-- 진행 단계 표시 -->
@@ -50,26 +64,24 @@
 							<div class="header-item">할인금액</div>
 							<div class="header-item">결제금액</div>
 						</div>
-						<div class="order-item-box">
-							<div class="item-cell product-info">
-								<div class="product-image">
-									<img src="" alt="자바 단기간 완성">
-								</div>
-								<div class="product-details">
-									<p class="product-name">자바 단기간 완성</p>
-									<p class="product-duration">(3개월 / 150강)</p>
-								</div>
-							</div>
-							<div class="item-cell">온라인</div>
-							<div class="item-cell">김라라</div>
-							<div class="item-cell">500,000원</div>
-							<div class="item-cell">0원</div>
-							<div class="item-cell price-cell">
-								500,000원
-								<!-- <a href="#" class="faq-link">결제 FAQ</a> -->
-							</div>
-						</div>
-					</div>
+					 <c:forEach var="item" items="${orderList}">
+                        <div class="order-item-box">
+                            <div class="item-cell product-info">
+                                <div class="product-image">
+                                    <img src="${pageContext.request.contextPath}/resources/upload/${item.class_thumbnail}" alt="${item.class_title}">
+                                </div>
+                                <div class="product-details">
+                                    <p class="product-name">${item.class_title}</p>
+                                    <p class="product-duration">(${item.total_lessons}강)</p>
+                                </div>
+                            </div>
+                            <div class="item-cell">${item.class_type}</div>
+                            <div class="item-cell">${item.user_id}</div>
+                            <div class="item-cell"><fmt:formatNumber value="${item.class_price}" pattern="#,###원" /></div>
+                            <div class="item-cell"><fmt:formatNumber value="${item.discount_price}" pattern="#,###원" /></div>
+                            <div class="item-cell price-cell"><fmt:formatNumber value="${item.final_price}" pattern="#,###원" /></div>
+                        </div>
+                    </c:forEach>
 					
 					<!-- 결제 수단 선택 -->
 					<div class="content-section">
@@ -113,7 +125,7 @@
 					<div class="cart-summary">
 						<div class="summary-item">
 							<p>총 상품 금액</p>
-							<p class="price">500,000원</p>
+							<p class="price"><fmt:formatNumber value="${totalAmount}" pattern="#,###원" /></p>
 						</div>
 						<div class="summary-operator">-</div>
 						<div class="summary-item">
@@ -123,7 +135,7 @@
 						<div class="summary-operator">=</div>
 						<div class="summary-item total">
 							<p>총 결제 금액</p>
-							<p class="price total-price">500,000원</p>
+							<p class="price total-price"><fmt:formatNumber value="${totalAmount}" pattern="#,###원" /></p>
 						</div>
 					</div>
 					
@@ -132,6 +144,7 @@
 						<a href="Cart" class="negative-button">취소하기</a>
 						<a href="CartOrder" class="positive-button">결제하기</a>
 					</div>
+				</div>
 				</div>
 			</article>
 

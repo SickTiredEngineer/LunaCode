@@ -19,7 +19,7 @@
                  join class_session s on ce.session_idx = s.session_idx
                 where cp.user_idx = #{userIdx} 
                   and s.class_idx = c.class_idx
-               )
+               ) as user_progress_count
              , (
                (
                select count(*) 
@@ -29,7 +29,7 @@
                 where cp.user_idx = #{userIdx} 
                   and s.class_idx = c.class_idx
                ) * 100 / c.total_lessons
-               )
+               ) as user_progress_percentage
              , h.is_completed
           from class c
           join class_enrollment h 

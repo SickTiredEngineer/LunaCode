@@ -51,7 +51,24 @@ document.addEventListener('DOMContentLoaded', function() {
             updateSummary();
         });
     });
-
+	
+	// form 태그에 이벤트 리스너를 추가
+    const cartForm = document.querySelector('form[action="CartPay"]');
+    if (cartForm) {
+        cartForm.addEventListener('submit', function(event) {
+            // 현재 체크된 상품의 개수를 확인
+            const checkedItems = document.querySelectorAll('input[name="selectedItems"]:checked');
+            
+            // 만약 체크된 상품이 하나도 없다면
+            if (checkedItems.length === 0) {
+                // form의 전송을 막음
+                event.preventDefault(); 
+                // 사용자에게 알림
+                alert('결제할 상품을 선택해주세요.');
+            }
+        });
+    }
+	
     deleteButton.addEventListener('click', function() {
         const cartIdxList = [];
         cartItems.forEach(item => {

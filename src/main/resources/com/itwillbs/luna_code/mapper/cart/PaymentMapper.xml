@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.itwillbs.luna_code.mapper.cart.PaymentMapper">
+
+	<insert id="insertPaymentHistory">
+	
+		insert into payment_history (user_idx, merchant_uid, item_idx, amount, pay_date, pay_method)
+		values
+		<foreach collection="list" item="item" separator=",">
+            (#{item.user_idx}, #{item.merchant_uid}, #{item.item_idx}, #{item.amount}, NOW(), #{item.pay_method})
+        </foreach>
+			
+	</insert>
+	
+	<select id="selectPaymentHistory" resultType="com.itwillbs.luna_code.vo.cart.PaymentHistoryVO">
+		select
+			   ph.payment_idx
+			 , ph.user_idx
+			 , ph.merchant_uid
+			 , ph.item_idx
+			 , ph.amount
+			 , ph.pay_date
+			 , ph.pay_method
+			 , cl.class_thumbnail
+			 , cl.class_title
+			 , cl.total_lessons
+			 , cl.class_type
+			 , m.user_id
+		  from payment_history ph
+		  join class cl 
+		    on ph.item_idx = cl.class_idx
+		  join member m
+		    on cl.instructor_idx = m.idx
+		 where ph.merchant_uid = #{merchant_uid}
+	</select>
+	
+	<insert id="insertEnrollments">
+        insert into class_enrollment (user_idx, class_idx, is_completed)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.user_idx}, #{item.class_idx}, 0)
+        </foreach>
+    </insert>
+	
+</mapper>

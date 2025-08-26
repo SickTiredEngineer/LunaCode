@@ -16,4 +16,7 @@ public interface CartMapper {
 			@Param("user_idx") int user_idx, 
 			@Param("cartIdxList") List<Integer> cartIdxList
 		);
+	
+	public List<CartVO> selectCartItemsByCartIdx(List<Integer> cartIdxList);
+	
 }

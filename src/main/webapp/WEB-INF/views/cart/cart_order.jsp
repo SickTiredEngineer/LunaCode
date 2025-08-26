@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 
@@ -44,7 +45,7 @@
 					<div class="completion-message-box">
 						<p class="completion-text">주문 성공적으로 완료되었습니다.</p>
 						<div class="completion-actions">
-							<a href="#" class="negative-button">강의 목록</a>
+							<a href="ClassDisplayStand" class="negative-button">강의 목록</a>
 							<a href="UserMain" class="negative-button">홈으로</a>
 						</div>
 					</div>
@@ -61,22 +62,24 @@
 							<div class="header-item">할인금액</div>
 							<div class="header-item">결제금액</div>
 						</div>
-						<div class="order-item-box">
-							<div class="item-cell product-info">
-								<div class="product-image">
-									<img src="" alt="자바 단기간 완성">
-								</div>
-								<div class="product-details">
-									<p class="product-name">자바 단기간 완성</p>
-									<p class="product-duration">(3개월 / 150강)</p>
-								</div>
-							</div>
-							<div class="item-cell">온라인</div>
-							<div class="item-cell">김라라</div>
-							<div class="item-cell">500,000원</div>
-							<div class="item-cell">0원</div>
-							<div class="item-cell">500,000원</div>
-						</div>
+						<c:forEach var="item" items="${orderHistory}">
+	                        <div class="order-item-box">
+	                            <div class="item-cell product-info">
+	                                <div class="product-image">
+	                                    <img src="${pageContext.request.contextPath}/resources/class_thumbnail/${item.class_thumbnail}" alt="${item.class_title}">
+	                                </div>
+	                                <div class="product-details">
+	                                    <p class="product-name">${item.class_title}</p>
+	                                    <p class="product-duration">(${item.total_lessons}강)</p>
+	                                </div>
+	                            </div>
+	                            <div class="item-cell">${item.class_type}</div>
+	                            <div class="item-cell">${item.user_id}</div>
+	                            <div class="item-cell"><fmt:formatNumber value="${item.amount}" pattern="#,###원" /></div>
+	                            <div class="item-cell">0원</div>
+	                            <div class="item-cell"><fmt:formatNumber value="${item.amount}" pattern="#,###원" /></div>
+	                        </div>
+	                    </c:forEach>
 					</div>
 				</div>
 			</article>

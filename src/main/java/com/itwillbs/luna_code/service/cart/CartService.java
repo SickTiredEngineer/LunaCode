@@ -29,4 +29,9 @@ public class CartService {
 	    // 삭제된 행의 수가 0보다 크면 true 반환
 	    return cartMapper.deleteCartItems(user_idx, cartIdxList) > 0;
 	}
+	
+	public List<CartVO> getSelectedCartList(List<Integer> cartIdxList) {
+	    return cartMapper.selectCartItemsByCartIdx(cartIdxList);
+	}
+	
 }
