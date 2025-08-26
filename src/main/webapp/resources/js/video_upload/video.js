@@ -1,12 +1,12 @@
 // 목차 클릭시 영상 변환
-function changeVideo(fileName) {
-  const video = document.getElementById("video");
-  video.pause();
-  video.querySelector("source").src =
-    "${pageContext.request.contextPath}/resources/video_upload/" + fileName;
-  video.load();
-  video.play();
+function changeVideo(url, title) {
+  const video = document.getElementById("ClassVideo"); // iframe
+  const titleElem = document.getElementById("ClassTitle");
+
+  video.src = url;          // 영상 링크 변경
+  titleElem.innerText = title;  // 제목 변경
 }
+
 
 
 // 메모 기능

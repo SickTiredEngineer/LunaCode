@@ -10,6 +10,7 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/page/class/online_class.css" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
+<script> const contextPath = '${pageContext.request.contextPath}'; </script>
 
 </head>
 
@@ -29,43 +30,73 @@
 	    <!-- 카테고리 -->
 	    <div class="common-category-wrapper">
 	      <div class="d-flex flex-column align-items-center common-category category-size">
-	        <a href="#" class="common-category-element">강의 목록</a>
-	        <a href="#" class="common-category-element">Quiz</a>
+	        <a href="CourseRegistration" class="common-category-element">강의 목록</a>
+	        <a href="QuizCommentary" class="common-category-element">Quiz</a>
 	        <a href="#" class="common-category-element">메모</a>
 	      </div>
 	    </div>
 	
-	    <!-- 영상 영역 + 강의명(캡션) -->
-	  <div class="video-section">  
-		  <div class="video-wrapper">
-		    <c:choose>
-		      <c:when test="${not empty video_url}">
-		        <video id="video" class="video_play" controls controlsList="nodownload">
-		          <source src="${video_url}" type="video/mp4" />
-		        </video>
-		      </c:when>
-		      <c:otherwise>
+	    <!-- 영상 영역 + 강의명(캡션) 유튜브 링크로 대체 -->
+<!-- 	  <div class="video-section">   -->
+<!-- 		  <div class="video-wrapper"> -->
+<%-- 		    <c:choose> --%>
+<%-- 		      <c:when test="${not empty url}"> --%>
+<!-- 		        <video id="video" class="video_play" controls controlsList="nodownload"> -->
+<%-- 		          <source src="${url}" type="video/mp4" /> --%>
+<!-- 		        </video> -->
+<%-- 		      </c:when> --%>
+<%-- 		      <c:otherwise> --%>
 <%-- 		      	<img src="${pageContext.request.contextPath}/resources/image/video_unavailable.png" alt="영상 준비중" /> --%>
-		        <p>영상이 준비되지 않았습니다.</p>
-		      </c:otherwise>
+<!-- 		        <p>영상이 준비되지 않았습니다.</p> -->
+<%-- 		      </c:otherwise> --%>
+<%-- 		    </c:choose> --%>
+<!-- 		    <div class="lecture-caption">3 - 2. 생성자 배우기</div> -->
+<!-- 		  </div> -->
+<!-- 		</div> -->
+
+		<c:set var="url" value="https://www.youtube.com/embed/Tt_tKhhhJqY?rel=0" />
+		<div class="video-wrapper" style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; width: 100%;">
+		    <c:choose>
+		        <c:when test="${not empty url}">
+		            <div style="position: relative; width: 100%; padding-bottom: 45%;">
+		                <iframe id="ClassVideo" src="${url}" title="강의 영상" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
+		            </div>
+		        </c:when>
+		        <c:otherwise>
+		            <p>영상이 준비되지 않았습니다.</p>
+		        </c:otherwise>
 		    </c:choose>
-		    <div class="lecture-caption">3 - 2. 생성자 배우기</div>
-		  </div>
+		    <div id="ClassTitle" class="lecture-caption">테스트 강의 영상</div>
 		</div>
+		
 
 	  <!-- 강의 리스트 (썸네일+강의명) -->
-	  <div class="video-toc">
-		<ul>
-		  <c:forEach var="classVo" items="${classList}">
-		    <li>
-		      <a href="${pageContext.request.contextPath}/OnlineClass?classId=${classVo.class_idx}">
-		        ${classVo.class_title}
-		      </a>
-		    </li>
-		  </c:forEach>
-		</ul>
-	  </div>
-	 
+	  <div class="video-player">
+    <iframe id="videoFrame" width="800" height="450"
+        src="${firstVideoPath}?rel=0" frameborder="0" allowfullscreen></iframe>
+    <h3 id="videoTitle">${firstEpisodeName}</h3>	
+</div>
+
+<div class="video-toc">
+    <ul>
+        <c:forEach var="episode" items="${episodeList}">
+            <li>
+                <a href="javascript:void(0);" onclick="playVideo('${episode.episode_video_path}', '${episode.episode_name}')">
+                    ▶ ${episode.episode_name}
+                </a>
+            </li>
+        </c:forEach>
+    </ul>
+</div>
+
+<script>
+function playVideo(videoPath, videoName) {
+    document.getElementById("videoFrame").src = videoPath + "?rel=0";
+    document.getElementById("videoTitle").innerText = videoName;
+}
+</script>
+
+	  
 	 </div>
 	  <!-- 추가하기 버튼 -->
 	  <div class="add-button-wrapper" style="margin-top:20px;">

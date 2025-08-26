@@ -11,6 +11,7 @@
 	<mappers>
     	<mapper resource="com/itwillbs/luna_code/mapper/member_login/MemberLoginMapper.xml"/>
     	<mapper resource="com/itwillbs/luna_code/mapper/class/ClassRegistMapper.xml"/>
+		<mapper resource="com/itwillbs/luna_code/mapper/class/OnlineClassMapper.xml"/>
 	</mappers>
 	
 	

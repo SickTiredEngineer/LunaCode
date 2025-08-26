@@ -76,14 +76,18 @@ document.addEventListener('DOMContentLoaded', function() {
 	/**
 	 * 개별 강의 아이템(<li>) HTML 요소를 생성하는 함수
 	 * @param {object} lecture - 강의 정보 객체
+	 * @param {string} courseId - 강의 ID
+	 * @param {number} lectureIndex - 섹션 내 강의 순서
 	 * @returns {HTMLElement} - 생성된 <li> 요소
 	 */
-	function createLectureElement(lecture) {
+	function createLectureElement(lecture, courseId, lectureIndex) {
 		const li = document.createElement('li');
 		li.className = 'lecture-item';
 
+		// courseId와 lectureIndex를 URL 파라미터로 포함
 		const link = document.createElement('a');
-		link.href = '#'; // 실제 비디오 페이지 링크로 변경 가능
+		link.href = contextPath + '/OnlineClass?classId=' + courseId + '&episodeId=' + lectureIndex;
+		 // 실제 비디오 페이지 링크로 변경 가능
 
 		link.innerHTML = `
 			<span class="lecture-info">
@@ -95,9 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				${lecture.duration}
 			</span>
 		`;
-		// 참고: JSP의 contextPath를 사용하려면 JSP 파일 내의 script 태그에서 변수로 전달해야 합니다.
-		// 예: <img src="${contextPath}/resources/icons/icon_edit.png">
-		
+
 		li.appendChild(link);
 		return li;
 	}
@@ -106,9 +108,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	 * 강의 섹션(<li>) HTML 요소를 생성하는 함수
 	 * @param {object} section - 섹션 정보 객체
 	 * @param {boolean} isOpen - 섹션이 기본적으로 열려있을지 여부
+	 * @param {string} courseId - 강의 ID
 	 * @returns {HTMLElement} - 생성된 <li> 요소
 	 */
-	function createSectionElement(section, isOpen = false) {
+	function createSectionElement(section, isOpen = false, courseId) {
 		const li = document.createElement('li');
 		li.className = `section-item ${isOpen ? 'open' : ''}`;
 
@@ -131,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		// 강의 목록(<ul>) 생성
 		const lectureList = document.createElement('ul');
 		lectureList.className = 'lecture-list';
-		section.lectures.forEach(lecture => {
-			const lectureElement = createLectureElement(lecture);
+		section.lectures.forEach((lecture, lecIndex) => {
+			const lectureElement = createLectureElement(lecture, courseId, lecIndex); // courseId와 lectureIndex 전달
 			lectureList.appendChild(lectureElement);
 		});
 
@@ -160,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		sectionListElement.innerHTML = ''; // 기존 내용 초기화
 		courseData.sections.forEach((section, index) => {
 			// 첫 번째 섹션만 기본적으로 열리도록 설정
-			const sectionElement = createSectionElement(section, index === 0);
+			const sectionElement = createSectionElement(section, index === 0, courseId); // courseId 전달
 			sectionListElement.appendChild(sectionElement);
 		});
 	}

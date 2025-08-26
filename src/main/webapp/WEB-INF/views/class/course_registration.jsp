@@ -28,8 +28,8 @@
 			
 				<%-- 좌측 공통 카테고리 (content-layout 밖으로 이동) --%>
 				<aside class="common-category">
-					<a href="CourseRegistration" class="common-category-element">강의 등록</a>
-					<a href="#" class="common-category-element">커리큘럼</a>
+					<a href="ClassRegist" class="common-category-element">강의 등록</a>
+					<a href="Curriculum" class="common-category-element">커리큘럼</a>
 					<a href="ClassStudentManagement" class="common-category-element">학생 관리</a>
 				</aside>
 				
