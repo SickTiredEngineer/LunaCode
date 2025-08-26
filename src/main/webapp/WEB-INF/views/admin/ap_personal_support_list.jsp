@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <html>
 
@@ -11,7 +11,7 @@
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath}/resources/css/page/admin/ap_personal_support_list.css" rel="stylesheet">
-		<link href="${pageContext.request.contextPath}/resources/css/page/admin/admin_common.css" rel="stylesheet">s
+		<link href="${pageContext.request.contextPath}/resources/css/page/admin/admin_common.css" rel="stylesheet"> 
 	</head>
 	
 	
@@ -54,7 +54,6 @@
 							
 							<h3 class="text-subject info-text">문의 제목</h3>
 							<h3 class="text-id info-text">회원 ID</h3>
-							<h3 class="text-id info-text">답변자 ID</h3>
 							<h3 class="text-date info-text">문의 날짜</h3>
 							<h3 class="text-state info-text">답변 상태</h3>
 						</div>
@@ -63,45 +62,47 @@
 						<div class="d-flex flex-column list-layout">
 	
 							<!-- ============================== -->
-							<!-- Example Start -->
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApPersonalSupportDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">1</h3>
-									<h3 class="text-subject">강사랑 싸우고싶어요.</h3>
-									<h3 class="text-id">Normal01</h3>
-									<h3 class="text-id">없음</h3>
-									<h3 class="text-date">2025-01-01</h3>
-									<h3 class="text-state">미답변</h3>
-								</a>
-								
-							</div>
+							<c:forEach items="${queryList}" var="query" varStatus="status">
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApPersonalSupportDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">2</h3>
-									<h3 class="text-subject">서류 냈는데 왜 반려함?</h3>
-									<h3 class="text-id">Normal02</h3>
-									<h3 class="text-id">admin01</h3>
-									<h3 class="text-date">2025-01-01</h3>
-									<h3 class="text-state">답변</h3>
-								</a>
-								
-							</div>
+								<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="ApPersonalSupportDetail?query_idx=${query.query_idx}" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">${status.index + 1}</h3>
+										<h3 class="text-subject">${query.query_subject}</h3>
+										<h3 class="text-id">${query.user_id}</h3>
+										<h3 class="text-date">
+											<fmt:formatDate value="${query.query_date}" pattern="yyyy.MM.dd"/>
+										</h3>
+										<h3 class="text-state">
+											<c:choose>
+												<c:when test="${query.answer_status}">답변</c:when>
+												<c:otherwise>미답변</c:otherwise>
+											</c:choose>
+										</h3>
+									</a>
+								</div>
+
+							</c:forEach>
 							
 							
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">
 							
-							<a class="page-selector">&lt;</a>
+							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 							
-							<a class="page-selector">1</a>
-							<a class="page-selector">2</a>
-							<a class="page-selector">3</a>
-							<a class="page-selector">4</a>
-							<a class="page-selector">5</a>
+							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+								<c:choose>
+									<c:when test="${i eq pageVo.pageNum }">
+										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}'">${i}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 							
-							<a class="page-selector">&gt;</a>
+							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum+1}'" 
+							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 					
 						</div>
 
@@ -120,6 +121,14 @@
 		</div>
 		
 		<script defer src="${pageContext.request.contextPath }/resources/js/support_center/faq_list.js"></script>
+		<script type="text/javascript">
+			window.addEventListener('pageshow', function (e) {
+			    // bfcache에서 복원된 경우 또는 back/forward 내비게이션이면 새로고침
+			    if (e.persisted || (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
+			      location.reload();
+			    }
+			 });
+		</script>
 	</body>
 	
 </html>

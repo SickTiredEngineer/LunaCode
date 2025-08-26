@@ -6,44 +6,71 @@
 <mapper namespace="com.itwillbs.luna_code.mapper.support_center.NoticeMapper">
 	
 	<select id="selectNotice">
-		select notice_idx, admin_idx, notice_subject, notice_content, notice_date, is_update, update_date, view_count
+		select 
+			notice_idx
+			,admin_idx
+			,notice_subject
+			,notice_content
+			,notice_date
+			,is_update
+			,update_date
+			,view_count
 		from notice
 		order by notice_date desc, notice_idx desc 
 		limit #{start_row}, #{list_limit}
 	</select>
 
 	<select id="countAllNotice">
-		select count(*) from notice
+		select count(*) 
+		from notice
 	</select>
 	
 	<select id="selectNoticeDetail">
-		select notice_idx, admin_idx, notice_subject, notice_content, notice_date, is_update, update_date, view_count
+		select 
+			notice_idx
+			,admin_idx
+			,notice_subject
+			,notice_content
+			,notice_date
+			,is_update
+			,update_date
+			,view_count
 		from notice 
 		where notice_idx = #{notice_idx}
 	</select>
 
 	<insert id="insertNewNotice">
 		insert into notice(
-			admin_idx,
-			notice_subject,
-			notice_content
-		)values(#{admin_idx}, #{notice_subject}, #{notice_content});
+			admin_idx
+			,notice_subject
+			,notice_content
+		)values(
+			#{admin_idx}
+			,#{notice_subject}
+			,#{notice_content}
+		)
 	</insert>
 	
 	<update id="increaseViewCount">
-		update notice set view_count = view_count + 1 where notice_idx = #{notice_idx}
+		update notice 
+		set view_count = view_count + 1 
+		where notice_idx = #{notice_idx}
 	</update>
 	
 	
 	<update id="modifyNotice">
-		update notice set notice_subject = #{notice_subject}, notice_content = #{notice_content}, update_date = current_timestamp, is_update = true
+		update notice 
+		set notice_subject = #{notice_subject}
+			,notice_content = #{notice_content}
+			,update_date = current_timestamp
+			,is_update = true
 		where notice_idx = #{notice_idx}
 	</update>
 	
 	<delete id="deleteNotice">
-		delete from notice where notice_idx = #{notice_idx}
+		delete from notice 
+		where notice_idx = #{notice_idx}
 	</delete>
 	
 	
-
 </mapper>

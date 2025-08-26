@@ -64,6 +64,10 @@ q-textarea{
 	outline: none;
 }
 
+.form-size{
+	width: 200px;
+	height: 30px;	
+}
 
 /* ======================================= */
 /* 각 안내문 규격 */

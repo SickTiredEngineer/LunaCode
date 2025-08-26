@@ -147,7 +147,7 @@
 
 
 							<div class="d-flex button-container">
-								<a href="ApMemberList" class="negative-button">돌아가기</a>
+								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
 								<a href="ApMemberList" class="positive-button">적용</a>
 							</div>
 		

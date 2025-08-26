@@ -15,5 +15,7 @@ public class CustomerQueryVO {
 	private String query_content;
 	private Timestamp query_date;
 	private boolean is_update;
-	private Timestamp update_date;	
+	private Timestamp update_date;
+	
+	private String user_id;
 }

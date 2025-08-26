@@ -45,24 +45,41 @@
 
 	<insert id="insertNewMember">
 		insert into member(
-			user_id,
-			user_name,
-			nickname,
-			password,
-			email,
-			phone,
-			profile_img,
-			bio,
-		    birth,
-			github_url,
-			attendance_count,
-			attendance_consecutive,
-			attendance_last,
-			member_type,
-			certificate_01,
-		    certificate_02,
-		    certificate_03
-		)values(#{user_id}, #{user_name}, #{nickname}, #{password}, #{email}, #{phone}, "", "", #{birth}, '', 1, 1, now(), #{member_type}, #{cerPath1}, #{cerPath2}, #{cerPath3})
+			user_id
+			,user_name
+			,nickname
+			,password
+			,email
+			,phone
+			,profile_img
+			,bio
+		    ,birth
+			,github_url
+			,attendance_count
+			,attendance_consecutive
+			,attendance_last
+			,member_type
+			,certificate_01
+		    ,certificate_02
+		    ,certificate_03
+		)values(#{user_id}
+		,#{user_name}
+		,#{nickname}
+		,#{password}
+		,#{email}
+		,#{phone}
+		,""
+		,""
+		,#{birth}
+		,''
+		,1
+		,1
+		,now()
+		,#{member_type}
+		,#{cerPath1}
+		,#{cerPath2}
+		,#{cerPath3})
+		
 	</insert>
 	
 	

@@ -88,7 +88,7 @@
 								</div>
 							
 							<div class="d-flex flex-row button-container">
-								<a href="NoticeList" class="positive-button">돌아가기</a>
+								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
 							</div>
 								
 						</div>	

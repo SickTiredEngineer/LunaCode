@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-<!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
-
+    
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <html>
 
@@ -44,120 +43,134 @@
 						<div class="d-flex flex-column">
 						
 							<div class="d-flex flex-column detail-main-layout qna_layout">
-								
-								
+
 								<div class="d-flex flex-row child-layout">
-										<p class="info-text">문의 카테고리</p>
-										<p >기타</p>
-<!-- 										<input type="text" class="common-input-form form-size" readonly="readonly" value="기타"> -->
+									<p class="info-text">문의 카테고리</p>
+									<p >${queryVo.query_category}</p>
 								</div>
 								
 								<div class="horizontal-line"></div>
 							
-									<div class="d-flex flex-row child-layout">
-											<p class="info-text">문의 제목</p>
-											<p>대충 그럴싸한 제목</p>
-<!-- 											<input type="text" class="common-input-form form-size" readonly="readonly"> -->
-									</div>
-									
-									<div class="horizontal-line"></div>
-								
-									<div class="d-flex flex-row child-layout">
-											<p class="info-text-content">문의 내용</p>
-											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">문의 내용 문의 내용 문의 내용 
-문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 
-문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용 문의 내용											
-											</textarea>
-
-
-									</div>
-									
-									<br>
-									
-									<div class="horizontal-line"></div>
-									
-									<div class="d-flex flex-row child-layout">
-										<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-										<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-									</div>
-									
-									<div class="d-flex flex-row child-layout">
-										<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-										<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-									</div>
-									
-									<div class="d-flex flex-row child-layout">
-										<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-										<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-									</div>	
-								
+								<div class="d-flex flex-row child-layout">
+									<p class="info-text">문의 제목</p>
+									<p>${queryVo.query_subject}</p>
 								</div>
 								
-								<br>
+								<div class="horizontal-line"></div>
 								
-								<div class="d-flex flex-column detail-main-layout">
+								<div class="d-flex flex-row child-layout">
+									<p class="info-text">문의자 ID</p>
+									<p>${queryVo.user_id}</p>
 									
-										<div class="d-flex flex-row child-layout-content">
-												<p class="info-text-content">답변</p>
-												<textarea rows="10" cols="50" class="common-input-form">안타깝네요. 힘내세요.
-												</textarea>
-										</div>
-										
-										<div class="horizontal-line"></div>
-										
-<!-- 										<div class="d-flex flex-column  child-layout"> -->
-										
-<!-- 											<div class="d-flex flex-row"> -->
-<!-- 												<p class="info-text">첨부 파일1:</p> -->
-<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
-<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
-<!-- 											</div> -->
-										
-<!-- 											<div class="d-flex flex-row"> -->
-<!-- 												<p class="info-text">첨부 파일2:</p> -->
-<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
-<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
-<!-- 											</div> -->
-											
-<!-- 											<div class="d-flex flex-row"> -->
-<!-- 												<p class="info-text">첨부 파일3:</p> -->
-<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
-<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
-<!-- 											</div> -->
-	
-<!-- 										</div> -->
-
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">업로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">업로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">업로드</a>
-										</div>		
-																	
+									<div class="d-flex flex-row" style="margin-left: 200px">
+										<p class="info-text">문의 날짜</p>
+										<p class="">
+											<fmt:formatDate value="${queryVo.query_date}" pattern="yyyy.MM.dd"/>
+										</p>
 									</div>
 									
+								</div>
+								
+								<div class="horizontal-line"></div>
 							
-							<div class="d-flex flex-row button-container">
-								<a href="PersonalSupport" class="negative-button">돌아가기</a>
-								<a href="PersonalSupport" class="positive-button">작성</a>
+								<div class="d-flex flex-column child-layout">
+									<p class="info-text-content">문의 내용</p>
+									<p class="" >${queryVo.query_content}</p>
+								</div>
+									
+								<br>
+		
 							</div>
 								
-						</div>	
+							<br>
+								
+							<form action="QueryAnswerForm" method="post" class="d-flex flex-column detail-main-layout">
+							
+								<input type="hidden" name="query_idx" value="${queryVo.query_idx}">
+										
+								<div class="d-flex flex-row child-layout-content">
+									<p class="info-text">답변 제목</p>
+									
+									<c:choose>
+										<c:when test="${queryVo.answer_status}">
+											<p>${answerVo.answer_subject}</p>
+										</c:when>
+										
+										<c:otherwise>
+											<input type="text" name="answer_subject" class="common-input-form form-size"></input>	
+										</c:otherwise>
+									</c:choose>
+	
+								</div>
+								
+								<div class="horizontal-line"></div>
+								
+								<c:if test="${cueryVo.answer_status }">
+									<div class="d-flex flex-row child-layout">
+										<p class="info-text">답변자 ID</p>
+										<p>${answerVo.admin_id}</p>
+										
+										<div class="d-flex flex-row" style="margin-left: 200px">
+											<p class="info-text">답변 날짜</p>
+											<p class="">
+												<fmt:formatDate value="${answerVo.answer_date}" pattern="yyyy.MM.dd"/>
+											</p>
+										</div>
+									</div>
+								
+									<div class="horizontal-line"></div>
+								</c:if>
+
+									
+								<div class="d-flex flex-row child-layout-content">
+									<p class="info-text-content">답변</p>
+									
+									<c:choose>
+										<c:when test="${queryVo.answer_status}">
+											<p>${answerVo.answer_content}</p>
+										</c:when>
+										
+										<c:otherwise>
+											<textarea name="answer_content" rows="10" cols="50" class="common-input-form"></textarea>	
+										</c:otherwise>
+									</c:choose>
+								
+								</div>
+										
+<!-- 										<div class="horizontal-line"></div> -->
+
+<!-- 										<div class="d-flex flex-row child-layout"> -->
+<!-- 											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
+<!-- 											<a href="#" class="positive-button button-detail attachment-bt">업로드</a> -->
+<!-- 										</div> -->
+										
+<!-- 										<div class="d-flex flex-row child-layout"> -->
+<!-- 											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
+<!-- 											<a href="#" class="positive-button button-detail attachment-bt">업로드</a> -->
+<!-- 										</div> -->
+										
+<!-- 										<div class="d-flex flex-row child-layout"> -->
+<!-- 											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
+<!-- 											<a href="#" class="positive-button button-detail attachment-bt">업로드</a> -->
+<!-- 										</div>		 -->
+																	
+<!-- 									</div> -->
+
+								<div class="d-flex flex-row button-container">
+									<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
+									<c:if test="${not queryVo.answer_status }">
+										<button type="submit" onclick="return confirm('답변을 등록 하시겠습니까?');" class="positive-button">작성</button>
+									</c:if>
+								</div>
+								
+							</form>	
+
+						</div>
 
 					</div>
-
-				</div>
-			
 				
-			
+				</div>	
+
 			</article>
 			
 			<!-- 푸터 -->

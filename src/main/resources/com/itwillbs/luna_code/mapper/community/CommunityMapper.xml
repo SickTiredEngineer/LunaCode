@@ -9,18 +9,18 @@
 
 	<select id="postList">
 	  select
-	    p.post_idx,
-	    p.board_code,
-	    p.title,
-	    p.author_idx,
-	    (select m.nickname from member m where m.idx = p.author_idx) as author,
-	    p.created_date,
-	    p.update_date,
-	    p.is_update,
-	    p.view_count,
-	    (select count(*) from comment c where c.post_idx = p.post_idx) as cnt_comment
+	    p.post_idx
+	    ,p.board_code
+	    ,p.title
+	    ,p.author_idx
+	    ,(select m.nickname from member m where m.idx = p.author_idx) as author
+	    ,p.created_date
+	    ,p.update_date
+	    ,p.is_update
+	    ,p.view_count
+	    ,(select count(*) from comment c where c.post_idx = p.post_idx) as cnt_comment
 	  from post p
-	  order by p.created_date DESC, post_idx desc 
+	  order by p.created_date desc, post_idx desc 
 	  limit #{start_row}, #{list_limit}
 	</select>
 	
@@ -32,16 +32,16 @@
 	
 	<select id="getPostDetail">
 		select 
-			post_idx,
-			board_code,
-			title,
-			content,
-			author_idx,
-			(select nickname from member where idx = author_idx) as author,
-			created_date,
-			update_date,
-			is_update,
-			view_count
+			post_idx
+			,board_code
+			,title
+			,content
+			,author_idx
+			,(select nickname from member where idx = author_idx) as author
+			,created_date
+			,update_date
+			,is_update
+			,view_count
 		 from post where post_idx = #{post_idx}
 	</select>
 		
@@ -49,25 +49,35 @@
 	  insert into post (
 		    board_code, title, content, author_idx, created_date, view_count
 		  ) values (
-		    'BD01',
-		    #{title},
-		    #{content},
-		    #{author_idx},
-		    default,
-		    1
+		    'BD01'
+		    ,#{title}
+		    ,#{content}
+		    ,#{author_idx}
+		    ,default
+		    ,1
 		  )
 	</insert>
 
 	<update id="increaseViewCount">
-		update post set view_count = view_count + 1 where post_idx = #{post_idx}; 
+		update post 
+		set view_count = view_count + 1 
+		where post_idx = #{post_idx}; 
 	</update>
 	
 	<delete id="deletePost">
-		delete from post where post_idx = #{post_idx} and author_idx = #{idx}
+		delete from post 
+		where post_idx = #{post_idx} 
+		and 
+		author_idx = #{idx}
 	</delete>
 	
 	<update id="modifyPost">
-		update post set title = #{vo.title}, content = #{vo.content},  is_update = true, update_date = now() where post_idx = #{vo.post_idx} and author_idx = #{idx}
+		update post 
+		set title = #{vo.title}
+		,content = #{vo.content}
+		,is_update = true 
+		,update_date = now() 
+		where post_idx = #{vo.post_idx} and author_idx = #{idx}
 	</update>
 	
 	

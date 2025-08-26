@@ -5,36 +5,61 @@
 
 <mapper namespace="com.itwillbs.luna_code.mapper.support_center.FaqMapper">
 	
-	
 	<select id="selectFaq">
-		select faq_idx, admin_idx, faq_subject, faq_content, faq_date, category
+		select 
+			faq_idx
+			,admin_idx
+			,faq_subject
+			,faq_content
+			,faq_date
+			,category
 		from faq
 		order by faq_date desc, faq_idx desc 
 		limit #{start_row}, #{list_limit}
 	</select>
 	
 	<select id="countAllFaq">
-		select count(*) from faq	
+		select count(*) 
+		from faq	
 	</select>
 	
 	<select id="selectFaqDetail">
-		select faq_idx, admin_idx, faq_subject, faq_content, faq_date, category
+		select 
+			faq_idx
+			,admin_idx
+			,faq_subject
+			,faq_content
+			,faq_date
+			,category
 		from faq
 		where faq_idx = #{faq_idx}
 	</select>
 	
 
 	<delete id="deleteFaq">
-		delete from faq where faq_idx = #{faq_idx}
+		delete from faq 
+		where faq_idx = #{faq_idx}
 	</delete>
 	
 	<insert id="insertNewFaq">
-		insert into faq(admin_idx, faq_subject, faq_content, category)
-		values(#{admin_idx}, #{faq_subject}, #{faq_content}, #{category})
+		insert into faq(
+			admin_idx
+			,faq_subject
+			,faq_content
+			,category
+		)values(
+			#{admin_idx}
+			,#{faq_subject}
+			,#{faq_content}
+			,#{category}
+		)
 	</insert>
 	
 	<update id="modifyFaq">
-		update faq set faq_subject = #{faq_subject}, faq_content = #{faq_content}, category = #{category}
+		update faq 
+		set faq_subject = #{faq_subject}
+			,faq_content = #{faq_content}
+			,category = #{category}
 		where faq_idx = #{faq_idx}
 	</update>
 	

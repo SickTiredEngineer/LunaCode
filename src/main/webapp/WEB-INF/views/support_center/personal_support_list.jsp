@@ -120,12 +120,9 @@
 					
 						</div>
 					
-					
 					</div>
 
 				</div>
-				
-			
 				
 			</article>
 			
@@ -135,6 +132,15 @@
 			</footer>
 		
 		</div>
+		
+		<script type="text/javascript">
+			window.addEventListener('pageshow', function (e) {
+			    // bfcache에서 복원된 경우 또는 back/forward 내비게이션이면 새로고침
+			    if (e.persisted || (performance.getEntriesByType && performance.getEntriesByType('navigation')[0]?.type === 'back_forward')) {
+			      location.reload();
+			    }
+			 });
+		</script>
 	
 	</body>
 	

@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.luna_code.handler.PagingHandler;
 import com.itwillbs.luna_code.security.CustomUserDetails;
+import com.itwillbs.luna_code.service.admin_page.ApSupportService;
 import com.itwillbs.luna_code.service.support_center.PersonalSupportService;
 import com.itwillbs.luna_code.vo.PageVO;
+import com.itwillbs.luna_code.vo.admin_page.QueryAnswerVO;
 import com.itwillbs.luna_code.vo.support_center.CustomerQueryVO;
 
 /* 1:1 문의 관련 컨트롤러 */ 
@@ -23,6 +25,8 @@ public class PersonalSupportController {
 	@Autowired
 	PersonalSupportService service;
 	
+	@Autowired
+	ApSupportService apService;
 	
 	@GetMapping("PersonalSupport")
 	public String personalList(Model model, @RequestParam(defaultValue = "1") int pageNum, Authentication auth) {
@@ -44,8 +48,14 @@ public class PersonalSupportController {
 		CustomUserDetails user = (CustomUserDetails) auth.getPrincipal();
 		int uesrIdx = user.getIdx();
 		CustomerQueryVO cqvo = service.selectCustomQueryDetail(query_idx, uesrIdx);		
-		
 		model.addAttribute("cqvo", cqvo);
+		
+		/* 답변이 있으면 답변 찾아서 jsp에 전달 */
+		if(cqvo.isAnswer_status()) {
+			QueryAnswerVO answerVo = apService.selectQueryAnswer(query_idx);
+			model.addAttribute("answerVo", answerVo);
+		}
+		
 		return "support_center/support_detail";
 	}
 	

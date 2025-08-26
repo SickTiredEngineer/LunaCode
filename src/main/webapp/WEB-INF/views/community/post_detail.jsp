@@ -199,7 +199,7 @@
 							
 							
 							<div class="d-flex button-container">
-								<a href="Community" class="positive-button">돌아가기</a>
+								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
 							</div>
 		
 						</div>

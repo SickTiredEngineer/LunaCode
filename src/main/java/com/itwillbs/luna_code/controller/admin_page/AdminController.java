@@ -39,16 +39,7 @@ public class AdminController {
 		return "admin/ap_paylog_detail";
 	}
 	
-	@GetMapping("ApPersonalSupportList")
-	public String apPersonalSupportList() {
-		return "admin/ap_personal_support_list";
-	}
-	
-	
-	@GetMapping("ApPersonalSupportDetail")
-	public String apPersonalSupportDetail() {
-		return "admin/ap_personal_support_detail";
-	}
+
 	
 	@GetMapping("ApGroupCodeList")
 	public String apGroupCodeList() {

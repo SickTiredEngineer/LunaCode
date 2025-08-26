@@ -7,8 +7,16 @@
 	
 	
 	<select id="selectCustomerQuery">
-		select query_idx, user_idx, query_category, answer_status, 
-		query_subject, query_content, query_date, is_update, update_date
+		select 
+			query_idx
+			,user_idx
+			,query_category
+			,answer_status
+			,query_subject
+			,query_content
+			,query_date
+			,is_update
+			,update_date					
 		from customer_query 
 		where user_idx = #{idx}
 		order by query_date desc, query_idx desc
@@ -16,25 +24,39 @@
 	</select>
 	
 	<select id="countAllCustomerQuery">
-		select count(*) from customer_query where user_idx = #{idx}
+		select count(*) 
+		from customer_query 
+		where user_idx = #{idx}
 	</select>
 	
 	<select id="selectCustomQueryDetail">
-		select query_idx, user_idx, query_category, answer_status, 
-		query_subject, query_content, query_date, is_update, update_date
+		select 
+			query_idx
+			,user_idx
+			,query_category
+			,answer_status
+			,query_subject
+			,query_content
+			,query_date
+			,is_update
+			,update_date
 		from customer_query
 		where query_idx = #{query_idx} and user_idx = #{idx}
 	</select>
 	
 	<insert id="insertnewCustomerQuery">
 		insert into customer_query(
-			user_idx,
-			query_category,
-			query_subject,
-			query_content
-		)values(#{user_idx}, #{query_category}, #{query_subject}, #{query_content});
+			user_idx
+			,query_category
+			,query_subject
+			,query_content
+		)values(
+			#{user_idx}
+			,#{query_category}
+			,#{query_subject}
+			,#{query_content}
+		);
 	</insert>
-	
 	
 	<delete id="deleteCustomerQuery">
 		delete from customer_query
@@ -42,11 +64,12 @@
 	</delete>
 	
 	<update id="modifyCustomerQuery">
-		update customer_query set query_category = #{query_category},
-			query_subject = #{query_subject},
-			query_content = #{query_content},
-			is_update = true,
-			update_date = current_timestamp
+		update customer_query 
+		set query_category = #{query_category}
+		,query_subject = #{query_subject}
+		,query_content = #{query_content}
+		,is_update = true
+		,update_date = current_timestamp
 		where query_idx = #{query_idx} and user_idx = #{user_idx}
 	</update>
 	

@@ -1,7 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+
 
 <!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
 
@@ -66,34 +69,63 @@
 									<div class="d-flex flex-row child-layout">
 											<p class="info-text">문의 제목</p>
 											<p>${cqvo.query_subject}</p>
-<!-- 											<input type="text" class="common-input-form form-size" readonly="readonly"> -->
+									</div>
+									
+									<div class="horizontal-line"></div>
+									
+									<div class="d-flex flex-row child-layout">
+											<p class="info-text">문의 날짜</p>
+											<p>
+												<fmt:formatDate value="${cqvo.query_date}" pattern="yyyy.MM.dd"/>
+											</p>
+
 									</div>
 									
 									<div class="horizontal-line"></div>
 								
 									<div class="d-flex flex-row child-layout-content">
 											<p class="info-text-content">문의 내용</p>
-											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">${cqvo.query_content}</textarea>
+<%-- 											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">${cqvo.query_content}</textarea> --%>
+											<p>${cqvo.query_content}</p>
+											
 									</div>
 									
-									<div class="horizontal-line"></div>
 								
 								</div>
 								
 								<br>
 								
 								<c:if test="${cqvo.answer_status}">
+								
+								
 									<div class="d-flex flex-column detail-main-layout">
+									
 										<div class="d-flex flex-row child-layout-content">
-												<p class="info-text-content">답변</p>
-												<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">
-												</textarea>
-										</div>	
+												<p class="info-text-content">답변 제목</p>
+												<p>${answerVo.answer_subject}</p>
+										</div>
+										
+										<div class="horizontal-line"></div>
+										
+										<div class="d-flex flex-row child-layout-content">
+												<p class="info-text-content">답변 날짜</p>
+												<p>
+													<fmt:formatDate value="${answerVo.answer_date}" pattern="yyyy.MM.dd"/>
+												</p>
+										</div>
+										
+										<div class="horizontal-line"></div>
+										
+										<div class="d-flex flex-column child-layout-content">
+												<p class="info-text-content">답변 내용</p>
+												<p>${answerVo.answer_content}</p>
+										</div>
+											
 									</div>
 								</c:if>
 
 								<div class="d-flex flex-row button-container">
-									<a href="PersonalSupport" class="positive-button">돌아가기</a>
+									<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
 								</div>
 								
 						</div>	

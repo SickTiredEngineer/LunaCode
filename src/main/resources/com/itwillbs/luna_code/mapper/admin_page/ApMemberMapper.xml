@@ -10,14 +10,17 @@
 	</select>
 	
 	<select id="selectMemberList">
-		select * from member
+		select * 
+		from member
 		limit #{start_row}, #{list_limit}
 	</select>
 	
 	<select id="selectMemberDetail">
-		select * from member where idx = #{idx}
+		select * 
+		from member 
+		where idx = #{idx}
 	</select>
 	
-
+	
 
 </mapper>

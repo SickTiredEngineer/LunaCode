@@ -102,7 +102,7 @@
 								</div>
 							
 							<div class="d-flex flex-row button-container">
-								<button type="button" class="negative-button">취소</button>
+								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
 								<button type="submit" class="positive-button">${submitLabel}</button>
 							</div>
 
