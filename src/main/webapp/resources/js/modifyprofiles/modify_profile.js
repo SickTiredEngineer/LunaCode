@@ -45,7 +45,12 @@ $(function() {
 	$('#input_nickname').on('input', debounce(async function() {
 		await validateNickname($(this).val());
 	}, DEBOUNCE_DELAY));
-
+	
+	// 이메일 입력시 실시간 유효성 검사 (디바운스 적용)
+	$('#email').on('input', debounce(function() {
+		validateEmail($(this).val());
+	}, DEBOUNCE_DELAY));
+	
 	// 자기소개 글자 수 실시간 카운팅
 	$('#bio').on('input', function() {
 		const maxLength = 200;
@@ -94,8 +99,16 @@ $(function() {
 			$('#input_nickname').focus();
 			return;
 		}
-
-		// 2. 깃허브 URL 최종 유효성 검사
+		
+		// 2. 이메일 최종 유효성 검사
+		const isEmailValid = validateEmail($('#email').val());
+		if (!isEmailValid) {
+			alert('올바른 이메일 주소를 입력해주세요.');
+			$('#email').focus();
+			return;
+		}
+		
+		// 3. 깃허브 URL 최종 유효성 검사
 		const isGithubValid = validateGithubUrl($('#github').val());
 		if (!isGithubValid) {
 			alert('올바른 깃허브 URL을 입력해주세요.');
@@ -186,6 +199,32 @@ async function validateNickname(nickname) {
 		console.error('AJAX Error:', e);
 		return false;
 	}
+}
+
+/**
+ * ★★★ 이메일 형식을 검사하고 결과를 span에 표시 ★★★
+ * @param {string} email - 검사할 이메일 주소
+ * @returns {boolean} - 유효성 통과 여부
+ */
+function validateEmail(email) {
+	const span = '#span_email';
+
+	// 이메일은 필수값이므로 비어있으면 유효하지 않음
+	if (!email || email.trim() === '') {
+		$(span).text('이메일을 입력해주세요.').css('color', 'red');
+		return false;
+	}
+
+	// 이메일 형식 검사를 위한 정규식
+	const regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+	const isValid = regex.test(email);
+
+	if (isValid) {
+		$(span).text('올바른 이메일 형식입니다.').css('color', 'green');
+	} else {
+		$(span).text('올바르지 않은 이메일 형식입니다.').css('color', 'red');
+	}
+	return isValid;
 }
 
 /**

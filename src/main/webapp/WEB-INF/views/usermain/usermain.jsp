@@ -19,11 +19,17 @@
 			</header>
 
 			<article>
+				
 				<%-- 검색 영역 --%>
 				<div class="search-area">
-					<div class="search-box">
-						<span class="search-icon">▼</span>
-						<input type="text" placeholder="검색어를 입력하세요">
+					<div class="search-bar-wrapper">
+						<div class="class-box">
+							<a href="ClassDisplayStand" class="positive-button">강의 상점</a>
+						</div>
+						<div class="search-box">
+							<span class="search-icon">▼</span>
+							<input type="text" placeholder="검색어를 입력하세요">
+						</div>
 					</div>
 					<div class="tag-list">
 						<span class="tag">#JAVA</span>
@@ -81,15 +87,27 @@
 										<span class="widget-more-arrow">></span>
 									</a>
 								</h3>
-								<div class="widget-content">
-									<div class="class-info">
-										<span class="class-title">자바스크립트 기초</span>
-										<span class="class-status">5/20 완료</span>
-									</div>
-									<div class="progress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-										<div class="progress-bar" style="width: 25%">25%</div>
-									</div>
-								</div>
+								<c:forEach var="course" items="${inProgressCourses}">
+							        <div class="widget-content">
+							            <div class="class-info">
+							                <%-- MyCourseVO의 필드를 사용하여 동적으로 값 출력 --%>
+							                <span class="class-title">${course.class_title}</span>
+							                <span class="class-status">${course.current_lesson_count} / ${course.total_lessons} 완료</span>
+							            </div>
+							            <div class="progress" role="progressbar" aria-valuenow="${course.progress_percent}" aria-valuemin="0" aria-valuemax="100">
+							                <div class="progress-bar" style="width: ${course.progress_percent}%">${course.progress_percent}%</div>
+							            </div>
+							        </div>
+							    </c:forEach>
+							
+							    <%-- 만약 학습 중인 강의가 하나도 없다면 안내 메시지 표시 --%>
+							    <c:if test="${empty inProgressCourses}">
+							        <div class="widget-content">
+							            <div class="class-info-empty">
+							                학습 중인 강의가 없습니다.
+							            </div>
+							        </div>
+							    </c:if>
 							</li>
 
 							<li class="widget-item">

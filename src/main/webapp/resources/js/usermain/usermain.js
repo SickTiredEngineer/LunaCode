@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			const query = searchInput.value.trim();
 			if (query) {
 				addSearch(query); // 검색 시 최근 검색어에 추가
-				window.location.href = `${contextPath}/search?query=${encodeURIComponent(query)}`;
+				window.location.href = `${contextPath}/ClassDisplayStand?query=${encodeURIComponent(query)}`;
 			}
 		}
 	});
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		tag.addEventListener('click', function () {
 			const tagName = this.textContent.trim().substring(1);
 			addSearch(tagName); // 태그 클릭 시에도 최근 검색어에 추가
-			window.location.href = `${contextPath}/search?tag=${encodeURIComponent(tagName)}`;
+			window.location.href = `${contextPath}/ClassDisplayStand?tag=${encodeURIComponent(tagName)}`;
 		});
 	});
 

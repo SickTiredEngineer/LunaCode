@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.itwillbs.luna_code.mapper.usermain.MyClassMapper">
+
+	<!-- 학습 중인 강의 목록 조회 -->
+    <select id="selectInProgressCourses" resultType="com.itwillbs.luna_code.vo.usermain.MyCourseVO">
+        select
+               c.class_idx
+             , c.class_title
+             , c.total_lessons
+             , c.class_thumbnail
+             , (
+               select count(*) 
+                 from class_progress cp 
+                 join class_episode ce on cp.episode_idx = ce.episode_idx 
+                 join class_session s on ce.session_idx = s.session_idx
+                where cp.user_idx = #{userIdx} 
+                  and s.class_idx = c.class_idx
+               )
+             , (
+               (
+               select count(*) 
+                 from class_progress cp 
+                 join class_episode ce on cp.episode_idx = ce.episode_idx 
+                 join class_session s on ce.session_idx = s.session_idx
+                where cp.user_idx = #{userIdx} 
+                  and s.class_idx = c.class_idx
+               ) * 100 / c.total_lessons
+               )
+             , h.is_completed
+          from class c
+          join class_enrollment h 
+            on c.class_idx = h.class_idx
+         where h.user_idx = #{userIdx} 
+           and h.is_completed = false
+    </select>
+
+    <!-- 학습 완료한 강의 목록 조회 -->
+    <select id="selectCompletedCourses" resultType="com.itwillbs.luna_code.vo.usermain.MyCourseVO">
+        select
+               c.class_idx
+             , c.class_title
+             , c.total_lessons
+             , c.class_thumbnail
+             , c.total_lessons
+             , 100 as progress_percent
+             , h.is_completed
+          from class c
+          join class_enrollment h 
+            on c.class_idx = h.class_idx
+         where h.user_idx = #{userIdx} 
+           and h.is_completed = true
+    </select>
+
+    <!-- 강의 상세 정보의 기본 내용 조회 -->
+    <select id="selectMyClassDetail" resultType="com.itwillbs.luna_code.vo.usermain.MyClassDetailVO">
+        select 
+               class_idx
+             , class_title
+          from class 
+         where class_idx = #{class_idx}
+    </select>
+
+    <!-- 특정 강의에 포함된 모든 섹션 목록 조회 -->
+    <select id="selectSectionsByClassIdx" resultType="com.itwillbs.luna_code.vo.usermain.MyClassDetailVO$ClassSession">
+        select 
+               session_idx
+             , session_name
+          from class_session 
+         where class_idx = #{class_idx}
+      order by session_index asc
+    </select>
+
+    <!-- 특정 섹션에 포함된 모든 강의 영상 목록 조회 (사용자의 시청 여부 포함) -->
+    <select id="selectLecturesBySectionIdx" resultType="com.itwillbs.luna_code.vo.usermain.MyClassDetailVO$ClassEpisode">
+        select
+               l.episode_idx
+             , l.episode_name
+             , l.episode_duration
+             , (
+               case 
+               when h.user_idx is not null then true 
+               else false 
+                end
+               ) as watched
+          from class_episode l
+          left join class_progress h 
+            on l.episode_idx = h.episode_idx 
+           and h.user_idx = #{userIdx}
+         where l.session_idx = #{session_idx}
+      order by l.episode_idx asc
+    </select>
+
+
+
+</mapper>

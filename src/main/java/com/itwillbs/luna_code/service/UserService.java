@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.UUID;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,6 +17,9 @@ public class UserService {
 	
 	@Autowired
 	UserMapper userMapper;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 	
 	// 사용자 프로필 정보 조회
 	public UserVO getUserProfile(String userId) {
@@ -62,18 +66,24 @@ public class UserService {
 		// 0보다 크면 true(중복)를 반환
 		return userMapper.countNickname(nickname) > 0;
 	}
-
+	
+	// 이메일 중복 확인을 위한 메소드
+	public boolean isEmailDuplicate(String email) {
+		// 0보다 크면 true(중복)를 반환
+		return userMapper.countEmail(email) > 0;
+	}
+	
 	// 현재 비밀번호가 맞는지 확인하는 메소드
 	public boolean isPasswordCorrect(String userId, String currentPass) {
 		// 현재 비밀번호를 가져옴
-		String storedPassword = userMapper.selectPassword(userId);
+		String encryptedPasswordFromDB  = userMapper.selectPassword(userId);
 		
-		if (storedPassword == null) {
+		if (encryptedPasswordFromDB == null) {
 			return false; // 사용자가 존재하지 않는 경우
 		}
 		
 		// 비밀번호 비교
-		return storedPassword.equals(currentPass);
+		return passwordEncoder.matches(currentPass, encryptedPasswordFromDB);
 	}
 	
 	// 새 비밀번호로 업데이트하는 메소드
@@ -83,9 +93,11 @@ public class UserService {
 		if (!isPasswordCorrect(userId, currentPass)) {
 			return false; // 현재 비밀번호가 틀리면 false 반환
 		}
-
+		
+		String encryptedNewPassword = passwordEncoder.encode(newPass);
+		
 		// Mapper로 전달
-		int updateCount = userMapper.updatePassword(userId, newPass);
+		int updateCount = userMapper.updatePassword(userId, encryptedNewPassword);
 
 		if (updateCount == 0) {
 			// 업데이트가 실패하면 예외 발생시켜 롤백

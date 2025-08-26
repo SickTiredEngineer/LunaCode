@@ -1,11 +1,12 @@
 package com.itwillbs.luna_code.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors; // Collectors import 추가
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +14,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.usermain.AttendanceService;
+import com.itwillbs.luna_code.service.usermain.MyClassService;
 import com.itwillbs.luna_code.service.usermain.PlayListService;
 import com.itwillbs.luna_code.vo.UserVO;
+import com.itwillbs.luna_code.vo.usermain.MyClassDetailVO;
+import com.itwillbs.luna_code.vo.usermain.MyCourseVO;
 import com.itwillbs.luna_code.vo.usermain.PlayListVO;
 
 @Controller
@@ -29,12 +32,15 @@ public class UserMainController {
 	
 	@Autowired
 	private PlayListService playListService;
-
+	
+	@Autowired
+	private MyClassService myClassService;
+	
 	@GetMapping("UserMain")
 	public String userMain(Authentication auth, Model model) {
 		
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		String userId = userDetails.getUsername();
+		String userId = userDetails.getUserId(); 
 		int userIdx = userDetails.getIdx();
 		
 		// 출석 조회
@@ -46,9 +52,17 @@ public class UserMainController {
 		
 		List<PlayListVO> recentPlaylists = allPlaylists.stream()
                 .limit(2)
-                .collect(java.util.stream.Collectors.toList());
+                .collect(Collectors.toList());
 
 		model.addAttribute("recentPlaylists", recentPlaylists);
+		
+		// 내 강의 조회
+		List<MyCourseVO> allInProgressCourses = myClassService.getInProgressCourses(userIdx);
+		List<MyCourseVO> limitedInProgressCourses = allInProgressCourses.stream()
+                .limit(2)
+                .collect(Collectors.toList());
+		model.addAttribute("inProgressCourses", limitedInProgressCourses);
+		
 		
 		return "usermain/usermain";
 	}
@@ -64,10 +78,40 @@ public class UserMainController {
 	}
 
 	@GetMapping("MyClassDetail")
-	public String myClassDetail() {
+	public String myClassDetail(
+			@RequestParam("id") int class_idx,
+			Authentication auth, 
+			Model model) {
+		
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx(); // <<-- userId 대신 userIdx를 사용합니다.
+
+		MyClassDetailVO classDetail = myClassService.getClassDetailWithCurriculum(class_idx, userIdx);
+		model.addAttribute("classDetail", classDetail);
+		
 		return "usermain/my_class_detail";
 	}
 
+	@GetMapping("InProgress")
+	@ResponseBody
+	public ResponseEntity<List<MyCourseVO>> getInProgressCoursesApi(Authentication auth) {
+	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int userIdx = userDetails.getIdx();
+
+	    List<MyCourseVO> courseList = myClassService.getInProgressCourses(userIdx);
+	    return ResponseEntity.ok(courseList);
+	}
+
+	@GetMapping("Completed")
+	@ResponseBody
+	public ResponseEntity<List<MyCourseVO>> getCompletedCoursesApi(Authentication auth) {
+	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int userIdx = userDetails.getIdx();
+
+	    List<MyCourseVO> courseList = myClassService.getCompletedCourses(userIdx);
+	    return ResponseEntity.ok(courseList);
+	}
+	
 	@GetMapping("PlayList")
 	public String playList(Authentication auth, Model model) {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
@@ -85,8 +129,9 @@ public class UserMainController {
 	}
 
 	@GetMapping("Attendance")
-	public String attendance(Principal principal, Model model) {
-		String userId = principal.getName();
+	public String attendance(Authentication auth, Model model) {
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		String userId = userDetails.getUserId(); // getUserId()로 변경
 		
 		UserVO attendanceInfo = attendanceService.getAttendancePageData(userId);
 		model.addAttribute("attendanceInfo", attendanceInfo);
@@ -112,7 +157,6 @@ public class UserMainController {
 
 	    if (result > 0) {
 	        response.put("success", true);
-
 	        response.put("newPlaylist", newPlaylist); 
 	    } else {
 	        response.put("success", false);

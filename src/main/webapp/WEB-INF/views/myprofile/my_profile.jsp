@@ -44,7 +44,7 @@
 					<!-- 대시보드 네비게이션 -->
 					<nav class="dashboard-nav">
 						<ul>
-							<li><a href="#" class="active">학습 통계</a></li>
+							<li><a href="" class="active">학습 통계</a></li>
 							<li><a href="PersonalSupport">고객센터</a></li>
 						</ul>
 					</nav>
@@ -105,7 +105,7 @@
 						        <%-- recentPosts 리스트가 비어있지 않으면, 각 항목을 반복 --%>
 						        <c:forEach var="post" items="${recentPosts}">
 						            <%-- 다른 개발자가 만든 'PostDetail' URL 구조를 활용합니다. --%>
-						            <li><a href="<c.url value='/PostDetail?post_idx=${post.post_idx}'/>">◦ ${post.title}</a></li>
+						            <li><a href="${pageContext.request.contextPath}/PostDetail?post_idx=${post.post_idx}">◦ ${post.title}</a></li>
 						        </c:forEach>
 						        <%-- 만약 글이 하나도 없다면 메시지 표시 --%>
 						        <c:if test="${empty recentPosts}">
@@ -118,7 +118,7 @@
 							<ul>
 						        <c:forEach var="comment" items="${recentComments}">
 						            <%-- 댓글을 클릭하면 해당 댓글이 달린 게시글로 이동합니다. --%>
-						            <li><a href="<c:url value='/PostDetail?post_idx=${comment.post_idx}'/>">◦ ${comment.content}</a></li>
+						            <li><a href="${pageContext.request.contextPath}/PostDetail?post_idx=${comment.post_idx}">◦ ${comment.content}</a></li>
 						        </c:forEach>
 						        <c:if test="${empty recentComments}">
 						            <li>작성한 댓글이 없습니다.</li>

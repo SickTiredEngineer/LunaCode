@@ -48,10 +48,7 @@
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
 		</div>
-
-        <%-- 공통 데이터 스크립트를 먼저 로드 --%>
-        <script src="${pageContext.request.contextPath}/resources/js/usermain/course_data.js"></script>
-        <%-- 그 다음, 이 페이지의 동작을 담당하는 스크립트를 로드 --%>
+		
         <script src="${pageContext.request.contextPath}/resources/js/usermain/my_class.js"></script>
 	</body>
 </html>

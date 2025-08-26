@@ -1,6 +1,5 @@
 package com.itwillbs.luna_code.controller;
 
-import java.security.Principal;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,10 +23,10 @@ public class MyProfileController {
 	private	AttendanceService attendanceService; 
 
 	@GetMapping("MyProfile")
-	public String myProfile(Principal principal, Model model, Authentication auth) {
-		String userId = principal.getName();
-		
+	public String myProfile(Model model, Authentication auth) {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		
+	    String userId = userDetails.getUserId();
 	    int userIdx = userDetails.getIdx();
 		
 		Map<String, Object> myProfileData = myProfileService.getMyProfileData(userId);

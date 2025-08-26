@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 
@@ -52,41 +53,33 @@
 							<div class="header-item">결제금액</div>
 						</div>
 					
-						<div class="cart-item">
-							<div class="item-cell product-info">
-								<input type="checkbox">
-								<div class="product-image">
-									<img src="https://via.placeholder.com/80x60/E0E8F8/444444?text=Course" alt="자바 단기간 완성">
-								</div>
-								<div class="product-details">
-									<p class="product-name">자바 단기간 완성</p>
-									<p class="product-duration">(3개월 / 150강)</p>
-								</div>
-							</div>
-							<div class="item-cell">온라인</div>
-							<div class="item-cell">김라라</div>
-							<div class="item-cell">500,000원</div>
-							<div class="item-cell">0원</div>
-							<div class="item-cell">500,000원</div>
-						</div>
-					
-						<div class="cart-item">
-							<div class="item-cell product-info">
-								<input type="checkbox">
-								<div class="product-image">
-									<img src="https://via.placeholder.com/80x60/E0E8F8/444444?text=Course" alt="DB 단기간 완성">
-								</div>
-								<div class="product-details">
-									<p class="product-name">DB 단기간 완성</p>
-									<p class="product-duration">(3개월 / 150강)</p>
-								</div>
-							</div>
-							<div class="item-cell">온라인</div>
-							<div class="item-cell">이미미</div>
-							<div class="item-cell">300,000원</div>
-							<div class="item-cell">0원</div>
-							<div class="item-cell">300,000원</div>
-						</div>
+						<!-- JSTL을 사용한 동적 상품 목록 생성 -->
+	                    <c:forEach var="item" items="${cartList}">
+	                        <div class="cart-item" data-cart-idx="${item.cart_idx}">
+	                            <div class="item-cell product-info">
+	                                <input type="checkbox" checked>
+	                                <div class="product-image">
+	                                    <img src="${pageContext.request.contextPath }/resources/upload/${item.class_thumbnail}" alt="${item.class_title}">
+	                                </div>
+	                                <div class="product-details">
+	                                    <p class="product-name">${item.class_title}</p>
+	                                    <p class="product-duration">(${item.total_lessons}강)</p>
+	                                </div>
+	                            </div>
+	                            <div class="item-cell">${item.class_type}</div>
+	                            <div class="item-cell">${item.user_id}</div>
+	                            <div class="item-cell"><fmt:formatNumber value="${item.class_price}" pattern="#,###원" /></div>
+	                            <div class="item-cell"><fmt:formatNumber value="${item.discount_price}" pattern="#,###원" /></div>
+	                            <div class="item-cell"><fmt:formatNumber value="${item.final_price}" pattern="#,###원" /></div>
+	                        </div>
+	                    </c:forEach>
+	                    
+	                    <!-- 장바구니가 비어있을 경우 표시 -->
+	                    <c:if test="${empty cartList}">
+	                        <div class="empty-cart" style="text-align: center; padding: 50px; border-bottom: 1px solid #ddd;">
+	                            <p>장바구니에 담긴 상품이 없습니다.</p>
+	                        </div>
+	                    </c:if>
 						
 						<div class="delete-button-container">
 							<button class="positive-button small-button">삭제</button>
@@ -96,7 +89,7 @@
 					<div class="cart-summary">
 						<div class="summary-item">
 							<p>총 상품 금액</p>
-							<p class="price">500,000원</p>
+							<p class="price">0원</p>
 						</div>
 						<div class="summary-operator">-</div>
 						<div class="summary-item">
@@ -106,12 +99,12 @@
 						<div class="summary-operator">=</div>
 						<div class="summary-item total">
 							<p>총 결제 금액</p>
-							<p class="price total-price">500,000원</p>
+							<p class="price total-price">0원</p>
 						</div>
 					</div>
 					
 					<div class="cart-actions">
-						<a class="negative-button">강의 더보기</a>
+						<a href="ClassDisplayStand" class="negative-button">강의 더보기</a>
 						<a href="CartPay" class="positive-button">주문하기</a>
 					</div>
 				</div>

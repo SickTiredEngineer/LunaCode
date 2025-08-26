@@ -1,13 +1,12 @@
 package com.itwillbs.luna_code.controller;
 
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwillbs.luna_code.security.CustomUserDetails; // ★★★ CustomUserDetails를 import 합니다.
 import com.itwillbs.luna_code.service.UserService;
 import com.itwillbs.luna_code.vo.UserVO;
 
@@ -27,8 +27,12 @@ public class ModifyProfileController {
 
 	// 프로필 수정 페이지로 이동 (GET)
 	@GetMapping("ModifyProfile")
-	public String modifyProfile(Model model, Principal principal) {
-		String userId = principal.getName();
+	public String modifyProfile(Model model, Authentication auth) {
+		// Principal을 실제 객체인 CustomUserDetails로 형변환합니다.
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		// getUserId() 메서드로 사용자 ID를 직접 가져옵니다. (DB 조회 불필요)
+		String userId = userDetails.getUserId();
+		
 		UserVO user = userService.getUserProfile(userId);
 		model.addAttribute("user", user);
 
@@ -42,10 +46,11 @@ public class ModifyProfileController {
 		UserVO userVO,
 		@RequestParam(value = "profileImage", required = false) MultipartFile profileImage,
 		HttpServletRequest request,
-		Principal principal) {
+		Authentication auth) {
 		
 		Map<String, Object> response = new HashMap<>();
-		String userId = principal.getName();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		String userId = userDetails.getUserId(); // ID 직접 가져오기
 		userVO.setUser_id(userId);
 
 		try {
@@ -80,7 +85,27 @@ public class ModifyProfileController {
 
 		return response;
 	}
+	
+	// 프로필 수정 전용 이메일 중복 확인
+	@GetMapping("CheckEmailForProfile")
+	@ResponseBody
+	public Map<String, Object> checkEmailForProfile(@RequestParam String value) {
+		Map<String, Object> response = new HashMap<>();
+		boolean isDuplicate = userService.isEmailDuplicate(value);
 
+		if (isDuplicate) {
+			response.put("dupResult", true);
+			response.put("text", "이미 사용 중인 이메일입니다.");
+			response.put("color", "red");
+		} else {
+			response.put("dupResult", false);
+			response.put("text", "사용 가능한 이메일입니다.");
+			response.put("color", "green");
+		}
+
+		return response;
+	}
+	
 	// 비밀번호 수정 페이지로 이동 (GET)
 	@GetMapping("ModifyPasswd")
 	public String modifyPasswd() {
@@ -90,9 +115,11 @@ public class ModifyProfileController {
 	// 현재 비밀번호 일치 확인 (AJAX - POST)
 	@PostMapping("CheckCurrentPassword")
 	@ResponseBody
-	public Map<String, Object> checkCurrentPassword(@RequestParam String current_pass, Principal principal) {
+	public Map<String, Object> checkCurrentPassword(@RequestParam String current_pass, Authentication auth) {
 		Map<String, Object> response = new HashMap<>();
-		String userId = principal.getName();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		String userId = userDetails.getUserId(); // ID 직접 가져오기
+		
 		boolean isPasswordCorrect = userService.isPasswordCorrect(userId, current_pass);
 		response.put("isValid", isPasswordCorrect);
 
@@ -105,11 +132,12 @@ public class ModifyProfileController {
 	public Map<String, Object> updatePassword(
 		@RequestParam String current_pass,
 		@RequestParam String new_pass,
-		Principal principal,
+		Authentication auth,
 		HttpSession session) {
 		
 		Map<String, Object> response = new HashMap<>();
-		String userId = principal.getName();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		String userId = userDetails.getUserId(); // ID 직접 가져오기
 
 		try {
 			boolean isSuccess = userService.updateNewPassword(userId, current_pass, new_pass);
@@ -142,11 +170,12 @@ public class ModifyProfileController {
 	@ResponseBody
 	public Map<String, Object> deleteAccount(
 		@RequestParam String password,
-		Principal principal,
+		Authentication auth,
 		HttpSession session) {
 		
 		Map<String, Object> response = new HashMap<>();
-		String userId = principal.getName();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		String userId = userDetails.getUserId(); // ID 직접 가져오기
 
 		try {
 			boolean isSuccess = userService.deleteUserAccount(userId, password);

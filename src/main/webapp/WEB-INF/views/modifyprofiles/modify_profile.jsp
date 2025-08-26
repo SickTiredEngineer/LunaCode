@@ -64,7 +64,7 @@
 							<div class="form-row">
 								<label for="input_nickname" class="form-label">닉네임</label>
 								<div class="input-wrapper">
-									<input type="text" name="nickname" id="input_nickname" value="${user.nickname}" placeholder="닉네임" class="common-input-form-main-color">
+									<input type="text" name="nickname" id="input_nickname" value="${user.nickname}" class="common-input-form-main-color">
 									<span class="validation-message" id="span_nickname"></span>
 								</div>
 							</div>
@@ -74,7 +74,10 @@
 							<%-- 이메일 행 --%>
 							<div class="form-row">
 								<label for="email" class="form-label">이메일</label>
-								<input type="email" id="email" name="email" value="${user.email}" class="common-input-form-main-color" readonly>
+								<div class="input-wrapper">
+									<input type="email" id="email" name="email" value="${user.email}" class="common-input-form-main-color">
+									<span class="validation-message" id="span_email"></span>
+								</div>
 							</div>
 							
 							<div class="horizontal-line"></div>
