@@ -31,10 +31,8 @@ desc member;
 -- 전체 데이터 조회
 select * from member;
 
-
-
 -- 데이터 초기화용
-delete from member;
+-- delete from member;
 
 -- member insert sql scripts
 insert into member(

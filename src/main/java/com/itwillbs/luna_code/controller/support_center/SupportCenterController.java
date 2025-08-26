@@ -12,10 +12,7 @@ public class SupportCenterController {
 		return "support_center/personal_support_list";
 	}
 	
-	@GetMapping("FAQList")
-	public String faqList() {
-		return "support_center/faq_list";
-	}
+
 	
 
 	
