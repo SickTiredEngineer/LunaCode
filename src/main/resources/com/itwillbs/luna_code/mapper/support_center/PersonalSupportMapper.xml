@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.support_center.PersonalSupportMapper">
+	
+	
+	<select id="selectCustomerQuery">
+		select query_idx, user_idx, query_category, answer_status, 
+		query_subject, query_content, query_date, is_update, update_date
+		from customer_query 
+		where user_idx = #{idx}
+		order by query_date desc, query_idx desc
+		limit #{start_row}, #{list_limit}
+	</select>
+	
+	<select id="countAllCustomerQuery">
+		select count(*) from customer_query where user_idx = #{idx}
+	</select>
+	
+	<select id="selectCustomQueryDetail">
+		select query_idx, user_idx, query_category, answer_status, 
+		query_subject, query_content, query_date, is_update, update_date
+		from customer_query
+		where query_idx = #{query_idx} and user_idx = #{idx}
+	</select>
+	
+	<insert id="insertnewCustomerQuery">
+		insert into customer_query(
+			user_idx,
+			query_category,
+			query_subject,
+			query_content
+		)values(#{user_idx}, #{query_category}, #{query_subject}, #{query_content});
+	</insert>
+	
+	
+	<delete id="deleteCustomerQuery">
+		delete from customer_query
+		where query_idx = #{query_idx} and user_idx = #{idx}
+	</delete>
+	
+	<update id="modifyCustomerQuery">
+		update customer_query set query_category = #{query_category},
+			query_subject = #{query_subject},
+			query_content = #{query_content},
+			is_update = true,
+			update_date = current_timestamp
+		where query_idx = #{query_idx} and user_idx = #{user_idx}
+	</update>
+	
+	
+
+</mapper>

@@ -30,7 +30,7 @@
 						<a href="#">루나코드 소개</a>
 						<a href="#">멤버십 소개</a>
 						<a href="#">사용자 이용약관</a>
-						<a href="PersonalSupport">고객 센터</a>
+						<a href="NoticeList">고객 센터</a>
 					</div>
 				</div>
 	
