@@ -34,6 +34,8 @@ desc post;
 -- 전체 데이터 조회
 select * from post;
 
+select count(*) from post;
+
 -- 데이터 초기화용
 delete from post;
 

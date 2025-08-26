@@ -22,7 +22,8 @@ create table member(
     member_type int,
     certificate_01 varchar(300),
 	certificate_02 varchar(300),
-	certificate_03 varchar(300)
+	certificate_03 varchar(300),
+    is_accept boolean default false
 );
 
 -- 데이터 설명충
@@ -31,10 +32,8 @@ desc member;
 -- 전체 데이터 조회
 select * from member;
 
-
-
 -- 데이터 초기화용
-delete from member;
+-- delete from member;
 
 -- member insert sql scripts
 insert into member(
@@ -64,7 +63,9 @@ alter table member rename column certificate to certificate_01;
 
 alter table member add certificate_02 varchar(300);
 alter table member add certificate_03 varchar(300);
+alter table member add column is_accept boolean default false;
 
+update member set is_accept = true where member_type = 'MB02';
 
 -- 아이디 중복 검사 쿼리문 예시 
 with tmp_cnt as(

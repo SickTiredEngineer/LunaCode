@@ -7,7 +7,7 @@ import lombok.Data;
 /* 회원가입 프로세싱에서 정보 담을 때 사용하는 VO */
 @Data
 public class MemberJoinVO {
-
+	private String idx;
 	private String user_id;
 	private String user_name;
 	private String nickname;
@@ -28,6 +28,8 @@ public class MemberJoinVO {
 	private MultipartFile certificate_01;
 	private MultipartFile certificate_02;
 	private MultipartFile certificate_03;
+	
+	private boolean is_accept;
 	
 	private String cerPath1;
 	private String cerPath2;

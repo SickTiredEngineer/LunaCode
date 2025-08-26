@@ -41,19 +41,31 @@
 						<div class="d-flex flex-column">
 						
 							<div class="d-flex flex-column detail-main-layout qna_layout">
-								
+							
+							
 								
 								<div class="d-flex flex-row child-layout">
-										<p class="info-text">문의 카테고리</p>
-										<p>기타</p>
-<!-- 										<input type="text" class="common-input-form form-size" readonly="readonly" value="기타"> -->
+									<p class="info-text">문의 카테고리</p>
+									<p>${cqvo.query_category}</p>
+									
+									<c:if test="${not cq.answer_status}">
+										<div class="d-flex flex-row">
+											<a href="ModifySupport?query_idx=${cqvo.query_idx}"><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+											
+											<form action="DeleteSupport" method="post" class="align-form">
+												<input type="hidden" name="query_idx" value="${cqvo.query_idx}">
+												<input type="image" onclick="return confirm('정말 해당 문의사항을 삭제 하시겠습니까?');" src="${pageContext.request.contextPath }/resources/icons/icon_delete.png" class="edit-icon">
+											</form>
+	
+										</div>									
+									</c:if>
 								</div>
 								
 								<div class="horizontal-line"></div>
 							
 									<div class="d-flex flex-row child-layout">
 											<p class="info-text">문의 제목</p>
-											<p>대충 그럴싸한 제목</p>
+											<p>${cqvo.query_subject}</p>
 <!-- 											<input type="text" class="common-input-form form-size" readonly="readonly"> -->
 									</div>
 									
@@ -61,86 +73,28 @@
 								
 									<div class="d-flex flex-row child-layout-content">
 											<p class="info-text-content">문의 내용</p>
-											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">문의 내용 - 
-											응애ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ!
-											</textarea>
+											<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">${cqvo.query_content}</textarea>
 									</div>
 									
 									<div class="horizontal-line"></div>
-									
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>	
 								
 								</div>
 								
 								<br>
 								
-								<div class="d-flex flex-column detail-main-layout">
-									
+								<c:if test="${cqvo.answer_status}">
+									<div class="d-flex flex-column detail-main-layout">
 										<div class="d-flex flex-row child-layout-content">
 												<p class="info-text-content">답변</p>
-												<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">답변 내용 - 
-												응애ㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐㅐ
+												<textarea rows="10" cols="50" class="common-input-form" readonly="readonly">
 												</textarea>
-										</div>
-										
-										<div class="horizontal-line"></div>
-										
-<!-- 										<div class="d-flex flex-column  child-layout"> -->
-										
-<!-- 											<div class="d-flex flex-row"> -->
-<!-- 												<p class="info-text">첨부 파일1:</p> -->
-<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
-<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
-<!-- 											</div> -->
-										
-<!-- 											<div class="d-flex flex-row"> -->
-<!-- 												<p class="info-text">첨부 파일2:</p> -->
-<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
-<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
-<!-- 											</div> -->
-											
-<!-- 											<div class="d-flex flex-row"> -->
-<!-- 												<p class="info-text">첨부 파일3:</p> -->
-<!-- 												<input type="text" class="common-input-form form-size" value="UUID + 파일이름.jpg"> -->
-<!-- 												<a href="#" class="positive-button button-detail attachment-bt">다운로드</a> -->
-<!-- 											</div> -->
-	
-<!-- 										</div> -->
-
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>
-										
-										<div class="d-flex flex-row child-layout">
-											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-											<a href="#" class="positive-button button-detail attachment-bt">다운로드</a>
-										</div>		
-																	
+										</div>	
 									</div>
-									
-							
-							<div class="d-flex flex-row button-container">
-								<a href="PersonalSupport" class="positive-button">돌아가기</a>
-							</div>
+								</c:if>
+
+								<div class="d-flex flex-row button-container">
+									<a href="PersonalSupport" class="positive-button">돌아가기</a>
+								</div>
 								
 						</div>	
 

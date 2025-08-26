@@ -78,8 +78,8 @@ list-main-layout{
 	height: 40px;
 	border: 1px solid var(--color-main);
 	border-radius: var(--common-radius);
-	margin-top: var(--common-margin);
-	margin-left: var(--common-margin);
+/* 	margin-top: var(--common-margin); */
+/* 	margin-left: var(--common-margin); */
 }
 
 /* 수정, 삭제에 적용될 아이콘 및 동작 */

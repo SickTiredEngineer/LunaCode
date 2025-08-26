@@ -12,6 +12,22 @@
 	height: fit-content !important;
 }
 
+
+.align-form{
+	display: inline;
+	margin: 0px;	
+}
+
+.edit-icon{
+	width: 30px;
+	height: 30px;
+	margin-left: var(--common-margin);
+	border: 1px solid var(--color-border);
+	border-radius: var(--common-radius);
+	background-color: var(--color-sub);
+}
+
+
 /* ======================================= */
 /* 해당 페이지 이름 안내 글 규격 */
 .main-text{

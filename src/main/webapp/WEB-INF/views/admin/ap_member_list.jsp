@@ -50,132 +50,57 @@
 					<div class="d-flex flex-column list-main-layout">
 					
 						<div class="d-flex flex-row align-items-center list-info-layout">
-								<h3 class="text-no info-text">회원번호</h3>
+								<h3 class="text-no info-text">No.</h3>
 								<h3 class="text-id info-text">ID</h3>
 								<h3 class="text-name info-text">이름</h3>
+								<h3 class="text-name info-text">닉네임</h3>
 								<h3 class="text-type info-text">회원 타입</h3>
-								<h3 class="text-state info-text">계정 상태</h3>
 							</div>
 							
 							
 						<div class="d-flex flex-column list-layout">
 	
 							<!-- ============================== -->
-							<!-- Example Start -->
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">1</h3>
-									<h3 class="text-id">koo123</h3>
-									<h3 class="text-name">구돼지</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">active</h3>
-								</a>
-							</div>
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">2</h3>
-									<h3 class="text-id">kim123</h3>
-									<h3 class="text-name">김말이</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">active</h3>
-								</a>
-							</div>
+							<c:forEach items="${memberList}" var="member" varStatus="status">
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">3</h3>
-									<h3 class="text-id">hong123</h3>
-									<h3 class="text-name">홍길동</h3>
-									<h3 class="text-type">강사</h3>
-									<h3 class="text-state">active</h3>
-								</a>	
-							</div>
+								<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="ApMemberDetail?idx=${member.idx}" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">${status.index + 1}</h3>
+										<h3 class="text-id">${member.user_id}</h3>
+										<h3 class="text-name">${member.user_name}</h3>
+										<h3 class="text-name">${member.nickname}</h3>
+										<h3 class="text-type">
+											<c:choose>
+												<c:when test="${member.member_type eq 'MB01'}">관리자</c:when>
+												<c:when test="${member.member_type eq 'MB02'}">강사</c:when>
+												<c:otherwise>일반회원</c:otherwise>
+											</c:choose>
+										</h3>
+									</a>
+								</div>
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">4</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">5</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">6</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">7</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">8</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">9</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="MemberDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">10</h3>
-									<h3 class="text-id">choibug</h3>
-									<h3 class="text-name">최벌레</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">deactive</h3>
-								</a>
-							</div>
-							
+							</c:forEach>
 
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">
+						
+							<button type="button" class="page-selector" onclick="location.href='ApMemberList?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 							
-							<a class="page-selector">&lt;</a>
+							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+								<c:choose>
+									<c:when test="${i eq pageVo.pageNum }">
+										<button type="button" class="page-selector" onclick="location.href='ApMemberList?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="page-selector" onclick="location.href='ApMemberList?pageNum=${i}'">${i}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 							
-							<a class="page-selector">1</a>
-							<a class="page-selector">2</a>
-							<a class="page-selector">3</a>
-							<a class="page-selector">4</a>
-							<a class="page-selector">5</a>
-							
-							<a class="page-selector">&gt;</a>
+							<button type="button" class="page-selector" onclick="location.href='ApMemberList?pageNum=${pageVo.pageNum+1}'" 
+							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 					
 						</div>
 
