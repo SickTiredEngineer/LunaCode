@@ -1,4 +1,4 @@
-package com.itwillbs.luna_code.controller;
+package com.itwillbs.luna_code.controller.admin_page;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -6,15 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 
 	
-	@GetMapping("ApMemberList")
-	public String apMemberList() {
-		return "admin/ap_member_list";
-	}
-	
-	@GetMapping("MemberDetail")
-	public String memberDetail() {
-		return "admin/ap_member_detail";
-	}
+
 	
 	@GetMapping("ApReqInstList")
 	public String apReqInstList() {
