@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.itwillbs.luna_code.handler.PrincipalHandler;
 import com.itwillbs.luna_code.security.CustomUserDetails; // ★★★ CustomUserDetails를 import 합니다.
 import com.itwillbs.luna_code.service.UserService;
 import com.itwillbs.luna_code.vo.UserVO;
@@ -24,6 +25,9 @@ public class ModifyProfileController {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private PrincipalHandler principalHandler;
 
 	// 프로필 수정 페이지로 이동 (GET)
 	@GetMapping("ModifyProfile")
@@ -63,6 +67,7 @@ public class ModifyProfileController {
 			response.put("message", "프로필 수정 중 오류가 발생했습니다.");
 		}
 
+		principalHandler.refreshByUserId(userDetails.getUserId());
 		return response;
 	}
 
