@@ -8,7 +8,7 @@
 	
 	<!-- 강사만 보이는 메뉴 -->
 	<sec:authorize access="hasRole('INSTRUCTOR')">
-	<a href="ClassRegist" class="common-category-element">강의 등록</a>
+	<a href="CourseRegistration" class="common-category-element">강의 목록</a>
 	<a href="ClassStatistic" class="common-category-element">강사 대시보드</a>
 	</sec:authorize>
 	

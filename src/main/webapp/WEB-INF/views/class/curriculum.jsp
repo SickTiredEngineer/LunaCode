@@ -7,7 +7,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>커리큘럼 작성</title>
+    <title>커리큘럼</title>
     <jsp:include page="/WEB-INF/views/inc/common_head.jsp" />
     <link href="${pageContext.request.contextPath}/resources/css/page/class/curriculum.css" rel="stylesheet" />
     <script>  const ctx = '${pageContext.request.contextPath}';</script>
@@ -22,12 +22,12 @@
         </header>
 
         <!-- 타이틀 -->
-        <h3 class="curriculum-title">커리큘럼 작성</h3>
+        <h3 class="curriculum-title">커리큘럼</h3>
 
         <article>
 		  <div class="curriculum-bg">
 		    <div class="curriculum-card">
-		      <form id="curriculum-form">
+		      <form id="curriculum-form" method="post" action="${ctx}/saveCurriculum">
 		        <div id="sections-container">
 		
 		          <!-- 섹션 1 -->
@@ -54,7 +54,9 @@
 					      <!-- 오른쪽 아이콘 -->
 					      <div class="lecture-actions">
 					        <img src="${pageContext.request.contextPath}/resources/icons/icon_lock.png" alt="잠금" title="잠금" />
-					        <img src="${pageContext.request.contextPath}/resources/icons/icon_edit.png" alt="수정" title="수정" class="lesson-edit"/>
+					        <a href="${pageContext.request.contextPath}/CurEdit?classId=${lecture.classId}">
+					        	<img src="${pageContext.request.contextPath}/resources/icons/icon_edit.png" alt="수정" title="수정" class="lesson-edit"/>
+					        </a>
 					        <img src="${pageContext.request.contextPath}/resources/icons/icon_view.png" alt="보기" title="보기" />
 					        <img src="${pageContext.request.contextPath}/resources/icons/icon_delete.png" alt="삭제" title="삭제" class="lesson-delete" />
 					      </div>
@@ -75,8 +77,10 @@
 		        </div>
 		      </form>
 		        <div class="d-flex flex-row button-container">
-		          <a href="" class="negative-button" id="">돌아가기</a>
-		          <a href="" class="positive-button" id="saveBtn ">저장</a>
+		          <a href="CourseRegistration" class="negative-button" id="">돌아가기</a>
+		          <button type="submit" form="curriculum-form" class="positive-button" id="saveBtn" onclick="return confirm('등록하시겠습니까?');">
+		          	저장
+		          </button>
 		        </div>
 		    </div>
 		  </div>

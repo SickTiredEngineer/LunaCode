@@ -27,7 +27,7 @@
 			#{class_time}, 
 			#{class_type}, 
 			NOW(), 
-			#{class_thumbnail}, 
+			#{class_thumbnail}, 	
 			#{class_intro}, 
 			#{class_content}, 
 			#{class_price}, 
@@ -36,4 +36,18 @@
 			#{url}
 		)
 	</insert>
+	
+	<delete id="deleteClassEnrollmentByClassId" parameterType="int">
+		DELETE FROM class_enrollment 
+		WHERE class_idx = #{classId};
+	</delete>
+	
+	<delete id="deleteClass" parameterType="int">
+    	DELETE FROM class 
+    	WHERE class_idx = #{classId}
+	</delete>
+	
+	
+	
+	
 </mapper>

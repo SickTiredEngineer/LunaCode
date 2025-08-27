@@ -23,7 +23,8 @@ body {
 
 .common-category {
 	width: 200px;
-	height: 250px;
+	height: 65px !important;
+	margin-right: 100px !important;
 	flex-shrink: 0; /* 너비가 줄어들지 않도록 고정 */
 }
 
