@@ -47,6 +47,11 @@
 	gap: 25px;
 }
 
+#studentChart {
+    width: 450px !important;
+    height: 300px !important;
+}
+
 .widget {
 	background-color: var(--color-widget-bg, #EEF2F9);
 	border-radius: var(--common-radius, 12px);

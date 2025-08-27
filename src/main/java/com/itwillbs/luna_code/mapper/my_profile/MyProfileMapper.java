@@ -21,7 +21,7 @@ public interface MyProfileMapper {
 	);
 	
 	// 사용자가 작성한 최근 댓글 목록을 조회
-	List<CommentVO> selectRecentCommentsByAuthorIdx(
+	public List<CommentVO> selectRecentCommentsByAuthorIdx(
 		@Param("author_idx") int authorIdx, 
 		@Param("limit") int limit
 	);

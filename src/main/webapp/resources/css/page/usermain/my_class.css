@@ -64,7 +64,7 @@
 	display: flex;
 	align-items: center;
 	gap: 25px;
-	padding: 20px;
+	padding: 10px;
 	margin-bottom: 20px;
 	border: 2px dashed var(--color-border);
 	border-radius: 20px;
@@ -76,7 +76,7 @@
 	gap: 25px; /* 아이콘과 상세정보 사이의 간격 */
 	text-decoration: none; /* 밑줄 제거 */
 	color: inherit; /* 부모 요소의 글자색을 그대로 사용 (검은색) */
-	padding: 20px; /* 클릭 영역 확보를 위한 패딩 */
+/* 	padding: 20px; 클릭 영역 확보를 위한 패딩 */
 	border-radius: var(--common-radius); /* li와 동일하게 모서리를 둥글게 */
 	transition: background-color 0.2s;
 	width: 100%;
@@ -98,6 +98,24 @@
 	align-items: center;
 	font-size: 30px;
 	color: var(--color-main);
+}
+
+.course-thumbnail {
+	flex-shrink: 0;
+	width: 150px;
+	height: 100px;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.course-thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* 이미지가 비율을 유지하며 꽉 차도록 */
+}
+.course-enroll-date {
+	font-size: var(--font-size-small);
+	color: var(--color-font-gray);
+	margin-top: 8px;
 }
 .course-details {
 	flex: 1;

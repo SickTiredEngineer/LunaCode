@@ -89,11 +89,15 @@
 						<!-- 학습 현황 패널 -->
 						<div class="dashboard-panel learning-status-panel">
 							<h4>학습 현황</h4>
+							<p>내 강의</p>
 							<ul>
-								<li>최근 완료 강의</li>
-								<li>쉽지 않다 Figma를 쉽게 이용해보자</li>
-								<li>따라해보는 클론 코딩</li>
-								<li>TDD 쓰는 회사가 있나요?</li>
+						        <c:forEach var="course" items="${enrolledCourses}">
+						            <li>${course.class_title}</li>
+						        </c:forEach>
+						
+						        <c:if test="${empty enrolledCourses}">
+						            <li>수강 중인 강의가 없습니다.</li>
+						        </c:if>
 							</ul>
 						</div>
 

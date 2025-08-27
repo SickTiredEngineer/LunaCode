@@ -23,6 +23,7 @@ import com.itwillbs.luna_code.service.usermain.ClassStatisticService;
 import com.itwillbs.luna_code.service.usermain.MyClassService;
 import com.itwillbs.luna_code.service.usermain.PlayListService;
 import com.itwillbs.luna_code.vo.UserVO;
+import com.itwillbs.luna_code.vo.usermain.ClassStatisticSummaryVO;
 import com.itwillbs.luna_code.vo.usermain.MyClassDetailVO;
 import com.itwillbs.luna_code.vo.usermain.MyCourseVO;
 import com.itwillbs.luna_code.vo.usermain.NewStudentVO;
@@ -228,7 +229,23 @@ public class UserMainController {
 	
 
 	@GetMapping("ClassStatisticDetail")
-	public String classStatisticDetail() {
+	public String classStatisticDetail(Authentication auth, Model model) throws Exception {
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int instructorIdx = userDetails.getIdx();
+	    
+	    // 1. 요약 카드 데이터 조회
+	    ClassStatisticSummaryVO summary = classStatisticService.getStatisticsSummary(instructorIdx);
+	    model.addAttribute("summary", summary);
+
+	    // 2. 월별 수익 차트 데이터 (최근 6개월)
+	    List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    model.addAttribute("revenueDataJson", objectMapper.writeValueAsString(revenueData));
+
+	    // 3. 월별 신규 수강생 차트 데이터 (올해 12개월)
+	    List<Map<String, Object>> studentCountData = classStatisticService.getMonthlyNewStudentCounts(instructorIdx);
+	    model.addAttribute("studentCountDataJson", objectMapper.writeValueAsString(studentCountData));
+	    
 		return "usermain/class_statistic_detail";
 	}
 

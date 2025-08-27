@@ -45,7 +45,7 @@
 						</div>
 
 						<!-- 2. 신규 수강생 -->
-						<div class="widget">
+						<div class="widget new-students">
 							<div class="widget-header">
 								<h3>신규 수강생</h3>
 							</div>
@@ -82,24 +82,24 @@
 							</div>
 						</div>
 
-						<!-- 4. 강의 별 조회수 (Bar Chart) -->
-						<div class="widget">
-							<div class="widget-header">
-								<h3>강의 별 조회수</h3>
-								<a href="ClassStatisticDetail">&gt;</a>
-							</div>
-							<div class="widget-content">
-								<div class="chart">
-									<div class="bar-container"><div class="bar" style="height: 90%;"></div><span>강의1</span></div>
-									<div class="bar-container"><div class="bar" style="height: 30%;"></div><span>강의2</span></div>
-									<div class="bar-container"><div class="bar" style="height: 40%;"></div><span>강의3</span></div>
-									<div class="bar-container"><div class="bar" style="height: 60%;"></div><span>강의4</span></div>
-									<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>강의5</span></div>
-									<div class="bar-container"><div class="bar" style="height: 45%;"></div><span>강의6</span></div>
-									<div class="bar-container"><div class="bar" style="height: 65%;"></div><span>강의7</span></div>
-								</div>
-							</div>
-						</div>
+<!-- 						4. 강의 별 조회수 (Bar Chart) -->
+<!-- 						<div class="widget"> -->
+<!-- 							<div class="widget-header"> -->
+<!-- 								<h3>강의 별 조회수</h3> -->
+<!-- 								<a href="ClassStatisticDetail">&gt;</a> -->
+<!-- 							</div> -->
+<!-- 							<div class="widget-content"> -->
+<!-- 								<div class="chart"> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 90%;"></div><span>강의1</span></div> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 30%;"></div><span>강의2</span></div> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 40%;"></div><span>강의3</span></div> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 60%;"></div><span>강의4</span></div> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 10%;"></div><span>강의5</span></div> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 45%;"></div><span>강의6</span></div> -->
+<!-- 									<div class="bar-container"><div class="bar" style="height: 65%;"></div><span>강의7</span></div> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
 
 					</div>
 				</section>

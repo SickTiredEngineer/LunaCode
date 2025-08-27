@@ -1,5 +1,7 @@
 package com.itwillbs.luna_code.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.my_profile.MyProfileService;
 import com.itwillbs.luna_code.service.usermain.AttendanceService;
+import com.itwillbs.luna_code.service.usermain.MyClassService;
 import com.itwillbs.luna_code.vo.UserVO;
+import com.itwillbs.luna_code.vo.usermain.MyCourseVO;
 
 @Controller
 public class MyProfileController {
@@ -20,7 +24,10 @@ public class MyProfileController {
 	private MyProfileService myProfileService;
 	
 	@Autowired
-	private	AttendanceService attendanceService; 
+	private	AttendanceService attendanceService;
+	
+	@Autowired
+	private MyClassService myClassService;
 
 	@GetMapping("MyProfile")
 	public String myProfile(Model model, Authentication auth) {
@@ -39,6 +46,16 @@ public class MyProfileController {
         
         model.addAttribute("recentPosts", communityActivity.get("recentPosts"));
         model.addAttribute("recentComments", communityActivity.get("recentComments"));
+        
+        List<MyCourseVO> inProgressCourses = myClassService.getInProgressCourses(userIdx);
+        List<MyCourseVO> completedCourses = myClassService.getCompletedCourses(userIdx);
+        
+        List<MyCourseVO> allEnrolledCourses = new ArrayList<>();
+        allEnrolledCourses.addAll(inProgressCourses);
+        allEnrolledCourses.addAll(completedCourses);
+        
+        model.addAttribute("enrolledCourses", allEnrolledCourses);
+
 		
 		return "myprofile/my_profile";
 	}

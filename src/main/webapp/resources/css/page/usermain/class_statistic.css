@@ -98,6 +98,20 @@
 	scrollbar-color: var(--color-main) var(--color-sub); /* 핸들 색상, 트랙 색상 순 */
 }
 
+.widget.new-students {
+    grid-row: span 2; /* 두 행을 차지 */
+}
+
+/* 높이가 늘어난 만큼 item-list도 유연하게 확장 */
+.widget.new-students .widget-content {
+    max-height: none; /* 기존 200px 제한 해제 */
+    flex-grow: 1;     /* 위젯 높이에 맞춰 확장 */
+}
+
+.widget.new-students .item-list {
+    flex-grow: 1;
+}
+
 /* 차트 & 목록 스타일 */
 /* 1. Area Chart (수익 통계) */
 .monthly-area-chart {

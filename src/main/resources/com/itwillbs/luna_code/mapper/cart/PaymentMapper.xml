@@ -10,7 +10,7 @@
 		insert into payment_history (user_idx, merchant_uid, item_idx, amount, pay_date, pay_method)
 		values
 		<foreach collection="list" item="item" separator=",">
-            (#{item.user_idx}, #{item.merchant_uid}, #{item.item_idx}, #{item.amount}, NOW(), #{item.pay_method})
+            (#{item.user_idx}, #{item.merchant_uid}, #{item.item_idx}, #{item.amount}, #{item.pay_date}, #{item.pay_method})
         </foreach>
 			
 	</insert>
@@ -38,11 +38,23 @@
 	</select>
 	
 	<insert id="insertEnrollments">
-        insert into class_enrollment (user_idx, class_idx, is_completed)
+        insert into class_enrollment (user_idx, class_idx, is_completed, enroll_date)
         values
         <foreach collection="list" item="item" separator=",">
-            (#{item.user_idx}, #{item.class_idx}, 0)
+            (#{item.user_idx}, #{item.class_idx}, 0, #{item.enroll_date})
         </foreach>
     </insert>
+	
+	<select id="selectMyPayments" resultType="com.itwillbs.luna_code.vo.cart.PaymentHistoryVO">
+	    select
+	           merchant_uid,pay_date
+	         , is_refunded,sum(amount) as total_amount
+	         , (select class_title from class where class_idx = min(ph.item_idx)) as representative_item_name
+	         , count(item_idx) as total_item_count
+	      from payment_history ph
+	     where user_idx = #{user_idx}
+	   group by merchant_uid, pay_date, is_refunded
+	   order by pay_date desc;
+	</select>
 	
 </mapper>

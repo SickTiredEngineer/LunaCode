@@ -10,8 +10,9 @@
         select
                c.class_idx
              , c.class_title
-             , c.total_lessons
+             , ifnull(c.total_lessons, 0) as total_lessons
              , c.class_thumbnail
+             , h.enroll_date
              , (
                select count(*) 
                  from class_progress cp 
@@ -21,14 +22,19 @@
                   and s.class_idx = c.class_idx
                ) as user_progress_count
              , (
-               (
-               select count(*) 
-                 from class_progress cp 
-                 join class_episode ce on cp.episode_idx = ce.episode_idx 
-                 join class_session s on ce.session_idx = s.session_idx
-                where cp.user_idx = #{userIdx} 
-                  and s.class_idx = c.class_idx
-               ) * 100 / c.total_lessons
+               case 
+                 when c.total_lessons is null or c.total_lessons = 0 then 0
+                 else (
+                       (
+                       select count(*) 
+                         from class_progress cp 
+                         join class_episode ce on cp.episode_idx = ce.episode_idx 
+                         join class_session s on ce.session_idx = s.session_idx
+                        where cp.user_idx = #{userIdx} 
+                          and s.class_idx = c.class_idx
+                       ) * 100 / c.total_lessons
+                      )
+               end
                ) as user_progress_percentage
              , h.is_completed
           from class c

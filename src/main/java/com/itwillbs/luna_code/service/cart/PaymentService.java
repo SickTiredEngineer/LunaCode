@@ -1,5 +1,6 @@
 package com.itwillbs.luna_code.service.cart;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +29,8 @@ public class PaymentService {
 	    List<Integer> cartIdxListToRemove = new ArrayList<>();
 	    List<EnrollmentVO> enrollList = new ArrayList<>();
 	    
+	    Timestamp purchaseTimestamp = new Timestamp(System.currentTimeMillis());
+	    
 	    for (CartVO cartItem : orderList) {
 	        PaymentHistoryVO history = new PaymentHistoryVO();
 	        history.setUser_idx(user_idx);
@@ -35,13 +38,16 @@ public class PaymentService {
 	        history.setPay_method(paymentData.getPay_method());
 	        history.setItem_idx(cartItem.getClass_idx());
 	        history.setAmount(cartItem.getFinal_price());
+	        history.setPay_date(purchaseTimestamp); 
 	        historyList.add(history);
+	        
 	        
 	        cartIdxListToRemove.add(cartItem.getCart_idx());
 	        
 	        EnrollmentVO enroll = new EnrollmentVO();
 	        enroll.setUser_idx(user_idx);
 	        enroll.setClass_idx(cartItem.getClass_idx());
+	        enroll.setEnroll_date(purchaseTimestamp); 
 	        enrollList.add(enroll);
 	    }
 	    
@@ -53,4 +59,8 @@ public class PaymentService {
 	public List<PaymentHistoryVO> getPaymentHistory(String merchant_uid) {
 	    return paymentMapper.selectPaymentHistory(merchant_uid);
 	}
+	
+	public List<PaymentHistoryVO> getMyPayments(int user_idx) {
+        return paymentMapper.selectMyPayments(user_idx);
+    }
 }

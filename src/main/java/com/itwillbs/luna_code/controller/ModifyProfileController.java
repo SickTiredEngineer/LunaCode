@@ -1,6 +1,7 @@
 package com.itwillbs.luna_code.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -18,7 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 import com.itwillbs.luna_code.handler.PrincipalHandler;
 import com.itwillbs.luna_code.security.CustomUserDetails; // ★★★ CustomUserDetails를 import 합니다.
 import com.itwillbs.luna_code.service.UserService;
+import com.itwillbs.luna_code.service.cart.PaymentService;
 import com.itwillbs.luna_code.vo.UserVO;
+import com.itwillbs.luna_code.vo.cart.PaymentHistoryVO;
 
 @Controller
 public class ModifyProfileController {
@@ -28,7 +31,10 @@ public class ModifyProfileController {
 	
 	@Autowired
 	private PrincipalHandler principalHandler;
-
+	
+	@Autowired
+	private PaymentService paymentService;
+	
 	// 프로필 수정 페이지로 이동 (GET)
 	@GetMapping("ModifyProfile")
 	public String modifyProfile(Model model, Authentication auth) {
@@ -204,7 +210,13 @@ public class ModifyProfileController {
 
 	// 결제 내역 페이지로 이동 (GET)
 	@GetMapping("MyPayment")
-	public String myPayment() {
+	public String myPayment(Authentication auth, Model model) {
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int user_idx = userDetails.getIdx();
+		
+		List<PaymentHistoryVO> paymentList = paymentService.getMyPayments(user_idx);
+		model.addAttribute("paymentList", paymentList);
+		
 		return "modifyprofiles/my_payment";
 	}
 }

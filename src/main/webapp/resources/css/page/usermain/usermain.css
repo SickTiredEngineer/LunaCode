@@ -187,7 +187,7 @@
 .common-category {
 	flex-shrink: 0; 
 	width: 200px;
-	height: 320 !important;
+/* 	height: 320 !important; */
 }
 
 /* 캐러셀 컨테이너 */

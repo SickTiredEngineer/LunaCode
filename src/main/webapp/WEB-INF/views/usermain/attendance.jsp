@@ -33,12 +33,12 @@
 						<!-- 좌측 출석 현황 -->
 						<section class="streak-section">
 							<div class="streak-card">
-								<h3>연속 출석</h3>
-								<div class="streak-circle">${attendanceInfo.attendance_consecutive}일차</div>
+								<h3>전체 출석</h3>
+								<div class="streak-circle">${attendanceInfo.attendance_count}일</div>
 							</div>
 							<div class="streak-card">
-								<h3>주간 출석</h3>
-								<div class="streak-circle">${attendanceInfo.attendance_count}일</div>
+								<h3>연속 출석</h3>
+								<div class="streak-circle">${attendanceInfo.attendance_consecutive}일차</div>
 							</div>
 							<div class="streak-card">
 								<h3>월간 출석</h3>

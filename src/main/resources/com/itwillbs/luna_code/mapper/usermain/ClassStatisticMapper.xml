@@ -33,4 +33,56 @@
 		 limit 50;
     </select>
 	
+	<!-- 4개의 요약 카드 데이터를 한 번에 조회 -->
+	<select id="selectStatisticsSummary" resultType="com.itwillbs.luna_code.vo.usermain.ClassStatisticSummaryVO">
+	    select
+	        -- 1. 이번 달 수익 (이번 달 1일부터)
+	        (
+	            select ifnull(sum(ph.amount), 0)
+	              from payment_history ph
+	              join class c on ph.item_idx = c.class_idx
+	             where c.instructor_idx = #{instructor_idx}
+	               and ph.pay_date >= date_format(now(), '%Y-%m-01')
+	        ) as monthlyrevenue,
+	        
+	        -- 2. 전체 기간 수익
+	        (
+	            select ifnull(sum(ph.amount), 0)
+	              from payment_history ph
+	              join class c on ph.item_idx = c.class_idx
+	             where c.instructor_idx = #{instructor_idx}
+	        ) as totalrevenue,
+	        
+	        -- 3. 이번 달 신규 수강생 수
+	        (
+	            select count(*)
+	              from class_enrollment ce
+	              join class c on ce.class_idx = c.class_idx
+	             where c.instructor_idx = #{instructor_idx}
+	               and ce.enroll_date >= date_format(now(), '%Y-%m-01')
+	        ) as newstudentcount,
+	        
+	        -- 4. 전체 수강생 수
+	        (
+	            select count(distinct ce.user_idx)
+	              from class_enrollment ce
+	              join class c on ce.class_idx = c.class_idx
+	             where c.instructor_idx = #{instructor_idx}
+	        ) as totalstudentcount
+	</select>
+	
+	<!-- 월별 신규 수강생 수를 조회 -->
+	<select id="selectMonthlyNewStudentCounts" resultType="java.util.Map">
+	    select
+	           date_format(ce.enroll_date, '%Y-%m') as month
+	         , count(*) as student_count
+	      from class_enrollment ce
+	      join class c on ce.class_idx = c.class_idx
+	     where c.instructor_idx = #{instructor_idx}
+	       and year(ce.enroll_date) = year(now()) -- 올해 데이터만 조회
+	  group by date_format(ce.enroll_date, '%Y-%m')
+	  order by month asc
+	</select>
+	
+	
 </mapper>

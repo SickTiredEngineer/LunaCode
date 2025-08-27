@@ -145,6 +145,7 @@
 
 /* 학습 현황 리스트 */
 .learning-status-panel ul {
+	padding-left: 10px !important;
 	list-style: none;
 }
 .learning-status-panel ul li {

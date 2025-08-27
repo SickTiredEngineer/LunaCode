@@ -22,4 +22,8 @@ public class PaymentHistoryVO {
     private int total_lessons;
     private String class_type;
     private String user_id;
+    
+    private int total_amount;
+    private String representative_item_name;
+    private int total_item_count;
 }

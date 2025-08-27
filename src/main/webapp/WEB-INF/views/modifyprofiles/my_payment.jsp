@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 
@@ -39,26 +40,37 @@
 					<%-- 결제 내역 목록 컨테이너 --%>
 					<section class="payment-history-container">
 						<ul class="payment-list">
-							<li class="payment-item">
-								<div class="order-info">
-									<div class="order-number">주문 번호 456456456</div>
-									오늘도 배운다! 자바 핵심만 쏙쏙 배우는 명강의 100선
-								</div>
-								<div class="status-box">
-									<div class="status paid">결제완료</div>
-									<div class="date">2025.07.21 결제</div>
-								</div>
-							</li>
-							<li class="payment-item">
-								<div class="order-info">
-									<div class="order-number">주문 번호 456456456</div>
-									쉽지 않다. figma를 쉽게 이용해보자
-								</div>
-								<div class="status-box">
-									<div class="status refunded">환불</div>
-									<div class="date">2025.07.21 결제</div>
-								</div>
-							</li>
+	
+	                        <c:forEach var="payment" items="${paymentList}">
+	                            <li class="payment-item">
+	                                <div class="order-info">
+	                                    <div class="order-number">주문 번호 ${payment.merchant_uid}</div>
+	                                    
+	                                    ${payment.representative_item_name}
+	                                    <c:if test="${payment.total_item_count > 1}">
+	                                        외 ${payment.total_item_count - 1}건
+	                                    </c:if>
+	                                </div>
+	                                <div class="status-box">
+	                                    <c:choose>
+	                                        <c:when test="${payment.is_refunded == 'Y' or payment.is_refunded == '1'}">
+	                                            <div class="status refunded">환불완료</div>
+	                                        </c:when>
+	                                        <c:otherwise>
+	                                            <div class="status paid">결제완료</div>
+	                                        </c:otherwise>
+	                                    </c:choose>
+
+	                                    <div class="date"><fmt:formatDate value="${payment.pay_date}" pattern="yyyy.MM.dd"/> 결제</div>
+	                                </div>
+	                            </li>
+	                        </c:forEach>
+
+	                        <c:if test="${empty paymentList}">
+	                            <li class="empty-payment">
+	                                <p>결제 내역이 없습니다.</p>
+	                            </li>
+	                        </c:if>
 						</ul>
 					</section>
 				</div>

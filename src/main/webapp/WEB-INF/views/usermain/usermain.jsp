@@ -87,11 +87,11 @@
 							            <div class="class-info">
 							                <%-- MyCourseVO의 필드를 사용하여 동적으로 값 출력 --%>
 							                <span class="class-title">${course.class_title}</span>
-							                <span class="class-status">${course.current_lesson_count} / ${course.total_lessons} 완료</span>
+<%-- 							                <span class="class-status">${course.current_lesson_count} / ${course.total_lessons} 완료</span> --%>
 							            </div>
-							            <div class="progress" role="progressbar" aria-valuenow="${course.progress_percent}" aria-valuemin="0" aria-valuemax="100">
-							                <div class="progress-bar" style="width: ${course.progress_percent}%">${course.progress_percent}%</div>
-							            </div>
+<%-- 							            <div class="progress" role="progressbar" aria-valuenow="${course.progress_percent}" aria-valuemin="0" aria-valuemax="100"> --%>
+<%-- 							                <div class="progress-bar" style="width: ${course.progress_percent}%">${course.progress_percent}%</div> --%>
+<!-- 							            </div> -->
 							        </div>
 							    </c:forEach>
 							
@@ -114,12 +114,12 @@
 								</h3>
 								<div class="widget-content">
 									<div class="attendance-item">
-										<span>일간 연속 출석</span>
-										<span><strong>${attendanceInfo.attendance_consecutive}</strong>일</span>
+										<span>전체 출석</span>
+										<span><strong>${attendanceInfo.attendance_count}</strong>일</span>
 									</div>
 									<div class="attendance-item">
-										<span>주간 연속 출석</span>
-										<span><strong>${attendanceInfo.attendance_count}</strong>주</span>
+										<span>일간 연속 출석</span>
+										<span><strong>${attendanceInfo.attendance_consecutive}</strong>일</span>
 									</div>
 									<div class="attendance-item">
 										<span>월간 연속 출석</span>

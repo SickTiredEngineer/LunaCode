@@ -29,8 +29,7 @@
 					
 					<%-- 학습 중 / 학습 완료 탭 메뉴 --%>
 					<nav class="content-tabs">
-						<a href="MyClass" class="tab-item active">학습 중</a>
-						<a href="MyClass2" class="tab-item">학습 완료</a>
+						<a class="tab-item active">내 강의</a>
 					</nav>
 					
 					<%-- 강의 목록 (JavaScript가 동적으로 채울 영역) --%>

@@ -16,4 +16,6 @@ public interface PaymentMapper {
 	
 	public void insertEnrollments(List<EnrollmentVO> enrollList); 
 	
+	public List<PaymentHistoryVO> selectMyPayments(int user_idx);
+
 }
