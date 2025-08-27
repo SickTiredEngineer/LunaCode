@@ -23,19 +23,14 @@
 			<article class="content-layout">
 			
 				<%-- 좌측 공통 카테고리 --%>
-				<aside class="common-category">
-					<a href="UserMain" class="common-category-element active">홈</a>
-					<a href="MyClass" class="common-category-element">내 강의</a>
-					<a href="PlayList" class="common-category-element">재생목록</a>
-					<a href="	" class="common-category-element">출석</a>
-				</aside>
+				<jsp:include page="/WEB-INF/views/usermain/usermain_category.jsp"/>
 				
 				<%-- 메인 콘텐츠 영역 --%>
 				<section class="playlist-container">
 				
 					<%-- 상단 헤더 (제목 + 편집 버튼) --%>
 					<div class="playlist-header">
-						<h2 class="playlist-title">재생목록1</h2>
+						<h2 class="playlist-title">${playlist.playlist_name}</h2>
 						<div class="header-buttons">
 							<a href="PlayList" class="negative-button">이전</a>
 							<button type="button" class="positive-button">편집</button>

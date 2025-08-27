@@ -29,4 +29,8 @@ public class PlayListService {
 	public int updatePlayList(int playlistIdx, String playlistName, int userIdx) {
 	    return playListMapper.updatePlayList(playlistIdx, playlistName, userIdx);
 	}
+	
+	public PlayListVO getPlaylistById(int playlistIdx, int userIdx) {
+	    return playListMapper.selectPlaylistById(playlistIdx, userIdx);
+	}
 }

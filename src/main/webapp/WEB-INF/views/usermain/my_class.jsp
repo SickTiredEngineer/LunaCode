@@ -20,12 +20,7 @@
 			
 			<article class="content-layout">
 				<%-- 좌측 공통 카테고리 --%>
-				<aside class="common-category">
-					<a href="UserMain" class="common-category-element">홈</a>
-					<a href="MyClass" class="common-category-element active">내 강의</a>
-					<a href="PlayList" class="common-category-element">재생목록</a>
-					<a href="Attendance" class="common-category-element">출석</a>
-				</aside>
+				<jsp:include page="/WEB-INF/views/usermain/usermain_category.jsp"/>
 				
 				<section class="myclass-container">
 					<div class="myclass-header">

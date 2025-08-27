@@ -15,10 +15,13 @@ public interface PlayListMapper {
 	public int insertPlayList(PlayListVO playlist);
 	
 	public int deletePlayList(@Param("playlistIdx") int playlistIdx, @Param("userIdx") int userIdx);
-
+	
 	public int updatePlayList(
 		@Param("playlistIdx") int playlistIdx,
 		@Param("playlistName") String playlistName,
 		@Param("userIdx")int userIdx
 	);
+	
+	public PlayListVO selectPlaylistById(@Param("playlistIdx") int playlistIdx,
+			@Param("userIdx") int userIdx);
 }

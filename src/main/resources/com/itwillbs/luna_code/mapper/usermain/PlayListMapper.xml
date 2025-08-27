@@ -46,5 +46,12 @@
 	     where playlist_idx = #{playlistIdx} 
 	       and user_idx = #{userIdx}
 	</update>
+	
+	<select id="selectPlaylistById" resultType="com.itwillbs.luna_code.vo.usermain.PlayListVO">
+	    select *
+	      from playlist
+	     where playlist_idx = #{playlistIdx}
+	       and user_idx = #{userIdx}
+	</select>
 
 </mapper>

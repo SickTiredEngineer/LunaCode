@@ -106,7 +106,7 @@
 	    </sec:authorize>
 	
 	    <sec:authorize access="hasAnyRole('INSTRUCTOR')">
-	      <a href="${pageContext.request.contextPath}/TeacherDashboard" class="nav-link">강사 대시보드</a>
+	      <a href="${pageContext.request.contextPath}/ClassStatistic" class="nav-link">강사 대시보드</a>
 	      <a href="${pageContext.request.contextPath}/Cart" class="nav-link">장바구니</a>
 	    </sec:authorize>
 	

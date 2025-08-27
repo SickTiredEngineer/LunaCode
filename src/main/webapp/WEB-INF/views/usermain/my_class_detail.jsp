@@ -20,12 +20,7 @@
 
 			<article class="content-layout">
 				<%-- 좌측 공통 카테고리 --%>
-				<aside class="common-category">
-					<a href="UserMain" class="common-category-element active">홈</a>
-					<a href="MyClass" class="common-category-element">내 강의</a>
-					<a href="PlayList" class="common-category-element">재생목록</a>
-					<a href="Attendance" class="common-category-element">출석</a>
-				</aside>
+				<jsp:include page="/WEB-INF/views/usermain/usermain_category.jsp"/>
 
 				<section class="course-detail-container">
 					<!-- 페이지 상단 (JavaScript가 동적으로 채울 영역) -->
@@ -45,7 +40,11 @@
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
 		</div>
-
+		
+		<script>
+	        const courseData = <json:object-to-json-script object="${classDetail}" />;
+	    </script>
+		
         <script src="${pageContext.request.contextPath}/resources/js/usermain/my_class_detail.js"></script>
 	</body>
 

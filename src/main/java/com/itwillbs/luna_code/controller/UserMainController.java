@@ -84,7 +84,7 @@ public class UserMainController {
 			Model model) {
 		
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx(); // <<-- userId 대신 userIdx를 사용합니다.
+		int userIdx = userDetails.getIdx();
 
 		MyClassDetailVO classDetail = myClassService.getClassDetailWithCurriculum(class_idx, userIdx);
 		model.addAttribute("classDetail", classDetail);
@@ -124,7 +124,13 @@ public class UserMainController {
 	}
 
 	@GetMapping("PlayListPlus")
-	public String playListPlus() {
+	public String playListPlus(@RequestParam("id") int playlistId, Authentication auth, Model model) {
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int userIdx = userDetails.getIdx();
+	    
+	    PlayListVO playlist = playListService.getPlaylistById(playlistId, userIdx);
+	    model.addAttribute("playlist", playlist);
+	    
 		return "usermain/play_list_plus";
 	}
 
