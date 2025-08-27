@@ -9,10 +9,10 @@ create table group_code(
     group_code varchar(30) unique,
     -- group_name varchar(30) unique,
     group_desc varchar(300),
-    is_using boolean default true,
-    create_date datetime default now(),
+    using_status boolean default true,
+    create_date timestamp default current_timestamp,
     creater_idx int,
-    update_date datetime,
+    update_date timestamp default null,
     updater_idx int,
     
     foreign key(creater_idx) references member(idx),
@@ -21,6 +21,9 @@ create table group_code(
 
 -- alter table group_code add foreign key(creater_idx) references member(idx);
 -- alter table group_code add foreign key(updater_idx) references member(idx);
+alter table group_code modify column create_date timestamp default current_timestamp;
+alter table group_code modify column update_date timestamp default null;
+alter table group_code rename column is_using to using_status;
 
 -- 데이터 설명충
 desc group_code;
@@ -42,7 +45,7 @@ insert into group_code(
 ("SUPPORT_CATEGORY", "문의 카테고리를 모아두는 그룹입니다.", true, now(), null),
 ("CLASS_LEVEL", "강의 난이도를 모아두는 그룹입니다.", true, now(), null),
 ("MAIN_CATEGORY", "메인 화면에서 보여주는 카테고리들을 모아두는 그룹입니다.", true, now(), null),
-("CLASS_LIMIT", "강의 제한 인원을 모아두는 그룹입니다.", true, now(), null),
+("CLASS_MAX", "강의 제한 인원을 모아두는 그룹입니다.", true, now(), null),
 ("CLASS_REVIEW", "강의 후기 표현을 모아두는 그룹입니다.", true, now(), null),
 ("ADMIN_CATEGORY", "관리자 페이지 카테고리를 모아두는 그룹입니다.", true, now(), null),
 ("MEMBER_STATE", "회원 계정 상태를 모아두는 그룹입니다.", true, now(), null);
