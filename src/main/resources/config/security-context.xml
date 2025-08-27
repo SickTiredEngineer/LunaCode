@@ -43,6 +43,13 @@
 	
 	<intercept-url pattern="/ModifyPostForm" method="POST" access="permitAll"/>
 
+
+
+	<intercept-url pattern="/ApMemberList" method="GET" access="hasRole('ADMIN')"/>
+
+
+
+
 	<!--     WElcome Page  -->
 	<intercept-url pattern="/WelcomePage" access="permitAll"/>
 
