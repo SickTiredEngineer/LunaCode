@@ -10,6 +10,7 @@
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/class_statistic.css" rel="stylesheet">  
 		<link href="${pageContext.request.contextPath }/resources/css/page/usermain/usermain_category.css" rel="stylesheet">    
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</head>
 	
 	<body>
@@ -34,20 +35,11 @@
 						<div class="widget">
 							<div class="widget-header">
 								<h3>수익 통계</h3>
-								<a href="#">&gt;</a>
+								<a href="ClassStatisticDetail">&gt;</a>
 							</div>
 							<div class="widget-content">
 								<div class="monthly-area-chart">
-									<svg width="100%" height="100%" viewBox="0 0 300 125" preserveAspectRatio="none">
-										<defs>
-											<linearGradient id="areaGradient" x1="0" y1="0" x2="0" y2="1">
-												<stop offset="0%" stop-color="#5E87C9" stop-opacity="0.4"/>
-												<stop offset="100%" stop-color="#F0F5FF" stop-opacity="0.1"/>
-											</linearGradient>
-										</defs>
-										<path d="M0,80 L25,50 L50,90 L75,75 L100,60 L125,85 L150,70 L175,40 L200,80 L225,95 L250,65 L275,100 L300,85 L300,125 L0,125 Z" fill="url(#areaGradient)"/>
-										<path d="M0,80 L25,50 L50,90 L75,75 L100,60 L125,85 L150,70 L175,40 L200,80 L225,95 L250,65 L275,100 L300,85" fill="none" stroke="#5E87C9" stroke-width="2"/>
-									</svg>
+									<canvas id="revenueChart"></canvas>
 								</div>
 							</div>
 						</div>
@@ -56,19 +48,18 @@
 						<div class="widget">
 							<div class="widget-header">
 								<h3>신규 수강생</h3>
-								<a href="#">&gt;</a>
 							</div>
 							<div class="widget-content">
 								<ul class="item-list">
-									<li><span class="icon">👤</span><span>홍길동님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>이몽룡님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>성춘향님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>변사또님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
-									<li><span class="icon">👤</span><span>누군가님이 수강을 신청했습니다</span></li>
+									<c:forEach var="student" items="${newStudents}">
+	                                    <li>
+	                                    	<span class="icon">👤</span>
+	                                    	<span>${student.user_name}님이 '${student.class_title}' 수강을 시작했습니다.</span>
+	                                    </li>
+	                                </c:forEach>
+	                                <c:if test="${empty newStudents}">
+	                                	<p>최근 신규 수강생이 없습니다.</p>
+	                                </c:if>
 								</ul>
 							</div>
 						</div>
@@ -77,7 +68,6 @@
 						<div class="widget">
 							<div class="widget-header">
 								<h3>수강생 질문/댓글</h3>
-								<a href="#">&gt;</a>
 							</div>
 							<div class="widget-content">
 								<ul class="item-list">
@@ -119,6 +109,13 @@
 				<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 			</footer>
 		</div>
+		
+		<script>
+        	const revenueData = ${revenueDataJson};
+    	</script>
+    	
+    	<script src="${pageContext.request.contextPath}/resources/js/usermain/class_statistic.js"></script>
+		
 	</body>
 </html>
 

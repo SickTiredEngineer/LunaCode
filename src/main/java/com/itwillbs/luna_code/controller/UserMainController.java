@@ -15,13 +15,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.usermain.AttendanceService;
+import com.itwillbs.luna_code.service.usermain.ClassStatisticService;
 import com.itwillbs.luna_code.service.usermain.MyClassService;
 import com.itwillbs.luna_code.service.usermain.PlayListService;
 import com.itwillbs.luna_code.vo.UserVO;
 import com.itwillbs.luna_code.vo.usermain.MyClassDetailVO;
 import com.itwillbs.luna_code.vo.usermain.MyCourseVO;
+import com.itwillbs.luna_code.vo.usermain.NewStudentVO;
 import com.itwillbs.luna_code.vo.usermain.PlayListVO;
 
 @Controller
@@ -35,6 +39,9 @@ public class UserMainController {
 	
 	@Autowired
 	private MyClassService myClassService;
+	
+	@Autowired
+	private ClassStatisticService classStatisticService;
 	
 	@GetMapping("UserMain")
 	public String userMain(Authentication auth, Model model) {
@@ -202,9 +209,23 @@ public class UserMainController {
 	}
 	
 	@GetMapping("ClassStatistic")
-	public String classStatistic() {
+	public String classStatistic(Authentication auth, Model model) throws Exception {
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+	    int instructorIdx = userDetails.getIdx();
+	    
+	    // 최근 6개월간의 월별 수익 통계 조회
+	    List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
+	    ObjectMapper objectMapper = new ObjectMapper();
+	    String revenueDataJson = objectMapper.writeValueAsString(revenueData);
+	    model.addAttribute("revenueDataJson", revenueDataJson);
+		
+	    // 신규 수강생 조회
+	    List<NewStudentVO> newStudents = classStatisticService.getRecentNewStudents(instructorIdx);
+		model.addAttribute("newStudents", newStudents);
+	    
 		return "usermain/class_statistic";
 	}
+	
 
 	@GetMapping("ClassStatisticDetail")
 	public String classStatisticDetail() {

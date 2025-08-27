@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.usermain.ClassStatisticMapper">
+	
+	<!-- 최근 6개월간의 월별 수익 통계 조회 -->
+    <select id="selectRecentMonthlyRevenue" resultType="java.util.Map">
+        select
+			   date_format(ph.pay_date, '%y-%m') as month
+			 , sum(ph.amount) as revenue
+		  from payment_history ph
+		  join class cl on ph.item_idx = cl.class_idx
+		 where cl.instructor_idx = #{instructor_idx}
+		   and ph.pay_date >= last_day(now() - interval 6 month) + interval 1 day
+	  group by date_format(ph.pay_date, '%y-%m')
+	  order by month asc;
+
+    </select>
+    
+	<!-- 최근 등록한 신규 수강생 목록 조회 -->
+	<select id="selectRecentNewStudents" resultType="com.itwillbs.luna_code.vo.usermain.NewStudentVO">
+        select 
+		       m.user_name
+		     , c.class_title
+		     , ce.enroll_date
+		  from class_enrollment ce
+		  join member m on ce.user_idx = m.idx
+		  join class c on ce.class_idx = c.class_idx
+		 where c.instructor_idx = #{instructor_idx}
+	  order by ce.enroll_date desc
+		 limit 50;
+    </select>
+	
+</mapper>
