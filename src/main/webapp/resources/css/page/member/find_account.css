@@ -1,45 +1,90 @@
 @charset "UTF-8";
 
-.main-layout{
-	margin: var(--common-margin) 0px;
+.main-layout {
+  margin: 30px auto;
+  max-width: 700px;
+  padding: 40px 30px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-family: 'Noto Sans KR', '맑은 고딕', Arial, sans-serif;
+  color: #222;
+}
+
+.category-button {
+  width: 320px;
+  height: 54px;
+  margin: 0 auto;
+  background-color: #f1f3f5;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #495057;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
 }
 
 
-.category-button{
-		
-	margin: 0px var(--common-margin-half);
-	width: 300px;
-	height: 50px;
-		
+.category-button:active,
+.category-button.active {
+  border-color: #3b82f6;
+  background-color: #dbeafe;
+  color: #1e40af;
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.category-button:active {
-	border-bottom: 1px solid var(--color-main);
+/* info-text */
+.info-text {
+  width: 100%;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: #495057;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
 }
 
-.info-text{
-	width: 20%;
-	height: 20px;
-	font-size: 20px;
-	align-self: center;
-	font-family: var(--font-main);
+/* find-layout */
+.find-layout {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
 }
 
-.find-button{
-	width: auto;
-	height: 50px;
-	margin: var(--common-margin) 0px;
+/* find-input */
+.find-input {
+  width: 100%;          
+  max-width: 400px;     
+  height: 48px;         
+  padding: 12px 16px; 
+  font-size: 16px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;  
+  background-color: #f8f9fa;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
 }
 
-
-.find-layout{
-	margin-top: var(--common-margin);
-/* 	width: auto; */
-	
+.find-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
+  outline: none;
+  background-color: #fff;
 }
 
-.find-input{
-	height: auto;
-	width: 80% !important;
-	
+.find-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center; 
 }
+

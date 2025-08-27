@@ -30,7 +30,7 @@
 				
 						<div class="d-flex flex-column">
 							
-							<div class="d-flex flex-row">
+							<div class="category-button-group">
 								<button id="id_bt" type="button" class="negative-button category-button" >아이디 찾기</button>
 								<button id="password_bt" type="button" class="negative-button category-button">비밀번호 찾기</button>
 							</div>
