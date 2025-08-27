@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.itwillbs.luna_code.mapper.ClassMapper;
 import com.itwillbs.luna_code.mapper.OnlineClassMapper;
@@ -29,5 +30,13 @@ public class ClassService {
     public List<EpisodeVo> getEpisodesBySessionId(int sessionId) {
         return classMapper.selectEpisodesBySessionId(sessionId);
     }
+    
+    @Transactional
+    public void deleteClass(int classId) {
+        classMapper.deleteClassEnrollmentByClassId(classId);
+        classMapper.deleteClass(classId);
+    }
+    
+    
 	
 }

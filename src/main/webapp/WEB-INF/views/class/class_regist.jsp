@@ -86,14 +86,14 @@
 						<div class="reg-select-group">
 							<div class="reg-select-label">강의 유형</div>
 							<div class="reg-select-btns" id="type-group">
-								<button type="button" class="reg-toggle-btn selected" data-value="1" aria-pressed="true">
+								<button type="button" class="reg-toggle-btn selected" data-value="1" aria-pressed="false" disabled>
 									<span class="chk-ico" aria-hidden="true">&#10003;</span>
 									<span>현장 강의</span>
 								</button>
-								<button type="button" class="reg-toggle-btn" data-value="2" aria-pressed="false">
+								<button type="button" class="reg-toggle-btn" data-value="2" aria-pressed="true">
 									<span class="chk-ico" aria-hidden="true">&#10003;</span><span>온라인 강의</span>
 								</button>
-								<button type="button" class="reg-toggle-btn" data-value="3" aria-pressed="false">
+								<button type="button" class="reg-toggle-btn" data-value="3" aria-pressed="false" disabled>
 									<span class="chk-ico" aria-hidden="true">&#10003;</span><span>실시간 강의</span>
 								</button>
 							</div>
@@ -204,7 +204,7 @@
 						</div>
 						<!-- 버튼 -->
 						<div class="d-flex flex-row button-container">
-							<a href="${pageContext.request.contextPath}/" class="negative-button">돌아가기</a>
+							<a href="${pageContext.request.contextPath}/CourseRegistration" class="negative-button">돌아가기</a>
 							<button type="submit" class="positive-button">등록</button>
 						</div>
 

@@ -12,9 +12,10 @@
     </select>
     
     <select id="selectClassesByUserId" resultType="com.itwillbs.luna_code.vo.ClassVo" parameterType="int">
-	    SELECT * 
-	    FROM class
-	    WHERE idx = #{userId}
+	    SELECT c.class_idx, c.title, c.video_url, e.is_completed, e.enroll_date
+		FROM class c
+		JOIN class_enrollment e ON c.class_idx = e.class_idx
+		WHERE e.user_idx = #{value}
 	</select>
     
 

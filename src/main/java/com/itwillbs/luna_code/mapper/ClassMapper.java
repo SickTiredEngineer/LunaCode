@@ -14,4 +14,8 @@ public interface ClassMapper {
 	int insertClass(ClassVo classVo);
     List<SessionVo> selectSessionsByClassId(int classId);
     List<EpisodeVo> selectEpisodesBySessionId(int sessionId);	
+    int deleteClassEnrollmentByClassId(int classId);
+    int deleteClass(int classId);
+    
+
 }
