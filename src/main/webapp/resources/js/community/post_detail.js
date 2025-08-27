@@ -214,7 +214,7 @@ async function deleteComment(commentIdx, authorIdx){
 
 /* ------------ 댓글 렌더링 --------------- */
 function renderCommentItem(c) {
-  // 보안(표시)은 클라 편의일 뿐, 실제 권한은 서버에서 확인!
+
 	const meIdx = window.isAuthenticated ? Number(window.me.idx) : null;
 	const canEdit = (window.isAdmin === true) || (meIdx !== null && meIdx === Number(c.author_idx));
 	const canDelete = canEdit || (window.isAdmin === true);

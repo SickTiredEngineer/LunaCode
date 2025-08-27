@@ -34,33 +34,33 @@
 					<!-- =================================================== -->
 					<div class="d-flex flex-row input-form-layout">
 						<p class="info-text">아이디</p>
-						<input name="user_id" type="text" class="input-form-size common-input-form" placeholder="" id="input_id">
+						<input name="user_id" type="text" class="input-form-size common-input-form" placeholder="영어, 숫자 조합 최소 4글자 최대 12글자" id="input_id">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_id">●Test Span</span>
+						<span class="info-span" id="span_id"></span>
 					</div>
 					
 					<div class="horizontal-line"></div>
 					<!-- =================================================== -->
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">비밀번호</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="" name="password" id="input_pass">
+						<input type="password" class="input-form-size common-input-form" placeholder="대소문자, 특수문자 포함 10글자 이상" name="password" id="input_pass">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_pass">●Test Span</span>
+						<span class="info-span" id="span_pass"></span>
 					</div>
 					
 					<div class="horizontal-line"></div>
 					<!-- =================================================== -->	
 					<div class="d-flex flex-row  input-form-layout">
 						<p class="info-text">비밀번호 확인</p>
-						<input type="text" class="input-form-size common-input-form" placeholder="" id="input_pass_check">
+						<input type="password" class="input-form-size common-input-form" placeholder="비밀번호 확인" id="input_pass_check">
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_pass_check">●Test Span</span>
+						<span class="info-span" id="span_pass_check"></span>
 					</div>
 					
 					<div class="horizontal-line"></div>
@@ -78,7 +78,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_phone">●Test Span</span>
+						<span class="info-span" id="span_phone"></span>
 					</div>
 
 					<div class="d-flex flex-row  input-form-layout">
@@ -87,7 +87,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_nickname">●Test Span</span>
+						<span class="info-span" id="span_nickname"></span>
 					</div>
 					
 					<div class="horizontal-line"></div>
@@ -116,7 +116,7 @@
 					</div>
 					
 					<div class="d-flex flex-column justify-content-center span-layout">
-						<span class="info-span" id="span_email">●Test Span</span>
+						<span class="info-span" id="span_email"></span>
 					</div>
 
 					<div class="horizontal-line"></div>

@@ -26,7 +26,13 @@
 				<div class="d-flex flex-column align-items-center">
 					
 					<div>
-						<h2 class="notice-msg">회원 가입 약관(일반회원)</h2>
+						<h2 class="notice-msg">
+							<c:choose>
+								<c:when test="${param.type eq 'MB02'}">회원 가입 약관 (강사 회원)</c:when>
+								<c:otherwise>회원 가입 약관 (일반 회원)</c:otherwise>
+							</c:choose>
+						
+						</h2>
 					</div>
 					
 					<div class="d-flex align-items-center justify-content-center">

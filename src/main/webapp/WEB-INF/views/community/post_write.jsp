@@ -107,14 +107,7 @@
 <!-- 											</label> -->
 <!-- 										</div> -->
 <!-- 									</div> -->
-						
-									<div class="d-flex flex-row input-form-layout">
-										<button type="button" id="add_attachment_bt" class="positive-button add_attach_margin">파일 추가</button>
-									</div>
-									
-									<br>
-									
-									<div class="horizontal-line"></div>
+
 									
 									<div class="d-flex flex-row button-container">
 										<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
