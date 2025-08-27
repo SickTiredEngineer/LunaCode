@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <html>
 
@@ -33,14 +34,12 @@
 						
 						<div class="d-flex flex-row justify-content-center">
 							
-							
 								<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
 									<input type="text" class="search-form-input" maxlength="10">
 									<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
 								</div>
 								
 						</div>
-						
 							
 					</div>
 
@@ -57,10 +56,9 @@
 					<div class="d-flex flex-column list-main-layout">
 					
 						<div class="d-flex flex-row align-items-center list-info-layout">
-							<h3 class="text-no info-text">코드 ID</h3>
+							<h3 class="text-no info-text">No.</h3>
 							<h3 class="text-name info-text">코드</h3>
-							<h3 class="text-name info-text">값</h3>
-							<h3 class="text-name info-text">그룹 코드</h3>
+							<h3 class="text-name info-text">그룹</h3>
 							<h3 class="text-date info-text">등록일</h3>
 							<h3 class="text-state info-text">사용 여부</h3>
 							<h3 class="text-name info-text">등록자 ID</h3>
@@ -70,58 +68,52 @@
 						<div class="d-flex flex-column list-layout">
 	
 							<!-- ============================== -->
-							<!-- Example Start -->
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApCommonCodeWriter" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">1</h3>
-									<h3 class="text-name">mt01</h3>
-									<h3 class="text-name">관리자</h3>
-									<h3 class="text-name">member_type</h3>
-									<h3 class="text-date">2025-01-01</h3>
-									<h3 class="text-state">사용</h3>
-									<h3 class="text-name">admin01</h3>
-								</a>
-							</div>
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApCommonCodeWriter" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">2</h3>
-									<h3 class="text-name">mt02</h3>
-									<h3 class="text-name">강사</h3>
-									<h3 class="text-name">member_type</h3>
-									<h3 class="text-date">2025-01-01</h3>
-									<h3 class="text-state">사용</h3>
-									<h3 class="text-name">admin01</h3>
-								</a>
-							</div>
+							<c:forEach items="${codeList}" var="code" varStatus="status">
+								<div class="d-flex flex-row align-items-center list-item-root">
+									<a href="ApCommonCodeDetail?common_idx=${code.common_idx}" class="d-flex flex-row align-items-center list-item-layout">
+										<h3 class="text-no">${status.index + 1}</h3>
+										<h3 class="text-name">${code.code}</h3>
+										<h3 class="text-name">${code.group_code}</h3>
+<!-- 										<h3 class="text-name">그룹01</h3> -->
+										<h3 class="text-date">
+											<fmt:formatDate value="${code.create_date}" pattern="yyyy.MM.dd"/>
+										</h3>
+										
+										<h3 class="text-state">
+											<c:choose>
+												<c:when test="${code.using_status}">사용</c:when>
+												<c:otherwise>미사용</c:otherwise>	
+											</c:choose>
+										</h3>
+										<h3 class="text-name">${code.creater_id}</h3>
+									</a>
+									
+									<a href="ModifyCommonCode?common_idx=${code.common_idx}" onclick="return confirm('수정 하시겠습니까?');"><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+									
+								</div>
+								
+							</c:forEach>
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApCommonCodeWriter" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">3</h3>
-									<h3 class="text-name">mt03</h3>
-									<h3 class="text-name">일반 유저</h3>
-									<h3 class="text-name">member_type</h3>
-									<h3 class="text-date">2025-01-01</h3>
-									<h3 class="text-state">사용</h3>
-									<h3 class="text-name">admin01</h3>
-								</a>
-							</div>
-							
-
-
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">
+						
+							<button type="button" class="page-selector" onclick="location.href='ApCommonCodeList?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 							
-							<a class="page-selector">&lt;</a>
+							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+								<c:choose>
+									<c:when test="${i eq pageVo.pageNum }">
+										<button type="button" class="page-selector" onclick="location.href='ApCommonCodeList?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="page-selector" onclick="location.href='ApCommonCodeList?pageNum=${i}'">${i}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 							
-							<a class="page-selector">1</a>
-							<a class="page-selector">2</a>
-							<a class="page-selector">3</a>
-							<a class="page-selector">4</a>
-							<a class="page-selector">5</a>
-							
-							<a class="page-selector">&gt;</a>
+							<button type="button" class="page-selector" onclick="location.href='ApCommonCodeList?pageNum=${pageVo.pageNum+1}'" 
+							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 					
 						</div>
 						

@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+
 
 <!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
 
@@ -9,7 +11,7 @@
 <html>
 
 	<head>
-		<title>공통 코드 그룹 상세</title>
+		<title>공통 코드 작성</title>
 		<meta charset="UTF-8">
 		
 		<jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
@@ -19,6 +21,29 @@
 	</head>
 	
 	<body>
+		
+		<c:set var="isModify" value="${isModify}"/>
+
+		<c:choose>
+			<c:when test="${isModify}">
+				<c:set var="formAction" value="ModifyCodeGroupForm"/>
+				<c:set var="submitLabel" value="수정 완료"/>
+				<c:set var="pageTitle" value="그룹 코드 수정"/>
+				
+				<c:set var="groupCode" value="${vo.group_code}"/>
+				<c:set var="groupDesc" value="${vo.group_desc}"/>
+				<c:set var="groupUsing" value="${vo.using}"/>
+			</c:when>
+			
+			<c:otherwise>
+				<c:set var="formAction" value="NewCodeGroupForm"/>
+				<c:set var="submitLabel" value="등록"/>
+				<c:set var="pageTitle" value="그룹 코드 작성"/>
+			</c:otherwise>
+		</c:choose>
+	
+	
+	
 		
 		<div class="page-base container">
 			
@@ -31,7 +56,7 @@
 			
 				<div class="d-flex flex-row justify-content-center top-layout">
 					<div class="d-flex flex-column justify-content-center">
-						<h2 class="main-text">공통 코드 그룹 상세</h2>
+						<h2 class="main-text">${pageTitle}</h2>
 					</div>
 				</div>
 			
@@ -49,29 +74,22 @@
 										
 
 										<!-- 정보 폼 -->								
-										<div class="d-flex flex-column justify-content-center class-info-root-layout">
+										<form action="${formAction}" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
+											
+											<input type="hidden" name="group_idx" value="${vo.group_idx}">
 											
 											<br>
 										
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">그룹 코드 :</p>	
-												<input type="text" class="common-input-form form-size">
-											</div>
-											
-											<div class="horizontal-line"></div>
-											
-											<div class="d-flex flex-row info-item">
-												<p class="info-text">그룹명 :</p>
-												<input type="text" class="common-input-form form-size">
-											</div>
-											
-											<div class="horizontal-line"></div>
+												<input type="text" name="group_code" class="common-input-form form-size" value="${groupCode}">
+											</div>				
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">그룹 설명 :</p>
-												<input type="text" class="common-input-form form-desc-size">
+												<input name="group_desc" type="text" class="common-input-form form-desc-size" value="${groupDesc}">
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -80,15 +98,22 @@
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">사용 여부 :</p>
 												
-												<select class="member-state-selector">
-													<option>활성화</option>
-													<option>비활성화</option>
+												<select name="using" class="member-state-selector">
+													<option value="true" ${category == 'true' ? 'selected' : ''}>활성화</option>
+													<option value="false" ${category == 'false' ? 'selected' : ''}>비활성화</option>
 												</select>
 												
 											</div>
+											
+											<div class="horizontal-line"></div>
+											
+											<div class="d-flex button-container">
+												<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
+												<button type="submit" class="positive-button">${submitLabel}</button>
+											</div>
 
 
-										</div>
+										</form>
 										
 									</div>
 									
@@ -96,21 +121,8 @@
 								
 							</div>
 
+
 							
-							<!-- 
-							TODO: JS 추가해야함 -> Focus 없애는코드
-							const readonlyAreas = document.querySelectorAll('.readonly-textarea');
-							readonlyAreas.forEach(el => {
-							  el.addEventListener('focus', e => e.target.blur());
-							});
-							 -->
-
-
-							<div class="d-flex button-container">
-								<a href="ApGroupCodeList" class="negative-button">돌아가기</a>
-								<a href="ApGroupCodeList" class="positive-button">적용</a>
-							</div>
-		
 						</div>
 	
 					</div>

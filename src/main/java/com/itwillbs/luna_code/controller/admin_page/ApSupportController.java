@@ -40,13 +40,11 @@ public class ApSupportController {
 		
 		CustomerQueryVO queryVo = service.selectQueryDetail(query_idx);
 		model.addAttribute("queryVo", queryVo);
-		System.out.println("Detail: " + queryVo);
 		
 		/* 답변이 있는 질문이면 답변도 불러와서 같이 보여줘야 하니까 불러옴 */
 		if(queryVo.isAnswer_status()) {
 			QueryAnswerVO answerVo = service.selectQueryAnswer(query_idx);
 			model.addAttribute("answerVo", answerVo);
-			System.out.println("Detail: " + answerVo);
 		}
 		
 		return "admin/ap_personal_support_detail";

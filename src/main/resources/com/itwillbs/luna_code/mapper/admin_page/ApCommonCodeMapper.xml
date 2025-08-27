@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApCommonCodeMapper">
+	
+	<select id="countAllCommonCode">
+		select count(*) 
+		from common_code 
+	</select>
+	
+	<select id="selectCommonCodeList">
+		select 
+			cc.common_idx
+			,cc.group_code
+			,cc.code
+			,cc.code_label
+			,cc.code_desc
+			,cc.using_status
+			,cc.creater_idx
+			,cc.create_date
+			,cc.updater_idx
+			,cc.update_date
+			,m1.user_id as creater_id 
+			,m2.user_id as updater_id
+			,cd.group_idx as group_idx
+		from common_code cc
+		left join member m1 on m1.idx = cc.creater_idx
+		left join member m2 on m2.idx = cc.updater_idx
+		left join group_code cd on cd.group_code = cc.group_code 
+		order by cd.create_date desc, cd.group_idx desc
+		limit #{start_row}, #{list_limit}
+	</select>
+	
+	
+	<select id="selectCommonCodeDetail">
+		select 
+			cc.common_idx
+			,cc.group_code
+			,cc.code
+			,cc.code_label
+			,cc.code_desc
+			,cc.using_status
+			,cc.creater_idx
+			,cc.create_date
+			,cc.updater_idx
+			,cc.update_date
+			,m1.user_id as creater_id 
+			,m2.user_id as updater_id
+			,cd.group_idx as group_idx
+		from common_code cc
+		left join member m1 on m1.idx = cc.creater_idx
+		left join member m2 on m2.idx = cc.updater_idx
+		left join group_code cd on cd.group_code = cc.group_code 
+		where cc.common_idx = #{common_idx}
+	</select>
+	
+	
+	
+	<insert id="insertNewCode"
+		useGeneratedKeys="true"
+		keyColumn="common_idx"
+		keyProperty="common_idx"
+	>
+		insert into common_code(
+			group_code
+			,code
+			,code_label
+			,code_desc
+			,using_status
+			,creater_idx
+		)values(
+			#{group_code}
+			,#{code}
+			,#{code_label}
+			,#{code_desc}
+			,#{using_status}
+			,#{creater_idx}
+		)
+			
+	</insert>
+	
+	
+	<update id="modifyCommonCode">
+		update common_code
+		set group_code = #{group_code}
+			,code = #{code}
+			,code_label = #{code_label}
+			,code_desc = #{code_desc}
+			,using_status = #{using_status}
+			,updater_idx = #{updater_idx}
+		where common_idx = #{common_idx}	
+	</update>
+	
+	
+	
+
+<!-- 	<select id="selectCodeGroupDetail"> -->
+<!-- 		select  -->
+<!-- 				cd.group_idx -->
+<!-- 				,cd.group_code -->
+<!-- 				,cd.group_desc -->
+<!-- 				,cd.using_status -->
+<!-- 				,cd.create_date -->
+<!-- 				,cd.creater_idx -->
+<!-- 				,cd.update_date -->
+<!-- 				,cd.updater_idx -->
+<!-- 				,m1.user_id as creater_id -->
+<!-- 				,m2.user_id as updater_id -->
+<!-- 			from group_code cd -->
+<!-- 			left join member m1 on m1.idx = cd.creater_idx -->
+<!-- 			left join member m2 on m2.idx = cd.updater_idx -->
+<!-- 			where group_idx = ${group_idx} -->
+<!-- 	</select> -->
+
+
+<!-- 	<insert id="insertNewCodeGroup" -->
+<!-- 		useGeneratedKeys="true" -->
+<!-- 		keyProperty="group_idx" -->
+<!-- 		keyColumn="group_idx" -->
+<!-- 	> -->
+<!-- 		insert into group_code( -->
+<!-- 			group_code -->
+<!-- 			,group_desc -->
+<!-- 			,using_status -->
+<!-- 			,creater_idx -->
+<!-- 		)values( -->
+<!-- 			#{group_code} -->
+<!-- 			,#{group_desc} -->
+<!-- 			,#{using_status} -->
+<!-- 			,#{creater_idx} -->
+<!-- 		) -->
+<!-- 	</insert> -->
+
+<!-- 	<update id="updateGroupCode"> -->
+<!-- 		update group_code -->
+<!-- 		set group_code = #{group_code} -->
+<!-- 			,group_desc = #{group_desc} -->
+<!-- 			,using_status = #{using_status} -->
+<!-- 			,update_date = current_timestamp -->
+<!-- 			,updater_idx = #{updater_idx} -->
+<!-- 		where group_idx = #{group_idx} -->
+<!-- 	</update> -->
+
+
+
+</mapper>
