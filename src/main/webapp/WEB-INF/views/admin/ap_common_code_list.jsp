@@ -58,6 +58,7 @@
 						<div class="d-flex flex-row align-items-center list-info-layout">
 							<h3 class="text-no info-text">No.</h3>
 							<h3 class="text-name info-text">코드</h3>
+							<h3 class="text-name info-text">코드값</h3>
 							<h3 class="text-name info-text">그룹</h3>
 							<h3 class="text-date info-text">등록일</h3>
 							<h3 class="text-state info-text">사용 여부</h3>
@@ -74,6 +75,7 @@
 									<a href="ApCommonCodeDetail?common_idx=${code.common_idx}" class="d-flex flex-row align-items-center list-item-layout">
 										<h3 class="text-no">${status.index + 1}</h3>
 										<h3 class="text-name">${code.code}</h3>
+										<h3 class="text-name">${code.code_label}</h3>
 										<h3 class="text-name">${code.group_code}</h3>
 <!-- 										<h3 class="text-name">그룹01</h3> -->
 										<h3 class="text-date">
