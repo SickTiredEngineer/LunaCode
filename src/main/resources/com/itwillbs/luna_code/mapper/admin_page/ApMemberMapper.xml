@@ -31,7 +31,7 @@
 			,attendance_count
 			,attendance_consecutive
 			,attendance_last
-			,member_type,
+			,member_type
 			,cerftificate_01
 			,cerftificate_02
 			,cerftificate_03
