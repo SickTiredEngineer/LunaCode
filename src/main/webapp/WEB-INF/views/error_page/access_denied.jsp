@@ -32,9 +32,8 @@
 			<article>
 				
 				<div class="d-flex flex-column align-items-center">
-					<img alt="" src="${pageContext.request.contextPath}/resources/image/500_exception.png" class="error-image">
-					
-					<a href="GoHome" class="positive-button">홈으로</a>
+					<img alt="" src="${pageContext.request.contextPath}/resources/image/access_denied_page.png" class="error-image">
+					<button type="button" onclick="history.back()" class="negative-button" style="margin-right: 20px;">돌아가기</button>
 				</div>
 
 			</article>

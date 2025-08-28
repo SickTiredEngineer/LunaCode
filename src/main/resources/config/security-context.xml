@@ -24,31 +24,53 @@
     <intercept-url pattern="/" access="permitAll"/>
     <intercept-url pattern="/AccessDenied" access="permitAll"/>
     
-    
-	<!--     Login -->
+	<!-- 로그인 관련 -->
     <intercept-url pattern="/MemberLogin" access="permitAll"/>
 	<intercept-url pattern="/MemberLoginTemp" access="permitAll"/>	
-    
     <intercept-url pattern="/MemberLoginForm" method="POST" access="permitAll"/>
     <intercept-url pattern="/MemberLogout" access="permitAll"/>
     <intercept-url pattern="/FindAccount" access="permitAll"/>
     <intercept-url pattern="/ResultAccount" method="POST" access="permitAll"/>
     <intercept-url pattern="/PassFindAccount" method="POST" access="permitAll"/>
     
-	<!-- 	회원가입  -->
+	<!-- 회원가입  -->
     <intercept-url pattern="/MemberChoice" access="permitAll"/>
     <intercept-url pattern="/TermsOfMembership" access="permitAll"/>
     <intercept-url pattern="/JoinForm" method="GET" access="permitAll"/>
     <intercept-url pattern="/JoinForm" method="POST" access="permitAll"/>
 	
+	<!-- 커뮤니티 -->
 	<intercept-url pattern="/ModifyPostForm" method="POST" access="permitAll"/>
 
-
-
+	<!-- 관리자 페이지 -->
 	<intercept-url pattern="/ApMemberList" method="GET" access="hasRole('ADMIN')"/>
-
-
-
+	<intercept-url pattern="/ApMemberDetail" method="GET" access="hasRole('ADMIN')"/>
+	<!-- 관리자 페이지 강의 관리 -->
+	<intercept-url pattern="ApReqClassList" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApReqClassDetail" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApModifyClassStatus" method="GET" access="hasRole('ADMIN')"/>
+	<!-- 관리자 페이지 공통 코드 그룹 -->
+	<intercept-url pattern="/ApGroupCodeList" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApGroupCodeDetail" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApGroupCodeWriter" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/NewCodeGroupForm" method="POST" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ModifyGroupCode" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ModifyCodeGroupForm" method="POST" access="hasRole('ADMIN')"/>
+	<!-- 관리자 페이지 공통 코드 -->
+	<intercept-url pattern="/ApCommonCodeList" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApCommonCodeDetail" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApCommonCodeWriter" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/CommonCodeWriteForm" method="POST" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ModifyCommonCode" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ModifyCommonCodeForm" method="POST" access="hasRole('ADMIN')"/>
+	<!-- 관리자 페이지 강사 -->
+	<intercept-url pattern="/ApReqInstList" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApReqInstDetail" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApModifyInst" method="POST" access="hasRole('ADMIN')"/>
+	<!-- 관리자 페이지 1:1 뮨의 -->
+	<intercept-url pattern="/ApPersonalSupportList" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/ApPersonalSupportDetail" method="GET" access="hasRole('ADMIN')"/>
+	<intercept-url pattern="/QueryAnswerForm" method="POST" access="hasRole('ADMIN')"/>
 
 	<!--     WElcome Page  -->
 	<intercept-url pattern="/WelcomePage" access="permitAll"/>
