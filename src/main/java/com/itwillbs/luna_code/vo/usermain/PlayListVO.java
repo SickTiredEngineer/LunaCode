@@ -1,5 +1,7 @@
 package com.itwillbs.luna_code.vo.usermain;
 
+import java.util.List;
+
 import com.google.protobuf.Timestamp;
 
 import lombok.Data;
@@ -12,4 +14,7 @@ public class PlayListVO {
 	private String playlist_name;
 	private Timestamp create_date;
 	private Timestamp update_date;
+	
+	private List<MyClassDetailVO.ClassEpisode> episodes;
+	
 }

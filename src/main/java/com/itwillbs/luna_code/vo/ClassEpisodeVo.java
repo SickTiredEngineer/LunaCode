@@ -9,5 +9,5 @@ public class ClassEpisodeVo {
     private int session_idx;
     private String episode_name;
     private int episode_index;
-
+    private String episode_video_path;
 }

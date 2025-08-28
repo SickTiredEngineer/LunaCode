@@ -22,12 +22,14 @@ public interface PlayListMapper {
 			@Param("playlistName") String playlistName,
 			@Param("userIdx")int userIdx
 	);
-	
+
 	public PlayListVO selectPlaylistById(@Param("playlistIdx") int playlistIdx,
 			@Param("userIdx") int userIdx);
 	
-    public List<MyClassDetailVO.ClassEpisode> selectPlaylistItemsByIdx(int playlistIdx);
-    
-    public int insertPlaylistItem(@Param("playlistIdx") int playlistIdx,
-    		@Param("videoIdx") int videoIdx);
+	public List<MyClassDetailVO.ClassEpisode> selectPlaylistItemsByIdx(int playlistIdx);
+	
+	public int insertPlaylistItem(@Param("playlistIdx") int playlistIdx,
+			@Param("episodeIdx") int episodeIdx);
+	
+	public int deletePlaylistItem(@Param("itemIdx") int itemIdx, @Param("userIdx") int userIdx);
 }

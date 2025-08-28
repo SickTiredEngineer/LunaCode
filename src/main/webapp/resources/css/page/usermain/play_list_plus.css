@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 /* 페이지 공통 레이아웃 */
 .content-layout {
 	display: flex;
@@ -6,7 +7,6 @@
 	align-items: flex-start;
 }
 
-/* 사이드바 (common-category) */
 .common-category {
 	flex-shrink: 0; 
 	width: 200px; 
@@ -14,16 +14,15 @@
 	margin-top: 164px; 
 }
 
-/* 재생목록 컨테이너 */
 .playlist-container {
 	flex: 1;
 	max-width: 1000px;
 }
 
-/* 상단 헤더 (제목 + 편집 버튼) */
+/* 상단 헤더 (제목 + 버튼) */
 .playlist-header {
 	display: flex;
-	justify-content: space-between; /* 양쪽 끝으로 밀어내기 */
+	justify-content: space-between;
 	margin-top: 80px;
 	margin-bottom: var(--common-margin);
 }
@@ -37,65 +36,72 @@
 
 .header-buttons {
 	display: flex;
-	gap: 10px; /* 버튼 사이의 간격 */
-	
-	/* [이동] 버튼 그룹 전체를 아래로 내립니다. */
-	margin-top: 40px; 
+	gap: 10px;
+	margin-top: 40px;
 }
 
-/* 폴더 그리드 */
+
+/* 영상 그리드 스타일 */
+
 .playlist-grid {
 	display: grid;
-	/* 화면 너비에 따라 자동으로 컬럼 수가 조절되는 반응형 그리드 */
 	grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	gap: 20px;
 	list-style: none;
 	padding: 0;
 	margin: 0;
 }
 
-/* 각 폴더 아이템 */
+/* 개별 영상 아이템 (li 태그) */
+.playlist-item {
+    position: relative; /* 삭제 버튼의 기준점 역할을 함 */
+}
+
 .playlist-item a {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	text-decoration: none;
-	color: var(--color-font);
-	padding: var(--common-padding);
-	transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--color-font);
+    padding: var(--common-padding);
+    transition: transform 0.2s;
 }
 .playlist-item a:hover {
-	transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
-/* CSS로 그린 폴더 아이콘 */
-.folder-icon {
-	width: 140px;
-	height: 105px;
-	background-color: var(--color-main);
-	border-radius: var(--common-radius);
-	position: relative;
-	margin-bottom: 15px;
-}
-.folder-icon::before {
-	content: '';
-	position: absolute;
-	top: -8px;
-	left: 0;
-	width: 40px;
-	height: 12px;
-	background-color: inherit;
-	border-top-left-radius: 6px;
-	border-top-right-radius: 6px;
+/* 썸네일 이미지 영역 */
+.item-thumbnail {
+    width: 140px;
+    height: 105px;
+    border-radius: var(--common-radius);
+    margin-bottom: 15px;
+    
+    /* 썸네일 기본 스타일 */
+    background-color: #e0e0e0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+	/* 임시 썸네일 이미지 (나중에 DB에서 실제 썸네일 URL을 가져오면 덮어씌워짐) */
+    background-image: url('https://via.placeholder.com/140x105.png?text=Video');
 }
 
-.playlist-name {
-	font-size: 15px;
-	font-weight: 500;
+/* 영상 제목 */
+.item-title {
+    font-size: 15px;
+    font-weight: 500;
+    /* 제목이 길 경우 ... 처리 */
+    width: 140px; /* 썸네일 너비와 동일하게 */
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-/* "새로 만들기" 폴더 스타일 */
+/* "영상 추가" + 버튼 스타일 */
 .playlist-item.add-new a {
-	width: 170px; /* 아이콘과 텍스트가 있는 다른 아이템과 크기를 맞춤 */
+	width: 170px; 
 	height: 150px;
 	border: 2px dashed var(--color-border);
 	border-radius: 12px;
@@ -106,4 +112,50 @@
 	font-size: 60px;
 	color: var(--color-font-gray);
 	font-weight: 200;
+}
+
+
+/* --- 편집 모드 관련 스타일 --- */
+
+/* 삭제 버튼 컨테이너 (평소에는 숨김) */
+.item-actions {
+    display: none; 
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 10;
+}
+
+/* 편집 모드가 활성화되면 삭제 버튼을 보여줌 */
+.playlist-grid.edit-mode .item-actions {
+    display: block;
+}
+
+/* 편집 모드일 때 "영상 추가" 버튼은 숨김 */
+.playlist-grid.edit-mode .add-new {
+    display: none;
+}
+
+/* 편집 모드에서는 a 태그 클릭 비활성화 (삭제만 가능하도록) */
+.playlist-grid.edit-mode .playlist-item a {
+    pointer-events: none;
+}
+
+/* 삭제 버튼(-) 스타일 */
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    pointer-events: auto;
+}
+.btn-delete:hover {
+    opacity: 0.8;
 }
