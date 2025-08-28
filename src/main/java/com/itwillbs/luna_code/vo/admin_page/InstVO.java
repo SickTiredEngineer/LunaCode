@@ -1,12 +1,11 @@
-package com.itwillbs.luna_code.vo.member_join;
+package com.itwillbs.luna_code.vo.admin_page;
 
-import org.springframework.web.multipart.MultipartFile;
+
 
 import lombok.Data;
 
-/* 회원가입 프로세싱에서 정보 담을 때 사용하는 VO */
 @Data
-public class MemberJoinVO {
+public class InstVO {
 	private String idx;
 	private String user_id;
 	private String user_name;
@@ -25,14 +24,10 @@ public class MemberJoinVO {
 	private String attendance_last;
 	private String member_type;
 	
-	private MultipartFile certificate_01;
-	private MultipartFile certificate_02;
-	private MultipartFile certificate_03;
+	private String certificate_01;
+	private String certificate_02;
+	private String certificate_03;
 	
 	private String accept_status;
 	private String deny_reason;
-	
-	private String cerPath1;
-	private String cerPath2;
-	private String cerPath3;
 }

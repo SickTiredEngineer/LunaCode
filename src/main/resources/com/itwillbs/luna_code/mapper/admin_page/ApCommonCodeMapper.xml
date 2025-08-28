@@ -29,7 +29,7 @@
 		left join member m1 on m1.idx = cc.creater_idx
 		left join member m2 on m2.idx = cc.updater_idx
 		left join group_code cd on cd.group_code = cc.group_code 
-		order by cd.create_date desc, cd.group_idx desc
+		order by cc.create_date desc, cc.code desc
 		limit #{start_row}, #{list_limit}
 	</select>
 	

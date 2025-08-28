@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
 
 <html>
 
@@ -50,55 +51,63 @@
 					<div class="d-flex flex-column list-main-layout">
 					
 						<div class="d-flex flex-row align-items-center list-info-layout">
-								<h3 class="text-no info-text">No</h3>
-								<h3 class="text-id info-text">ID</h3>
-								<h3 class="text-name info-text">이름</h3>
-								<h3 class="text-type info-text">회원 타입</h3>
-								<h3 class="text-state info-text">계정 상태</h3>
-							</div>
-							
+							<h3 class="text-no info-text">No</h3>
+							<h3 class="text-id info-text">ID</h3>
+							<h3 class="text-name info-text">이름</h3>
+							<h3 class="text-type info-text">회원 타입</h3>
+							<h3 class="text-state info-text">인증 상태</h3>
+						</div>
 							
 						<div class="d-flex flex-column list-layout">
 	
 							<!-- ============================== -->
-							<!-- Example Start -->
+							<c:forEach items="${instList}" var="inst" varStatus="status" >
 							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApReqInstDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">1</h3>
-									<h3 class="text-id">koo123</h3>
-									<h3 class="text-name">구돼지</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">active</h3>
-								</a>
-								
-								
-							</div>
 							
-							<div class="d-flex flex-row align-items-center list-item-root">
-								<a href="ApReqInstDetail" class="d-flex flex-row align-items-center list-item-layout">
-									<h3 class="text-no">2</h3>
-									<h3 class="text-id">kim123</h3>
-									<h3 class="text-name">김말이</h3>
-									<h3 class="text-type">일반 회원</h3>
-									<h3 class="text-state">active</h3>
+								<a href="ApReqInstDetail?idx=${inst.idx}" class="d-flex flex-row align-items-center list-item-layout">
+									<h3 class="text-no">${status.index }</h3>
+									<h3 class="text-id">${inst.user_id }</h3>
+									<h3 class="text-name">${inst.user_name }</h3>
+									<h3 class="text-type">
+										<c:choose>
+											<c:when test="${inst.member_type eq 'MB02'}">강사 회원</c:when>
+											<c:when test="${inst.member_type eq 'MB03'}">일반 회원</c:when>
+											<c:when test="${inst.member_type eq 'MB01'}">관리자</c:when>
+											<c:when test="${inst.member_type eq 'MB04'}">x</c:when>
+										</c:choose>
+									</h3>
+									<h3 class="text-state"> 
+										<c:choose>
+											<c:when test="${inst.accept_status eq 'IS01'}">승인</c:when>
+											<c:when test="${inst.accept_status eq 'IS02'}">보류</c:when>
+											<c:when test="${inst.accept_status eq 'IS03'}">거부</c:when>
+										</c:choose>
+									</h3>
 								</a>
 								
-								
 							</div>
+
+							</c:forEach>
 							
 						</div>
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">
+						
+							<button type="button" class="page-selector" onclick="location.href='ApReqInstList?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 							
-							<a class="page-selector">&lt;</a>
+							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+								<c:choose>
+									<c:when test="${i eq pageVo.pageNum }">
+										<button type="button" class="page-selector" onclick="location.href='ApReqInstList?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="page-selector" onclick="location.href='ApReqInstList?pageNum=${i}'">${i}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
 							
-							<a class="page-selector">1</a>
-							<a class="page-selector">2</a>
-							<a class="page-selector">3</a>
-							<a class="page-selector">4</a>
-							<a class="page-selector">5</a>
-							
-							<a class="page-selector">&gt;</a>
+							<button type="button" class="page-selector" onclick="location.href='ApReqInstList?pageNum=${pageVo.pageNum+1}'" 
+							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 					
 						</div>
 

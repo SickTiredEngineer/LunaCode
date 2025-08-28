@@ -7,7 +7,7 @@ create table common_code(
 	common_idx int primary key auto_increment,
     group_code varchar(64),
     code varchar(64) unique,
-    code_label varchar(64) unique,
+    code_label varchar(64),
     code_desc varchar(300),
     using_status boolean default true,
     creater_idx int,
@@ -27,6 +27,11 @@ desc common_code;
 
 -- 전체 데이터 출력
 select * from common_code;
+
+SHOW INDEX FROM common_code;
+ALTER TABLE common_code DROP INDEX code_label;
+
+
 
 -- 데이터 초기화용
 -- delete from common_code;
@@ -140,6 +145,6 @@ select
 		from common_code cc
 		left join member m1 on m1.idx = cc.creater_idx
 		left join member m2 on m2.idx = cc.updater_idx
-		left join group_code cd on cd.group_idx = cc.group_idx 
+		left join group_code cd on cd.group_code = cc.group_code 
 		order by cd.create_date desc, cd.group_idx desc
-		limit 1, 10;
+	

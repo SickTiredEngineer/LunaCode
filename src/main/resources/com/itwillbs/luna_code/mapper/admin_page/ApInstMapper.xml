@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApInstMapper">
+	
+	<select id="countAllInst">
+		select count(*) 
+		from member 
+		where member_type = 'MB02'
+	</select>
+	
+	<select id="selectInstList">
+		select * from member
+		where member_type = 'MB02' 
+		order by idx desc
+		limit #{start_row}, #{list_limit}
+	</select>
+	
+	<select id="selectInstDetail">
+		select * from member
+		where idx = #{idx}
+	</select>
+	
+	<update id="updateInstStatus">
+		update member 
+		set accept_status = #{accept_status} 
+			,deny_reason = #{deny_reason}
+		where idx = #{idx} 
+	</update>
+	
+	
+	
+</mapper>

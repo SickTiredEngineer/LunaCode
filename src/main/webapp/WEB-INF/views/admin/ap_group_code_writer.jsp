@@ -76,7 +76,9 @@
 										<!-- 정보 폼 -->								
 										<form action="${formAction}" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
 											
-											<input type="hidden" name="group_idx" value="${vo.group_idx}">
+											<c:if test="${isModify}">
+												<input type="hidden" name="group_idx" value="${vo.group_idx}">
+											</c:if>
 											
 											<br>
 										

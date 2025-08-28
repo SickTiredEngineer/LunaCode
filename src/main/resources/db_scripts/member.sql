@@ -23,7 +23,8 @@ create table member(
     certificate_01 varchar(300),
 	certificate_02 varchar(300),
 	certificate_03 varchar(300),
-    is_accept boolean default false
+    accept_status varchar(100) default false,
+    deny_reason varchar(100)
 );
 
 -- 데이터 설명충
@@ -64,8 +65,14 @@ alter table member rename column certificate to certificate_01;
 alter table member add certificate_02 varchar(300);
 alter table member add certificate_03 varchar(300);
 alter table member add column is_accept boolean default false;
+alter table member rename column is_accept to accept_status;
+
+alter table member modify column accept_status varchar(100) default 'IS02';
+-- 강사 승인 보류 이유 
+alter table member add column deny_reason varchar(100);
 
 update member set is_accept = true where member_type = 'MB02';
+update member set deny_reason = "서류 검토가 필요합니다." where member_type = 'MB02';
 
 -- 아이디 중복 검사 쿼리문 예시 
 with tmp_cnt as(
@@ -89,5 +96,6 @@ update member set member_type = 'MB01';
 SELECT LENGTH(password), HEX(password), CONCAT('[',password,']')
 FROM member WHERE user_id='admin123';
 
+update member set accept_status = 'IS02' where member_type = 'MB02';
 
 

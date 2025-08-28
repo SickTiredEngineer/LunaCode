@@ -53,7 +53,7 @@
 											<div class="d-flex flex-row info-item">
 												<p class=""><strong>공통 코드</strong> :${codeVo.code}</p>	
 												
-												<a href="ModifyCommonCode?common_idx=${code.common_idx}" onclick="return confirm('수정 하시겠습니까?');"><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
+												<a href="ModifyCommonCode?common_idx=${codeVo.common_idx}" onclick="return confirm('수정 하시겠습니까?');"><img alt="" src="${pageContext.request.contextPath }/resources/icons/icon_edit.png" class="edit-icon"></a>
 											</div>
 											
 											<div class="horizontal-line"></div>

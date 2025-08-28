@@ -16,7 +16,25 @@
 	</select>
 	
 	<select id="selectMemberDetail">
-		select * 
+		select 
+			idx
+			,user_id
+			,user_name
+			,nickname
+			,password
+			,email
+			,phone
+			,profile_img
+			,bio
+		    ,birth
+			,github_url
+			,attendance_count
+			,attendance_consecutive
+			,attendance_last
+			,member_type,
+			,cerftificate_01
+			,cerftificate_02
+			,cerftificate_03
 		from member 
 		where idx = #{idx}
 	</select>

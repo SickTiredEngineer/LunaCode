@@ -96,6 +96,11 @@ public class MemberJoinController {
 
 	    /* 실제 파일 저장 실행 */
 	    if (isInst) {
+	    	
+	    	vo.setAccept_status("IS02");
+	    	vo.setDeny_reason("증빙 자료 검토가 필요합니다.");
+	    	
+	    	
 	        for (int i = 0; i < files.length; i++) {
 	            if (savedNames[i] != null) {
 	                try {
