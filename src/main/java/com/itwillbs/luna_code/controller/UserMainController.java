@@ -60,18 +60,17 @@ public class UserMainController {
 		List<PlayListVO> allPlaylists = playListService.getPlayList(userIdx);
 		
 		List<PlayListVO> recentPlaylists = allPlaylists.stream()
-                .limit(2)
-                .collect(Collectors.toList());
+			.limit(2)
+			.collect(Collectors.toList());
 
 		model.addAttribute("recentPlaylists", recentPlaylists);
 		
 		// 내 강의 조회
 		List<MyCourseVO> allInProgressCourses = myClassService.getInProgressCourses(userIdx);
 		List<MyCourseVO> limitedInProgressCourses = allInProgressCourses.stream()
-                .limit(2)
-                .collect(Collectors.toList());
+			.limit(2)
+			.collect(Collectors.toList());
 		model.addAttribute("inProgressCourses", limitedInProgressCourses);
-		
 		
 		return "usermain/usermain";
 	}
@@ -88,19 +87,21 @@ public class UserMainController {
 
 	@GetMapping("MyClassDetail")
 	public String myClassDetail(
-			@RequestParam("id") int class_idx,
-			Authentication auth, 
-			Model model)throws Exception {
+		@RequestParam("id") int class_idx,
+		Authentication auth, 
+		Model model) throws Exception {
 		
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 		int userIdx = userDetails.getIdx();
 
 		MyClassDetailVO classDetail = myClassService.getClassDetailWithCurriculum(class_idx, userIdx);
 		ObjectMapper objectMapper = new ObjectMapper();
-        String classDetailJson = objectMapper.writeValueAsString(classDetail);
-
+		String originalJson = objectMapper.writeValueAsString(classDetail);
+        
+		String escapedJson = originalJson.replace("\"", "&quot;");
+	    
 		model.addAttribute("classDetail", classDetail);
-		model.addAttribute("classDetailJson", classDetailJson);
+		model.addAttribute("classDetailJson", escapedJson);
 		
 		return "usermain/my_class_detail";
 	}
@@ -108,21 +109,21 @@ public class UserMainController {
 	@GetMapping("InProgress")
 	@ResponseBody
 	public ResponseEntity<List<MyCourseVO>> getInProgressCoursesApi(Authentication auth) {
-	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int userIdx = userDetails.getIdx();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
 
-	    List<MyCourseVO> courseList = myClassService.getInProgressCourses(userIdx);
-	    return ResponseEntity.ok(courseList);
+		List<MyCourseVO> courseList = myClassService.getInProgressCourses(userIdx);
+		return ResponseEntity.ok(courseList);
 	}
 
 	@GetMapping("Completed")
 	@ResponseBody
 	public ResponseEntity<List<MyCourseVO>> getCompletedCoursesApi(Authentication auth) {
-	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int userIdx = userDetails.getIdx();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
 
-	    List<MyCourseVO> courseList = myClassService.getCompletedCourses(userIdx);
-	    return ResponseEntity.ok(courseList);
+		List<MyCourseVO> courseList = myClassService.getCompletedCourses(userIdx);
+		return ResponseEntity.ok(courseList);
 	}
 	
 	@GetMapping("PlayList")
@@ -139,18 +140,62 @@ public class UserMainController {
 	@GetMapping("PlayListPlus")
 	public String playListPlus(@RequestParam("id") int playlistId, Authentication auth, Model model) {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int userIdx = userDetails.getIdx();
+		int userIdx = userDetails.getIdx();
 	    
-	    PlayListVO playlist = playListService.getPlaylistById(playlistId, userIdx);
-	    model.addAttribute("playlist", playlist);
+		PlayListVO playlist = playListService.getPlaylistById(playlistId, userIdx);
+		model.addAttribute("playlist", playlist);
 	    
 		return "usermain/play_list_plus";
+	}
+	
+	@PostMapping("ApiPlaylistAddItem")
+	@ResponseBody
+	public Map<String, Object> addVideoToPlaylist(
+		@RequestParam("playlist_idx") int playlist_idx, 
+		@RequestParam("episode_idx") int episode_idx,
+		Authentication auth) {
+        
+		Map<String, Object> response = new HashMap<>();
+		int result = playListService.addEpisodeToPlaylist(playlist_idx, episode_idx);
+        
+		if (result > 0) {
+			response.put("success", true);
+			response.put("message", "재생목록에 추가되었습니다.");
+		} else {
+			response.put("success", false);
+			response.put("message", "추가에 실패했거나, 이미 목록에 존재합니다.");
+		}
+        
+		return response;
+	}
+	
+	@PostMapping("ApiPlaylistRemoveItem")
+	@ResponseBody
+	public Map<String, Object> removeVideoFromPlaylist(
+		@RequestParam("item_idx") int item_idx,
+		Authentication auth) {
+        
+		Map<String, Object> response = new HashMap<>();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
+        
+		int result = playListService.deletePlaylistItem(item_idx, userIdx);
+        
+		if (result > 0) {
+			response.put("success", true);
+			response.put("message", "재생목록에서 삭제되었습니다.");
+		} else {
+			response.put("success", false);
+			response.put("message", "삭제에 실패했습니다. (권한이 없거나 이미 삭제된 항목)");
+		}
+        
+		return response;
 	}
 
 	@GetMapping("Attendance")
 	public String attendance(Authentication auth, Model model) {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		String userId = userDetails.getUserId(); // getUserId()로 변경
+		String userId = userDetails.getUserId(); 
 		
 		UserVO attendanceInfo = attendanceService.getAttendancePageData(userId);
 		model.addAttribute("attendanceInfo", attendanceInfo);
@@ -161,72 +206,72 @@ public class UserMainController {
 	@PostMapping("PlayListAdd")
 	@ResponseBody
 	public Map<String, Object> addPlaylist(
-	        @RequestParam String playlist_name, 
-	        Authentication auth) {
+		@RequestParam String playlist_name, 
+		Authentication auth) {
 	    
-	    Map<String, Object> response = new HashMap<>();
-	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int userIdx = userDetails.getIdx();
+		Map<String, Object> response = new HashMap<>();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
 
-	    PlayListVO newPlaylist = new PlayListVO();
-	    newPlaylist.setUser_idx(userIdx);
-	    newPlaylist.setPlaylist_name(playlist_name);
+		PlayListVO newPlaylist = new PlayListVO();
+		newPlaylist.setUser_idx(userIdx);
+		newPlaylist.setPlaylist_name(playlist_name);
 
-	    int result = playListService.addPlaylist(newPlaylist);
+		int result = playListService.addPlaylist(newPlaylist);
 
-	    if (result > 0) {
-	        response.put("success", true);
-	        response.put("newPlaylist", newPlaylist); 
-	    } else {
-	        response.put("success", false);
-	    }
+		if (result > 0) {
+			response.put("success", true);
+			response.put("newPlaylist", newPlaylist); 
+		} else {
+			response.put("success", false);
+		}
 	    
-	    return response;
+		return response;
 	}
 	
 	@PostMapping("PlayListDelete")
 	@ResponseBody
 	public Map<String, Object> deletePlaylist(@RequestParam int playlist_idx, Authentication auth) {
-	    Map<String, Object> response = new HashMap<>();
-	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int userIdx = userDetails.getIdx();
+		Map<String, Object> response = new HashMap<>();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
 
-	    int result = playListService.deletePlayList(playlist_idx, userIdx);
+		int result = playListService.deletePlayList(playlist_idx, userIdx);
 
-	    response.put("success", result > 0);
-	    return response;
+		response.put("success", result > 0);
+		return response;
 	}
 	
 	@PostMapping("PlayListUpdate")
 	@ResponseBody
 	public Map<String, Object> updatePlaylist(
-	        @RequestParam int playlist_idx, 
-	        @RequestParam String new_name, 
-	        Authentication auth) {
+		@RequestParam int playlist_idx, 
+		@RequestParam String new_name, 
+		Authentication auth) {
 	    
-	    Map<String, Object> response = new HashMap<>();
-	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int userIdx = userDetails.getIdx();
+		Map<String, Object> response = new HashMap<>();
+		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+		int userIdx = userDetails.getIdx();
 
-	    int result = playListService.updatePlayList(playlist_idx, new_name, userIdx);
+		int result = playListService.updatePlayList(playlist_idx, new_name, userIdx);
 	    
-	    response.put("success", result > 0);
-	    return response;
+		response.put("success", result > 0);
+		return response;
 	}
 	
 	@GetMapping("ClassStatistic")
 	public String classStatistic(Authentication auth, Model model) throws Exception {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int instructorIdx = userDetails.getIdx();
+		int instructorIdx = userDetails.getIdx();
 	    
-	    // 최근 6개월간의 월별 수익 통계 조회
-	    List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
-	    ObjectMapper objectMapper = new ObjectMapper();
-	    String revenueDataJson = objectMapper.writeValueAsString(revenueData);
-	    model.addAttribute("revenueDataJson", revenueDataJson);
+		// 최근 6개월간의 월별 수익 통계 조회
+		List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
+		ObjectMapper objectMapper = new ObjectMapper();
+		String revenueDataJson = objectMapper.writeValueAsString(revenueData);
+		model.addAttribute("revenueDataJson", revenueDataJson);
 		
-	    // 신규 수강생 조회
-	    List<NewStudentVO> newStudents = classStatisticService.getRecentNewStudents(instructorIdx);
+		// 신규 수강생 조회
+		List<NewStudentVO> newStudents = classStatisticService.getRecentNewStudents(instructorIdx);
 		model.addAttribute("newStudents", newStudents);
 		
 		// 수강생 후기
@@ -240,20 +285,20 @@ public class UserMainController {
 	@GetMapping("ClassStatisticDetail")
 	public String classStatisticDetail(Authentication auth, Model model) throws Exception {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-	    int instructorIdx = userDetails.getIdx();
+		int instructorIdx = userDetails.getIdx();
 	    
-	    // 요약 카드 데이터 조회
-	    ClassStatisticSummaryVO summary = classStatisticService.getStatisticsSummary(instructorIdx);
-	    model.addAttribute("summary", summary);
+		// 요약 카드 데이터 조회
+		ClassStatisticSummaryVO summary = classStatisticService.getStatisticsSummary(instructorIdx);
+		model.addAttribute("summary", summary);
 	    
-	    // 월별 수익 차트 데이터 (최근 6개월)
-	    List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
-	    ObjectMapper objectMapper = new ObjectMapper();
-	    model.addAttribute("revenueDataJson", objectMapper.writeValueAsString(revenueData));
+		// 월별 수익 차트 데이터 (최근 6개월)
+		List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
+		ObjectMapper objectMapper = new ObjectMapper();
+		model.addAttribute("revenueDataJson", objectMapper.writeValueAsString(revenueData));
 	    
-	    // 월별 신규 수강생 차트 데이터 (올해 12개월)
-	    List<Map<String, Object>> studentCountData = classStatisticService.getMonthlyNewStudentCounts(instructorIdx);
-	    model.addAttribute("studentCountDataJson", objectMapper.writeValueAsString(studentCountData));
+		// 월별 신규 수강생 차트 데이터 (올해 12개월)
+		List<Map<String, Object>> studentCountData = classStatisticService.getMonthlyNewStudentCounts(instructorIdx);
+		model.addAttribute("studentCountDataJson", objectMapper.writeValueAsString(studentCountData));
 	    
 		return "usermain/class_statistic_detail";
 	}

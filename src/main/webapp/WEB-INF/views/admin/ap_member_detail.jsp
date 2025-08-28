@@ -117,16 +117,16 @@
 									
 									<div class="horizontal-line"></div>
 									
-									<div class="d-flex flex-row info-item">
-										<p class="info-text">계정 상태 :</p>
+<!-- 									<div class="d-flex flex-row info-item"> -->
+<!-- 										<p class="info-text">계정 상태 :</p> -->
 										
-										<select class="member-state-selector">
-											<option>활성화</option>
-											<option>정지</option>
-										</select>
+<!-- 										<select class="member-state-selector"> -->
+<!-- 											<option>활성화</option> -->
+<!-- 											<option>정지</option> -->
+<!-- 										</select> -->
 										
 
-									</div>
+<!-- 									</div> -->
 									
 <%-- 									<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png" class="negative-button icon-delete"> --%>
 

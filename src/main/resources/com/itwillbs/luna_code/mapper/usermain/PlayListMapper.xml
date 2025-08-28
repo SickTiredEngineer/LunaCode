@@ -4,7 +4,7 @@
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.itwillbs.luna_code.mapper.usermain.PlayListMapper">
-	
+
 	<select id="selectPlayListsByUserIdx" resultType="com.itwillbs.luna_code.vo.usermain.PlayListVO">
 		select
 		       playlist_idx
@@ -17,18 +17,12 @@
 	</select>
 
 	<insert id="insertPlayList" parameterType="com.itwillbs.luna_code.vo.usermain.PlayListVO">
-
 	    <selectKey keyProperty="playlist_idx" resultType="int" order="AFTER">
 	        select last_insert_id()
 	    </selectKey>
-	    
 	    insert into 
-	       playlist (
-	                user_idx
-	              , playlist_name ) 
-	         values (
-	                #{user_idx}
-	              , #{playlist_name} )
+	       playlist (user_idx, playlist_name) 
+	    values (#{user_idx}, #{playlist_name})
 	</insert>
 	
 	<delete id="deletePlayList">
@@ -53,5 +47,37 @@
 	     where playlist_idx = #{playlistIdx}
 	       and user_idx = #{userIdx}
 	</select>
+	
+	<select id="selectPlaylistItemsByIdx" resultType="com.itwillbs.luna_code.vo.usermain.MyClassDetailVO$ClassEpisode">
+	    select
+	           ce.episode_idx
+	         , ce.episode_name
+	         , pi.item_idx
+	         , c.class_thumbnail as thumbnail
+	      from playlist_item pi
+	      join class_episode ce on pi.episode_idx = ce.episode_idx
+	      join class_session cs on ce.session_idx = cs.session_idx
+	      join class c on cs.class_idx = c.class_idx
+	     where pi.playlist_idx = #{playlistIdx}
+	  order by pi.play_order asc, pi.item_idx asc
+	</select>
+	
+	<insert id="insertPlaylistItem">
+	    insert ignore into playlist_item (
+	           playlist_idx
+	         , episode_idx 
+	    ) values (
+	           #{playlistIdx}
+	         , #{episodeIdx}
+	    )
+	</insert>
+
+	<delete id="deletePlaylistItem">
+	    delete pi
+	      from playlist_item pi
+	      join playlist p on pi.playlist_idx = p.playlist_idx
+	     where pi.item_idx = #{itemIdx}
+	       and p.user_idx = #{userIdx}
+	</delete>
 
 </mapper>

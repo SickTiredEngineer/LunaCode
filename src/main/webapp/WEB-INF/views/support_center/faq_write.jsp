@@ -32,7 +32,7 @@
 				<c:when test="${isModify}">
 					<c:set var="formAction" value="ModifyFaqForm"/>
 					<c:set var="submitLabel" value="수정 완료"/>
-					<c:set var="pageTitle" value="공지 수정"/>
+					<c:set var="pageTitle" value="FAQ 수정"/>
 					
 					<c:set var="noticeSubject" value="${faqVo.faq_subject}"/>
 					<c:set var="noticeContent" value="${faqVo.faq_content}"/>

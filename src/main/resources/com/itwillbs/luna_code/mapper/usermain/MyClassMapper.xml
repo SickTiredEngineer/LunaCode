@@ -74,6 +74,7 @@
         select
                l.episode_idx
              , l.episode_name
+             , l.episode_video_path
              , (
                case 
                when h.user_idx is not null then true 
