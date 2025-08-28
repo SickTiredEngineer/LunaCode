@@ -5,14 +5,26 @@
 
 <mapper namespace="com.itwillbs.luna_code.mapper.ClassEpisodeMapper">
 
-    <insert id="insertClassEpisode" parameterType="ClassEpisode" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO class_episode (
-        session_id, 
-        title
-     ) VALUES (
-        #{sessionId}, 
-        #{title}
-     )
-    </insert>
+    <insert id="insertClassEpisode" parameterType="com.itwillbs.luna_code.vo.ClassEpisodeVo" >
+	  INSERT INTO class_episode (
+	    session_idx, 
+	    episode_name
+	) VALUES (
+	 	#{session_idx}, 
+	 	#{episode_name}
+	)
+	</insert>
+	
+	<select id="selectEpisodesBySessionId" parameterType="com.itwillbs.luna_code.vo.ClassEpisodeVo">
+	    SELECT episode_idx, session_idx, episode_name
+	    FROM class_episode
+	    WHERE session_idx = #{sessionIdx}
+	</select>
+	
+	<update id="updateEpisode" parameterType="com.itwillbs.luna_code.vo.ClassEpisodeVo">
+	    UPDATE class_episode
+	    SET episode_name = #{episode_name}
+	    WHERE episode_idx = #{episode_idx}
+	</update>
 
 </mapper>
