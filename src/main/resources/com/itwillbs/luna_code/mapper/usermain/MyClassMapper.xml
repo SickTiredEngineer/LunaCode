@@ -2,7 +2,7 @@
 <!DOCTYPE mapper 
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-    
+
 <mapper namespace="com.itwillbs.luna_code.mapper.usermain.MyClassMapper">
 
 	<!-- 학습 중인 강의 목록 조회 -->
@@ -10,38 +10,29 @@
         select
                c.class_idx
              , c.class_title
-             , ifnull(c.total_lessons, 0) as total_lessons
+             , c.total_lessons
              , c.class_thumbnail
-             , h.enroll_date
+             , date_format(h.enroll_date, '%Y년 %m월 %d일') as enroll_date
              , (
                select count(*) 
                  from class_progress cp 
                  join class_episode ce on cp.episode_idx = ce.episode_idx 
                  join class_session s on ce.session_idx = s.session_idx
-                where cp.user_idx = #{userIdx} 
-                  and s.class_idx = c.class_idx
-               ) as user_progress_count
+                where cp.user_idx = #{userIdx} and s.class_idx = c.class_idx
+               ) as current_lesson_count
              , (
-               case 
-                 when c.total_lessons is null or c.total_lessons = 0 then 0
-                 else (
-                       (
-                       select count(*) 
-                         from class_progress cp 
-                         join class_episode ce on cp.episode_idx = ce.episode_idx 
-                         join class_session s on ce.session_idx = s.session_idx
-                        where cp.user_idx = #{userIdx} 
-                          and s.class_idx = c.class_idx
-                       ) * 100 / c.total_lessons
-                      )
-               end
-               ) as user_progress_percentage
+               (
+               select count(*) 
+                 from class_progress cp 
+                 join class_episode ce on cp.episode_idx = ce.episode_idx 
+                 join class_session s on ce.session_idx = s.session_idx
+                where cp.user_idx = #{userIdx} and s.class_idx = c.class_idx
+               ) * 100 / c.total_lessons
+               ) as progress_percent
              , h.is_completed
           from class c
-          join class_enrollment h 
-            on c.class_idx = h.class_idx
-         where h.user_idx = #{userIdx} 
-           and h.is_completed = false
+          join class_enrollment h on c.class_idx = h.class_idx
+         where h.user_idx = #{userIdx} and h.is_completed = false
     </select>
 
     <!-- 학습 완료한 강의 목록 조회 -->
@@ -51,14 +42,12 @@
              , c.class_title
              , c.total_lessons
              , c.class_thumbnail
-             , c.total_lessons
+             , c.total_lessons as current_lesson_count
              , 100 as progress_percent
              , h.is_completed
           from class c
-          join class_enrollment h 
-            on c.class_idx = h.class_idx
-         where h.user_idx = #{userIdx} 
-           and h.is_completed = true
+          join class_enrollment h on c.class_idx = h.class_idx
+         where h.user_idx = #{userIdx} and h.is_completed = true
     </select>
 
     <!-- 강의 상세 정보의 기본 내용 조회 -->
@@ -85,7 +74,6 @@
         select
                l.episode_idx
              , l.episode_name
-             , l.episode_duration
              , (
                case 
                when h.user_idx is not null then true 
@@ -99,7 +87,5 @@
          where l.session_idx = #{session_idx}
       order by l.episode_idx asc
     </select>
-
-
 
 </mapper>

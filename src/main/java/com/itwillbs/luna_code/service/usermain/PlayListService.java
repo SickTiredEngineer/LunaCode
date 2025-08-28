@@ -13,7 +13,7 @@ public class PlayListService {
 	
 	@Autowired
 	private PlayListMapper playListMapper;
-	
+		
 	public List<PlayListVO> getPlayList(int userIdx){
 		return playListMapper.selectPlayListsByUserIdx(userIdx);
 	}

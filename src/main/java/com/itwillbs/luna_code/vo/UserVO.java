@@ -22,6 +22,7 @@ public class UserVO {
 	private int attendance_count;
 	private int attendance_consecutive;
 	private String attendance_last;
+	private String deny_reason;
 
 	// 최대 연속 출석일
 	private int max_attendance_consecutive;

@@ -181,3 +181,18 @@
 	text-decoration: none;
 	font-size: 14px;
 }
+
+.notice-panel {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    margin-top: 10px;
+}
+
+.notice-panel h4 {
+    color: #856404;
+}
+
+.notice-panel p {
+    margin: 0;
+    padding: 5px 0;
+}

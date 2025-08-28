@@ -26,6 +26,7 @@ import com.itwillbs.luna_code.vo.UserVO;
 import com.itwillbs.luna_code.vo.usermain.ClassStatisticSummaryVO;
 import com.itwillbs.luna_code.vo.usermain.MyClassDetailVO;
 import com.itwillbs.luna_code.vo.usermain.MyCourseVO;
+import com.itwillbs.luna_code.vo.usermain.NewReviewVO;
 import com.itwillbs.luna_code.vo.usermain.NewStudentVO;
 import com.itwillbs.luna_code.vo.usermain.PlayListVO;
 
@@ -89,13 +90,17 @@ public class UserMainController {
 	public String myClassDetail(
 			@RequestParam("id") int class_idx,
 			Authentication auth, 
-			Model model) {
+			Model model)throws Exception {
 		
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 		int userIdx = userDetails.getIdx();
 
 		MyClassDetailVO classDetail = myClassService.getClassDetailWithCurriculum(class_idx, userIdx);
+		ObjectMapper objectMapper = new ObjectMapper();
+        String classDetailJson = objectMapper.writeValueAsString(classDetail);
+
 		model.addAttribute("classDetail", classDetail);
+		model.addAttribute("classDetailJson", classDetailJson);
 		
 		return "usermain/my_class_detail";
 	}
@@ -223,6 +228,10 @@ public class UserMainController {
 	    // 신규 수강생 조회
 	    List<NewStudentVO> newStudents = classStatisticService.getRecentNewStudents(instructorIdx);
 		model.addAttribute("newStudents", newStudents);
+		
+		// 수강생 후기
+		List<NewReviewVO> reviewList = classStatisticService.getRecentReviews(instructorIdx);
+		model.addAttribute("newReviews", reviewList);
 	    
 		return "usermain/class_statistic";
 	}
@@ -233,16 +242,16 @@ public class UserMainController {
 		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
 	    int instructorIdx = userDetails.getIdx();
 	    
-	    // 1. 요약 카드 데이터 조회
+	    // 요약 카드 데이터 조회
 	    ClassStatisticSummaryVO summary = classStatisticService.getStatisticsSummary(instructorIdx);
 	    model.addAttribute("summary", summary);
-
-	    // 2. 월별 수익 차트 데이터 (최근 6개월)
+	    
+	    // 월별 수익 차트 데이터 (최근 6개월)
 	    List<Map<String, Object>> revenueData = classStatisticService.getRecentMonthlyRevenue(instructorIdx);
 	    ObjectMapper objectMapper = new ObjectMapper();
 	    model.addAttribute("revenueDataJson", objectMapper.writeValueAsString(revenueData));
-
-	    // 3. 월별 신규 수강생 차트 데이터 (올해 12개월)
+	    
+	    // 월별 신규 수강생 차트 데이터 (올해 12개월)
 	    List<Map<String, Object>> studentCountData = classStatisticService.getMonthlyNewStudentCounts(instructorIdx);
 	    model.addAttribute("studentCountDataJson", objectMapper.writeValueAsString(studentCountData));
 	    

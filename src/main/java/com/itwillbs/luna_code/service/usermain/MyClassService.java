@@ -11,7 +11,7 @@ import com.itwillbs.luna_code.vo.usermain.MyCourseVO;
 
 @Service
 public class MyClassService {
-    // 데이터베이스와 통신하기 위한 Mapper 객체를 스프링이 자동으로 주입합니다.
+
     @Autowired
     private MyClassMapper myClassMapper;
 

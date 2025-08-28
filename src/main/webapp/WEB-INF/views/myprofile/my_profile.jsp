@@ -20,8 +20,17 @@
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 			</header>
 			
-			<article class="mypage-container">
+			<c:if test="${user.member_type == 'MB02' && user.deny_reason == '서류 검토가 필요합니다.'}">
+				<div class="dashboard-panel notice-panel">
+					<h4>강사 기능 사용 안내</h4>
+					<p>
+						현재 강사 서류 검토가 진행 중입니다. 관리자의 승인이 완료된 후에 정상적으로 강사 기능을 이용하실 수 있습니다.
+					</p>
+				</div>
+			</c:if>
 			
+			<article class="mypage-container">
+				
 				<!-- 왼쪽 프로필 영역 -->
 				<aside class="profile-section">
 					<c:if test="${not empty user.profile_img}">
@@ -41,6 +50,7 @@
 
 				<!-- 오른쪽 대시보드 영역 -->
 				<section class="dashboard-section">
+				
 					<!-- 대시보드 네비게이션 -->
 					<nav class="dashboard-nav">
 						<ul>
@@ -48,7 +58,7 @@
 							<li><a href="PersonalSupport">고객센터</a></li>
 						</ul>
 					</nav>
-
+					
 					<!-- 대시보드 콘텐츠 그리드 -->
 					<div class="dashboard-grid">
 						<!-- 출석 패널 -->

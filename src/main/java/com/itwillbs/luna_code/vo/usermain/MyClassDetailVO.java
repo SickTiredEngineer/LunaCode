@@ -28,7 +28,6 @@ public class MyClassDetailVO {
     public static class ClassEpisode {
         private int episode_idx;
         private String episode_name;
-        private String episode_duration;
         
         private boolean watched;
     }

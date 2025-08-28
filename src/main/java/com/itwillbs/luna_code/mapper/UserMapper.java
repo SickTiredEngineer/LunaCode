@@ -29,5 +29,5 @@ public interface UserMapper {
 	);
 	
 	// 계정 정보 삭제
-	public int deleteUser(String userId);
+	public int updateMemberType(@Param("userId")String userId, @Param("memberType")String memberType);
 }

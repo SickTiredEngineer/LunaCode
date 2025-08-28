@@ -84,5 +84,21 @@
 	  order by month asc
 	</select>
 	
+	<!--  최근 달린 '수강생 후기' 목록 조회 -->
+    <select id="selectRecentReviews" resultType="com.itwillbs.luna_code.vo.usermain.NewReviewVO">
+        select
+               cr.content
+             , c.class_title
+             , m.user_name
+             , cr.created_at
+          from class_review cr
+          join class c on cr.class_id = c.class_idx
+          join member m on cr.user_idx = m.idx
+         where c.instructor_idx = #{instructor_idx}
+           and cr.is_visible = true -- 공개된 후기만 가져오도록 (is_visible이 boolean/tinyint(1) 타입일 경우)
+      order by cr.created_at DESC
+         limit 20
+    </select>
+	
 	
 </mapper>

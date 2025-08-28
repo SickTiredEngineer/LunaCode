@@ -26,7 +26,10 @@
 					<!-- 페이지 상단 (JavaScript가 동적으로 채울 영역) -->
 					<div class="course-detail-header">
 						<h2 class="main-title"></h2> <%-- JS가 제목을 채워줌 --%>
-						<button class="positive-button">최신 수강순 ▼</button>
+<!-- 						<button class="positive-button">최신 수강순 ▼</button> -->
+					</div>
+					
+					<div id="course-data-container" data-json='${classDetailJson}'>
 					</div>
 
 					<!-- 강의 섹션 목록 (JavaScript가 동적으로 채울 영역) -->
@@ -42,8 +45,8 @@
 		</div>
 		
 		<script>
-	        const courseData = <json:object-to-json-script object="${classDetail}" />;
-	    </script>
+		    const CONTEXT_PATH = "${pageContext.request.contextPath}";
+		</script>
 		
         <script src="${pageContext.request.contextPath}/resources/js/usermain/my_class_detail.js"></script>
 	</body>

@@ -63,21 +63,27 @@
 								</ul>
 							</div>
 						</div>
-
+						
 						<!-- 3. 수강생 질문/댓글 -->
 						<div class="widget">
 							<div class="widget-header">
-								<h3>수강생 질문/댓글</h3>
+								<h3>수강생 후기</h3>
 							</div>
 							<div class="widget-content">
 								<ul class="item-list">
-									<li><span class="icon">💬</span><span>강사님 질문 있습니다!</span></li>
-									<li><span class="icon">💬</span><span>이 강의에 파이썬에 대한 내용도 있나요?</span></li>
-									<li><span class="icon">💬</span><span>이 부분은 일부러 수정 안하신건가요?</span></li>
-									<li><span class="icon">💬</span><span>질문 있어요</span></li>
-									<li><span class="icon">💬</span><span>질문 있어요</span></li>
-									<li><span class="icon">💬</span><span>질문 있어요</span></li>
-									<li><span class="icon">💬</span><span>질문 있어요</span></li>
+									<c:forEach var="review" items="${newReviews}">
+						                <li>
+						                    <span class="icon">💬</span>
+						                    <span>
+						                        <strong>${review.user_name}</strong>님이 
+						                        '${review.class_title}' 강의에 후기를 남겼습니다: 
+						                        <em>"${review.content}"</em>
+						                    </span>
+						                </li>
+						            </c:forEach>
+						            <c:if test="${empty newReviews}">
+						                <p>최근 수강생 후기가 없습니다.</p>
+						            </c:if>
 								</ul>
 							</div>
 						</div>

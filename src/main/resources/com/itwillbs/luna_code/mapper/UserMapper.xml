@@ -63,10 +63,10 @@
 		 where user_id = #{user_id}
 	</update>
 
-	<delete id="deleteUser">
-		delete 
-		  from member
-		 where user_id = #{user_id}
+	<delete id="updateMemberType">
+		update member
+		   set member_type = #{memberType}
+		 where user_id = #{userId}
 	</delete>
 
 </mapper>

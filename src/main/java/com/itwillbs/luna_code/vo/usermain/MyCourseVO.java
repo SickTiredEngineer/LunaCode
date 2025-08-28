@@ -13,5 +13,5 @@ public class MyCourseVO extends MyClassVO {
     private boolean is_completed;
     private int progress_percent;
     
-    private Timestamp enroll_date;
+    private String enroll_date;
 }

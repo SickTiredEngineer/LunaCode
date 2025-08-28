@@ -3,6 +3,10 @@ document.addEventListener('DOMContentLoaded', function() {
 	// --- 요소 선택 ---
 	const sectionListElement = document.querySelector('.section-list');
 	const mainTitleElement = document.querySelector('.main-title');
+    const dataContainer = document.querySelector('#course-data-container');
+
+    // [핵심] JSP의 data-json 속성에서 JSON 문자열을 읽어와 JavaScript 객체로 변환합니다.
+    const courseData = JSON.parse(dataContainer.dataset.json);
 
 	/**
 	 * URL에서 'id' 파라미터 값을 가져오는 함수
@@ -23,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
 		li.className = 'lecture-item';
 		
 		const link = document.createElement('a');
-		link.href = `/luna_code/OnlineClass?episodeId=${episode.episode_idx}`; // contextPath는 필요 시 JSP에서 변수로 받아와야 함
+		link.href = `OnlineClass?episodeId=${episode.episode_idx}`;
 
 		link.innerHTML = `
 			<span class="lecture-info">
@@ -31,9 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				<span class="lecture-title">${episode.episode_name}</span>
 			</span>
 			<span class="lecture-duration">
-                <%-- [수정] watched 필드 이름 변경 --%>
-				${episode.watched ? '✔️' : '❔'} 
-				${episode.episode_duration}
+				${episode.watched ? '✔️' : '❔'}
 			</span>
 		`;
 
@@ -60,10 +62,8 @@ document.addEventListener('DOMContentLoaded', function() {
 		header.innerHTML = `
 			<span class="section-title">
 				<span class="arrow-icon">▼</span>
-                <%-- [수정] 필드명 변경: sectionTitle -> session_name --%>
 				${section.session_name} 
 			</span>
-			<span class="section-progress">진행률 : ${progress}% <b>${totalCount}개</b></span>
 		`;
 
 		const lectureList = document.createElement('ul');

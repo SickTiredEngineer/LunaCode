@@ -11,6 +11,8 @@
 			 , bio
 			 , github_url
 			 , profile_img
+			 , member_type
+			 , deny_reason
 		  FROM member
 		 WHERE user_id = #{user_id}
 	</select>

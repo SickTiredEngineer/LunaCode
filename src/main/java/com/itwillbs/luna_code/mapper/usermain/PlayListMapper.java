@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import com.itwillbs.luna_code.vo.usermain.MyClassDetailVO;
 import com.itwillbs.luna_code.vo.usermain.PlayListVO;
 
 @Mapper
@@ -17,11 +18,16 @@ public interface PlayListMapper {
 	public int deletePlayList(@Param("playlistIdx") int playlistIdx, @Param("userIdx") int userIdx);
 	
 	public int updatePlayList(
-		@Param("playlistIdx") int playlistIdx,
-		@Param("playlistName") String playlistName,
-		@Param("userIdx")int userIdx
+			@Param("playlistIdx") int playlistIdx,
+			@Param("playlistName") String playlistName,
+			@Param("userIdx")int userIdx
 	);
 	
 	public PlayListVO selectPlaylistById(@Param("playlistIdx") int playlistIdx,
 			@Param("userIdx") int userIdx);
+	
+    public List<MyClassDetailVO.ClassEpisode> selectPlaylistItemsByIdx(int playlistIdx);
+    
+    public int insertPlaylistItem(@Param("playlistIdx") int playlistIdx,
+    		@Param("videoIdx") int videoIdx);
 }

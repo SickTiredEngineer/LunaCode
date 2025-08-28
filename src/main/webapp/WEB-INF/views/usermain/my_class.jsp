@@ -43,6 +43,10 @@
 			</footer>
 		</div>
 		
+		<script>
+	        const CONTEXT_PATH = "${pageContext.request.contextPath}";
+	    </script>
+		
         <script src="${pageContext.request.contextPath}/resources/js/usermain/my_class.js"></script>
 	</body>
 </html>

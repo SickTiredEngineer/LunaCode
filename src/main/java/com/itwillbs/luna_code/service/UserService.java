@@ -116,9 +116,9 @@ public class UserService {
 		}
 
 		// 계정 정보 삭제
-		int deleteCount = userMapper.deleteUser(userId);
+		int updateCount = userMapper.updateMemberType(userId, "mb04");
 
-		if (deleteCount == 0) {
+		if (updateCount == 0) {
 			// 삭제된 행이 없으면 예외를 발생시켜 롤백 처리
 			throw new Exception("계정 삭제에 실패했습니다.");
 		}
