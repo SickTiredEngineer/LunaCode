@@ -17,6 +17,8 @@ import com.itwillbs.luna_code.vo.PageVO;
 import com.itwillbs.luna_code.vo.admin_page.InstVO;
 import com.itwillbs.luna_code.vo.member_join.MemberJoinVO;
 
+
+/* 관리자 페이지 강사 등록 관련 컨트롤러 */
 @Controller
 public class ApInstController {
 

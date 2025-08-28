@@ -22,5 +22,8 @@ public class ClassVo {
     private String class_level;        
     private int total_lessons;
     private String url;
+    private String accept_status;
+    private String deny_reason;
 	
+    private String instructor_id;
 }

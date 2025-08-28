@@ -18,11 +18,12 @@ create table class(
 	class_category varchar(50),
 	class_level varchar(10),
 	total_lessons int,
-	url varchar(300)
+	url varchar(300),
+    accept_status varchar(100)
 );
 
-
 alter table class add column accept_status varchar(100) default 'CS02';
+alter table class add column deny_reason varchar(100) default '수업 자료 검토가 필요합니다.';
 
 -- 데이터 설명충
 desc class;

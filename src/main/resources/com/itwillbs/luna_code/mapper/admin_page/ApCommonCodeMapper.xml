@@ -92,57 +92,6 @@
 			,updater_idx = #{updater_idx}
 		where common_idx = #{common_idx}	
 	</update>
-	
-	
-	
-
-<!-- 	<select id="selectCodeGroupDetail"> -->
-<!-- 		select  -->
-<!-- 				cd.group_idx -->
-<!-- 				,cd.group_code -->
-<!-- 				,cd.group_desc -->
-<!-- 				,cd.using_status -->
-<!-- 				,cd.create_date -->
-<!-- 				,cd.creater_idx -->
-<!-- 				,cd.update_date -->
-<!-- 				,cd.updater_idx -->
-<!-- 				,m1.user_id as creater_id -->
-<!-- 				,m2.user_id as updater_id -->
-<!-- 			from group_code cd -->
-<!-- 			left join member m1 on m1.idx = cd.creater_idx -->
-<!-- 			left join member m2 on m2.idx = cd.updater_idx -->
-<!-- 			where group_idx = ${group_idx} -->
-<!-- 	</select> -->
-
-
-<!-- 	<insert id="insertNewCodeGroup" -->
-<!-- 		useGeneratedKeys="true" -->
-<!-- 		keyProperty="group_idx" -->
-<!-- 		keyColumn="group_idx" -->
-<!-- 	> -->
-<!-- 		insert into group_code( -->
-<!-- 			group_code -->
-<!-- 			,group_desc -->
-<!-- 			,using_status -->
-<!-- 			,creater_idx -->
-<!-- 		)values( -->
-<!-- 			#{group_code} -->
-<!-- 			,#{group_desc} -->
-<!-- 			,#{using_status} -->
-<!-- 			,#{creater_idx} -->
-<!-- 		) -->
-<!-- 	</insert> -->
-
-<!-- 	<update id="updateGroupCode"> -->
-<!-- 		update group_code -->
-<!-- 		set group_code = #{group_code} -->
-<!-- 			,group_desc = #{group_desc} -->
-<!-- 			,using_status = #{using_status} -->
-<!-- 			,update_date = current_timestamp -->
-<!-- 			,updater_idx = #{updater_idx} -->
-<!-- 		where group_idx = #{group_idx} -->
-<!-- 	</update> -->
-
 
 
 </mapper>

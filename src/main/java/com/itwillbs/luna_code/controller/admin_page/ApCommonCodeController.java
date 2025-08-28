@@ -17,6 +17,7 @@ import com.itwillbs.luna_code.service.admin_page.ApCommonCodeService;
 import com.itwillbs.luna_code.vo.PageVO;
 import com.itwillbs.luna_code.vo.admin_page.CommonCodeVO;
 
+/* 관리자 페이지 공통 코드 컨트롤러 */
 @Controller
 public class ApCommonCodeController {
 

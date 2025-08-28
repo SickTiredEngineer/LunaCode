@@ -6,15 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class AdminController {
 
 	
-	@GetMapping("ApReqClassList")
-	public String apReqClassList() {
-		return "admin/ap_req_class_list";
-	}
-	
-	@GetMapping("ApReqClassDetail")
-	public String apReqClassDetail() {
-		return "admin/ap_req_class_detail";
-	}
+
 	
 	
 	@GetMapping("ApPaylogList")

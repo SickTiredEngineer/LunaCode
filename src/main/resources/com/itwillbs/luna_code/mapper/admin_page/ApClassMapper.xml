@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApClassMapper">
+	
+	<select id="countAllClass">
+		select count(*) 
+		from class
+	</select>
+	
+	<select id="selectClassList">
+		select      
+			c.class_idx          
+			,c.instructor_idx     
+			,c.class_title          
+			,c.create_date       
+			,c.class_thumbnail 
+			,c.class_intro    
+			,c.class_price        
+			,c.class_category     
+			,c.class_level      
+			,c.total_lessons
+			,c.url
+			,c.accept_status
+			,m.user_id as instructor_id
+			from class 
+			c left join member m on c.instructor_idx = m.idx
+			order by create_date desc
+			limit #{start_row}, #{list_limit}
+	</select>
+	
+	
+	<select id="selectClassDetail">
+		select      
+			c.class_idx          
+			,c.instructor_idx     
+			,c.class_title          
+			,c.create_date       
+			,c.class_thumbnail 
+			,c.class_intro    
+			,c.class_price        
+			,c.class_category     
+			,c.class_level      
+			,c.total_lessons
+			,c.url
+			,c.accept_status
+			,c.deny_reason
+			,m.user_id as instructor_id
+			from class 
+			c left join member m on c.instructor_idx = m.idx
+			where class_idx = #{class_idx}
+	</select>
+	
+	<update id="modifyClassAccept">
+		update class
+		set accept_status = #{accept_status}
+			,deny_reason = #{deny_reason}
+		where class_idx = #{class_idx}	
+	</update>
+	
+	
+
+</mapper>

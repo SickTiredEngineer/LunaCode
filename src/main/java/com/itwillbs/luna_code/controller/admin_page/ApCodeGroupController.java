@@ -17,6 +17,7 @@ import com.itwillbs.luna_code.service.admin_page.ApCodeGroupService;
 import com.itwillbs.luna_code.vo.PageVO;
 import com.itwillbs.luna_code.vo.admin_page.CodeGroupVO;
 
+/* 관리자 페이지 공통 코드 그룹 관리 */
 @Controller
 public class ApCodeGroupController {
 	

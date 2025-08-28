@@ -10,5 +10,5 @@
 	<a href="ApPersonalSupportList" class="common-category-element">1:1 문의 관리</a>
 	<a href="ApGroupCodeList" class="common-category-element">공통 코드 그룹 관리</a>
 	<a href="ApCommonCodeList" class="common-category-element">공통 코드 관리</a>
-	<a href="ApStatistic" class="common-category-element">통계</a>
+<!-- 	<a href="ApStatistic" class="common-category-element">통계</a> -->
 </div>

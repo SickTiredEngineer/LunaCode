@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-
-<!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 
 <html>
 
@@ -41,7 +39,7 @@
 						<jsp:include page="/WEB-INF/views/admin/admin_sidebar.jsp" />
 						
 						
-						<div class="d-flex flex-column">
+						<form action="ApModifyClassStatus" method="post" class="d-flex flex-column">
 						
 							<div class="d-flex flex-column main_layout">
 									
@@ -50,15 +48,15 @@
 											
 											<div class="d-flex flex-column">
 												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_class_video.png" class="thumbnail-image">
-												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_cancel.png" class="negative-button icon-delete">	
 											</div>
 
 										</div>
 										
-										
-
 										<!-- 정보 폼 -->								
 										<div class="d-flex flex-column justify-content-center class-info-root-layout">
+											
+											<input type="hidden" name="class_idx" value="${cls.class_idx}">
+											
 											
 											<br>
 											
@@ -67,21 +65,21 @@
 										
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">강의명 :</p>	
-												<p>JAVA 기초 프로그래밍</p>
+												<p>${cls.class_title}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">강사ID :</p>
-												<p>KimTeacher</p>
+												<p>${cls.instructor_id}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">신청일 :</p>
-												<p>1999-01-01</p>
+												<p>${cls.create_date}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -89,20 +87,18 @@
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">카테고리 :</p>
-												<p>기초 프로그래밍</p>
+												<p>${cls.class_category}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">승인 여부 :</p>
-												
-												<select class="member-state-selector">
-													<option>승인</option>
-													<option>보류</option>
-													<option>거부</option>
+												<select name="accept_status" class="member-state-selector">
+													<option value="CS01" ${cls.accept_status eq 'CS01'? 'selected': ''}>승인</option>
+													<option value="CS02" ${cls.accept_status eq 'CS02'? 'selected': ''}>보류</option>
+													<option value="CS03" ${cls.accept_status eq 'CS03'? 'selected': ''}>거부</option>
 												</select>
-
 											</div>
 											
 											
@@ -110,79 +106,25 @@
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">보류 사유 :</p>
-												<textarea rows="3" cols="5" class="common-input-form comment-input-layout margin-left"></textarea>
+												<textarea name="deny_reason" rows="3" cols="5" class="common-input-form comment-input-layout margin-left"> ${cls.deny_reason}</textarea>
 											</div>
 											
 											<br>
 											
-											<div class="horizontal-line"></div>
-								
-
-								
-											<div class="d-flex justify-content-center attachment-text">강의 계획서</div>
-											
-											<div class="d-flex flex-row content-layout">
-												<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p>
-												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-											</div>
-											
-											<div class="d-flex flex-row content-layout">
-												<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p>
-												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-											</div>
-											
-											<div class="d-flex flex-row content-layout">
-												<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p>
-												<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a>
-											</div>	
-											
-											
-											
-											
-
 										</div>
 										
 									</div>
 									
 									<br>
-									
-<!-- 									<div class="horizontal-line"></div> -->
-								
-<!-- 									<div class="d-flex justify-content-center attachment-text">강사 증빙 자료</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div>							 -->
 								
 							</div>
-
-							
-							<!-- 
-							TODO: JS 추가해야함 -> Focus 없애는코드
-							const readonlyAreas = document.querySelectorAll('.readonly-textarea');
-							readonlyAreas.forEach(el => {
-							  el.addEventListener('focus', e => e.target.blur());
-							});
-							 -->
-
 
 							<div class="d-flex button-container">
-								<a href="ApMemberList" class="negative-button">돌아가기</a>
-								<a href="ApMemberList" class="positive-button">적용</a>
+								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
+								<button type="submit" class="positive-button">적용</button>
 							</div>
 		
-						</div>
+						</form>
 	
 					</div>
 				</div>
