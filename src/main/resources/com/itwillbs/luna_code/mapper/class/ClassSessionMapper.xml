@@ -5,14 +5,30 @@
 
 <mapper namespace="com.itwillbs.luna_code.mapper.ClassSessionMapper">
 
-    <insert id="insertClassSession" parameterType="ClassSession" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO class_session (
-        class_id, 
-        title
-    ) VALUES (
-    	#{classId}, 
-    	#{title}
-    )
-    </insert>
+    <insert id="insertClassSession" parameterType="com.itwillbs.luna_code.vo.ClassSessionVo" useGeneratedKeys="true" keyProperty="session_idx">
+	  INSERT INTO class_session (
+	    class_idx, 
+	    session_name, 
+	    session_index
+	) VALUES (
+	 	#{class_idx}, 
+	 	#{session_name}, 
+	 	#{session_index}
+	 )
+	</insert>
+	
+	<select id="selectSessionsByClassId" parameterType="com.itwillbs.luna_code.vo.ClassSessionVo">
+	    SELECT session_idx, class_idx, session_name, session_index
+	    FROM class_session
+	    WHERE class_idx = #{classId}
+	</select>
+	
+	<update id="updateSession" parameterType="com.itwillbs.luna_code.vo.ClassSessionVo">
+	    UPDATE class_session
+	    SET session_name = #{session_name}
+	    WHERE session_idx = #{session_idx}
+	</update>
+	
+
 
 </mapper>

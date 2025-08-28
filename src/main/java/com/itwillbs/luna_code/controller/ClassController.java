@@ -5,10 +5,8 @@ import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.UUID;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,22 +16,22 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.ClassService;
 import com.itwillbs.luna_code.service.CourseRegistrationService;
+import com.itwillbs.luna_code.service.CurriculumService;
 import com.itwillbs.luna_code.service.OnlineClassService;
 import com.itwillbs.luna_code.service.UserService;
+import com.itwillbs.luna_code.vo.ClassSessionVo;
 import com.itwillbs.luna_code.vo.ClassVo;
 import com.itwillbs.luna_code.vo.EpisodeVo;
 import com.itwillbs.luna_code.vo.SessionVo;
-import com.itwillbs.luna_code.vo.usermain.MyClassDetailVO.ClassSession;
 
 @Controller
 public class ClassController {
@@ -91,7 +89,6 @@ public class ClassController {
     }
 
 
-
 	@GetMapping("ClassRegist")
 	public String classregist() {
 		return "class/class_regist";
@@ -141,21 +138,6 @@ public class ClassController {
 	    return "redirect:/CourseRegistration";
 	}
 
-	@GetMapping("Curriculum")
-	public String curriculum() {
-		return "class/curriculum";
-	}
-	
-	@PostMapping("Curriculum")
-	@ResponseBody
-	public ResponseEntity<?> saveCurriculum(@RequestBody List<ClassSession> sessions) {
-	    // 서비스 호출해서 저장 처리
-//	    classSessionService.saveAll(sessions);
-
-	    return ResponseEntity.ok(Map.of("status", "success"));
-	}
-
-	
 	@GetMapping("QuizCommentary")
 	public String quizCommentary() {
 		return "class/quiz_commentary";

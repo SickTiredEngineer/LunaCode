@@ -54,7 +54,7 @@
 							            <span class="lecture-title">${lecture.class_title}</span>
 							            <div class="item-actions">
 							                <a href="deleteClass?classId=${lecture.class_idx}" class="negative-button" onclick="return confirm('정말 삭제하시겠습니까?');">삭제</a>
-							                <a href="Curriculum?classId=${lecture.class_idx}" class="positive-button">수정</a>
+							                <a href="${pageContext.request.contextPath}/Curriculum/${lecture.class_idx}" class="positive-button">수정</a>
 							            </div>
 							        </li>
 							    </c:forEach>
