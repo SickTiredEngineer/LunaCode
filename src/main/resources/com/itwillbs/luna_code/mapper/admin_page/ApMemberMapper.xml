@@ -32,9 +32,9 @@
 			,attendance_consecutive
 			,attendance_last
 			,member_type
-			,cerftificate_01
-			,cerftificate_02
-			,cerftificate_03
+			,certificate_01
+			,certificate_02
+			,certificate_03
 		from member 
 		where idx = #{idx}
 	</select>
