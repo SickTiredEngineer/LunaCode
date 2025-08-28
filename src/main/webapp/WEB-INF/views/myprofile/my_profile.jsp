@@ -20,7 +20,7 @@
 				<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 			</header>
 			
-			<c:if test="${user.member_type == 'MB02' && user.deny_reason == '서류 검토가 필요합니다.'}">
+			<c:if test="${user.member_type == 'MB02' && not empty user.deny_reason}">
 				<div class="dashboard-panel notice-panel">
 					<h4>강사 기능 사용 안내</h4>
 					<p>

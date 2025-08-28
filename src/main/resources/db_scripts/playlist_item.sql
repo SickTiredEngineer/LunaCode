@@ -22,6 +22,12 @@ delete from playlist_item;
 
 insert into playlist_item(
 	video_idx,
+    playlist_idx,
 	play_order
 )
-values(1, 1);
+values(1, 1, 1);
+
+--  playlist_item 테이블에 playlist_idx 컬럼을 추가하고 외래 키로 설정
+alter table playlist_item
+add column playlist_idx int not null after item_idx,
+add foreign key(playlist_idx) references playlist(playlist_idx) on delete cascade;
