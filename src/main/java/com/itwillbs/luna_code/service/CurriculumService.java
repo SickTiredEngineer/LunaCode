@@ -65,6 +65,18 @@ public class CurriculumService {
 	    }
 	}
 
+	@Transactional
+    public void deleteSession(int sessionId) {
+        // 해당 세션의 에피소드들 먼저 삭제
+        classEpisodeMapper.deleteEpisodesBySessionId(sessionId);
+        // 세션 삭제
+        classSessionMapper.deleteSession(sessionId);
+    }
 
+    @Transactional
+    public void deleteEpisode(int episodeId) {
+        classEpisodeMapper.deleteEpisode(episodeId);
+    }
+    
 }
 

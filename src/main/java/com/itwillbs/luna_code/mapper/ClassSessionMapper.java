@@ -18,6 +18,8 @@ public interface ClassSessionMapper {
 	void updateSession(ClassSessionVo session);
 
 	void deleteSession(int sessionId);
+
+	void deleteSessionsByClassId(int classId);
 		
 	
 

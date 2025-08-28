@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const iconPath = `${ctx}/resources/icons`;
   const classId = parseInt(window.classId || "0", 10);
 
-
-
   if (!container.dataset.listener) {
 
     /** ====================
@@ -14,11 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
      ==================== */
     sectionAddBtn.addEventListener('click', e => {
       e.preventDefault();
-
       const count = container.querySelectorAll('.section-block').length + 1;
       const section = document.createElement('div');
       section.className = 'section-block';
-
       section.innerHTML = `
         <div class="section-header d-flex align-items-center justify-content-between">
           <span class="section-label">섹션 ${count}</span>
@@ -50,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const lesson = document.createElement('div');
         lesson.className = 'section-row lesson-row';
         lesson.setAttribute('draggable', 'true');
-
         lesson.innerHTML = `
           <div class="lesson-input-wrapper" data-lesson-id="">
             <input type="text" class="section-input" placeholder="수업 제목 입력" />
@@ -72,11 +67,26 @@ document.addEventListener('DOMContentLoaded', () => {
         lessonsContainer.appendChild(lesson);
       }
 
-      // 섹션 삭제
+      // 섹션 삭제 (서버 호출 추가)
       if (e.target.classList.contains('section-delete-icon')) {
         e.preventDefault();
         if (confirm('섹션을 삭제하시겠습니까?\n삭제된 내용은 복구할 수 없습니다.')) {
-          e.target.closest('.section-block').remove();
+          const sectionBlock = e.target.closest('.section-block');
+          const sessionId = sectionBlock.dataset.sessionId;
+
+          if (sessionId) {
+            fetch(`${ctx}/Curriculum/deleteSession?sessionId=${encodeURIComponent(sessionId)}`, {
+              method: 'POST'
+            }).then(res => {
+              if (res.ok) {
+                sectionBlock.remove();
+              } else {
+                alert('섹션 삭제 실패');
+              }
+            }).catch(() => alert('네트워크 오류로 섹션 삭제 실패'));
+          } else {
+            sectionBlock.remove();
+          }
         }
       }
 
@@ -88,11 +98,26 @@ document.addEventListener('DOMContentLoaded', () => {
         window.location.href = `${ctx}/lesson/edit/${lessonId}`;
       }
 
-      // 레슨 삭제
+      // 레슨 삭제 (서버 호출 추가)
       if (e.target.classList.contains('lesson-delete')) {
         e.preventDefault();
         if (confirm('수업을 삭제하시겠습니까?')) {
-          e.target.closest('.lesson-row').remove();
+          const lessonRow = e.target.closest('.lesson-row');
+          const episodeId = lessonRow.dataset.lessonId;
+
+          if (episodeId) {
+            fetch(`${ctx}/Curriculum/deleteEpisode?episodeId=${encodeURIComponent(episodeId)}`, {
+              method: 'POST'
+            }).then(res => {
+              if (res.ok) {
+                lessonRow.remove();
+              } else {
+                alert('수업 삭제 실패');
+              }
+            }).catch(() => alert('네트워크 오류로 수업 삭제 실패'));
+          } else {
+            lessonRow.remove();
+          }
         }
       }
 
@@ -140,18 +165,21 @@ document.addEventListener('DOMContentLoaded', () => {
      * 드래그 기능
      ==================== */
     let draggedLesson = null;
+
     container.addEventListener('dragstart', e => {
       if (e.target.classList.contains('lesson-row') && e.target.draggable) {
         draggedLesson = e.target;
         e.target.classList.add('dragging');
       }
     });
+
     container.addEventListener('dragend', e => {
       if (e.target.classList.contains('lesson-row')) {
         e.target.classList.remove('dragging');
         draggedLesson = null;
       }
     });
+
     container.addEventListener('dragover', e => {
       if (draggedLesson) {
         e.preventDefault();
@@ -166,6 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     });
+
     function getDragAfterElement(container, y) {
       const elements = [...container.querySelectorAll('.lesson-row:not(.dragging)')];
       return elements.reduce((closest, child) => {
@@ -185,20 +214,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (saveBtn) {
       saveBtn.addEventListener('click', e => {
         e.preventDefault();
-
         if (!confirm('등록하시겠습니까?')) return;
 
         const sections = [];
-
         document.querySelectorAll('.section-block').forEach((sectionEl, sectionIdx) => {
           const sectionTitle = sectionEl.querySelector('.section-row > .section-input').value.trim();
           const lessons = [];
-
           sectionEl.querySelectorAll('.lessons-container .lesson-row').forEach(lessonEl => {
             const lessonTitle = lessonEl.querySelector('.lesson-input-wrapper > .section-input').value.trim();
             const lockIcon = lessonEl.querySelector('img[alt="잠금"], img[alt="잠금 해제"]');
             const viewIcon = lessonEl.querySelector('img[alt="보기"], img[alt="숨김"]');
-
             lessons.push({
               episode_name: lessonTitle,
               locked: lockIcon ? lockIcon.dataset.locked === 'true' : false,
@@ -216,13 +241,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         console.log('저장할 데이터:', sections);
-
         fetch(`${ctx}/Curriculum/${classId}`, { 
-		  method: 'POST',
-		  headers: { 'Content-Type': 'application/json' },
-		  body: JSON.stringify(sections)
-		})
-
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(sections)
+        })
         .then(res => res.json())
         .then(result => {
           alert('저장 완료!');

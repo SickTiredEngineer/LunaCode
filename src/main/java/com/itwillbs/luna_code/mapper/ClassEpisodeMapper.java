@@ -17,5 +17,9 @@ public interface ClassEpisodeMapper {
 	 void updateEpisode(ClassEpisodeVo episode);
 
 	void deleteEpisode(int episode_idx);
+
+	void deleteEpisodesByClassId(int classId);
+
+	void deleteEpisodesBySessionId(int sessionId);
 	
 }

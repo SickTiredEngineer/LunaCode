@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.itwillbs.luna_code.mapper.ClassEpisodeMapper;
 import com.itwillbs.luna_code.mapper.ClassMapper;
+import com.itwillbs.luna_code.mapper.ClassSessionMapper;
 import com.itwillbs.luna_code.mapper.OnlineClassMapper;
 import com.itwillbs.luna_code.vo.ClassVo;
 import com.itwillbs.luna_code.vo.EpisodeVo;
@@ -17,6 +19,12 @@ public class ClassService {
 
 	@Autowired
     private ClassMapper classMapper;
+  
+	@Autowired
+    private ClassEpisodeMapper classEpisodeMapper;
+
+    @Autowired
+    private ClassSessionMapper classSessionMapper;
 
     // 강의 등록
     public int registerClass(ClassVo classVo) {
@@ -34,9 +42,12 @@ public class ClassService {
     @Transactional
     public void deleteClass(int classId) {
         classMapper.deleteClassEnrollmentByClassId(classId);
+        classEpisodeMapper.deleteEpisodesByClassId(classId);
+        classSessionMapper.deleteSessionsByClassId(classId);
         classMapper.deleteClass(classId);
+        
     }
-    
+
     
 	
 }

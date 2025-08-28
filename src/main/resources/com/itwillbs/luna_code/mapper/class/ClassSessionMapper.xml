@@ -29,6 +29,10 @@
 	    WHERE session_idx = #{session_idx}
 	</update>
 	
+	<delete id="deleteSessionsByClassId" parameterType="int">
+	    DELETE FROM class_session WHERE class_idx = #{classId}
+	</delete>
+	
 
 
 </mapper>

@@ -56,12 +56,18 @@ public class CurriculumController {
 	    return ResponseEntity.ok(Map.of("status", "success"));
 	}
 	
-//	@PostMapping("/curriculum/deleteSession")
-//	@ResponseBody
-//	public ResponseEntity<?> deleteSession(@RequestParam int sessionId) {
-//	    curriculumService.deleteSession(sessionId);
-//	    return ResponseEntity.ok(Map.of("status", "success"));
-//	}
+	@PostMapping("/deleteSession")
+	public ResponseEntity<?> deleteSession(@RequestParam int sessionId) {
+	    curriculumService.deleteSession(sessionId);
+	    return ResponseEntity.ok(Map.of("status", "success"));
+	}
+
+	@PostMapping("/deleteEpisode")
+	public ResponseEntity<?> deleteEpisode(@RequestParam int episodeId) {
+	    curriculumService.deleteEpisode(episodeId);
+	    return ResponseEntity.ok(Map.of("status", "success"));
+	}
+
 
 
 	

@@ -26,5 +26,12 @@
 	    SET episode_name = #{episode_name}
 	    WHERE episode_idx = #{episode_idx}
 	</update>
+	
+	<delete id="deleteEpisodesByClassId" parameterType="int">
+	    DELETE FROM class_episode WHERE session_idx IN (
+	        SELECT session_idx FROM class_session WHERE class_idx = #{classId}
+	    )
+	</delete>
+	
 
 </mapper>
