@@ -149,6 +149,11 @@
 										<label class="info-label-vertical">영상 첨부</label>
   										<input type="file" name="videoFile" accept="video/*" class="input-vertical">
 									</div>
+									<div class="info-row-vertical">
+									  <label class="info-label-vertical" for="classThumbnail">썸네일</label>
+									  <input type="file" id="classThumbnail" name="class_thumbnail" accept="image/*" class="input-vertical">
+									</div>
+
 								</div>
 
 								<!-- 실시간 강의 -->

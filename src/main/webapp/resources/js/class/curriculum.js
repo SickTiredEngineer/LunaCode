@@ -92,11 +92,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 레슨 수정
       if (e.target.classList.contains('lesson-edit')) {
-        e.preventDefault();
-        const lessonRow = e.target.closest('.lesson-row');
-        const lessonId = lessonRow.dataset.lessonId || 0;
-        window.location.href = `${ctx}/lesson/edit/${lessonId}`;
-      }
+	    e.preventDefault();
+	    const lessonRow = e.target.closest('.lesson-row');
+	    const lessonId = lessonRow.dataset.lessonId || 0;
+	    window.location.href = `${ctx}/CurEdit/${lessonId}`;
+	  }
 
       // 레슨 삭제 (서버 호출 추가)
       if (e.target.classList.contains('lesson-delete')) {

@@ -16,12 +16,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.ClassService;
@@ -29,6 +31,7 @@ import com.itwillbs.luna_code.service.CourseRegistrationService;
 import com.itwillbs.luna_code.service.CurriculumService;
 import com.itwillbs.luna_code.service.OnlineClassService;
 import com.itwillbs.luna_code.service.UserService;
+import com.itwillbs.luna_code.vo.ClassEpisodeVo;
 import com.itwillbs.luna_code.vo.ClassSessionVo;
 import com.itwillbs.luna_code.vo.ClassVo;
 import com.itwillbs.luna_code.vo.EpisodeVo;
@@ -48,6 +51,9 @@ public class ClassController {
     
     @Autowired
     private CourseRegistrationService courseRegistrationService;
+    
+    @Autowired
+    private CurriculumService curriculumService;
     
     @GetMapping("/OnlineClass")
     public String onlineClass(@RequestParam int classId,
@@ -140,20 +146,34 @@ public class ClassController {
 	}
 	
 	//에피소드 수정
-	@GetMapping("/lesson/edit/{episodeId}")
-	public String editLesson(@PathVariable int episodeId, Model model) {
-	   return "lesson/edit";
+	@GetMapping("/CurEdit/{episodeId}")
+	public String curEdit(@PathVariable int episodeId, Model model) {
+	    ClassEpisodeVo episode = curriculumService.getEpisodeById(episodeId);
+	    model.addAttribute("episode", episode);
+	    return "class/cur_edit";
+	}
+	
+	@PostMapping("/CurEdit/{episodeId}")
+	public String updateEpisode(@PathVariable int episodeId,
+	                            @ModelAttribute ClassEpisodeVo episodeVo,
+	                            RedirectAttributes redirectAttributes) {
+	    episodeVo.setEpisode_idx(episodeId);
+
+	    try {
+	        curriculumService.updateEpisodeDetail(episodeVo); 
+	        redirectAttributes.addFlashAttribute("msg", "수정이 완료되었습니다.");
+	    } catch (Exception e) {
+	        redirectAttributes.addFlashAttribute("msg", "수정 중 오류가 발생했습니다.");
+	        e.printStackTrace();
+	    }
+
+	    return "redirect:/Curriculum/" + episodeId; 
 	}
 
 
 	@GetMapping("QuizCommentary")
 	public String quizCommentary() {
 		return "class/quiz_commentary";
-	}
-	
-	@GetMapping("CurEdit")
-	public String curEdit() {
-		return "class/cur_edit";
 	}
 	
 	@GetMapping("QuizManagementBackup")

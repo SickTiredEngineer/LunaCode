@@ -43,6 +43,30 @@
     <delete id="deleteEpisodesBySessionId" parameterType="int">
         DELETE FROM class_episode WHERE session_idx = #{sessionId}
     </delete>
-	
+    
+    <!-- 에피소드 조회 -->
+	<select id="selectEpisodeById" parameterType="int" resultType="com.itwillbs.luna_code.vo.ClassEpisodeVo">
+	    SELECT 
+	        episode_idx,
+	        session_idx,
+	        episode_name,
+	        episode_index,
+	        episode_video_path,
+	        episode_description
+	    FROM class_episode
+	    WHERE episode_idx = #{episode_idx}
+	</select>
 
+	
+	<!-- 에피소드 수정 -->
+	<update id="updateEpisodeDetail" parameterType="com.itwillbs.luna_code.vo.ClassEpisodeVo">
+	    UPDATE class_episode
+	    SET
+	        episode_name = #{episode_name},
+	        episode_video_path = #{episode_video_path},
+	        episode_description = #{episode_description},
+	        episode_index = #{episode_index}
+	    WHERE episode_idx = #{episode_idx}
+	</update>
+	
 </mapper>

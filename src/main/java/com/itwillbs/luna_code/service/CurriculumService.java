@@ -97,5 +97,18 @@ public class CurriculumService {
     	episodeMapper.deleteEpisode(episodeId);
     }
     
+    public ClassEpisodeVo getEpisodeById(int episodeId) {
+        return episodeMapper.selectEpisodeById(episodeId);
+    }
+
+    @Transactional
+    public void updateEpisodeDetail(ClassEpisodeVo episodeVo) {
+        episodeMapper.updateEpisodeDetail(episodeVo);
+    }
+
+
+
+
+    
 }
 

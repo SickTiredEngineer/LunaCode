@@ -39,253 +39,28 @@
 				<br>
 			
 				<div class="row row-cols-1 row-cols-md-3 g-4">
-				
-				    <!-- 강의 카드 1 -->
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">JAVA 기초부터 고수까지</h5>
-								<p class="card-text">강사: KimTeacher</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-
-							</div>
-						</div>
-					</div>
-				
-
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_02.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">백엔드 기초부터 고수까지</h5>
-								<p class="card-text">강사: ChaTeacher</p>
-								<p class="text-muted">3개월 <strong>500,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-				
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_02.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">임베디드 고수만 들어오셈</h5>
-								<p class="card-text">강사: IOTeacher</p>
-								<p class="text-muted">6개월 <strong>350,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">C언어 기초</h5>
-								<p class="card-text">강사: KimTeacher</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col">
-						<div class="card h-100 text-center class-card">
-						<img src="${pageContext.request.contextPath }/resources/class_thumbnail/class_thumb_01.png" class="card-img-top" alt="">
-							<div class="card-body">
-								<h5 class="card-title">Temp Class</h5>
-								<p class="card-text">강사: TEM</p>
-								<p class="text-muted">3개월 <strong>300,000원</strong></p>
-							</div>
-							<div class="card-footer bg-white border-0">
-								<a href="#" class="btn btn-outline-secondary w-100">
-								   수강신청 하러가기
-								</a>
-							</div>
-						</div>
-					</div>
-
+					<div class="row row-cols-1 row-cols-md-3 g-4">
+			            <c:forEach var="classVo" items="${classes}">
+			                <div class="col">
+			                    <div class="card h-100 text-center class-card">
+			                        <img src="${pageContext.request.contextPath}/resources/class_thumbnail/${classVo.thumbnail_path}" 
+			                             class="card-img-top" alt="${classVo.class_name}"/>
+			                        <div class="card-body">
+			                            <h5 class="card-title">${classVo.class_name}</h5>
+			                            <p class="card-text">강사: ${classVo.instructorName}</p>
+			                            <p class="text-muted">${classVo.class_period} <strong>${classVo.class_price}원</strong></p>
+			                        </div>
+			                        <div class="card-footer bg-white border-0">
+			                            <a href="${pageContext.request.contextPath}/ClassDetail?classId=${classVo.class_idx}" class="btn btn-outline-secondary w-100">
+			                                수강신청 하러가기
+			                            </a>
+			                        </div>
+			                    </div>
+			                </div>
+			            </c:forEach>
+			        </div>
 				</div>
+				
 				
 				
 				<div class="d-flex flex-row justify-content-center page-selector-layout">
@@ -300,7 +75,7 @@
 						
 						<a class="page-selector">&gt;</a>
 					
-					</div>
+				</div>
 				
 				<!-- 모달 띄우기 -->				
 				<jsp:include page="/WEB-INF/views/class_shop/class_detail.jsp"/>

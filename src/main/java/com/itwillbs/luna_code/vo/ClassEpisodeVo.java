@@ -10,5 +10,6 @@ public class ClassEpisodeVo {
     private String episode_name;
     private int episode_index;
     private String episode_video_path;
+    private String episode_description;
     private boolean deleted = false; 
 }

@@ -48,6 +48,10 @@ public class ClassService {
         
     }
 
+    public List<ClassVo> getAllClasses() {
+        return classMapper.selectAllClasses();
+    }
+
     
 	
 }

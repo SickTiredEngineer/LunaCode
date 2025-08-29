@@ -24,5 +24,12 @@ public interface ClassEpisodeMapper {
 
     // 클래스 단위 에피소드 전체 삭제
 	int deleteEpisodesBySessionId(int sessionId);
+	
+	// 에피소드 상세 수정
+	ClassEpisodeVo selectEpisodeById(int episodeId);
+
+	int updateEpisodeDetail(ClassEpisodeVo episodeVo);
+
+	
 
 }

@@ -43,6 +43,10 @@
     	WHERE class_idx = #{classId}
 	</delete>
 	
+	<select id="selectAllClasses" resultType="com.itwillbs.luna_code.vo.ClassVo">
+	    SELECT class_idx, class_name, instructor_name, class_period, class_price, thumbnail_path
+	    FROM class_table
+	</select>
 	
 	
 	
