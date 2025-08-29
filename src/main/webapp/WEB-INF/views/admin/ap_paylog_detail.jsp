@@ -48,23 +48,29 @@
 									<div class="d-flex flex-column justify-content-center align-item-center content-layout">
 
 										<!-- 정보 폼 -->								
-										<div class="d-flex flex-column justify-content-center class-info-root-layout">
+										<form  action="RefundPay" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
 											
 											<br>
 											
 											<div class="horizontal-line"></div>
 										
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">결제 번호 :</p>	
+												<p>${payVo.merchant_uid}</p>
+											</div>
+										
+											<div class="horizontal-line"></div>
 										
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">결제 강의명 :</p>	
-												<p>JAVA 기초 프로그래밍</p>
+												<p>${payVo.class_title}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">유저ID :</p>
-												<p>Normal01</p>
+												<p>${payVo.user_id}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -72,14 +78,14 @@
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">강사ID :</p>
-												<p>KimTeacher</p>
+												<p>${payVo.instructor_id}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">결제일 :</p>
-												<p>1999-01-01</p>
+												<p>${payVo.refunded_date}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -87,72 +93,45 @@
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">결제 방식 :</p>
-												<p>신용카드</p>
+												<p>${payVo.pay_method}</p>
 											</div>
 											
 											<div class="horizontal-line"></div>
-											
-											<div class="d-flex flex-row info-item">
-												<p class="info-text">승인 여부 :</p>
-												
-												<select class="member-state-selector">
-													<option>승인</option>
-													<option>환불</option>
-												
-												</select>
-
-											</div>
-											
-											
-											<div class="horizontal-line"></div>
-											
-											<div class="d-flex flex-row info-item">
-												<p class="info-text"> 환불 사유 :</p>
-												<textarea rows="3" cols="5" class="common-input-form comment-input-layout margin-left"></textarea>
-											</div>
 											
 											<br>
 											
-										</div>
+											<div class="d-flex flex-row info-item">
+												<p class="info-text">환불 사유 :</p>
+												
+												<c:choose>
+													<c:when test="${payVo.refunded_status}">
+														<p>${payVo.refunded_reason}</p>
+													</c:when>
+													
+													<c:otherwise>
+														<textarea name="refunded_reason" rows="3" cols="5" class="common-input-form comment-input-layout margin-left">${payVo.refunded_reason}</textarea>
+													</c:otherwise>
+												</c:choose>	
+											</div>
+
+											<div class="d-flex button-container">
+												<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
+												
+												<c:if test="${not payVo.refunded_status}">
+												
+													<input type="hidden" name="payment_idx" value="${payVo.payment_idx}">
+												
+													<button type="submit" class="positive-button">환불</button>
+												</c:if>
+												
+											</div>
+											
+										</form>
 										
 									</div>
 									
 									<br>
 									
-<!-- 									<div class="horizontal-line"></div> -->
-								
-<!-- 									<div class="d-flex justify-content-center attachment-text">강사 증빙 자료</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="attachment-info-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div>							 -->
-								
-							</div>
-
-							
-							<!-- 
-							TODO: JS 추가해야함 -> Focus 없애는코드
-							const readonlyAreas = document.querySelectorAll('.readonly-textarea');
-							readonlyAreas.forEach(el => {
-							  el.addEventListener('focus', e => e.target.blur());
-							});
-							 -->
-
-
-							<div class="d-flex button-container">
-								<a href="ApMemberList" class="negative-button">돌아가기</a>
-								<a href="ApMemberList" class="positive-button">적용</a>
 							</div>
 		
 						</div>

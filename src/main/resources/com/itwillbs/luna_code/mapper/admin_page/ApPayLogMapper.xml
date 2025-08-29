@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApPayLogMapper">
+	
+	<select id="countAllPayLog">
+		select count(*) 
+		from payment_history 
+	</select>
+	
+	<select id="selectPaylogList">
+		select  ph.payment_idx
+				,ph.user_idx
+				,ph.merchant_uid
+				,ph.item_idx
+				,ph.amount
+				,ph.pay_date
+				,ph.pay_method
+				,ph.is_refunded as refunded_status
+				,ph.refunded_date
+				,m1.user_id as user_id
+				,c1.instructor_idx 
+				,c1.class_title
+                ,m2.user_id as instructor_id
+		from payment_history
+		ph left join member m1 on m1.idx = ph.user_idx
+		left join class c1 on c1.class_idx = ph.item_idx
+        left join member m2 on c1.instructor_idx = m2.idx
+		limit #{start_row}, #{list_limit}			
+	</select>
+	
+	
+	<select id="selectPaylogDetail">
+		select  ph.payment_idx
+				,ph.user_idx
+				,ph.merchant_uid
+				,ph.item_idx
+				,ph.amount
+				,ph.pay_date
+				,ph.pay_method
+				,ph.is_refunded as refunded_status
+				,ph.refunded_date
+				,m1.user_id as user_id
+				,c1.instructor_idx 
+				,c1.class_title
+                ,m2.user_id as instructor_id
+		from payment_history
+		ph left join member m1 on m1.idx = ph.user_idx
+		left join class c1 on c1.class_idx = ph.item_idx
+        left join member m2 on c1.instructor_idx = m2.idx
+		where payment_idx = #{ph.payment_idx}
+	</select>
+
+	<update id="modifyPaylog">
+		update payment_history
+		set is_refunded = true
+			,refunded_date = current_timestamp
+			,refunded_reason = #{refunded_reason}
+		where payment_idx = #{payment_idx}
+	</update>
+
+
+
+</mapper>

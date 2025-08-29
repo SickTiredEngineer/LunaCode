@@ -14,7 +14,6 @@
              , cl.class_thumbnail
              , cl.class_title
              , cl.total_lessons
-             , cl.class_type
              , m.user_id
              , cl.class_price
              , 0 as discount_price
@@ -47,7 +46,7 @@
 	         , cl.class_thumbnail
 	         , cl.class_title
 	         , cl.total_lessons
-	         , cl.class_type
+<!-- 	         , cl.class_type -->
 	         , m.user_id
 	         , cl.class_price
 	         , 0 AS discount_price

@@ -9,15 +9,7 @@ public class AdminController {
 
 	
 	
-	@GetMapping("ApPaylogList")
-	public String apPaylogList() {
-		return "admin/ap_paylog_list";
-	}
-	
-	@GetMapping("ApPaylogDetail")
-	public String apPaylogDetail() {
-		return "admin/ap_paylog_detail";
-	}
+
 	
 	@GetMapping("ApStatistic")
 	public String apStatistic() {
