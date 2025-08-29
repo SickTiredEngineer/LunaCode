@@ -151,7 +151,7 @@
 									</div>
 									<div class="info-row-vertical">
 									  <label class="info-label-vertical" for="classThumbnail">썸네일</label>
-									  <input type="file" id="classThumbnail" name="class_thumbnail" accept="image/*" class="input-vertical">
+									  <input type="file" id="classThumbnail" name="thumbnailFile" accept="image/*" class="input-vertical" />
 									</div>
 
 								</div>

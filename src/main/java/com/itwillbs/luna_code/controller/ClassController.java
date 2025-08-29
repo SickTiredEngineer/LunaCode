@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,9 @@ public class ClassController {
     
     @Autowired
     private CurriculumService curriculumService;
+    
+    @Autowired
+    private ServletContext servletContext;
     
     @GetMapping("/OnlineClass")
     public String onlineClass(@RequestParam int classId,
@@ -105,45 +109,51 @@ public class ClassController {
 	public String classregist(
 	        ClassVo classVo,
 	        Principal principal,
-	        @RequestParam(value = "videoFile", required = false) MultipartFile videoFile) throws Exception {
-
+	        @RequestParam(value = "videoFile", required = false) MultipartFile videoFile,
+	        @RequestParam(value = "thumbnailFile", required = false) MultipartFile thumbnailFile) throws Exception {
+	    
 	    String username = principal.getName();
-
 	    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 	    CustomUserDetails userDetails = (CustomUserDetails) authentication.getPrincipal();
 	    Integer instructorIdx = userDetails.getIdx();
-
+	    
 	    classVo.setInstructor_idx(instructorIdx);
 	    classVo.setCreate_date(new java.sql.Date(System.currentTimeMillis()));
-
-	    // 현장 강의 관련 class_time은 우선 null
-	    classVo.setClass_time(null);
-
-	    // 영상 파일 저장 처리
-	    if (videoFile != null && !videoFile.isEmpty()) {
-	        // 저장할 루트 폴더
-	        String uploadDir = "/Video/Videos";
-
-	        String originFilename = videoFile.getOriginalFilename();
+	    
+	    // 썸네일 파일 저장 처리
+	    if (thumbnailFile != null && !thumbnailFile.isEmpty()) {
+	        String uploadDir = servletContext.getRealPath("/resources/class_thumbnails"); 
+	        String originFilename = thumbnailFile.getOriginalFilename();
 	        String ext = originFilename.substring(originFilename.lastIndexOf('.'));
 	        String savedFilename = UUID.randomUUID().toString() + ext;
-
 	        Path uploadPath = Paths.get(uploadDir);
 	        if (!Files.exists(uploadPath)) {
 	            Files.createDirectories(uploadPath);
 	        }
-
 	        Path filePath = uploadPath.resolve(savedFilename);
-
-	        // 실제 파일 저장
-	        videoFile.transferTo(filePath.toFile());
-
+	        thumbnailFile.transferTo(filePath.toFile());
+	        
+	        classVo.setClass_thumbnail(savedFilename);
 	    }
-
+	    
+	    // 영상 파일 저장 처리
+	    if (videoFile != null && !videoFile.isEmpty()) {
+	        String uploadDir = "/Video/Videos";
+	        String originFilename = videoFile.getOriginalFilename();
+	        String ext = originFilename.substring(originFilename.lastIndexOf('.'));
+	        String savedFilename = UUID.randomUUID().toString() + ext;
+	        Path uploadPath = Paths.get(uploadDir);
+	        if (!Files.exists(uploadPath)) {
+	            Files.createDirectories(uploadPath);
+	        }
+	        Path filePath = uploadPath.resolve(savedFilename);
+	        videoFile.transferTo(filePath.toFile());
+	    }
+	    
 	    classService.registerClass(classVo);
-
 	    return "redirect:/CourseRegistration";
 	}
+
 	
 	//에피소드 수정
 	@GetMapping("/CurEdit/{episodeId}")

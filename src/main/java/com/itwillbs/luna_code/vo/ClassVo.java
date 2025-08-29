@@ -2,6 +2,8 @@ package com.itwillbs.luna_code.vo;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
@@ -15,6 +17,7 @@ public class ClassVo {
     private String class_type;         
     private Date create_date;       
     private String class_thumbnail; 
+    private MultipartFile uploadFile; // 업로드 파일 받음
     private String class_intro;    
     private String class_content;   
     private int class_price;        

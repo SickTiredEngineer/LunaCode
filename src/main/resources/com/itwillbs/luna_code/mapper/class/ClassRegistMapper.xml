@@ -44,8 +44,8 @@
 	</delete>
 	
 	<select id="selectAllClasses" resultType="com.itwillbs.luna_code.vo.ClassVo">
-	    SELECT class_idx, class_name, instructor_name, class_period, class_price, thumbnail_path
-	    FROM class_table
+	    SELECT class_idx, class_title, class_price, class_thumbnail
+	    FROM class
 	</select>
 	
 	
