@@ -26,4 +26,9 @@ public class PaymentHistoryVO {
     private int total_amount;
     private String representative_item_name;
     private int total_item_count;
+    
+    private int instructor_idx;
+    private String instructor_id;
+    private String refunded_reason;
+    private boolean refunded_status;
 }

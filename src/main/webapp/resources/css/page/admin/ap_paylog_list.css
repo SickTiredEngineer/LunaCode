@@ -126,6 +126,17 @@ list-main-layout{
 }
 
 
+.pay-num{
+	font-family: var(--font-main);
+	font-weight: bold;
+	text-align: center;
+	font-size: var(--font-size-normal);
+	color: var(--color-font);
+	width: 250px;
+	margin-right: var(--common-margin-half);
+}
+
+
 .text-date{
 	font-family: var(--font-main);
 	font-weight: bold;

@@ -22,6 +22,52 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+//	if (checkoutButton) {
+//    checkoutButton.addEventListener('click', function(e) {
+//        e.preventDefault();
+//
+//        if (selectedPayMethod === '') {
+//            return alert('결제 수단을 선택해주세요.');
+//        }
+//        
+//        const IMP = window.IMP;
+//        
+//        
+//        if (!IMP) {
+//            return alert("결제 라이브러리(iamport.js)를 로드하지 못했습니다.");
+//        }
+//
+//        const merchantUid = 'luna_' + crypto.randomUUID();
+//        const container = document.querySelector('.payment-container');
+//        const totalAmount = container.dataset.totalAmount;
+//        const orderName = container.dataset.orderName.trim();
+//        const buyerName = container.dataset.buyerName;
+//        const buyerEmail = container.dataset.buyerEmail;
+//
+//        IMP.init("iamport"); 
+//
+//        IMP.request_pay({
+//            pg: "nice", // 또는 "tosspayments"
+//            pay_method: selectedPayMethod,
+//            merchant_uid: merchantUid,
+//            name: orderName,
+//            amount: totalAmount,
+//            buyer_email: buyerEmail,
+//            buyer_name: buyerName,
+//            buyer_tel: "010-1234-5678",
+//        }, function (rsp) {
+//            if (rsp.success) {
+//                const paymentData = {
+//                    merchant_uid: rsp.merchant_uid,
+//                    pay_method: rsp.pay_method
+//                };
+//                sendToServer(paymentData);
+//            } else {
+//                alert("결제에 실패했습니다. 에러: " + rsp.error_msg);
+//            }
+//        });
+//    });
+//}
 
     // '결제하기' 버튼 클릭 이벤트 연결
     if (checkoutButton) {
@@ -120,53 +166,52 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-/*
+
 // =======================================================================
 // ★★★ 나중에 0원 결제 테스트가 끝나고 원래대로 복구할 때 사용할 코드 ★★★
 // checkoutButton.addEventListener('click', ... ) 부분을 아래 코드로 교체하면 됩니다.
-// =======================================================================
-if (checkoutButton) {
-    checkoutButton.addEventListener('click', function(e) {
-        e.preventDefault();
 
-        if (selectedPayMethod === '') {
-            return alert('결제 수단을 선택해주세요.');
-        }
-        
-        const IMP = window.IMP;
-        if (!IMP) {
-            return alert("결제 라이브러리(iamport.js)를 로드하지 못했습니다.");
-        }
-
-        const merchantUid = 'luna_' + crypto.randomUUID();
-        const container = document.querySelector('.payment-container');
-        const totalAmount = container.dataset.totalAmount;
-        const orderName = container.dataset.orderName.trim();
-        const buyerName = container.dataset.buyerName;
-        const buyerEmail = container.dataset.buyerEmail;
-
-        IMP.init("iamport"); 
-
-        IMP.request_pay({
-            pg: "nice", // 또는 "tosspayments"
-            pay_method: selectedPayMethod,
-            merchant_uid: merchantUid,
-            name: orderName,
-            amount: totalAmount,
-            buyer_email: buyerEmail,
-            buyer_name: buyerName,
-            buyer_tel: "010-1234-5678",
-        }, function (rsp) {
-            if (rsp.success) {
-                const paymentData = {
-                    merchant_uid: rsp.merchant_uid,
-                    pay_method: rsp.pay_method
-                };
-                sendToServer(paymentData);
-            } else {
-                alert("결제에 실패했습니다. 에러: " + rsp.error_msg);
-            }
-        });
-    });
-}
-*/
+//if (checkoutButton) {
+//    checkoutButton.addEventListener('click', function(e) {
+//        e.preventDefault();
+//
+//        if (selectedPayMethod === '') {
+//            return alert('결제 수단을 선택해주세요.');
+//        }
+//        
+//        const IMP = window.IMP;
+//        if (!IMP) {
+//            return alert("결제 라이브러리(iamport.js)를 로드하지 못했습니다.");
+//        }
+//
+//        const merchantUid = 'luna_' + crypto.randomUUID();
+//        const container = document.querySelector('.payment-container');
+//        const totalAmount = container.dataset.totalAmount;
+//        const orderName = container.dataset.orderName.trim();
+//        const buyerName = container.dataset.buyerName;
+//        const buyerEmail = container.dataset.buyerEmail;
+//
+//        IMP.init("iamport"); 
+//
+//        IMP.request_pay({
+//            pg: "nice", // 또는 "tosspayments"
+//            pay_method: selectedPayMethod,
+//            merchant_uid: merchantUid,
+//            name: orderName,
+//            amount: totalAmount,
+//            buyer_email: buyerEmail,
+//            buyer_name: buyerName,
+//            buyer_tel: "010-1234-5678",
+//        }, function (rsp) {
+//            if (rsp.success) {
+//                const paymentData = {
+//                    merchant_uid: rsp.merchant_uid,
+//                    pay_method: rsp.pay_method
+//                };
+//                sendToServer(paymentData);
+//            } else {
+//                alert("결제에 실패했습니다. 에러: " + rsp.error_msg);
+//            }
+//        });
+//    });
+//}

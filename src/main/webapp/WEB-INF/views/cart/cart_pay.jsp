@@ -75,7 +75,7 @@
                                     <p class="product-duration">(${item.total_lessons}강)</p>
                                 </div>
                             </div>
-                            <div class="item-cell">${item.class_type}</div>
+<%--                             <div class="item-cell">${item.class_type}</div> --%>
                             <div class="item-cell">${item.user_id}</div>
                             <div class="item-cell"><fmt:formatNumber value="${item.class_price}" pattern="#,###원" /></div>
                             <div class="item-cell"><fmt:formatNumber value="${item.discount_price}" pattern="#,###원" /></div>
