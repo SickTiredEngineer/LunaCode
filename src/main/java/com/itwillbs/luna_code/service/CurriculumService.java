@@ -17,65 +17,84 @@ import com.itwillbs.luna_code.vo.ClassEpisodeVo;
 @Service
 public class CurriculumService {
 
-    private final ClassSessionMapper classSessionMapper;
-    private final ClassEpisodeMapper classEpisodeMapper;
+    @Autowired
+    private ClassSessionMapper sessionMapper;
 
     @Autowired
-    public CurriculumService(ClassSessionMapper classSessionMapper,
-                             ClassEpisodeMapper classEpisodeMapper) {
-        this.classSessionMapper = classSessionMapper;
-        this.classEpisodeMapper = classEpisodeMapper;
-    }
+    private ClassEpisodeMapper episodeMapper;
 
     @Transactional
     public void saveCurriculum(List<ClassSessionVo> sessions, int classId) {
         for (ClassSessionVo session : sessions) {
-            // 클래스 번호
             session.setClass_idx(classId);
 
-            // 세션 먼저 DB에 저장
-            classSessionMapper.insertClassSession(session);
+            // 삭제된 세션 처리
+            if (session.isDeleted() && session.getSession_idx() != null) {
+                // 삭제 처리
+                episodeMapper.deleteEpisodesBySessionId(session.getSession_idx());
+                sessionMapper.deleteSession(session.getSession_idx());
+                continue;
+            }
 
-            // DB에서 생성된 PK 가져오기
-            int sessionIdx = session.getSession_idx();
+            // 세션 저장/수정
+            if (session.getSession_idx() == null) {
+                sessionMapper.insertClassSession(session);
+            } else {
+                sessionMapper.updateSession(session);
+            }
 
-            // 각 세션의 에피소드 저장
-            for (ClassEpisodeVo ep : session.getEpisodes()) {
-                ep.setSession_idx(sessionIdx);
-                classEpisodeMapper.insertClassEpisode(ep);
+            // 세션 안의 에피소드들 처리
+            if (session.getEpisodes() != null) {
+                for (ClassEpisodeVo episode : session.getEpisodes()) {
+                    episode.setSession_idx(session.getSession_idx());
+
+                    // 삭제된 에피소드
+                    if (episode.isDeleted() && episode.getEpisode_idx() != null) {
+                    	episodeMapper.deleteEpisode(episode.getEpisode_idx());
+                    	continue;
+                    }
+
+                    // 신규 에피소드
+                    if (episode.getEpisode_idx() == null) {
+                        episodeMapper.insertClassEpisode(episode);
+                    } else {
+                        episodeMapper.updateEpisode(episode);
+                    }
+                }
             }
         }
     }
-
+    
 	public List<ClassSessionVo> getCurriculumByClassId(int classId) {
-	    List<ClassSessionVo> sessions = classSessionMapper.selectSessionsByClassId(classId);
-	    for (ClassSessionVo session : sessions) {
-	        session.setEpisodes(classEpisodeMapper.selectEpisodesBySessionId(session.getSession_idx()));
-	    }
+		List<ClassSessionVo> sessions = sessionMapper.selectSessionsByClassId(classId);
+		for (ClassSessionVo session : sessions) {
+		    session.setEpisodes(episodeMapper.selectEpisodesBySessionId(session.getSession_idx()));
+		}
+
 	    return sessions;
 	}
 	
 	@Transactional
 	public void updateCurriculum(List<ClassSessionVo> sessions) {
-	    for (ClassSessionVo session : sessions) {
-	        classSessionMapper.updateSession(session);
-	        for (ClassEpisodeVo episode : session.getEpisodes()) {
-	            classEpisodeMapper.updateEpisode(episode);
-	        }
-	    }
+		for (ClassSessionVo session : sessions) {
+			sessionMapper.updateSession(session);
+		    for (ClassEpisodeVo episode : session.getEpisodes()) {
+		    	episodeMapper.updateEpisode(episode);
+		    }
+		}
 	}
-
+	
 	@Transactional
     public void deleteSession(int sessionId) {
         // 해당 세션의 에피소드들 먼저 삭제
-        classEpisodeMapper.deleteEpisodesBySessionId(sessionId);
+		episodeMapper.deleteEpisodesBySessionId(sessionId);
         // 세션 삭제
-        classSessionMapper.deleteSession(sessionId);
+        sessionMapper.deleteSession(sessionId);
     }
 
     @Transactional
     public void deleteEpisode(int episodeId) {
-        classEpisodeMapper.deleteEpisode(episodeId);
+    	episodeMapper.deleteEpisode(episodeId);
     }
     
 }

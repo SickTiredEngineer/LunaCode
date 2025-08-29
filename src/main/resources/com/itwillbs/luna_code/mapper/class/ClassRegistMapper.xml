@@ -11,8 +11,6 @@
 			INSERT INTO class (
 			instructor_idx, 
 			class_title, 
-			class_time, 
-			class_type, 
 			create_date, 
 			class_thumbnail, 
 			class_intro, 
@@ -24,8 +22,6 @@
 		) VALUES (
    			#{instructor_idx}, 
 			#{class_title}, 
-			#{class_time}, 
-			#{class_type}, 
 			NOW(), 
 			#{class_thumbnail}, 	
 			#{class_intro}, 

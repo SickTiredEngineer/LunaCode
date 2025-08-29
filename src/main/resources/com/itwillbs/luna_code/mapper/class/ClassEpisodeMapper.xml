@@ -27,11 +27,22 @@
 	    WHERE episode_idx = #{episode_idx}
 	</update>
 	
-	<delete id="deleteEpisodesByClassId" parameterType="int">
-	    DELETE FROM class_episode WHERE session_idx IN (
-	        SELECT session_idx FROM class_session WHERE class_idx = #{classId}
-	    )
-	</delete>
+	 <delete id="deleteEpisode" parameterType="int">
+        DELETE FROM class_episode WHERE episode_idx = #{episode_idx}
+    </delete>
+
+    <!--  특정 클래스의 모든 에피소드 삭제 -->
+    <delete id="deleteEpisodesByClassId" parameterType="int">
+        DELETE FROM class_episode 
+        WHERE session_idx IN (
+            SELECT session_idx FROM class_session WHERE class_idx = #{classId}
+        )
+    </delete>
+
+    <!--  특정 세션의 모든 에피소드 삭제 -->
+    <delete id="deleteEpisodesBySessionId" parameterType="int">
+        DELETE FROM class_episode WHERE session_idx = #{sessionId}
+    </delete>
 	
 
 </mapper>

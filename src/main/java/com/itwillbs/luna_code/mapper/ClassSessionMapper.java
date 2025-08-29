@@ -15,11 +15,14 @@ public interface ClassSessionMapper {
 
 	List<ClassSessionVo> selectSessionsByClassId(int classId);
 
-	void updateSession(ClassSessionVo session);
+    // 세션 수정
+	int updateSession(ClassSessionVo session);;
 
-	void deleteSession(int sessionId);
+    // 개별 세션 삭제
+	int deleteSession(int sessionId);
 
-	void deleteSessionsByClassId(int classId);
+    // 클래스 단위 세션 전체 삭제
+	int deleteSessionsByClassId(int classId);
 		
 	
 

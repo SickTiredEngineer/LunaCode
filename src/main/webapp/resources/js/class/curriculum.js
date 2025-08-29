@@ -211,52 +211,57 @@ document.addEventListener('DOMContentLoaded', () => {
     /** ====================
      * 저장 버튼 클릭
      ==================== */
-    if (saveBtn) {
-      saveBtn.addEventListener('click', e => {
-        e.preventDefault();
-        if (!confirm('등록하시겠습니까?')) return;
+    saveBtn.addEventListener('click', e => {
+	  e.preventDefault();
+	  if (!confirm('저장하시겠습니까?')) return;
+	
+	  const sections = [];
+	  document.querySelectorAll('.section-block').forEach((sectionEl, sectionIdx) => {
+	    const sectionTitle = sectionEl.querySelector('.section-row > .section-input').value.trim();
+	    if (!sectionTitle) return; // 제목 없는 섹션은 저장 안 함
+	
+	    const lessons = [];
+	    sectionEl.querySelectorAll('.lessons-container .lesson-row').forEach(lessonEl => {
+	      const lessonTitle = lessonEl.querySelector('.lesson-input-wrapper > .section-input').value.trim();
+	      if (!lessonTitle) return; // 제목 없는 레슨 제외
+	
+	      lessons.push({
+	        episode_idx: lessonEl.dataset.lessonId || null, 
+	        episode_name: lessonTitle,
+	        locked: lessonEl.querySelector('img[alt="잠금"], img[alt="잠금 해제"]')?.dataset.locked === 'true',
+	        viewed: lessonEl.querySelector('img[alt="보기"], img[alt="숨김"]')?.dataset.viewed === 'true',
+	        deleted: lessonEl.dataset.deleted === 'true' || false
+	      });
+	    });
+	
+	    sections.push({
+	      session_idx: sectionEl.dataset.sessionId || null, // 기존 ID 있으면 update
+	      class_idx: classId,
+	      session_name: sectionTitle,
+	      session_index: sectionIdx,
+	      deleted: sectionEl.dataset.deleted === 'true' || false,
+	      episodes: lessons
+	    });
+	  });
+	
+	  console.log('저장할 데이터:', sections);
+	
+	  fetch(`${ctx}/Curriculum/${classId}`, { 
+	    method: 'POST',
+	    headers: { 'Content-Type': 'application/json' },
+	    body: JSON.stringify(sections)
+	  })
+	  .then(res => res.json())
+	  .then(result => {
+	    alert('저장 완료!');
+	    console.log(result);
+	  })
+	  .catch(err => {
+	    console.error('저장 실패:', err);
+	    alert('저장 실패!');
+	  });
+	});
 
-        const sections = [];
-        document.querySelectorAll('.section-block').forEach((sectionEl, sectionIdx) => {
-          const sectionTitle = sectionEl.querySelector('.section-row > .section-input').value.trim();
-          const lessons = [];
-          sectionEl.querySelectorAll('.lessons-container .lesson-row').forEach(lessonEl => {
-            const lessonTitle = lessonEl.querySelector('.lesson-input-wrapper > .section-input').value.trim();
-            const lockIcon = lessonEl.querySelector('img[alt="잠금"], img[alt="잠금 해제"]');
-            const viewIcon = lessonEl.querySelector('img[alt="보기"], img[alt="숨김"]');
-            lessons.push({
-              episode_name: lessonTitle,
-              locked: lockIcon ? lockIcon.dataset.locked === 'true' : false,
-              viewed: viewIcon ? viewIcon.dataset.viewed === 'true' : true,
-              lessonId: lessonEl.dataset.lessonId || null
-            });
-          });
-
-          sections.push({
-            class_idx: classId, 
-            session_name: sectionTitle,
-            session_index: sectionIdx,
-            episodes: lessons
-          });
-        });
-
-        console.log('저장할 데이터:', sections);
-        fetch(`${ctx}/Curriculum/${classId}`, { 
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(sections)
-        })
-        .then(res => res.json())
-        .then(result => {
-          alert('저장 완료!');
-          console.log(result);
-        })
-        .catch(err => {
-          console.error('저장 실패:', err);
-          alert('저장 실패!');
-        });
-      });
-    }
 
     container.dataset.listener = 'true';
   }

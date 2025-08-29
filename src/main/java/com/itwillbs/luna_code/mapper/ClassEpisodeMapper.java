@@ -14,12 +14,15 @@ public interface ClassEpisodeMapper {
 
 	List<ClassEpisodeVo> selectEpisodesBySessionId(int session_idx);
 	
-	 void updateEpisode(ClassEpisodeVo episode);
+	// 에피소드 수정
+	int updateEpisode(ClassEpisodeVo episode);
 
-	void deleteEpisode(int episode_idx);
-
-	void deleteEpisodesByClassId(int classId);
-
-	void deleteEpisodesBySessionId(int sessionId);
+    // 개별 에피소드 삭제
+	int deleteEpisode(int episode_idx);
 	
+	int deleteEpisodesByClassId(int classId);
+
+    // 클래스 단위 에피소드 전체 삭제
+	int deleteEpisodesBySessionId(int sessionId);
+
 }

@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -137,6 +138,13 @@ public class ClassController {
 
 	    return "redirect:/CourseRegistration";
 	}
+	
+	//에피소드 수정
+	@GetMapping("/lesson/edit/{episodeId}")
+	public String editLesson(@PathVariable int episodeId, Model model) {
+	   return "lesson/edit";
+	}
+
 
 	@GetMapping("QuizCommentary")
 	public String quizCommentary() {
