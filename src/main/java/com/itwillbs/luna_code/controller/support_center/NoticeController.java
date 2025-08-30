@@ -24,13 +24,17 @@ public class NoticeController {
 	
 	/* 공지사항 목록 들고와서 페이징 후 출력 */
 	@GetMapping("NoticeList")
-	public String noticeList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String noticeList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false)String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllNotice);
-		List<NoticeVO> noticeList = service.selectNotice(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllNotice(keyword));
+		List<NoticeVO> noticeList = service.selectNotice(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("noticeList", noticeList);
+		model.addAttribute("q", keyword);
 		
 		return "support_center/notice_list";
 	}

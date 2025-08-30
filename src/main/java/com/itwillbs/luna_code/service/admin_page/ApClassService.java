@@ -15,12 +15,12 @@ public class ApClassService {
 	@Autowired
 	ApClassMapper mapper;
 	
-	public int countAllClass() {
-		return mapper.countAllClass();
+	public int countAllClass(String q) {
+		return mapper.countAllClass(q);
 	}
 	
-	public List<ClassVo> selectClassList(int start_row, int list_limit){
-		return mapper.selectClassList(start_row, list_limit);
+	public List<ClassVo> selectClassList(int start_row, int list_limit, String q){
+		return mapper.selectClassList(start_row, list_limit, q);
 	}
 	
 	public ClassVo selectClassDetail(int class_idx) {

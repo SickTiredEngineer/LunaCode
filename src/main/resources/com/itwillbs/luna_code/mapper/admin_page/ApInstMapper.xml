@@ -9,11 +9,17 @@
 		select count(*) 
 		from member 
 		where member_type = 'MB02'
+		<if test="q != null and q != ''">
+	    	and user_id like concat('%', #{q}, '%')
+	    </if>
 	</select>
 	
 	<select id="selectInstList">
 		select * from member
-		where member_type = 'MB02' 
+		where member_type = 'MB02'
+		<if test="q != null and q != ''">
+	    	and user_id like concat('%', #{q}, '%')
+	    </if> 
 		order by idx desc
 		limit #{start_row}, #{list_limit}
 	</select>

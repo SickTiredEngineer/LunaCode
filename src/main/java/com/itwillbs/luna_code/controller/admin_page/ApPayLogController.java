@@ -21,15 +21,17 @@ public class ApPayLogController {
 	ApPaylogService service;
 	
 	@GetMapping("ApPaylogList")
-	public String apPaylogList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String apPaylogList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false) String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllPayLog);
-		List<PaymentHistoryVO> payList = service.selectPaylogList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllPayLog(keyword));
+		List<PaymentHistoryVO> payList = service.selectPaylogList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("payList", payList);
 		model.addAttribute("pageVo", pageVo);
-		
-		System.out.println("Check AP Paylog List: " + payList);
+		model.addAttribute("q", keyword);
 		
 		return "admin/ap_paylog_list";
 	}
@@ -48,7 +50,7 @@ public class ApPayLogController {
 	public String apRefundPay(PaymentHistoryVO vo) {
 		
 		int result = service.modifyPaylog(vo);
-		System.out.println("refundPay: " + vo);
+
 		return "redirect:ApPaylogDetail?payment_idx="+vo.getPayment_idx();
 	}
 	

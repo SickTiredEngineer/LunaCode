@@ -7,7 +7,13 @@
 	
 	<select id="countAllQuery">
 		select count(*) 
-		from customer_query 
+		from customer_query cq
+		left join member m on m.idx = cq.user_idx
+		<where>
+	    <if test="q != null and q != ''">
+	    	m.user_id like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 <!-- 		where answer_status = false; -->
 	</select>
 	
@@ -25,7 +31,11 @@
 			,m.user_id as user_id
 		from customer_query 
 		cq left join member m on m.idx = cq.user_idx
-<!-- 		where cq.answer_status = false -->
+		<where>
+	    <if test="q != null and q != ''">
+	    	m.user_id like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 		order by cq.query_date desc, cq.query_idx desc
 		limit #{start_row}, #{list_limit}
 	</select>

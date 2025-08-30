@@ -24,10 +24,13 @@ public class ApClassController {
 	ApClassService service;
 	
 	@GetMapping("ApReqClassList")
-	public String apReqClassList(Model model ,@RequestParam(defaultValue = "1") int pageNum) {
+	public String apReqClassList(Model model 
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false) String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllClass);
-		List<ClassVo> classList = service.selectClassList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllClass(keyword));
+		List<ClassVo> classList = service.selectClassList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("classList", classList);
 		model.addAttribute("pageVo", pageVo);

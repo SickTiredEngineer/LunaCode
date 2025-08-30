@@ -26,10 +26,14 @@ public class ApInstController {
 	ApInstService service;
 	
 	@GetMapping("ApReqInstList")
-	public String apReqInstList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String apReqInstList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false)String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllInst);
-		List<InstVO> instList = service.selectInstList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllInst(keyword));
+		List<InstVO> instList = service.selectInstList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("instList", instList);
 		model.addAttribute("pageVo" ,pageVo);		

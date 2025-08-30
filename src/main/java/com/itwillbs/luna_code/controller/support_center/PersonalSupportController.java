@@ -29,13 +29,17 @@ public class PersonalSupportController {
 	ApSupportService apService;
 	
 	@GetMapping("PersonalSupport")
-	public String personalList(Model model, @RequestParam(defaultValue = "1") int pageNum, Authentication auth) {
+	public String personalList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false) String q
+			,Authentication auth) {
 	
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
 		CustomUserDetails user = (CustomUserDetails)auth.getPrincipal();
 		int userIdx = user.getIdx();
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, () -> service.countAllCustomerQuery(userIdx));
-		List<CustomerQueryVO> cqList = service.selectCustomerQuery(userIdx, pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, () -> service.countAllCustomerQuery(userIdx, keyword));
+		List<CustomerQueryVO> cqList = service.selectCustomerQuery(userIdx, pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("cqList", cqList);

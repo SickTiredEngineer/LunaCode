@@ -17,12 +17,12 @@ public class ApInstService {
 	@Autowired
 	ApInstMapper mapper;
 	
-	public int countAllInst() {
-		return mapper.countAllInst();
+	public int countAllInst(String q) {
+		return mapper.countAllInst(q);
 	}
 	
-	public List<InstVO> selectInstList(@Param("start_row") int start_row, @Param("list_limit") int list_limit) {
-		return mapper.selectInstList(start_row, list_limit);	
+	public List<InstVO> selectInstList(int start_row, int list_limit, String q) {
+		return mapper.selectInstList(start_row, list_limit, q);	
 	}
 	
 	public InstVO selectInstDetail(int idx) {

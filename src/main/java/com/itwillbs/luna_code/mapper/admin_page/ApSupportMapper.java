@@ -12,10 +12,10 @@ import com.itwillbs.luna_code.vo.support_center.CustomerQueryVO;
 public interface ApSupportMapper {
 	
 	/* 페이징을 위해 갯수 세는 쿼리 */
-	int countAllQuery();
+	int countAllQuery(@Param("q") String q);
 	
 	/* 페이징 후 문의 내용 VO를 담아 오는 쿼리 */
-	List<CustomerQueryVO> selectQueryList(@Param("start_row") int start_row, @Param("list_limit") int list_limit); 
+	List<CustomerQueryVO> selectQueryList(@Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q); 
 	
 	/* 사용자 문의 내용 자세히 들고오는 쿼리 */
 	CustomerQueryVO selectQueryDetail(int query_idx);

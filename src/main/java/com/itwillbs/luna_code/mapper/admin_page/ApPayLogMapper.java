@@ -11,10 +11,11 @@ import com.itwillbs.luna_code.vo.cart.PaymentHistoryVO;
 public interface ApPayLogMapper {
 
 	
-	int countAllPayLog();
+	int countAllPayLog(@Param("q") String q);
 	
-	List<PaymentHistoryVO> selectPaylogList(@Param("start_row") int start_row, 
-			@Param("list_limit") int list_limit);
+	List<PaymentHistoryVO> selectPaylogList(@Param("start_row") int start_row
+			,@Param("list_limit") int list_limit
+			,@Param("q") String q);
 		
 	PaymentHistoryVO selectPaylogDetail(int payment_idx);
 

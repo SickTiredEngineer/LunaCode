@@ -8,6 +8,12 @@
 	<select id="countAllCommonCode">
 		select count(*) 
 		from common_code 
+		
+		<where>
+	    <if test="q != null and q != ''">
+	      code like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 	</select>
 	
 	<select id="selectCommonCodeList">
@@ -29,6 +35,11 @@
 		left join member m1 on m1.idx = cc.creater_idx
 		left join member m2 on m2.idx = cc.updater_idx
 		left join group_code cd on cd.group_code = cc.group_code 
+		<where>
+	    <if test="q != null and q != ''">
+	     cc.code like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 		order by cc.create_date desc, cc.code desc
 		limit #{start_row}, #{list_limit}
 	</select>

@@ -16,13 +16,13 @@ public class ApSupportService {
 	ApSupportMapper mapper;
 	
 	/* 페이징을 위해 갯수 세는 쿼리 */
-	public int countAllQuery() {
-		return mapper.countAllQuery();
+	public int countAllQuery(String q) {
+		return mapper.countAllQuery(q);
 	}
 	
 	/* 페이징 후 문의 내용 VO를 담아 오는 쿼리 */
-	public List<CustomerQueryVO> selectQueryList(int start_row, int list_limit){
-		return mapper.selectQueryList(start_row, list_limit);	
+	public List<CustomerQueryVO> selectQueryList(int start_row, int list_limit, String q){
+		return mapper.selectQueryList(start_row, list_limit, q);	
 	}
 	
 	public CustomerQueryVO selectQueryDetail(int query_idx) {

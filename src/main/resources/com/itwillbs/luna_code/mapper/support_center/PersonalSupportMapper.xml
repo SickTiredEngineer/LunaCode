@@ -19,6 +19,10 @@
 			,update_date					
 		from customer_query 
 		where user_idx = #{idx}
+		 <if test="q != null and q != ''">
+			and (query_subject like concat('%', #{q}, '%') 
+				or query_content like concat('%', #{q}, '%'))
+		</if>
 		order by query_date desc, query_idx desc
 		limit #{start_row}, #{list_limit}
 	</select>
@@ -27,6 +31,10 @@
 		select count(*) 
 		from customer_query 
 		where user_idx = #{idx}
+		<if test="q != null and q != ''">
+			and (query_subject like concat('%', #{q}, '%') 
+				or query_content like concat('%', #{q}, '%'))
+		</if>
 	</select>
 	
 	<select id="selectCustomQueryDetail">

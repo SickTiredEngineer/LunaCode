@@ -7,7 +7,13 @@
 	
 	<select id="countAllPayLog">
 		select count(*) 
-		from payment_history 
+		from payment_history ph
+		left join member m on m.idx = ph.user_idx
+		<where>
+	    <if test="q != null and q != ''">
+	    	m.user_id like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 	</select>
 	
 	<select id="selectPaylogList">
@@ -28,6 +34,11 @@
 		ph left join member m1 on m1.idx = ph.user_idx
 		left join class c1 on c1.class_idx = ph.item_idx
         left join member m2 on c1.instructor_idx = m2.idx
+        <where>
+	    <if test="q != null and q != ''">
+	    	m1.user_id like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 		limit #{start_row}, #{list_limit}			
 	</select>
 	

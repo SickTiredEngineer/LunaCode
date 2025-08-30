@@ -14,12 +14,12 @@ public class ApPaylogService {
 	@Autowired
 	ApPayLogMapper mapper;
 	
-	public int countAllPayLog() {
-		return mapper.countAllPayLog();
+	public int countAllPayLog(String q) {
+		return mapper.countAllPayLog(q);
 	}
 	
-	public List<PaymentHistoryVO> selectPaylogList(int start_row, int list_limit){
-		return mapper.selectPaylogList(start_row, list_limit);
+	public List<PaymentHistoryVO> selectPaylogList(int start_row, int list_limit, String q){
+		return mapper.selectPaylogList(start_row, list_limit, q);
 	}
 	
 	public PaymentHistoryVO selectPaylogDetail(int payment_idx) {

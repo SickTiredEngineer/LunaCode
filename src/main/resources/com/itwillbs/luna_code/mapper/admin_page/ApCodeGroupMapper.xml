@@ -8,6 +8,11 @@
 	<select id="countAllCodeGroup">
 		select count(*) 
 		from group_code 
+		<where>
+	    <if test="q != null and q != ''">
+	      group_code like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 <!-- 		where answer_status = false; -->
 	</select>
 	
@@ -26,6 +31,11 @@
 		from group_code cd
 		left join member m1 on m1.idx = cd.creater_idx
 		left join member m2 on m2.idx = cd.updater_idx
+		<where>
+	    <if test="q != null and q != ''">
+	      cd.group_code like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 		order by cd.create_date desc, cd.group_idx desc
 		limit #{start_row}, #{list_limit}
 	</select>

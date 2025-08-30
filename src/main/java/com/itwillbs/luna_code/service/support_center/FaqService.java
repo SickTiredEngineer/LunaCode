@@ -14,12 +14,12 @@ public class FaqService {
 	@Autowired
 	FaqMapper mapper;
 	
-	public List<FaqVO> selectFaq(int start_row, int list_limit){
-		return mapper.selectFaq(start_row, list_limit);
+	public List<FaqVO> selectFaq(int start_row, int list_limit, String q){
+		return mapper.selectFaq(start_row, list_limit, q);
 	}
 	
-	public int countAllFaq() {
-		return mapper.countAllFaq();
+	public int countAllFaq(String q) {
+		return mapper.countAllFaq(q);
 	}
 	
 	public FaqVO selectFaqDetail(int faq_idx) {

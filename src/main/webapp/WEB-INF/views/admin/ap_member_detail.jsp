@@ -38,10 +38,10 @@
 					<div class="d-flex flex-row">
 						<jsp:include page="/WEB-INF/views/admin/admin_sidebar.jsp" />
 
-						<div class="d-flex flex-column">
-							
-							
-													
+						<form action="ApModifyMemberType"  method="post" class="d-flex flex-column">
+				
+							<input type="hidden" name="idx" value="${member.idx}">
+				
 							<div class="d-flex flex-column main_layout">
 								
 <%-- 								<c:choose> --%>
@@ -71,11 +71,20 @@
 									<div class="d-flex flex-row info-item">
 										<p class="info-text">Type :</p>	
 										<p>
-											<c:choose>
-												<c:when test="${member.member_type eq 'MB01'}">관리자</c:when>
-												<c:when test="${member.member_type eq 'MB02'}">강사</c:when>
-												<c:otherwise>일반회원</c:otherwise>
-											</c:choose>
+											<select name="member_type" class="member-state-selector">
+												<option value="MB01" ${member.member_type eq 'MB01'? 'selected': ''}>관리자</option>
+												<option value="MB02" ${member.member_type eq 'MB02'? 'selected': ''}>강사 회원</option>
+												<option value="MB03" ${member.member_type eq 'MB03'? 'selected': ''}>일반 회원</option>
+												<option value="MB04" ${member.member_type eq 'MB04'? 'selected': ''}>탈퇴 회원</option>
+											</select>
+
+<%-- 											<c:choose> --%>
+<%-- 												<c:when test="${member.member_type eq 'MB01'}">관리자</c:when> --%>
+<%-- 												<c:when test="${member.member_type eq 'MB02'}">강사 회원</c:when> --%>
+<%-- 												<c:when test="${member.member_type eq 'MB03'}">일반 회원</c:when> --%>
+<%-- 												<c:when test="${member.member_type eq 'MB04'}">탈퇴 회원</c:when> --%>
+<%-- 												<c:otherwise>일반회원</c:otherwise> --%>
+<%-- 											</c:choose> --%>
 										</p>
 									</div>
 									
@@ -147,10 +156,10 @@
 
 							<div class="d-flex button-container">
 								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
-								<a href="ApMemberList" class="positive-button">적용</a>
+								<button type="submit" onclick="confirm('회원 정보를 수정하시겠습니까?')" class="positive-button">적용</button>
 							</div>
 		
-						</div>
+						</form>
 	
 					</div>
 				</div>

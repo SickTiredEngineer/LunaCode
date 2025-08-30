@@ -5,10 +5,17 @@
 
 <mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApClassMapper">
 	
-	<select id="countAllClass">
-		select count(*) 
-		from class
+	<select id="countAllClass" resultType="int">
+		select count(*)
+		from class c
+		join member m on m.idx = c.instructor_idx
+		<where>
+			<if test="q != null and q != ''">
+				m.user_id like concat('%', #{q}, '%')
+			</if>
+		</where>
 	</select>
+
 	
 	<select id="selectClassList">
 		select      
@@ -27,6 +34,11 @@
 			,m.user_id as instructor_id
 			from class 
 			c left join member m on c.instructor_idx = m.idx
+			<where>
+				<if test="q != null and q != ''">
+					m.user_id like concat('%', #{q}, '%')
+				</if>
+			</where>
 			order by create_date desc
 			limit #{start_row}, #{list_limit}
 	</select>

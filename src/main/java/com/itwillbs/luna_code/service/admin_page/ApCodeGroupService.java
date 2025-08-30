@@ -16,13 +16,13 @@ public class ApCodeGroupService {
 	ApCodeGroupMapper mapper;
 	
 	/* 페이징을 위한 공통 코드 그룹 카운트 쿼리 */
-	public int countAllCodeGroup() {
-		return mapper.countAllCodeGroup();
+	public int countAllCodeGroup(String q) {
+		return mapper.countAllCodeGroup(q);
 	}
 	
 	/* 페이징 연산에 맞게 공통 코드 그룹 리스트 가져오는 쿼리 */
-	public List<CodeGroupVO> selectCodeGroupList(@Param("start_row") int start_row, @Param("list_limit") int list_limit){
-		return mapper.selectCodeGroupList(start_row, list_limit);
+	public List<CodeGroupVO> selectCodeGroupList(int start_row, int list_limit, String q){
+		return mapper.selectCodeGroupList(start_row, list_limit, q);
 	}
 	
 	/* 코드 그룹 상세 정보 불러오기 */

@@ -14,12 +14,12 @@ public class PersonalSupportService {
 	@Autowired
 	PersonalSupportMapper mapper;
 	
-	public List<CustomerQueryVO> selectCustomerQuery(int idx, int start_row, int list_limit){
-		return mapper.selectCustomerQuery(idx, start_row, list_limit);
+	public List<CustomerQueryVO> selectCustomerQuery(int idx, int start_row, int list_limit, String q){
+		return mapper.selectCustomerQuery(idx, start_row, list_limit, q);
 	}
 	
-	public int countAllCustomerQuery(int idx) {
-		return mapper.countAllCustomerQuery(idx);
+	public int countAllCustomerQuery(int idx, String q) {
+		return mapper.countAllCustomerQuery(idx, q);
 	}
 	
 	public CustomerQueryVO selectCustomQueryDetail(int query_idx, int idx) {

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.itwillbs.luna_code.handler.PagingHandler;
@@ -20,13 +21,18 @@ public class ApMemberController {
 	ApMemberService service;
 	
 	@GetMapping("ApMemberList")
-	public String apMemberList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String apMemberList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name="q", required = false) String q){
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllMember);
-		List<MemberJoinVO> memberList = service.selectMemberList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT); 
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllMember(keyword));
+		List<MemberJoinVO> memberList = service.selectMemberList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword); 
 		
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("memberList", memberList);
+		model.addAttribute("q", keyword);
 		
 		return "admin/ap_member_list";
 	}
@@ -41,5 +47,14 @@ public class ApMemberController {
 		
 		return "admin/ap_member_detail";
 	}
+	
+	
+	@PostMapping("ApModifyMemberType")
+	public String modifyMemberType(MemberJoinVO vo) {
+		service.modifyMemberType(vo);
+		return "redirect:ApMemberDetail?idx="+vo.getIdx();
+	}
+	
+	
 
 }
