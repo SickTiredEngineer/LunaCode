@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const categories = [
-    { name: "IT 자격증", sub: ["정보처리 기사", "정보보안 기사", "리눅스마스터"] },
-    { name: "컴퓨터 활용", sub: ["컴퓨터 활용 능력 1급", "컴퓨터 활용 능력 2급", "컴퓨터 활용 능력 1급 실기", "컴퓨터 활용 능력 2급 실기", "컴퓨터 활용 능력 1급 올인원", "컴퓨터 활용 능력 2급 올인원"] },
-    { name: "기초 코딩", sub: ["파이썬 기초", "코딩 스타트", "C언어 입문"] }
+    { name: "프로그래밍 기초", sub: ["기초코딩", "풀스텍", "게임개발"] },
+    { name: "플팻좀 & 응용개발", sub: ["안드로이드", "임베디드", "AI", "컴퓨터 비전"] },
+    { name: "컴퓨터 활용 & 자격증", sub: ["컴퓨터 활용", "컴퓨터 그래픽", "IT 자격증"] }
   ];
 
   const categoryList = document.getElementById('category-list');
