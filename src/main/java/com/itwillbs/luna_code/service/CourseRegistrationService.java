@@ -19,6 +19,7 @@ public class CourseRegistrationService {
 	    return courseRegistrationMapper.selectClassList();
 	}
 	
+	
 
 	
 }

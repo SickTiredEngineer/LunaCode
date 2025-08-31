@@ -48,6 +48,31 @@
 	    FROM class
 	</select>
 	
+    <!--  강의 조회 -->
+    <select id="selectClassById" parameterType="int" resultType="int">
+        SELECT class_id
+        FROM class
+        WHERE class_id = #{classId}
+    </select>
+
+    <!-- 수강 신청 -->
+    <insert id="applyCourse">
+        INSERT INTO class_enrollment (user_id, class_id)
+        VALUES (#{userId}, #{courseId})
+    </insert>
+	
+	<insert id="addToCart">
+    	INSERT INTO cart (user_idx, class_idx)
+    	VALUES (#{userIdx}, #{classIdx})
+	</insert>
+	
+	<!-- 장바구니 중복 확인 -->
+	<select id="checkCartDuplicate" parameterType="map" resultType="int">
+	    SELECT COUNT(*)
+	    FROM cart
+	    WHERE user_idx = #{userIdx}
+	      AND class_idx = #{classIdx}
+	</select>
 	
 	
 </mapper>

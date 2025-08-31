@@ -17,6 +17,11 @@ public interface ClassMapper {
     int deleteClassEnrollmentByClassId(int classId);
     int deleteClass(int classId);
 	List<ClassVo> selectAllClasses();
-    
+	int selectClassById(int classId);
+	int applyCourse(String userId, int courseId);
+	// 장바구니 담기
+	int addToCart(int userIdx, int classIdx);
+	int checkCartDuplicate(int userIdx, int classIdx);
+
 
 }

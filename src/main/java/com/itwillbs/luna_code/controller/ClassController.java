@@ -4,7 +4,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -213,7 +216,36 @@ public class ClassController {
 	}
 	
 	@GetMapping("ClassDetail")
-	public String classdetail() {
+	public String classdetail(@RequestParam("id") int classId, Model model) {
+		int lecture = classService.getClassById(classId);
+		model.addAttribute("lecture", lecture);
 		return "class_shop/class_detail";
 	}
+	
+	@PostMapping("/apply")
+	@ResponseBody
+	public ResponseEntity<Map<String, Object>> applyCourse(@RequestBody Map<String, Object> params, Principal principal) {
+		Map<String, Object> res = new HashMap<>();
+	        try {
+	            String userId = principal.getName();
+	            int courseId = (Integer) params.get("courseId");
+
+	            classService.applyCourse(userId, courseId);
+
+	            res.put("success", true);
+	        } catch (Exception e) {
+	            res.put("success", false);
+	            res.put("message", e.getMessage());
+	        }
+	        return ResponseEntity.ok(res);
+	    }
+	
+	@PostMapping("/cart_add")
+	@ResponseBody
+	public String addToCart(@RequestParam int userIdx, @RequestParam int classIdx) {
+	    int result = classService.addToCart(userIdx, classIdx);
+	    return (result > 0) ? "장바구니에 담겼습니다!" : "이미 담겨있거나 실패했습니다.";
+	}
+
+	
 }

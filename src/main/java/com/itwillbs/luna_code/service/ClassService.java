@@ -51,7 +51,24 @@ public class ClassService {
     public List<ClassVo> getAllClasses() {
         return classMapper.selectAllClasses();
     }
+    
+    public int getClassById(int classId) {
+        return classMapper.selectClassById(classId);
+    }
+    
+    public int applyCourse(String userId, int courseId) {
+        return classMapper.applyCourse(userId, courseId);
+    }
+    
+    public int addToCart(int userIdx, int classIdx) {
+        int count = classMapper.checkCartDuplicate(userIdx, classIdx);
+        if (count > 0) {
+            // 이미 장바구니에 있음
+            return 0;
+        }
+        return classMapper.addToCart(userIdx, classIdx);
+    }
 
     
-	
+    
 }
