@@ -39,16 +39,24 @@
     <intercept-url pattern="/JoinForm" method="GET" access="permitAll"/>
     <intercept-url pattern="/JoinForm" method="POST" access="permitAll"/>
 	
+	<!-- 정책 사이트 -->
+	<intercept-url pattern="/RefundPolicy" method="GET" access="permitAll"/>
+	<intercept-url pattern="/PersonalInfoPolicy" method="GET" access="permitAll"/>
+	<intercept-url pattern="/UserPolicy" method="GET" access="permitAll"/>
+	<intercept-url pattern="/PageIntroduce" method="GET" access="permitAll"/>
+	
 	<!-- 커뮤니티 -->
 	<intercept-url pattern="/ModifyPostForm" method="POST" access="permitAll"/>
 
 	<!-- 관리자 페이지 -->
 	<intercept-url pattern="/ApMemberList" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApMemberDetail" method="GET" access="hasRole('ADMIN')"/>
+	
 	<!-- 관리자 페이지 강의 관리 -->
 	<intercept-url pattern="ApReqClassList" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApReqClassDetail" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApModifyClassStatus" method="GET" access="hasRole('ADMIN')"/>
+	
 	<!-- 관리자 페이지 공통 코드 그룹 -->
 	<intercept-url pattern="/ApGroupCodeList" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApGroupCodeDetail" method="GET" access="hasRole('ADMIN')"/>
@@ -56,6 +64,7 @@
 	<intercept-url pattern="/NewCodeGroupForm" method="POST" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ModifyGroupCode" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ModifyCodeGroupForm" method="POST" access="hasRole('ADMIN')"/>
+	
 	<!-- 관리자 페이지 공통 코드 -->
 	<intercept-url pattern="/ApCommonCodeList" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApCommonCodeDetail" method="GET" access="hasRole('ADMIN')"/>
@@ -63,10 +72,12 @@
 	<intercept-url pattern="/CommonCodeWriteForm" method="POST" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ModifyCommonCode" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ModifyCommonCodeForm" method="POST" access="hasRole('ADMIN')"/>
+	
 	<!-- 관리자 페이지 강사 -->
 	<intercept-url pattern="/ApReqInstList" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApReqInstDetail" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApModifyInst" method="POST" access="hasRole('ADMIN')"/>
+	
 	<!-- 관리자 페이지 1:1 뮨의 -->
 	<intercept-url pattern="/ApPersonalSupportList" method="GET" access="hasRole('ADMIN')"/>
 	<intercept-url pattern="/ApPersonalSupportDetail" method="GET" access="hasRole('ADMIN')"/>
