@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 @Controller
-public class ClassShapController {
+public class ClassShopController {
 
     @GetMapping("/ClassShop")
     public String classShop() {

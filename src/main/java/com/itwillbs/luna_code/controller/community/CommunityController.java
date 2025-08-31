@@ -41,9 +41,7 @@ public class CommunityController {
 			,@RequestParam(name="q", required = false) String q) {
 		
 		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
-		
 		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllPost(keyword));
-		System.out.println("Check Page VO: " + pageVo);
 		
 		/* 게시물 리스트 불러온 뒤 model에 추가 */
 		List<PostVO> postList = service.postList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
