@@ -26,10 +26,14 @@ public class ApCodeGroupController {
 	
 	/* 코드 그룹 목록 보기 **/
 	@GetMapping("ApGroupCodeList")
-	public String apGroupCodeList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String apGroupCodeList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false)String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllCodeGroup);
-		List<CodeGroupVO> groupList = service.selectCodeGroupList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllCodeGroup(keyword));
+		List<CodeGroupVO> groupList = service.selectCodeGroupList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("groupList", groupList);

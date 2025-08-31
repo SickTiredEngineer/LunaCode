@@ -41,16 +41,16 @@
 
         <!-- 내비게이션 메뉴 -->
         <nav id="side-nav" class="side-nav" aria-hidden="true">
-            <a href="#">IT 자격증</a>
-            <a href="#">기초 코딩</a>
-            <a href="#">컴퓨터 활용</a>
-            <a href="#">게임 개발</a>
-            <a href="#">컴퓨터 그래픽</a>
-            <a href="#">AI</a>
-            <a href="#">컴퓨터 비전</a>
-            <a href="#">임베디드</a>
-            <a href="#">풀스텍</a>
-            <a href="#">안드로이드</a>
+            <a href="ClassDisplayStand?category=기초코딩">기초코딩</a>
+			<a href="ClassDisplayStand?category=게임개발">게임개발</a>
+			<a href="ClassDisplayStand?category=안드로이드">안드로이드</a>
+			<a href="ClassDisplayStand?category=임베디드">임베디드</a>
+			<a href="ClassDisplayStand?category=컴퓨터 활용">컴퓨터 활용</a>
+			<a href="ClassDisplayStand?category=컴퓨터 그래픽">컴퓨터 그래픽</a>
+			<a href="ClassDisplayStand?category=컴퓨터 비전">컴퓨터 비전</a>
+			<a href="ClassDisplayStand?category=풀스텍">풀스텍</a>
+			<a href="ClassDisplayStand?category=AI">AI</a>
+			<a href="ClassDisplayStand?category=IT 자격증">자격증</a>
             <!-- 필요 메뉴 추가 -->
         </nav>
     </div>
@@ -100,6 +100,9 @@
 	
 	  <!-- 로그인 사용자 -->
 	  <sec:authorize access="isAuthenticated()">
+	  
+	  	<a href="${pageContext.request.contextPath}/Cart" class="nav-link">장바구니</a>
+	  
 	    <!-- 권한별 메뉴 -->
 	    <sec:authorize access="hasRole('ADMIN')">
 	      <a href="${pageContext.request.contextPath}/ApMemberList" class="nav-link">관리자 페이지</a>
@@ -113,7 +116,7 @@
 	    <!-- 일반 사용자(관리자/강사 제외) 메뉴가 필요하면: -->
 	    <sec:authorize access="isAuthenticated() and !hasRole('ADMIN') and !hasRole('INSTRUCTOR')">
 	      <a href="${pageContext.request.contextPath}/MyProfile" class="nav-link">마이페이지</a>
-	      <a href="${pageContext.request.contextPath}/Cart" class="nav-link">장바구니</a>
+	      
 	    </sec:authorize>
 	
 	    <!-- 프로필/로그아웃 영역 -->

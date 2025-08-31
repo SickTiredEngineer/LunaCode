@@ -28,13 +28,18 @@ public class ApCommonCodeController {
 	ApCodeGroupService groupService;
 	
 	@GetMapping("ApCommonCodeList")
-	public String apCommonCodeList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String apCommonCodeList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name="q", required = false) String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllCommonCode);
-		List<CommonCodeVO> codeList = service.selectCommonCodeList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllCommonCode(q));
+		List<CommonCodeVO> codeList = service.selectCommonCodeList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("codeList", codeList);
+		model.addAttribute("q", keyword);
 		
 		return "admin/ap_common_code_list";
 	}

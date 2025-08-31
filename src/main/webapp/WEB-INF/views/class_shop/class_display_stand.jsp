@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- 강의 상점 JSP 페이지 -->
+
 <html>
 <head>
     <title>강의 상점</title>
     <meta charset="UTF-8">
     <jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
     <link href="${pageContext.request.contextPath}/resources/css/page/class_shop/class_display_stand.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/resources/css/page/community/community.css" rel="stylesheet">
 </head>
 <body>
     <div class="page-base container">
@@ -20,7 +24,27 @@
             <div class="d-flex flex-row justify-content-center">
                 <h1 class="shop-logo-text">강의 상점</h1>
             </div>
-            <br>
+            
+            <!-- 검색 정보 -->
+			<c:set var="qParam" value=""/>
+			<c:if test="${not empty q}">
+				<c:set var="qParam" value="&amp;q=${fn:escapeXml(q)}"/>
+			</c:if>		
+				
+			<c:set var="catParam" value=""/>
+			<c:if test="${not empty category}">
+				<c:set var="qParam" value="&amp;q=${fn:escapeXml(category)}"/>
+			</c:if>	
+			
+			
+			
+								
+			<form action="ClassDisplayStand" class="d-flex flex-row justify-content-center search-form-layout search-form-size" style="align-self: center;">
+				<input type="text" name="q" class="search-form-input" maxlength="10" placeholder="강의명으로 검색" value="${q}">
+				<input type="image" type="submit" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
+			</form>
+            
+            
             <jsp:include page="/WEB-INF/views/inc/class_category.jsp"/>
             <br>
 
@@ -47,16 +71,25 @@
                 </c:forEach>
             </div>
 
-            <!-- 페이지 네비게이션 -->
-            <div class="d-flex flex-row justify-content-center page-selector-layout mt-4">
-                <a class="page-selector">&lt;</a>
-                <a class="page-selector">1</a>
-                <a class="page-selector">2</a>
-                <a class="page-selector">3</a>
-                <a class="page-selector">4</a>
-                <a class="page-selector">5</a>
-                <a class="page-selector">&gt;</a>
-            </div>
+            <div class="d-flex flex-row justify-content-center page-selector-layout">
+						
+				<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum-1}${qParam}${catParam}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
+				
+				<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+					<c:choose>
+						<c:when test="${i eq pageVo.pageNum }">
+							<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${i}${qParam}${catParam}'" disabled="disabled"><strong>${i}</strong></button>
+						</c:when>
+						<c:otherwise>
+							<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${i}${qParam}${catParam}'">${i}</button>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum+1}${qParam}${catParam}'" 
+				<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
+		
+			</div>
 
             <!-- 모달 (수정 시 필요에 따라 활성화) -->
             <jsp:include page="/WEB-INF/views/class_shop/class_detail.jsp"/>

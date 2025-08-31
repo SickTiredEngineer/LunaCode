@@ -12,10 +12,10 @@ import com.itwillbs.luna_code.vo.admin_page.InstVO;
 public interface ApInstMapper {
 	
 	/* 강사 회원수 찾아오는 쿼리 */
-	int countAllInst();
+	int countAllInst(@Param("q") String q);
 	
 	/* 강사 회원 리스트 가져오는 쿼리 */
-	List<InstVO> selectInstList(@Param("start_row") int start_row, @Param("list_limit") int list_limit);
+	List<InstVO> selectInstList(@Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q);
 	
 	/* idx로 강사 찾아오는 쿼리 */
 	InstVO selectInstDetail(int idx);

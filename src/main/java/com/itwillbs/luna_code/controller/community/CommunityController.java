@@ -36,15 +36,18 @@ public class CommunityController {
 	
 	/* 커뮤니티 메인(자유 게시판) 이동 */
 	@GetMapping("Community")
-	public String community(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String community(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name="q", required = false) String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllPost);
-		System.out.println("Check Page VO: " + pageVo);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllPost(keyword));
 		
 		/* 게시물 리스트 불러온 뒤 model에 추가 */
-		List<PostVO> postList = service.postList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		List<PostVO> postList = service.postList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("postList", postList);
+		model.addAttribute("q", keyword);
 
 		return "community/community";
 	}

@@ -10,9 +10,9 @@ import com.itwillbs.luna_code.vo.support_center.CustomerQueryVO;
 @Mapper
 public interface PersonalSupportMapper {
 	
-	List<CustomerQueryVO> selectCustomerQuery(@Param("idx") int idx, @Param("start_row") int start_row, @Param("list_limit") int list_limit);
+	List<CustomerQueryVO> selectCustomerQuery(@Param("idx") int idx, @Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q);
 	
-	int countAllCustomerQuery(@Param("idx") int idx);
+	int countAllCustomerQuery(@Param("idx") int idx, @Param("q") String q);
 	
 	CustomerQueryVO selectCustomQueryDetail(@Param("query_idx") int query_idx, @Param("idx") int idx);
 	

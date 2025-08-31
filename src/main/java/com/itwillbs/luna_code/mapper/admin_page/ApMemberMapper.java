@@ -11,11 +11,12 @@ import com.itwillbs.luna_code.vo.member_join.MemberJoinVO;
 @Mapper
 public interface ApMemberMapper {
 	
-	List<MemberJoinVO> selectMemberList(@Param("start_row") int start_row, @Param("list_limit") int list_limit); 
+	List<MemberJoinVO> selectMemberList(@Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q); 
 	
-	int countAllMember();
+	int countAllMember(@Param("q") String q);
 	
 	MemberJoinVO selectMemberDetail(@Param("idx") int idx);
 	
+	int modifyMemberType(MemberJoinVO vo);
 
 }

@@ -5,10 +5,33 @@
 
 <mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApClassMapper">
 	
-	<select id="countAllClass">
-		select count(*) 
-		from class
+	<select id="countAllClass" resultType="int">
+		select count(*)
+		from class c
+		join member m on m.idx = c.instructor_idx
+		<where>
+			<if test="q != null and q != ''">
+				m.user_id like concat('%', #{q}, '%')
+			</if>
+		</where>
 	</select>
+
+	<select id="countAllClassByTitle" resultType="int">
+		select count(*)
+		from class c
+		join member m on m.idx = c.instructor_idx
+		<where>
+			<if test="q != null and q != ''">
+				c.class_title like concat('%', #{q}, '%')
+			</if>
+			
+			<if test="category != null and category != ''">
+				and c.class_category like concat('%', #{category}, '%')			
+			</if>
+			
+		</where>
+	</select>
+
 	
 	<select id="selectClassList">
 		select      
@@ -27,7 +50,42 @@
 			,m.user_id as instructor_id
 			from class 
 			c left join member m on c.instructor_idx = m.idx
-			order by create_date desc
+			<where>
+				<if test="q != null and q != ''">
+					m.user_id like concat('%', #{q}, '%')
+				</if>
+			</where>
+			order by c.create_date desc
+			limit #{start_row}, #{list_limit}
+	</select>
+	
+	<select id="selectClassListByTitle">
+		select      
+			c.class_idx          
+			,c.instructor_idx     
+			,c.class_title          
+			,c.create_date       
+			,c.class_thumbnail 
+			,c.class_intro    
+			,c.class_price        
+			,c.class_category     
+			,c.class_level      
+			,c.total_lessons
+			,c.url
+			,c.accept_status
+			,m.user_id as instructor_id
+			from class 
+			c left join member m on c.instructor_idx = m.idx
+			<where>
+				<if test="q != null and q != ''">
+					c.class_title like concat('%', #{q}, '%')
+				</if>
+				
+				<if test="category != null and category != ''">
+					and c.class_category like concat('%', #{category}, '%')			
+				</if>
+			</where>
+			order by c.create_date desc
 			limit #{start_row}, #{list_limit}
 	</select>
 	

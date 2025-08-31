@@ -6,12 +6,23 @@
 <mapper namespace="com.itwillbs.luna_code.mapper.admin_page.ApMemberMapper">
 	
 	<select id="countAllMember">
-		select count(*) from member;
+		select count(*) from member
+		<where>
+			<if test="q != null and q != ''">
+				user_id like concat('%', #{q}, '%')
+			</if>
+		</where>
 	</select>
 	
 	<select id="selectMemberList">
 		select * 
 		from member
+		
+		<where>
+			<if test="q != null and q != ''">
+				user_id like concat('%', #{q}, '%')
+			</if>
+		</where>
 		limit #{start_row}, #{list_limit}
 	</select>
 	
@@ -38,6 +49,12 @@
 		from member 
 		where idx = #{idx}
 	</select>
+	
+	<update id="modifyMemberType">
+		update member
+		set member_type = #{member_type}
+		where idx = #{idx}
+	</update>
 	
 	
 

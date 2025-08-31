@@ -15,13 +15,13 @@ public class ApCommonCodeService {
 	ApCommonCodeMapper mapper;
 	
 	/* 공통 코드 전체 개수 가져오는 쿼리 */
-	public int countAllCommonCode() {
-		return mapper.countAllCommonCode();
+	public int countAllCommonCode(String q) {
+		return mapper.countAllCommonCode(q);
 	}
 	
 	/* 공통 코드 리스트 가져오는 쿼리 */
-	public List<CommonCodeVO> selectCommonCodeList(int start_row, int list_limit){
-		return mapper.selectCommonCodeList(start_row, list_limit);
+	public List<CommonCodeVO> selectCommonCodeList(int start_row, int list_limit, String q){
+		return mapper.selectCommonCodeList(start_row, list_limit, q);
 	}
 	
 	public CommonCodeVO selectCommonCodeDetail(int common_idx) {

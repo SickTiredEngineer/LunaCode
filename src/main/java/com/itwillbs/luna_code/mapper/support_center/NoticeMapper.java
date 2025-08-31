@@ -10,9 +10,9 @@ import com.itwillbs.luna_code.vo.support_center.NoticeVO;
 @Mapper
 public interface NoticeMapper {
 	
-	List<NoticeVO> selectNotice(@Param("start_row") int start_row, @Param("list_limit") int list_limit);
+	List<NoticeVO> selectNotice(@Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q);
 	
-	int countAllNotice();
+	int countAllNotice(@Param("q") String q);
 	
 	NoticeVO selectNoticeDetail(@Param("notice_idx") int notice_idx);
 	

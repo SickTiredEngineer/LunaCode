@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 
 <html>
@@ -18,7 +18,7 @@
 	
 	
 	<body>
-	
+
 		<div class="page-base container">
 			
 			<!-- 자기 자신 -->
@@ -42,11 +42,18 @@
 					<div class="d-flex">
 						<h2 class="main-text" style="width: 100%;">커뮤니티</h2>
 					</div>
+								
+								
+					<!-- 검색 정보 -->
+					<c:set var="qParam" value=""/>
+					<c:if test="${not empty q}">
+						<c:set var="qParam" value="&amp;q=${fn:escapeXml(q)}"/>
+					</c:if>			
 										
-					<div class="d-flex flex-row justify-content-center search-form-layout search-form-size">
-						<input type="text" class="search-form-input" maxlength="10">
-						<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
-					</div>
+					<form action="Community" class="d-flex flex-row justify-content-center search-form-layout search-form-size">
+						<input type="text" name="q" class="search-form-input" maxlength="10" placeholder="게시글 제목 검색" value="${q}">
+						<input type="image" type="submit" src="${pageContext.request.contextPath}/resources/icons/icon_search.png" class="search-icon">
+					</form>
 						
 					
 					<div class="d-flex flex-column justify-content-between">
@@ -114,20 +121,20 @@
 						
 						<div class="d-flex flex-row justify-content-center page-selector-layout">
 						
-							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
+							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum-1}${qParam}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 							
 							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
 								<c:choose>
 									<c:when test="${i eq pageVo.pageNum }">
-										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}${qParam}'" disabled="disabled"><strong>${i}</strong></button>
 									</c:when>
 									<c:otherwise>
-										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}'">${i}</button>
+										<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${i}${qParam}'">${i}</button>
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
 							
-							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum+1}'" 
+							<button type="button" class="page-selector" onclick="location.href='Community?pageNum=${pageVo.pageNum+1}${qParam}'" 
 							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 					
 						</div>

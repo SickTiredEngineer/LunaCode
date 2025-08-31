@@ -12,11 +12,15 @@ import com.itwillbs.luna_code.vo.ClassVo;
 public interface ApClassMapper {
 
 	/* 전체 강의 갯수 들고오는 쿼리 */
-	int countAllClass();
+	int countAllClass(@Param("q") String q);
+	
+	int countAllClassByTitle(@Param("q") String q, @Param("category") String category);
 	
 	/* 강의 리스트를 불러오는 쿼리 */
-	List<ClassVo> selectClassList(@Param("start_row") int start_row, @Param("list_limit") int list_limit);
-
+	List<ClassVo> selectClassList(@Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q);
+	
+	List<ClassVo> selectClassListByTitle(@Param("start_row") int start_row, @Param("list_limit") int list_limit, @Param("q") String q, @Param("category") String category);
+	
 	/* 강의 상세 내용을 불러오는 쿼리 */
 	ClassVo selectClassDetail(int class_idx);
 	

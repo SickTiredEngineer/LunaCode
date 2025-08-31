@@ -14,12 +14,12 @@ public class NoticeService {
 	@Autowired
 	NoticeMapper mapper;
 	
-	public List<NoticeVO> selectNotice(int start_row, int list_limit) {
-		return mapper.selectNotice(start_row, list_limit);
+	public List<NoticeVO> selectNotice(int start_row, int list_limit, String q) {
+		return mapper.selectNotice(start_row, list_limit, q);
 	}
 	
-	public int countAllNotice() {
-		return mapper.countAllNotice();
+	public int countAllNotice(String q) {
+		return mapper.countAllNotice(q);
 	}
 	
 	public NoticeVO selectNoticeDetail(int notice_idx) {

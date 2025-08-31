@@ -25,13 +25,18 @@ public class FaqController {
 	
 	/* FAQ 리스트 페이징 후 가져와 출력 */
 	@GetMapping("FAQList")
-	public String faqList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String faqList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false)String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllFaq);
-		List<FaqVO> faqList = service.selectFaq(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->service.countAllFaq(keyword));
+		List<FaqVO> faqList = service.selectFaq(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 		
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("faqList", faqList);
+		model.addAttribute("q", keyword);
 		
 		return "support_center/faq_list";
 	}

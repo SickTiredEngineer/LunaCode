@@ -16,6 +16,12 @@
 			,update_date
 			,view_count
 		from notice
+		<where>
+	    <if test="q != null and q != ''">
+	    	notice_subject like concat('%', #{q}, '%') or
+	    	notice_content like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 		order by notice_date desc, notice_idx desc 
 		limit #{start_row}, #{list_limit}
 	</select>
@@ -23,6 +29,12 @@
 	<select id="countAllNotice">
 		select count(*) 
 		from notice
+		<where>
+	    <if test="q != null and q != ''">
+	    	notice_subject like concat('%', #{q}, '%') or
+	    	notice_content like concat('%', #{q}, '%')
+	    </if>
+	  </where>
 	</select>
 	
 	<select id="selectNoticeDetail">

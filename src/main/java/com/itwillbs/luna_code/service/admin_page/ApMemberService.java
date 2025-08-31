@@ -2,7 +2,6 @@ package com.itwillbs.luna_code.service.admin_page;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,17 +14,20 @@ public class ApMemberService {
 	@Autowired
 	ApMemberMapper mapper;
 	
-	public List<MemberJoinVO> selectMemberList(int start_row, int list_limit){
-		return mapper.selectMemberList(start_row, list_limit);
+	public List<MemberJoinVO> selectMemberList(int start_row, int list_limit, String q){
+		return mapper.selectMemberList(start_row, list_limit, q);
 	}
 	
-	public int countAllMember() {
-		return mapper.countAllMember();
+	public int countAllMember(String q) {
+		return mapper.countAllMember(q);
 	}
 
 	public MemberJoinVO selectMemberDetail(int idx) {
 		return mapper.selectMemberDetail(idx);
 	}
 	
+	public int modifyMemberType(MemberJoinVO vo) {
+		return mapper.modifyMemberType(vo);
+	}
 
 }

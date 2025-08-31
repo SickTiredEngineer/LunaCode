@@ -24,14 +24,18 @@ public class ApSupportController {
 	ApSupportService service;
 	
 	@GetMapping("ApPersonalSupportList")
-	public String apPersonalSupportList(Model model, @RequestParam(defaultValue = "1") int pageNum) {
+	public String apPersonalSupportList(Model model
+			,@RequestParam(defaultValue = "1") int pageNum
+			,@RequestParam(name = "q", required = false) String q) {
 		
-		PageVO pageVo = PagingHandler.pageHandler(pageNum, service::countAllQuery);			
-		List<CustomerQueryVO> queryList = service.selectQueryList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+		String keyword = (q != null && !q.trim().isEmpty())? q.trim():null;
+		PageVO pageVo = PagingHandler.pageHandler(pageNum, () -> service.countAllQuery(keyword));			
+		List<CustomerQueryVO> queryList = service.selectQueryList(pageVo.getStartRow(), PagingHandler.LIST_LIMIT, keyword);
 
 		model.addAttribute("pageVo", pageVo);
 		model.addAttribute("queryList", queryList);
-
+		model.addAttribute("q", keyword);
+		
 		return "admin/ap_personal_support_list";
 	}
 	

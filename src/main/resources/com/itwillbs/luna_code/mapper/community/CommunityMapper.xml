@@ -20,13 +20,26 @@
 	    ,p.view_count
 	    ,(select count(*) from comment c where c.post_idx = p.post_idx) as cnt_comment
 	  from post p
+	  
+	  <where>
+	    <if test="q != null and q != ''">
+	    	p.title like concat('%', #{q}, '%')
+	    </if>
+	  </where>
+	  
 	  order by p.created_date desc, post_idx desc 
 	  limit #{start_row}, #{list_limit}
 	</select>
 	
 	<!-- 총 게시물 수 가져오는 쿼리 -->
 	<select id="countAllPost">
-		select count(*) from post
+		select count(*)
+		from post p
+		<where>
+			<if test="q != null and q != ''">
+				p.title like concat('%', #{q}, '%')
+			</if>
+		</where>
 	</select>
 
 	

@@ -14,6 +14,12 @@
 			,faq_date
 			,category
 		from faq
+		<where>
+	   		 <if test="q != null and q != ''">
+	      		faq_subject like concat('%', #{q}, '%') 
+	      		or faq_content like concat('%', #{q}, '%')
+	   		</if>
+	  	</where>
 		order by faq_date desc, faq_idx desc 
 		limit #{start_row}, #{list_limit}
 	</select>
@@ -21,6 +27,11 @@
 	<select id="countAllFaq">
 		select count(*) 
 		from faq	
+		<where>
+	   		 <if test="q != null and q != ''">
+	      		faq_subject like concat('%', #{q}, '%') 
+	   		</if>
+	  	</where>
 	</select>
 	
 	<select id="selectFaqDetail">
