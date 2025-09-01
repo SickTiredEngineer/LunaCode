@@ -17,9 +17,12 @@ $(function(){
 		const avatar = document.createElement('div');
 		avatar.className = 'avatar';
 
-		if(role==='user') avatar.textContent = window.me.nickname;
-		else avatar.textContent = '루나챗봇'
-    
+		if (role === 'user') {
+		  avatar.textContent = (window.me?.nickname || window.me?.userId || 'Guest');
+		} else {
+		  avatar.textContent = '루나챗봇';
+		}
+
 		const body = document.createElement('div');
 		const bubble = document.createElement('div');
 		bubble.className = 'bubble';
