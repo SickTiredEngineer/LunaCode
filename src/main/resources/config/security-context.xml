@@ -25,19 +25,19 @@
     <intercept-url pattern="/AccessDenied" access="permitAll"/>
     
 	<!-- 로그인 관련 -->
-    <intercept-url pattern="/MemberLogin" access="permitAll"/>
-	<intercept-url pattern="/MemberLoginTemp" access="permitAll"/>	
-    <intercept-url pattern="/MemberLoginForm" method="POST" access="permitAll"/>
-    <intercept-url pattern="/MemberLogout" access="permitAll"/>
-    <intercept-url pattern="/FindAccount" access="permitAll"/>
-    <intercept-url pattern="/ResultAccount" method="POST" access="permitAll"/>
-    <intercept-url pattern="/PassFindAccount" method="POST" access="permitAll"/>
+    <intercept-url pattern="/MemberLogin" access="isAnonymous()"/>
+	<intercept-url pattern="/MemberLoginTemp" access="isAnonymous()"/>	
+    <intercept-url pattern="/MemberLoginForm" method="POST" access="isAnonymous()"/>
+    <intercept-url pattern="/MemberLogout" access="isAnonymous()"/>
+    <intercept-url pattern="/FindAccount" access="isAnonymous()"/>
+    <intercept-url pattern="/ResultAccount" method="POST" access="isAnonymous()"/>
+    <intercept-url pattern="/PassFindAccount" method="POST" access="isAnonymous()"/>
     
 	<!-- 회원가입  -->
-    <intercept-url pattern="/MemberChoice" access="permitAll"/>
-    <intercept-url pattern="/TermsOfMembership" access="permitAll"/>
-    <intercept-url pattern="/JoinForm" method="GET" access="permitAll"/>
-    <intercept-url pattern="/JoinForm" method="POST" access="permitAll"/>
+    <intercept-url pattern="/MemberChoice" access="isAnonymous()"/>
+    <intercept-url pattern="/TermsOfMembership" access="isAnonymous()"/>
+    <intercept-url pattern="/JoinForm" method="GET" access="isAnonymous()"/>
+    <intercept-url pattern="/JoinForm" method="POST" access="isAnonymous()"/>
 	
 	<!-- 정책 사이트 -->
 	<intercept-url pattern="/RefundPolicy" method="GET" access="permitAll"/>

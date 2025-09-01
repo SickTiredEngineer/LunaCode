@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+.chat-page{max-width:1500px; margin:0 auto; justify-content:center;
+padding:4px 4px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:12px;}
+
+.chat-dot{width:10px; height:10px; border-radius:50%; background:var(--brand);}
+.chat-title{font-weight:700; letter-spacing:.2px; color:#5B76B2}
+.chat-sub{font-size:.85rem; color:#667085}
+
+
+/* Message list */
+.chat-scroll{flex:1; overflow:auto; padding:18px; scroll-behavior:smooth; width: 1000px; 
+overflow-y: auto;
+scrollbar-gutter: stable both-edges;
+}
+.msg{max-width:72%; margin-bottom:14px; display:flex; gap:10px;}
+.msg.me{margin-left:auto; flex-direction:row-reverse;}
+.bubble{
+padding:10px 12px; border-radius:14px; line-height:1.45; white-space:pre-wrap; word-break:break-word;
+width: 100%;
+border:1px solid var(--line);
+}
+.msg.bot .bubble{ background:#F3F6FD; border-color:#E2E8F8; }
+.msg.me .bubble{ background:#EAF0FF; border-color:#C9D7FF; }
+.avatar{width:150px; height:32px; border-radius:10px; background:#EAF0FF; display:flex; align-items:center; justify-content:center; font-weight:800; color:#4B66A6;}
+
+
+.timestamp{font-size:.75rem; color:#8B97A8; margin-top:4px}
+
+
+/* Composer */
+.chat-composer{border-top:1px solid var(--line); padding:12px; background:#fff;}
+.composer-box{display:flex; gap:10px;}
+.composer-input{
+background:var(--color-sub);
+resize:none; min-height:44px; max-height:140px; padding:12px 14px; border:1px solid var(--line);
+border-radius:12px; flex:1; outline:none; transition:border .15s ease;
+box-shadow:inset 0 1px 0 rgba(0,0,0,.02);
+}
+.composer-input:focus{border-color:var(--brand)}
+.send-btn{min-width:96px; border-radius:12px; border:1px solid var(--color-main) !important; background:var(--brand); color:#fff; font-weight:700}
+.send-btn:disabled{opacity:.6}
+
+
+/* Utility row */
+.util-row{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:6px 2px 0}
+.util-left{display:flex; align-items:center; gap:8px}
+.chip{font-size:.8rem; border:1px dashed #c9d2ea; padding:4px 8px; border-radius:10px; color:#5d6b8a}
+
+
+/* Loading dots */
+.typing{display:inline-flex; gap:4px; align-items:center}
+.typing span{width:6px; height:6px; background:#9DB0E6; border-radius:50%; display:inline-block; animation:blink 1.2s infinite ease-in-out}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,80%,100%{opacity:.2} 40%{opacity:1}}
+
+
+@media (max-width: 768px){
+.chat-card{height:72vh}
+.msg{max-width:86%}
+.send-btn{min-width:64px}
+}
