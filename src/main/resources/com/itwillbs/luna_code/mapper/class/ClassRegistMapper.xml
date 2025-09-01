@@ -49,10 +49,25 @@
 	</select>
 	
     <!--  강의 조회 -->
-    <select id="selectClassById" parameterType="int" resultType="int">
-        SELECT class_id
-        FROM class
-        WHERE class_id = #{classId}
+    <select id="selectClassByIdx">
+        select      
+			c.class_idx          
+			,c.instructor_idx     
+			,c.class_title          
+			,c.create_date       
+			,c.class_thumbnail 
+			,c.class_intro    
+			,c.class_price        
+			,c.class_category     
+			,c.class_level      
+			,c.total_lessons
+			,c.url
+			,c.accept_status
+			,c.deny_reason
+			,m.user_id as instructor_id
+			from class 
+			c left join member m on c.instructor_idx = m.idx
+			where class_idx = #{class_idx}
     </select>
 
     <!-- 수강 신청 -->

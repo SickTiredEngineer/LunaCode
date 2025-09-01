@@ -52,8 +52,8 @@ public class ClassService {
         return classMapper.selectAllClasses();
     }
     
-    public int getClassById(int classId) {
-        return classMapper.selectClassById(classId);
+    public ClassVo selectClassByIdx(int class_idx) {
+        return classMapper.selectClassByIdx(class_idx);
     }
     
     public int applyCourse(String userId, int courseId) {

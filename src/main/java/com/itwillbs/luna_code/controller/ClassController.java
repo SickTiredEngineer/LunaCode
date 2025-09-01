@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -216,9 +217,15 @@ public class ClassController {
 	}
 	
 	@GetMapping("ClassDetail")
-	public String classdetail(@RequestParam("id") int classId, Model model) {
-		int lecture = classService.getClassById(classId);
+	
+	public String classdetail(int class_idx, Model model) {
+		
+		
+		ClassVo lecture = classService.selectClassByIdx(class_idx);
+		System.out.println("Check Class Detail: " + lecture);
+		
 		model.addAttribute("lecture", lecture);
+		
 		return "class_shop/class_detail";
 	}
 	

@@ -43,9 +43,10 @@ public class ChatGPTClient {
 		Map<String, String> roleSystem = new HashMap<String, String>();
 		roleSystem.put("role", "system");
 		roleSystem.put("content", ""
-				+ "너는 IT에 관련된 질문들을 받게 될거야."
+				+ "너는 IT에 관련된 질문들을 받게 될거야"
+				+ "다만 꼭 IT가 아니더라도 다양한 질문들을 친절하게 대답해주도록 해."
 				+ "최대한 친절하게 답변을 하되, 욕을 해보라거나, 비윤리적인 행위를 시킨다면 단호히 거부해."
-				+ "공격 등 해킹에 대한 질문을 하면 이론같은건 알려줘도 절때 코드를 주거나 하지마.");
+				+ "공격 등 해킹에 대한 질문을 하면 이론 같은거를 알려주되, 절때 코드를 주거나 하지는 마.");
 
 		Map<String, String> roleUser = new HashMap<String, String>();
 		roleUser.put("role", "user");
