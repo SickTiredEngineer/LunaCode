@@ -4,56 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const bsModal = new bootstrap.Modal(modalEl);
     const contextPath = window.location.pathname.split('/')[1] ? '/' + window.location.pathname.split('/')[1] : '';
+    let triggerButton = null; // 모달 열었던 버튼 저장용
 
-    // 강의 상세보기 버튼 클릭 시 모달 표시 및 정보 로드
     document.querySelectorAll('.btn-outline-secondary').forEach(button => {
         button.addEventListener('click', e => {
             e.preventDefault();
+            triggerButton = button;
             bsModal.show();
 
             const classId = button.dataset.classId;
-            
-            // AJAX로 강의 정보 가져오기
-            fetch(`${contextPath}/ClassDetail?id=${classId}`)
-                .then(res => res.text())
-                .then(html => {
-                    // 임시 div에 삽입 후 필요한 정보 추출
-                    const tempDiv = document.createElement('div');
-                    tempDiv.innerHTML = html;
 
-                    const lecture = {
-                        title: tempDiv.querySelector('.modal-title')?.textContent || '',
-                        price: tempDiv.querySelector('#modalPrice')?.textContent || '',
-                        thumbnail: tempDiv.querySelector('img.img-fluid')?.src || '',
-                        teacherIntro: tempDiv.querySelector('#modalTeacherIntro')?.textContent || '',
-                        review: tempDiv.querySelector('#modalReview')?.textContent || '',
-                        intro: tempDiv.querySelector('#modalIntro3')?.textContent || ''
-                    };
+            fetch(`${contextPath}/ClassDetail?class_idx=${classId}`)
+            .then(res => res.text())
+            .then(html => {
+                const modalBody = modalEl.querySelector('.modal-body');
+                if(modalBody) modalBody.innerHTML = html;
 
-                    // 모달에 데이터 채우기
-                    modalEl.querySelector('.modal-title').textContent = lecture.title;
-                    const priceEl = modalEl.querySelector('#modalPrice');
-                    if(priceEl) priceEl.textContent = lecture.price;
-                    const imgEl = modalEl.querySelector('img.img-fluid');
-                    if(imgEl) imgEl.src = lecture.thumbnail;
-                    const teacherEl = modalEl.querySelector('#modalTeacherIntro');
-                    if(teacherEl) teacherEl.textContent = lecture.teacherIntro;
-                    const reviewEl = modalEl.querySelector('#modalReview');
-                    if(reviewEl) reviewEl.textContent = lecture.review;
-                    const introEl = modalEl.querySelector('#modalIntro3');
-                    if(introEl) introEl.textContent = lecture.intro;
-
-                    // 신청 버튼에 classId 설정
-                    const applyBtn = modalEl.querySelector('#applyBtn');
-                    if (applyBtn) applyBtn.dataset.classId = classId;
-                })
-                .catch(err => {
-                    console.error('강의 상세 정보 로드 실패:', err);
-                });
+                const applyBtn = modalEl.querySelector('#applyBtn');
+                if (applyBtn) applyBtn.dataset.classId = classId;
+            })
+            .catch(err => {
+                console.error('강의 상세 정보 로드 실패:', err);
+            });
         });
     });
 
-    // 수강 신청 버튼 클릭
     const applyBtn = modalEl.querySelector('#applyBtn');
     if (applyBtn) {
         applyBtn.addEventListener('click', e => {
@@ -68,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .then(res => res.json())
             .then(data => {
-                alert(data.message); // 이미 신청했으면 "이미 신청됨" 메시지 표시
+                alert(data.message || (data.success ? '신청 완료!' : '신청 실패'));
                 if (data.success) bsModal.hide();
             })
             .catch(err => {
@@ -77,4 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    modalEl.addEventListener('hidden.bs.modal', () => {
+        if (triggerButton) {
+            triggerButton.focus();
+        }
+    });
 });

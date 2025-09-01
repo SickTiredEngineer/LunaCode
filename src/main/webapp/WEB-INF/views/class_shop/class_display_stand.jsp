@@ -62,8 +62,8 @@
                                 <p class="text-muted"><strong>${classVo.class_price}원</strong></p>
                             </div>
                             <div class="card-footer bg-white border-0">
-                                <a href="${pageContext.request.contextPath}/ClassDetail?classId=${classVo.class_idx}" 
-                                   class="btn btn-outline-secondary w-100">
+                                <a href="${pageContext.request.contextPath}/ClassDetail?class_idx=${classVo.class_idx}" 
+                                   class="btn btn-outline-secondary w-100"  id="applyBtn"> 
                                     수강신청 하러가기
                                 </a>
                             </div>

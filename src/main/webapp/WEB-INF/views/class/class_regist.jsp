@@ -143,7 +143,7 @@
 									id="type-online" style="display: none;">
 									<div class="info-row-vertical">
 										<label class="info-label-vertical">온라인 강의 URL</label> 
-										<input type="url" name="url" class="input-vertical" placeholder="강의 URL 입력" />
+										<input type="text" name="url" class="input-vertical" placeholder="강의 URL 입력" />
 									</div>
 									<div class="info-row-vertical">
 										<label class="info-label-vertical">영상 첨부</label>

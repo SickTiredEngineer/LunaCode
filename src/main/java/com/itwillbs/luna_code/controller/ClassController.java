@@ -217,17 +217,16 @@ public class ClassController {
 	}
 	
 	@GetMapping("ClassDetail")
-	
-	public String classdetail(int class_idx, Model model) {
-		
-		
-		ClassVo lecture = classService.selectClassByIdx(class_idx);
-		System.out.println("Check Class Detail: " + lecture);
-		
-		model.addAttribute("lecture", lecture);
-		
-		return "class_shop/class_detail";
+	public String classdetail(@RequestParam(value = "class_idx", required = false) Integer class_idx, Model model) {
+	    if (class_idx == null) {
+	        // 예: 에러 페이지로 리다이렉트하거나 기본값 처리
+	        return "errorPage";  // 또는 적절한 처리
+	    }
+	    ClassVo lecture = classService.selectClassByIdx(class_idx);
+	    model.addAttribute("lecture", lecture);
+	    return "class_shop/class_detail";
 	}
+
 	
 	@PostMapping("/apply")
 	@ResponseBody
