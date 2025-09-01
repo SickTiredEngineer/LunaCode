@@ -39,6 +39,14 @@
 	min-height: 300px;
 }
 
+.card-title {
+	color: #8baee7 !important;
+	font-weight: bold !important;
+}
+
+.b, strong {
+	color: #444444 !important;
+}
 
 /* ============================== */
 

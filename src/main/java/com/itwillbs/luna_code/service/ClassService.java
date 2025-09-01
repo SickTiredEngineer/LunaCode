@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.itwillbs.luna_code.mapper.ClassEpisodeMapper;
 import com.itwillbs.luna_code.mapper.ClassMapper;
 import com.itwillbs.luna_code.mapper.ClassSessionMapper;
-import com.itwillbs.luna_code.mapper.OnlineClassMapper;
 import com.itwillbs.luna_code.vo.ClassVo;
 import com.itwillbs.luna_code.vo.EpisodeVo;
 import com.itwillbs.luna_code.vo.SessionVo;

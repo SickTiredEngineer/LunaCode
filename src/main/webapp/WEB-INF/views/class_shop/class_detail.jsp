@@ -32,21 +32,10 @@
                   <h5 class="modal-title fw-bold fs-3" id="courseDetailLabel">
                     <c:out value="${lecture.name}"/>
                   </h5>
-                  <li class="mb-2"><strong>기간: </strong><c:out value="${lecture.period}"/></li>
-                  <li class="mb-2"><strong>수강료: </strong><c:out value="${lecture.cost}"/></li>
+<%--                   <li class="mb-2"><strong>기간: </strong><c:out value="${lecture.class_}"/></li> --%>
+                  <li class="mb-2"><strong>수강료: </strong><c:out value="${lecture.class_price}"/></li>
                   <li class="mb-2"><strong>강사: </strong><c:out value="${lecture.teacher}"/></li>
                 </ul>
-                
-                <!-- 로그인 사용자 정보 표출 -->
-                <sec:authorize access="isAuthenticated()">
-                  <div class="mb-2 text-end">
-                    <span class="badge bg-light text-dark">
-                      <i class="bi bi-person-check"></i>
-                      <sec:authentication property="principal.nickname"/>
-                      (<sec:authentication property="principal.username"/>)
-                    </span>
-                  </div>
-                </sec:authorize>
                 
                 <!-- 비회원 로그인 유도 안내 -->
                 <sec:authorize access="isAnonymous()">
@@ -57,7 +46,7 @@
 
                 <!-- 수강 신청 버튼: 권한에 따라 제어 -->
                 <sec:authorize access="isAuthenticated()">
-                  <button class="btn btn-primary w-100" onclick="applyCourse('${lecture.id}')">
+                  <button class="btn btn-primary w-100" onclick="applyCourse('${lecture.class_idx}')">
                     <i class="bi bi-cart3 me-2"></i> 수강 신청하기
                   </button>
                 </sec:authorize>
@@ -91,16 +80,16 @@
               
               <h4 id="modalSection1">과목 소개</h4>
               <div class="course-intro-video" style="margin : 1rem;">
-                <iframe width="100%" height="300" src="<c:out value='${lecture.sampleVideo}'/>"
+                <iframe width="100%" height="300" src="<c:out value='${lecture.url}'/>"
                   title="샘플 강의 동영상" frameborder="0" allowfullscreen></iframe>
               </div>
-              <p><c:out value="${lecture.intro1}"/></p>
-              <p><c:out value="${lecture.intro2}"/></p>
-              <p><c:out value="${lecture.intro3}"/></p>
+              <p><c:out value="${lecture.intro}"/></p>
+              <p><c:out value="${lecture.intro}"/></p>
+              <p><c:out value="${lecture.intro}"/></p>
               <h4 id="modalSection2">강사 소개</h4>
-              <p><c:out value="${lecture.teacherIntro}"/></p>
+<%--               <p><c:out value="${lecture.teacherIntro}"/></p> --%>
               <h4 id="modalSection3">수강 후기</h4>
-              <p><c:out value="${lecture.review}"/></p>
+<%--               <p><c:out value="${lecture.review}"/></p> --%>
             </div>
           </div>
         </div>

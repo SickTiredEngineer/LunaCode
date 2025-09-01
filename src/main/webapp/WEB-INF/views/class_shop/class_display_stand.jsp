@@ -58,6 +58,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">${classVo.class_title}</h5>
                                 <%-- <p class="card-text">강사: ${classVo.instructorName}</p> --%>
+                                <p class="text-muted"><strong>${classVo.class_level}</strong></p>
                                 <p class="text-muted"><strong>${classVo.class_price}원</strong></p>
                             </div>
                             <div class="card-footer bg-white border-0">
