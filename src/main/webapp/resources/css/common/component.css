@@ -91,7 +91,7 @@ textarea{
 .common-category{
 	display: block;
 	width: 150px;
-	height: 400px;
+	height: fit-content !important;
 	align-items: center;
 	border-bottom: 2px solid var(--color-main); 
 	border-top: 2px solid var(--color-main);
