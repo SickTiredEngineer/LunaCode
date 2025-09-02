@@ -30,9 +30,11 @@
                 <%-- 이미지 없으면 placeholder --%>
                 <c:choose>
                     <c:when test="${not empty lecture.class_thumbnail}">
-                        <img src="${pageContext.request.contextPath}/resources/class_thumbnail/${lecture.class_thumbnail}" 
+                        <img src="${pageContext.request.contextPath}/resources/class_thumbnails/${lecture.class_thumbnail}" 
                              alt="<c:out value='${lecture.class_title}'/>" 
-                             class="img-fluid rounded-3 shadow-sm"/>
+                             class="img-fluid rounded-3 shadow-sm"
+                             style="max-width: 600px; width: 600px; max-height: 300px; height: 300px"
+                             />
                     </c:when>
                     <c:otherwise>
                         <img src="${pageContext.request.contextPath}/resources/class_thumbnail/default_thumb.jpg"

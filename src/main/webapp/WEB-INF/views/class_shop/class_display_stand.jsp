@@ -53,8 +53,8 @@
                 <c:forEach var="classVo" items="${classes}">
                     <div class="col">
                         <div class="card h-100 text-center class-card">
-                            <img src="${pageContext.request.contextPath}/resources/class_thumbnail/${classVo.class_thumbnail}" 
-                                 class="card-img-top" />
+                            <img src="${pageContext.request.contextPath}/resources/class_thumbnails/${classVo.class_thumbnail}" 
+                                 class="card-img-top" style="max-height: 250px; height: 250px;"/>
                             <div class="card-body">
                                 <h5 class="card-title">${classVo.class_title}</h5>
                                 <%-- <p class="card-text">강사: ${classVo.instructorName}</p> --%>
