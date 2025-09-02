@@ -68,7 +68,7 @@
 			            </div>
 			        </c:when>
 			        <c:otherwise>
-			            <p>영상이 준비되지 않았습니다.</p>
+			            <p style="font-weight: bold; font-size: 30;">영상이 준비되지 않았습니다.</p>
 			        </c:otherwise>
 			    </c:choose>
 			    <div id="ClassTitle" class="lecture-caption">테스트 강의 영상</div>
@@ -103,7 +103,10 @@
 	    <button type="button" class="btn btn-outline-success" id="addAccordionBtn">메모 추가</button>
 	  </div>
 	  
-	  <div class="accordion" id="memoAccordion"></div>
+	  <div class="accordion" class="btn btn-primary" id="memoAccordion"></div>
+
+	  <!-- 메모 저장 버튼 -->
+	  <button type="submit" class="btn btn-success mt-2" id="saveMemoBtn"> 저장 </button>
 	
 	  <div class="lecture-comment-section"></div>
 	

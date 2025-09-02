@@ -1,0 +1,16 @@
+package com.itwillbs.luna_code.mapper;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Mapper;
+
+import com.itwillbs.luna_code.vo.MemoVo;
+
+@Mapper
+public interface MemoMapper {
+	
+	void insertMemo(MemoVo memo);
+    void deleteMemo(int memo_idx);
+    List<MemoVo> selectMemosByClassAndUser(int class_idx, int user_idx);
+	
+}

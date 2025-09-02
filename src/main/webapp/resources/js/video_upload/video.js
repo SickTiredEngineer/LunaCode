@@ -21,8 +21,48 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  // 서버로 메모 저장 요청
+  function saveMemo(memoId, title, content) {
+    fetch('/memo/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        memo_idx: memoId,  
+        memo_title: title,
+        memo: content
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        if (memoId === null) {
+          alert("새 메모가 저장되었습니다!");
+        } else {
+          console.log("메모 업데이트 완료");
+        }
+      } else {
+        alert("저장 실패");
+      }
+    })
+    .catch(err => console.error("저장 에러:", err));
+  }
+
+  // 서버로 메모 삭제 요청
+  function deleteMemo(memoId) {
+    fetch(`/memo/delete/${memoId}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          alert("메모가 삭제되었습니다!");
+        } else {
+          alert("삭제 실패");
+        }
+      })
+      .catch(err => console.error("삭제 에러:", err));
+  }
+
   // 새 아코디언 아이템 생성 함수
-  function createAccordionItem(count) {
+  function createAccordionItem(count, memoId = null, title = `새 메모 #${count}`, content = '') {
     const newId = `panel${count}`;
     const newHeaderId = `heading${count}`;
 
@@ -33,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
       <h2 class="accordion-header d-flex justify-content-between align-items-center" id="${newHeaderId}">
         <button class="accordion-button collapsed flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#${newId}"
           aria-expanded="false" aria-controls="${newId}">
-          <input type="text" class="form-control form-control-sm memo-title-input" placeholder="메모 제목 입력" value="새 메모 #${count}"
-            onclick="event.stopPropagation()" />
+          <input type="text" class="form-control form-control-sm memo-title-input"
+            placeholder="메모 제목 입력" value="${title}" onclick="event.stopPropagation()" />
         </button>
         <button type="button" class="btn btn-sm btn-outline-danger ms-2 delete-accordion-btn" aria-label="삭제" title="메모 삭제">
           &times;
@@ -42,21 +82,31 @@ document.addEventListener('DOMContentLoaded', () => {
       </h2>
       <div id="${newId}" class="accordion-collapse collapse" aria-labelledby="${newHeaderId}" data-bs-parent="#memoAccordion">
         <div class="accordion-body">
-          <textarea class="form-control memo-content-textarea" rows="5" placeholder="메모 내용을 입력하세요..."></textarea>
+          <textarea class="form-control memo-content-textarea" rows="5" placeholder="메모 내용을 입력하세요...">${content}</textarea>
         </div>
       </div>
     `;
 
-    // 제목 스타일
     const input = newItem.querySelector('.memo-title-input');
-    input.style.fontSize = '1.1rem';   
-    input.style.fontWeight = '700';    
-    // 삭제 버튼 이벤트 연결
+    const textarea = newItem.querySelector('.memo-content-textarea');
     const deleteBtn = newItem.querySelector('.delete-accordion-btn');
+
+    // 제목 변경 시 자동 저장
+    input.addEventListener('blur', () => {
+      saveMemo(memoId, input.value, textarea.value);
+    });
+
+    // 내용 변경 시 자동 저장
+    textarea.addEventListener('blur', () => {
+      saveMemo(memoId, input.value, textarea.value);
+    });
+
+    // 삭제 버튼 이벤트 연결
     deleteBtn.addEventListener('click', (e) => {
-      e.stopPropagation(); // 클릭 시 아코디언 토글 방지
+      e.stopPropagation();
       if (confirm('이 메모를 삭제하시겠습니까?')) {
         accordion.removeChild(newItem);
+        if (memoId) deleteMemo(memoId);
       }
     });
 
@@ -66,10 +116,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // 현재 아코디언 아이템 개수 파악 (기존 아이템이 있으면)
   accordionCount = accordion.querySelectorAll('.accordion-item').length;
 
+  // DB에서 기존 메모 불러오기
+  fetch('/memo/list')
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(memo => {
+        accordionCount++;
+        const newItem = createAccordionItem(accordionCount, memo.memoId, memo.memoTitle, memo.memoContent);
+        accordion.appendChild(newItem);
+      });
+    });
+
   // 추가하기 버튼 클릭 이벤트
   addBtn.addEventListener('click', () => {
     accordionCount++;
-    const newItem = createAccordionItem(accordionCount);
+    const newItem = createAccordionItem(accordionCount, null);
     accordion.appendChild(newItem);
   });
 });
@@ -212,8 +273,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentIndex = 0;
     let answers = {};
 
-    // ✅ 로컬스토리지에서 퀴즈 완료 여부 불러오기
-    let quizCompleted = localStorage.getItem("quizCompleted") === "true";
+//    let quizCompleted = localStorage.getItem("quizCompleted") === "true";
 
     const quizQuestion = document.getElementById("quizQuestion");
     const quizAnswerInput = document.getElementById("quizAnswer");
@@ -242,15 +302,15 @@ document.addEventListener("DOMContentLoaded", function() {
         return true;
     }
 
-    if (video) {
-        video.addEventListener("ended", function() {
-            if (quizCompleted) return; // ✅ 이미 제출했으면 실행 안 함
-            currentIndex = 0;
-            answers = {};
-            loadQuestion(currentIndex);
-            quizModal.show();
-        });
-    }
+//    if (video) {
+//        video.addEventListener("ended", function() {
+//            if (quizCompleted) return; // ✅ 이미 제출했으면 실행 안 함
+//            currentIndex = 0;
+//            answers = {};
+//            loadQuestion(currentIndex);
+//            quizModal.show();
+//        });
+//    }
 
     prevBtn.addEventListener("click", function() {
         if (currentIndex > 0) {

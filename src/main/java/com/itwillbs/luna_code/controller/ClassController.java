@@ -34,13 +34,15 @@ import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.ClassService;
 import com.itwillbs.luna_code.service.CourseRegistrationService;
 import com.itwillbs.luna_code.service.CurriculumService;
-import com.itwillbs.luna_code.service.Episode;
+import com.itwillbs.luna_code.service.EpisodeService;
+import com.itwillbs.luna_code.service.MemoService;
 import com.itwillbs.luna_code.service.OnlineClassService;
 import com.itwillbs.luna_code.service.UserService;
 import com.itwillbs.luna_code.vo.ClassEpisodeVo;
 import com.itwillbs.luna_code.vo.ClassSessionVo;
 import com.itwillbs.luna_code.vo.ClassVo;
 import com.itwillbs.luna_code.vo.EpisodeVo;
+import com.itwillbs.luna_code.vo.MemoVo;
 import com.itwillbs.luna_code.vo.SessionVo;
 
 @Controller
@@ -62,19 +64,46 @@ public class ClassController {
     private CurriculumService curriculumService;
     
     @Autowired
+    private EpisodeService episodeService;
+    
+    @Autowired
     private ServletContext servletContext;
+    
+    @Autowired
+    private MemoService memoService;
 
     @GetMapping("/OnlineClass")
     public String onlineClass(Model model) {
-    	List<Episode> episodeList = List.of(
-                new Episode("영상1 제목", "video1.mp4"),
-                new Episode("영상2 제목", "video2.mp4")
-            );
-
-            model.addAttribute("episodeList", episodeList);
+        List<EpisodeVo> episodeList = episodeService.selectEpisodeList();
+        model.addAttribute("episodeList", episodeList);
         return "class/online_class";
     }
     
+    // 메모 페이지
+    @GetMapping("/memo")
+    public String memo() {
+        return "class/memo";
+    }
+
+    // 메모 저장
+    @PostMapping("/memo/save")
+    @ResponseBody
+    public Map<String, Object> saveMemo(@RequestBody List<MemoVo> memos, Principal principal) {
+        Map<String, Object> result = new HashMap<>();
+        try {
+        	int userId = Integer.parseInt(principal.getName()); 
+            for (MemoVo memo : memos) {
+                memo.setUser_idx(userId);
+                memoService.addMemo(memo);
+            }
+            result.put("success", true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            result.put("success", false);
+            result.put("msg", "메모 저장 실패");
+        }
+        return result;
+    }
 
 	@GetMapping("ClassRegist")
 	public String classregist() {

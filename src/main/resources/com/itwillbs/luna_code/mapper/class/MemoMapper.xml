@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<!-- 인터페이스 경로 -->	
+<mapper namespace="com.itwillbs.luna_code.mapper.MemoMapper">
+	
+	<insert id="insertMemo">
+        INSERT INTO class_memo (user_idx, class_idx, episode_idx, memo)
+        VALUES (#{user_idx}, #{class_idx}, #{episode_idx}, #{memo})
+    </insert>
+
+    <delete id="deleteMemo">
+        DELETE FROM class_memo WHERE memo_idx = #{memo_idx}
+    </delete>
+
+    <select id="selectMemosByClassAndUser">
+        SELECT * FROM memo
+        WHERE class_idx = #{value} AND user_idx = #{value}
+        ORDER BY memo_idx DESC
+    
+    </select>
+</mapper>

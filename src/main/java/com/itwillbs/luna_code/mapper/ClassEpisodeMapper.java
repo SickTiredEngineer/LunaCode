@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.itwillbs.luna_code.vo.ClassEpisodeVo;
+import com.itwillbs.luna_code.vo.EpisodeVo;
 
 @Mapper
 public interface ClassEpisodeMapper {
@@ -28,6 +29,8 @@ public interface ClassEpisodeMapper {
 	ClassEpisodeVo selectEpisodeById(int episodeId);
 
 	int updateEpisodeDetail(ClassEpisodeVo episodeVo);
+
+	List<EpisodeVo> selectEpisodeList();
 
 	
 
