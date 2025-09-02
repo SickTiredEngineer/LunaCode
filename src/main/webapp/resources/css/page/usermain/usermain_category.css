@@ -19,5 +19,5 @@
 }
 
 .common-category {
-	height: 250px;
+	height: fill content !important;
 }
