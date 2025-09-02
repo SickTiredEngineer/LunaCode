@@ -219,8 +219,7 @@ public class ClassController {
 	@GetMapping("ClassDetail")
 	public String classdetail(@RequestParam(value = "class_idx", required = false) Integer class_idx, Model model) {
 	    if (class_idx == null) {
-	        // 예: 에러 페이지로 리다이렉트하거나 기본값 처리
-	        return "errorPage";  // 또는 적절한 처리
+	        return "errorPage";
 	    }
 	    ClassVo lecture = classService.selectClassByIdx(class_idx);
 	    model.addAttribute("lecture", lecture);
@@ -229,29 +228,16 @@ public class ClassController {
 
 	
 	@PostMapping("/apply")
-	@ResponseBody
-	public ResponseEntity<Map<String, Object>> applyCourse(@RequestBody Map<String, Object> params, Principal principal) {
-		Map<String, Object> res = new HashMap<>();
-	        try {
-	            String userId = principal.getName();
-	            int courseId = (Integer) params.get("courseId");
+	public String applyCourse(Principal principal, @RequestParam int class_idx) {
+	    CustomUserDetails userDetails = (CustomUserDetails)((Authentication)principal).getPrincipal();
 
-	            classService.applyCourse(userId, courseId);
+	    int userIdx = userDetails.getIdx(); 
+	    classService.applyCourse(userIdx, class_idx);
 
-	            res.put("success", true);
-	        } catch (Exception e) {
-	            res.put("success", false);
-	            res.put("message", e.getMessage());
-	        }
-	        return ResponseEntity.ok(res);
-	    }
-	
-	@PostMapping("/cart_add")
-	@ResponseBody
-	public String addToCart(@RequestParam int userIdx, @RequestParam int classIdx) {
-	    int result = classService.addToCart(userIdx, classIdx);
-	    return (result > 0) ? "장바구니에 담겼습니다!" : "이미 담겨있거나 실패했습니다.";
+	    return "redirect:/Cart"; 
 	}
+
+
 
 	
 }

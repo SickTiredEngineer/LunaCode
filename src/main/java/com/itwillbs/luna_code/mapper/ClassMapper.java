@@ -19,9 +19,8 @@ public interface ClassMapper {
     int deleteClass(int classId);
 	List<ClassVo> selectAllClasses();
 	ClassVo selectClassByIdx(@Param("class_idx")int class_idx);
-	int applyCourse(String userId, int courseId);
+	int applyCourse(@Param("user_idx") int user_idx, @Param("class_idx") int class_idx);
 	// 장바구니 담기
-	int addToCart(int userIdx, int classIdx);
 	int checkCartDuplicate(int userIdx, int classIdx);
 
 

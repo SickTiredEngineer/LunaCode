@@ -72,13 +72,8 @@
 
     <!-- 수강 신청 -->
     <insert id="applyCourse">
-        INSERT INTO class_enrollment (user_id, class_id)
-        VALUES (#{userId}, #{courseId})
-    </insert>
-	
-	<insert id="addToCart">
     	INSERT INTO cart (user_idx, class_idx)
-    	VALUES (#{userIdx}, #{classIdx})
+    	VALUES (#{user_idx}, #{class_idx})
 	</insert>
 	
 	<!-- 장바구니 중복 확인 -->

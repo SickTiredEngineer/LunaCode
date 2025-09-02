@@ -63,7 +63,7 @@
                             </div>
                             <div class="card-footer bg-white border-0">
                                 <a href="${pageContext.request.contextPath}/ClassDetail?class_idx=${classVo.class_idx}" 
-                                   class="btn btn-outline-secondary w-100"  id="applyBtn"> 
+                                   class="btn btn-outline-secondary w-100" id="applyBtn"> 
                                     수강신청 하러가기
                                 </a>
                             </div>
@@ -92,8 +92,6 @@
 		
 			</div>
 
-            <!-- 모달 (수정 시 필요에 따라 활성화) -->
-            <jsp:include page="/WEB-INF/views/class_shop/class_detail.jsp"/>
         </article>
 
         <!-- 푸터 -->
