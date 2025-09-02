@@ -11,7 +11,7 @@ public class OnlineClassService {
     @Autowired
     private OnlineClassMapper onlineclassmapper;
     
-    public String getUrlByClassId(int classId) {
+    public String getUrlByClassId(Integer classId) {
         return onlineclassmapper.selectUrlByClassId(classId);
     }
 

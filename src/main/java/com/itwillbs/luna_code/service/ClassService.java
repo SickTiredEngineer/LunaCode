@@ -58,6 +58,8 @@ public class ClassService {
     public void applyCourse(int user_idx, int class_idx) {
         classMapper.applyCourse(user_idx, class_idx); 
     }
+    
+    
 
     
 

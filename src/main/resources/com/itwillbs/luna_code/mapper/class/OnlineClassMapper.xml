@@ -8,7 +8,7 @@
     <select id="selectUrlByClassId" resultType="String" parameterType="int">
         SELECT url 
         FROM class 
-        WHERE class_idx = #{classId}
+        WHERE class_idx = #{value}
     </select>
     
     <select id="selectClassesByUserId" resultType="com.itwillbs.luna_code.vo.ClassVo" parameterType="int">

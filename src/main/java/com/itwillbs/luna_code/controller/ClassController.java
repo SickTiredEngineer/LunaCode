@@ -34,6 +34,7 @@ import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.ClassService;
 import com.itwillbs.luna_code.service.CourseRegistrationService;
 import com.itwillbs.luna_code.service.CurriculumService;
+import com.itwillbs.luna_code.service.Episode;
 import com.itwillbs.luna_code.service.OnlineClassService;
 import com.itwillbs.luna_code.service.UserService;
 import com.itwillbs.luna_code.vo.ClassEpisodeVo;
@@ -62,47 +63,18 @@ public class ClassController {
     
     @Autowired
     private ServletContext servletContext;
-    
+
     @GetMapping("/OnlineClass")
-    public String onlineClass(@RequestParam int classId,
-                              @RequestParam(required = false, defaultValue = "0") int episodeId,
-                              @AuthenticationPrincipal CustomUserDetails userDetails,
-                              Model model) {
+    public String onlineClass(Model model) {
+    	List<Episode> episodeList = List.of(
+                new Episode("영상1 제목", "video1.mp4"),
+                new Episode("영상2 제목", "video2.mp4")
+            );
 
-        // 로그인한 사용자 정보
-        Integer idx = (userDetails != null) ? userDetails.getIdx() : null;
-        int userIdx = (idx != null) ? idx : 0; 
-
-        // 클래스 URL 가져오기
-        String url = onlineclassservice.getUrlByClassId(classId);
-        model.addAttribute("url", url);
-
-        // 클래스 세션 & 에피소드 조회
-        List<SessionVo> sessions = classService.getSessionsByClassId(classId);
-        List<EpisodeVo> allEpisodes = new ArrayList<>();
-        for (SessionVo session : sessions) {
-            allEpisodes.addAll(classService.getEpisodesBySessionId(session.getSession_idx()));
-        }
-        model.addAttribute("episodeList", allEpisodes);
-
-        
-        EpisodeVo selectedEpisode;
-        if (!allEpisodes.isEmpty()) {
-            if (episodeId >= 0 && episodeId < allEpisodes.size()) {
-                selectedEpisode = allEpisodes.get(episodeId);
-            } else {
-                selectedEpisode = allEpisodes.get(0);
-            }
-            model.addAttribute("firstVideoPath", selectedEpisode.getEpisode_video_path());
-            model.addAttribute("firstEpisodeName", selectedEpisode.getEpisode_name());
-        } else {
-            model.addAttribute("firstVideoPath", "");
-            model.addAttribute("firstEpisodeName", "영상이 없습니다.");
-        }
-
+            model.addAttribute("episodeList", episodeList);
         return "class/online_class";
     }
-
+    
 
 	@GetMapping("ClassRegist")
 	public String classregist() {

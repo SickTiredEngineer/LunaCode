@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 
 <head>
@@ -54,47 +55,46 @@
 <!-- 		  </div> -->
 <!-- 		</div> -->
 
-		<c:set var="url" value="https://www.youtube.com/embed/Tt_tKhhhJqY?rel=0" />
-		<div class="video-wrapper" style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; width: 100%;">
-		    <c:choose>
-		        <c:when test="${not empty url}">
-		            <div style="position: relative; width: 100%; padding-bottom: 45%;">
-		                <iframe id="ClassVideo" src="${url}" title="강의 영상" frameborder="0" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe>
-		            </div>
-		        </c:when>
-		        <c:otherwise>
-		            <p>영상이 준비되지 않았습니다.</p>
-		        </c:otherwise>
-		    </c:choose>
-		    <div id="ClassTitle" class="lecture-caption">테스트 강의 영상</div>
-		</div>
+			<c:set var="videoUrl" value="${url}" />
+			<c:set var="embedUrl" value="${fn:replace(videoUrl, 'watch?v=', 'embed/')}" />
+			
+			<div class="video-wrapper" style="display: flex; justify-content: center; align-items: center; flex-direction: column; text-align: center; width: 100%;">
+			    <c:choose>
+			        <c:when test="${not empty videoUrl}">
+			            <div style="position: relative; width: 100%; padding-bottom: 45%;">
+			                <iframe id="ClassVideo" src="${embedUrl}" title="강의 영상" frameborder="0" allowfullscreen
+			                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+			                </iframe>
+			            </div>
+			        </c:when>
+			        <c:otherwise>
+			            <p>영상이 준비되지 않았습니다.</p>
+			        </c:otherwise>
+			    </c:choose>
+			    <div id="ClassTitle" class="lecture-caption">테스트 강의 영상</div>
+			</div>
+
 		
 
 	  <!-- 강의 리스트 (썸네일+강의명) -->
-	  <div class="video-player">
-    <iframe id="videoFrame" width="800" height="450"
-        src="${firstVideoPath}?rel=0" frameborder="0" allowfullscreen></iframe>
-    <h3 id="videoTitle">${firstEpisodeName}</h3>	
-</div>
+		<div class="video-toc">
+		    <ul>
+		        <c:forEach var="episode" items="${episodeList}">
+		            <li>
+		                <a href="javascript:void(0);" onclick="playVideo('${episode.episode_video_path}', '${episode.episode_name}')">
+		                    ▶ ${episode.episode_name}
+		                </a>
+		            </li>
+		        </c:forEach>
+		    </ul>
+		</div>
 
-<div class="video-toc">
-    <ul>
-        <c:forEach var="episode" items="${episodeList}">
-            <li>
-                <a href="javascript:void(0);" onclick="playVideo('${episode.episode_video_path}', '${episode.episode_name}')">
-                    ▶ ${episode.episode_name}
-                </a>
-            </li>
-        </c:forEach>
-    </ul>
-</div>
-
-<script>
-function playVideo(videoPath, videoName) {
-    document.getElementById("videoFrame").src = videoPath + "?rel=0";
-    document.getElementById("videoTitle").innerText = videoName;
-}
-</script>
+		<script>
+		function playVideo(videoPath, videoName) {
+		    document.getElementById("videoFrame").src = videoPath + "?rel=0";
+		    document.getElementById("videoTitle").innerText = videoName;
+		}
+		</script>
 
 	  
 	 </div>
