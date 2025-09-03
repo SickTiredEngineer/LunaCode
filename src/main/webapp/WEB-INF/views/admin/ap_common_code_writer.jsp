@@ -72,7 +72,7 @@
 										
 
 										<!-- 정보 폼 -->								
-										<form  action="${formAction}" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
+										<form  action="${formAction}" id="codeForm" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
 											
 											<c:if test="${isModify}">
 												<input type="hidden" name="common_idx" value="${vo.common_idx}">
@@ -82,14 +82,14 @@
 										
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">공통 코드: </p>	
-												<input type="text" name="code" class="common-input-form form-size" value="${code}">
+												<input type="text" name="code" placeholder="공통 코드" class="common-input-form form-size" value="${code}">
 											</div>
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
-												<p class="info-text">코드 값 :</p>
-												<input type="text" name="code_label" class="common-input-form form-size" value=" ${codeLabel}">
+												<p class="info-text">코드 값(라벨) :</p>
+												<input type="text" placeholder="코드값(라벨)" name="code_label" class="common-input-form form-size" value=" ${codeLabel}">
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -111,7 +111,7 @@
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">코드 설명 : </p>
-												<input name="code_desc" type="text" class="common-input-form form-desc-size" value="${codeDesc}">
+												<input name="code_desc" placeholder="코드 설명" type="text" class="common-input-form form-desc-size" value="${codeDesc}">
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -157,6 +157,31 @@
 			</footer>
 		
 		</div>
+	
+		<script type="text/javascript">
+			/* 빈칸 검사 */
+			$("#codeForm").on("submit", function(e){
+				e.preventDefault();
+				
+				let ok = true;
+				
+				$(this).find("input[type=text], textarea").each(function(){
+				
+			    	if(!$(this).val().trim()){
+						alert($(this).attr("placeholder") + "을(를) 입력해주세요");
+						$(this).focus();
+						ok = false;
+						return false; 
+					}
+				});
+			
+				if(ok) {
+					this.submit();
+				}
+			});
+		
+		</script>
+	
 	
 	</body>
 	

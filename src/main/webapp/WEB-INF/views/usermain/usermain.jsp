@@ -26,10 +26,10 @@
 						<div class="class-box">
 							<a href="ClassDisplayStand" class="positive-button">강의 상점</a>
 						</div>
-						<div class="search-box">
+						<form action="ClassDisplayStand" name="q" class="search-box">
 							<span class="search-icon">▼</span>
 							<input type="text" placeholder="검색어를 입력하세요">
-						</div>
+						</form>
 					</div>
 					<div class="tag-list">
 						<span class="tag">#JAVA</span>

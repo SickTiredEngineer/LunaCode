@@ -1,3 +1,4 @@
+
 @charset "UTF-8";
 
 /* ================================== */
@@ -161,16 +162,33 @@ textarea{
 }
 
 .page-selector{
-	
-	border: 1px solid var(--color-main);
-	border-radius: 10px;
-	
+	border: none;
+	background-color: #fff;
 	font-weight: bold;
 	font-family: var(--font-main);	
-	text-decoration: none;
 	width: 30px;
-	margin: 0px 2px;	
+	margin: 0px 5px;	
 }
+
+
+.page-selector:disabled{
+	border: 1px solid var(--color-main);
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+
+.page-arrow{
+	border: 1px solid var(--color-gray);
+	border-radius: 10px;
+	background-color: #fff;
+	font-weight: bold;
+	font-family: var(--font-main);	
+	width: 30px;
+	margin: 0px 5px;
+}
+
+
 
 /* ================================== */
 /* 강의 카테고리 */

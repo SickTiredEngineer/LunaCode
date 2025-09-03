@@ -58,7 +58,7 @@
 					
 						<jsp:include page="/WEB-INF/views/support_center/support_center_sidebar.jsp"/>
 						
-						<form action="${formAction}" method="post" class="d-flex flex-column">
+						<form action="${formAction}" id="faqForm" method="post" class="d-flex flex-column">
 						
 							<c:if test="${isModify}">
 						    	<input type="hidden" name="faq_idx" value="${faqVo.faq_idx}">
@@ -70,7 +70,7 @@
 							
 								<div class="d-flex flex-row write-layout">
 									<p class="info-text">FAQ 제목</p>
-									<input type="text" name="faq_subject" class="common-input-form form-size" value="${noticeSubject}">
+									<input type="text" placeholder="제목" name="faq_subject" class="common-input-form form-size" value="${noticeSubject}">
 								</div>
 									
 								<div class="horizontal-line"></div>
@@ -78,7 +78,7 @@
 								<div class="d-flex flex-row write-layout">
 									<p class="info-text">카테고리</p>
 									
-									<select  name="category" class="category info-text">
+									<select name="category" class="category info-text">
 										<option value="결제" ${category == '결제' ? 'selected' : ''}>결제</option>
 										<option value="환불" ${category == '환불' ? 'selected' : ''}>환불</option>
 										<option value="강의" ${category == '강의' ? 'selected' : ''}>강의</option>
@@ -94,7 +94,7 @@
 								
 								<div class="d-flex flex-row write-layout-content">
 										<p class="info-text-content">내용</p>
-										<textarea rows="10" cols="50" name="faq_content" class="common-input-form">${noticeContent}</textarea>
+										<textarea placeholder="내용" rows="10" cols="50" name="faq_content" class="common-input-form">${noticeContent}</textarea>
 								</div>
 									
 								<div class="horizontal-line"></div>
@@ -123,6 +123,30 @@
 			</footer>
 		
 		</div>
+		
+		<script type="text/javascript">
+			/* 빈칸 검사 */
+			$("#faqForm").on("submit", function(e){
+				e.preventDefault();
+				
+				let ok = true;
+				
+				$(this).find("input[type=text], textarea").each(function(){
+				
+			    	if(!$(this).val().trim()){
+						alert($(this).attr("placeholder") + "을(를) 입력해주세요");
+						$(this).focus();
+						ok = false;
+						return false; 
+					}
+				});
+			
+				if(ok) {
+					this.submit();
+				}
+			});
+		
+		</script>
 	
 	</body>
 	

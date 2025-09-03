@@ -74,7 +74,7 @@
 
             <div class="d-flex flex-row justify-content-center page-selector-layout">
 						
-				<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum-1}${qParam}${catParam}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
+				<button type="button" class="page-arrow" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum-1}${qParam}${catParam}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 				
 				<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
 					<c:choose>
@@ -87,7 +87,7 @@
 					</c:choose>
 				</c:forEach>
 				
-				<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum+1}${qParam}${catParam}'" 
+				<button type="button" class="page-arrow" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum+1}${qParam}${catParam}'" 
 				<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 		
 			</div>
