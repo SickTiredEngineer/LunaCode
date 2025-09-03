@@ -7,50 +7,26 @@ function changeVideo(url, title) {
   titleElem.innerText = title;  // 제목 변경
 }
 
-
-
 // 메모 기능
-let accordionCount = 0; // 기존 메모 없으면 0부터 시작
-
 document.addEventListener('DOMContentLoaded', () => {
+  const contextPath = '${pageContext.request.contextPath}' || '';
+  let accordionCount = 0;
   const addBtn = document.getElementById('addAccordionBtn');
   const accordion = document.getElementById('memoAccordion');
+  const saveBtn = document.getElementById('saveMemoBtn');
 
-  if (!addBtn || !accordion) {
-    console.warn('addAccordionBtn 또는 memoAccordion 요소를 찾을 수 없습니다.');
+  if (!addBtn || !accordion || !saveBtn) {
+    console.warn('필수 요소(addAccordionBtn, memoAccordion, saveMemoBtn)를 찾을 수 없습니다.');
     return;
   }
 
-  // 서버로 메모 저장 요청
-  function saveMemo(memoId, title, content) {
-    fetch('/memo/save', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        memo_idx: memoId,  
-        memo_title: title,
-        memo: content
-      })
-    })
-    .then(res => res.json())
-    .then(data => {
-      if (data.success) {
-        if (memoId === null) {
-          alert("새 메모가 저장되었습니다!");
-        } else {
-          console.log("메모 업데이트 완료");
-        }
-      } else {
-        alert("저장 실패");
-      }
-    })
-    .catch(err => console.error("저장 에러:", err));
-  }
-
-  // 서버로 메모 삭제 요청
+  // 메모 삭제 함수
   function deleteMemo(memoId) {
-    fetch(`/memo/delete/${memoId}`, { method: 'DELETE' })
-      .then(res => res.json())
+    fetch(`${contextPath}/memo/delete/${memoId}`, { method: 'DELETE' })
+      .then(res => {
+        if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
+        return res.json();
+      })
       .then(data => {
         if (data.success) {
           alert("메모가 삭제되었습니다!");
@@ -61,24 +37,19 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(err => console.error("삭제 에러:", err));
   }
 
-  // 새 아코디언 아이템 생성 함수
+  // 아코디언 아이템 생성 함수
   function createAccordionItem(count, memoId = null, title = `새 메모 #${count}`, content = '') {
     const newId = `panel${count}`;
     const newHeaderId = `heading${count}`;
-
     const newItem = document.createElement('div');
     newItem.className = 'accordion-item';
-
+    newItem.dataset.memoId = memoId || '';
     newItem.innerHTML = `
       <h2 class="accordion-header d-flex justify-content-between align-items-center" id="${newHeaderId}">
-        <button class="accordion-button collapsed flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#${newId}"
-          aria-expanded="false" aria-controls="${newId}">
-          <input type="text" class="form-control form-control-sm memo-title-input"
-            placeholder="메모 제목 입력" value="${title}" onclick="event.stopPropagation()" />
+        <button class="accordion-button collapsed flex-grow-1" type="button" data-bs-toggle="collapse" data-bs-target="#${newId}" aria-expanded="false" aria-controls="${newId}">
+          <input type="text" class="form-control form-control-sm memo-title-input" placeholder="메모 제목 입력" value="${title}" onclick="event.stopPropagation()" />
         </button>
-        <button type="button" class="btn btn-sm btn-outline-danger ms-2 delete-accordion-btn" aria-label="삭제" title="메모 삭제">
-          &times;
-        </button>
+        <button type="button" class="btn btn-sm btn-outline-danger ms-2 delete-accordion-btn" aria-label="삭제" title="메모 삭제">&times;</button>
       </h2>
       <div id="${newId}" class="accordion-collapse collapse" aria-labelledby="${newHeaderId}" data-bs-parent="#memoAccordion">
         <div class="accordion-body">
@@ -91,18 +62,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const textarea = newItem.querySelector('.memo-content-textarea');
     const deleteBtn = newItem.querySelector('.delete-accordion-btn');
 
-    // 제목 변경 시 자동 저장
-    input.addEventListener('blur', () => {
-      saveMemo(memoId, input.value, textarea.value);
-    });
+    input.addEventListener('blur', () => saveMemo(memoId, input.value, textarea.value));
+    textarea.addEventListener('blur', () => saveMemo(memoId, input.value, textarea.value));
 
-    // 내용 변경 시 자동 저장
-    textarea.addEventListener('blur', () => {
-      saveMemo(memoId, input.value, textarea.value);
-    });
-
-    // 삭제 버튼 이벤트 연결
-    deleteBtn.addEventListener('click', (e) => {
+    deleteBtn.addEventListener('click', e => {
       e.stopPropagation();
       if (confirm('이 메모를 삭제하시겠습니까?')) {
         accordion.removeChild(newItem);
@@ -113,27 +76,74 @@ document.addEventListener('DOMContentLoaded', () => {
     return newItem;
   }
 
-  // 현재 아코디언 아이템 개수 파악 (기존 아이템이 있으면)
+  // 기존 메모 개수 파악
   accordionCount = accordion.querySelectorAll('.accordion-item').length;
 
-  // DB에서 기존 메모 불러오기
-  fetch('/memo/list')
-    .then(res => res.json())
+  // 기존 메모 불러오기
+  fetch(`${contextPath}/memo/list/${classId}`)
+    .then(res => {
+      if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
+      return res.json();
+    })
     .then(data => {
       data.forEach(memo => {
         accordionCount++;
         const newItem = createAccordionItem(accordionCount, memo.memoId, memo.memoTitle, memo.memoContent);
         accordion.appendChild(newItem);
       });
-    });
+    })
+    .catch(err => console.error('메모 불러오기 중 에러:', err));
 
-  // 추가하기 버튼 클릭 이벤트
+  // 메모 추가 버튼 클릭 이벤트
   addBtn.addEventListener('click', () => {
     accordionCount++;
     const newItem = createAccordionItem(accordionCount, null);
     accordion.appendChild(newItem);
   });
+
+  // 저장 버튼 클릭 이벤트
+  saveBtn.addEventListener('click', () => {
+    const memos = [];
+    const items = accordion.querySelectorAll('.accordion-item');
+    items.forEach(item => {
+      let memoIdRaw = item.dataset.memoId;
+      let memoId = null;
+      if (memoIdRaw && memoIdRaw.trim() !== '' && memoIdRaw.toLowerCase() !== 'null') {
+        memoId = Number(memoIdRaw);
+        if (isNaN(memoId)) memoId = null;
+      }
+      const titleInput = item.querySelector('.memo-title-input');
+      const contentTextarea = item.querySelector('.memo-content-textarea');
+      memos.push({
+        memo_idx: memoId,
+        title: titleInput.value,
+        memo: contentTextarea.value
+      });
+    });
+    fetch(contextPath + '/memo/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(memos)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error(`서버 오류: ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (data.success) {
+          alert('모든 메모가 저장되었습니다!');
+        } else {
+          alert('메모 저장에 실패했습니다.');
+        }
+      })
+      .catch(err => {
+        console.error('메모 저장 중 에러:', err);
+        alert('저장 중 오류가 발생했습니다.');
+      });
+  });
 });
+
+
 
 // 댓글
 document.addEventListener('DOMContentLoaded', () => {

@@ -11,7 +11,10 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/page/class/online_class.css" rel="stylesheet">
 <jsp:include page="/WEB-INF/views/inc/common_head.jsp"/>
-<script> const contextPath = '${pageContext.request.contextPath}'; </script>
+<script>
+  const contextPath = '${pageContext.request.contextPath}';
+</script>
+
 
 </head>
 
@@ -106,7 +109,7 @@
 	  <div class="accordion" class="btn btn-primary" id="memoAccordion"></div>
 
 	  <!-- 메모 저장 버튼 -->
-	  <button type="submit" class="btn btn-success mt-2" id="saveMemoBtn"> 저장 </button>
+	  <button type="button" class="btn btn-success mt-2" id="saveMemoBtn"> 저장 </button>
 	
 	  <div class="lecture-comment-section"></div>
 	
@@ -135,7 +138,6 @@
 		  <jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 		</footer>
 		
-		<script src="${pageContext.request.contextPath}/resources/js/video_upload/video.js"></script>
 	
 	</div>
 	
@@ -177,6 +179,7 @@
 	  </div>
 	</div>
 
+		<script src="${pageContext.request.contextPath}/resources/js/video_upload/video.js"></script>
 
 </body>
 

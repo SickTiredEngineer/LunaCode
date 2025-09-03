@@ -8,18 +8,19 @@
 <mapper namespace="com.itwillbs.luna_code.mapper.MemoMapper">
 	
 	<insert id="insertMemo">
-        INSERT INTO class_memo (user_idx, class_idx, episode_idx, memo)
-        VALUES (#{user_idx}, #{class_idx}, #{episode_idx}, #{memo})
-    </insert>
+	    INSERT INTO class_memo (user_idx, class_idx, episode_idx, title, memo)
+	    VALUES (#{user_idx}, #{class_idx}, #{episode_idx}, #{title}, #{memo})
+	</insert>
+
 
     <delete id="deleteMemo">
         DELETE FROM class_memo WHERE memo_idx = #{memo_idx}
     </delete>
 
     <select id="selectMemosByClassAndUser">
-        SELECT * FROM memo
-        WHERE class_idx = #{value} AND user_idx = #{value}
-        ORDER BY memo_idx DESC
-    
-    </select>
+	    SELECT * FROM memo
+	    WHERE class_idx = #{class_idx} AND user_idx = #{user_idx}
+	    ORDER BY memo_idx DESC
+	</select>
+
 </mapper>

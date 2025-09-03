@@ -91,7 +91,7 @@ public class ClassController {
     public Map<String, Object> saveMemo(@RequestBody List<MemoVo> memos, Principal principal) {
         Map<String, Object> result = new HashMap<>();
         try {
-        	int userId = Integer.parseInt(principal.getName()); 
+            int userId = Integer.parseInt(principal.getName());
             for (MemoVo memo : memos) {
                 memo.setUser_idx(userId);
                 memoService.addMemo(memo);
@@ -104,6 +104,18 @@ public class ClassController {
         }
         return result;
     }
+    
+    @GetMapping("/memo/list/{classId}")
+    @ResponseBody
+    public List<MemoVo> listMemos(@PathVariable int classId, Principal principal) {
+        int userId = Integer.parseInt(principal.getName());
+        return memoService.getMemos(classId, userId);
+    }
+
+    
+    
+
+
 
 	@GetMapping("ClassRegist")
 	public String classregist() {
@@ -218,25 +230,43 @@ public class ClassController {
 	}
 	
 	@GetMapping("ClassDetail")
-	public String classdetail(@RequestParam(value = "class_idx", required = false) Integer class_idx, Model model) {
+	public String classdetail(@RequestParam(value = "class_idx", required = false) Integer class_idx,
+	                          @RequestParam(value = "msg", required = false) String msg,
+	                          Model model) {
 	    if (class_idx == null) {
 	        return "errorPage";
 	    }
+
 	    ClassVo lecture = classService.selectClassByIdx(class_idx);
 	    model.addAttribute("lecture", lecture);
+
+	    if (msg != null) {
+	        model.addAttribute("msg", msg);
+	    }
+
 	    return "class_shop/class_detail";
 	}
 
+
 	
 	@PostMapping("/apply")
-	public String applyCourse(Principal principal, @RequestParam int class_idx) {
-	    CustomUserDetails userDetails = (CustomUserDetails)((Authentication)principal).getPrincipal();
+	public String applyCourse(Principal principal, @RequestParam int class_idx, RedirectAttributes rttr) {
+	    // 로그인 사용자 정보 꺼내기
+	    CustomUserDetails userDetails = (CustomUserDetails) ((Authentication) principal).getPrincipal();
+	    int userIdx = userDetails.getIdx();
 
-	    int userIdx = userDetails.getIdx(); 
+	    // 장바구니(수강 신청) 처리
 	    classService.applyCourse(userIdx, class_idx);
 
-	    return "redirect:/Cart"; 
+	    // 리다이렉트 시 메시지와 강의 번호 전달
+	    rttr.addAttribute("class_idx", class_idx);
+	    rttr.addAttribute("msg", "강의가 장바구니에 담겼습니다!");
+
+	    // 다시 강의 상세 페이지로 이동
+	    return "redirect:/ClassDetail";
 	}
+
+
 
 
 
