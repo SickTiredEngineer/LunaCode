@@ -10,6 +10,19 @@
 	max-width: 1000px;
 }
 
+.search-icon{
+	width: 40px;
+	height: 100%;
+	align-content: center;
+}
+
+/* 검색창 사이즈 */
+.search-form-size{
+	width: 300px;
+	height: 40px;	
+}
+
+
 /* 헤더 내 검색 영역 */
 .search-area {
 	max-width: 700px;

@@ -74,7 +74,7 @@
 										
 
 										<!-- 정보 폼 -->								
-										<form action="${formAction}" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
+										<form action="${formAction}" id="groupForm" method="post" class="d-flex flex-column justify-content-center class-info-root-layout">
 											
 											<c:if test="${isModify}">
 												<input type="hidden" name="group_idx" value="${vo.group_idx}">
@@ -84,14 +84,14 @@
 										
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">그룹 코드 :</p>	
-												<input type="text" name="group_code" class="common-input-form form-size" value="${groupCode}">
+												<input type="text" placeholder="그룹 코드" name="group_code" class="common-input-form form-size" value="${groupCode}">
 											</div>				
 											
 											<div class="horizontal-line"></div>
 											
 											<div class="d-flex flex-row info-item">
 												<p class="info-text">그룹 설명 :</p>
-												<input name="group_desc" type="text" class="common-input-form form-desc-size" value="${groupDesc}">
+												<input name="group_desc" placeholder="그룹 설명" type="text" class="common-input-form form-desc-size" value="${groupDesc}">
 											</div>
 											
 											<div class="horizontal-line"></div>
@@ -140,6 +140,30 @@
 			</footer>
 		
 		</div>
+	
+		<script type="text/javascript">
+			/* 빈칸 검사 */
+			$("#groupForm").on("submit", function(e){
+				e.preventDefault();
+				
+				let ok = true;
+				
+				$(this).find("input[type=text], textarea").each(function(){
+				
+			    	if(!$(this).val().trim()){
+						alert($(this).attr("placeholder") + "을(를) 입력해주세요");
+						$(this).focus();
+						ok = false;
+						return false; 
+					}
+				});
+			
+				if(ok) {
+					this.submit();
+				}
+			});
+		
+		</script>
 	
 	</body>
 	

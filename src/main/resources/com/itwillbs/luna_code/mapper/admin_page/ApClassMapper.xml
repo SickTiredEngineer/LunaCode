@@ -21,8 +21,9 @@
 		from class c
 		join member m on m.idx = c.instructor_idx
 		<where>
+			c.accept_status = 'CS01'
 			<if test="q != null and q != ''">
-				c.class_title like concat('%', #{q}, '%')
+				and c.class_title like concat('%', #{q}, '%')
 			</if>
 			
 			<if test="category != null and category != ''">
@@ -77,8 +78,11 @@
 			from class 
 			c left join member m on c.instructor_idx = m.idx
 			<where>
+			
+				c.accept_status = 'CS01'
+				
 				<if test="q != null and q != ''">
-					c.class_title like concat('%', #{q}, '%')
+					and c.class_title like concat('%', #{q}, '%')
 				</if>
 				
 				<if test="category != null and category != ''">

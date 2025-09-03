@@ -58,7 +58,7 @@
 					
 						<jsp:include page="/WEB-INF/views/support_center/support_center_sidebar.jsp"/>
 						
-						<form action="${formAction}" method="post" class="d-flex flex-column">
+						<form action="${formAction}" id="noticeForm" method="post" class="d-flex flex-column">
 						
 							<c:if test="${isModify}">
 						    	<input type="hidden" name="notice_idx" value="${noticeVo.notice_idx}">
@@ -70,14 +70,14 @@
 							
 									<div class="d-flex flex-row write-layout">
 											<p class="info-text">공지 제목</p>
-											<input type="text" name="notice_subject" class="common-input-form form-size" value="${noticeSubject}">
+											<input type="text" placeholder="제목" name="notice_subject" class="common-input-form form-size" value="${noticeSubject}">
 									</div>
 									
 									<div class="horizontal-line"></div>
 								
 									<div class="d-flex flex-row write-layout-content">
 											<p class="info-text-content">내용</p>
-											<textarea rows="10" cols="50" name="notice_content" class="common-input-form">${noticeContent}</textarea>
+											<textarea rows="10" placeholder="내용" cols="50" name="notice_content" class="common-input-form">${noticeContent}</textarea>
 									</div>
 									
 									<div class="horizontal-line"></div>
@@ -106,7 +106,31 @@
 			</footer>
 		
 		</div>
-	
+		
+		<script type="text/javascript">
+			/* 빈칸 검사 */
+			$("#noticeForm").on("submit", function(e){
+				e.preventDefault();
+				
+				let ok = true;
+				
+				$(this).find("input[type=text], textarea").each(function(){
+				
+			    	if(!$(this).val().trim()){
+						alert($(this).attr("placeholder") + "을(를) 입력해주세요");
+						$(this).focus();
+						ok = false;
+						return false; 
+					}
+				});
+			
+				if(ok) {
+					this.submit();
+				}
+			});
+		
+		</script>
+		
 	</body>
 	
 </html>

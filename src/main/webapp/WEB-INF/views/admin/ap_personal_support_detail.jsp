@@ -84,7 +84,7 @@
 								
 							<br>
 								
-							<form action="QueryAnswerForm" method="post" class="d-flex flex-column detail-main-layout">
+							<form action="QueryAnswerForm" id="answerForm" method="post" class="d-flex flex-column detail-main-layout">
 							
 								<input type="hidden" name="query_idx" value="${queryVo.query_idx}">
 										
@@ -97,7 +97,7 @@
 										</c:when>
 										
 										<c:otherwise>
-											<input type="text" name="answer_subject" class="common-input-form form-size"></input>	
+											<input type="text" placeholder="제목" name="answer_subject" class="common-input-form form-size"></input>	
 										</c:otherwise>
 									</c:choose>
 	
@@ -131,30 +131,11 @@
 										</c:when>
 										
 										<c:otherwise>
-											<textarea name="answer_content" rows="10" cols="50" class="common-input-form"></textarea>	
+											<textarea name="answer_content" placeholder="답변" rows="10" cols="50" class="common-input-form"></textarea>	
 										</c:otherwise>
 									</c:choose>
 								
 								</div>
-										
-<!-- 										<div class="horizontal-line"></div> -->
-
-<!-- 										<div class="d-flex flex-row child-layout"> -->
-<!-- 											<p class="attachment-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
-<!-- 											<a href="#" class="positive-button button-detail attachment-bt">업로드</a> -->
-<!-- 										</div> -->
-										
-<!-- 										<div class="d-flex flex-row child-layout"> -->
-<!-- 											<p class="attachment-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
-<!-- 											<a href="#" class="positive-button button-detail attachment-bt">업로드</a> -->
-<!-- 										</div> -->
-										
-<!-- 										<div class="d-flex flex-row child-layout"> -->
-<!-- 											<p class="attachment-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
-<!-- 											<a href="#" class="positive-button button-detail attachment-bt">업로드</a> -->
-<!-- 										</div>		 -->
-																	
-<!-- 									</div> -->
 
 								<div class="d-flex flex-row button-container">
 									<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
@@ -179,6 +160,30 @@
 			</footer>
 		
 		</div>
+	
+		<script type="text/javascript">
+			/* 빈칸 검사 */
+			$("#answerForm").on("submit", function(e){
+				e.preventDefault();
+				
+				let ok = true;
+				
+				$(this).find("input[type=text], textarea").each(function(){
+				
+			    	if(!$(this).val().trim()){
+						alert($(this).attr("placeholder") + "을(를) 입력해주세요");
+						$(this).focus();
+						ok = false;
+						return false; 
+					}
+				});
+			
+				if(ok) {
+					this.submit();
+				}
+			});
+		
+		</script>
 	
 	</body>
 	

@@ -63,7 +63,7 @@
 						
 						<div class="d-flex flex-column">
 						
-							<form action="${formAction}" method="post" class="d-flex flex-column write_main_layout">
+							<form action="${formAction}" id="postForm" method="post" class="d-flex flex-column write_main_layout">
 
 									<c:if test="${isModify}">
 								    	<input type="hidden" name="post_idx" value="${post.post_idx}">
@@ -72,14 +72,14 @@
 							
 									<div class="d-flex flex-row write-layout">
 											<p class="info-text" >제목</p>
-											<input type="text" name="title" class="common-input-form form-size" value="${postTitle}">
+											<input type="text" placeholder="제목"  name="title" class="common-input-form form-size" value="${postTitle}">
 									</div>
 									
 									<div class="horizontal-line"></div>
 								
 									<div class="d-flex flex-row write-layout-content">
 											<p class="info-text-content">내용</p>
-											<textarea name="content" rows="10" cols="50" class="common-input-form">${postContent}</textarea>
+											<textarea name="content" placeholder="내용" rows="10" cols="50" class="common-input-form">${postContent}</textarea>
 									</div>
 									
 									<div class="horizontal-line"></div>
