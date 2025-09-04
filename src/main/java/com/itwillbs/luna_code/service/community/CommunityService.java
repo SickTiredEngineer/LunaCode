@@ -45,4 +45,44 @@ public class CommunityService {
 		return mapper.modifyPost(vo, idx);
 	}
 	
+	
+	/* 게시글 더미 데이터 생성 */
+	public void dummyPost() {
+		
+		String[] titleSamples = {
+		        "오늘은 날씨가 좋네요",
+		        "스프링 공부하는 중!",
+		        "점심 뭐 먹을까?",
+		        "Java는 참 재밌어",
+		        "버그 때문에 멘붕옴...",
+		        "여행 가고 싶다",
+		        "운동 시작했습니다",
+		        "새로운 프로젝트 구상중",
+		        "추천 영화 있나요?",
+		        "하루하루 성장하는 중!"
+	    };
+		
+		for(int i = 3; i < 50; i++) {
+			String title = titleSamples[i % titleSamples.length];
+			PostVO vo = new PostVO();
+			vo.setBoard_code("BD01");
+			vo.setTitle(title);
+			vo.setContent("안녕!" + titleSamples[i % titleSamples.length]);
+			vo.setAuthor_idx(i);
+			
+			mapper.insertNewPost(vo);
+		}
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
