@@ -7,6 +7,11 @@
 <!-- 인터페이스 경로 -->	
 <mapper namespace="com.itwillbs.luna_code.mapper.CourseRegistrationMapper">
 
+	<select id="countClassList">
+		select count(*) from class
+		WHERE instructor_idx = #{userId};
+	</select>
+
 	<!-- 모든 강의 리스트 가져오기 -->
     <select id="selectClassList" resultType="com.itwillbs.luna_code.vo.ClassVo">
         SELECT class_idx, class_title
@@ -14,6 +19,14 @@
         ORDER BY create_date DESC, class_idx DESC
     </select>
     
+    <!-- 로그인 사용자 ID 기준 클래스 리스트 조회 -->
+  	<select id="getClassListByUserId" resultType="com.itwillbs.luna_code.vo.ClassVo">
+	    SELECT *
+	    FROM class
+	    WHERE instructor_idx = #{userId}
+		ORDER BY create_date DESC, class_idx DESC
+		limit #{start_row}, #{list_limit}
+    </select>
     
     
 

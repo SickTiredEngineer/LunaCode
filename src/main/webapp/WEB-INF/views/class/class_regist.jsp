@@ -78,7 +78,7 @@
 								<button type="button" class="reg-toggle-btn" data-value="고급" aria-pressed="false">
 									<span class="chk-ico" aria-hidden="true">&#10003;</span> <span>고급<br />
 									<small>전문성을 높이는</small></span>
-								</button>
+								</button>	
 							</div>
 						</div>
 

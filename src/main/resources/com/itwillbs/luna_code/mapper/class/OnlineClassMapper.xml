@@ -18,5 +18,4 @@
 		WHERE e.user_idx = #{value}
 	</select>
     
-
 </mapper>

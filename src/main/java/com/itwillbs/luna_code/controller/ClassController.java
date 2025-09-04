@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.itwillbs.luna_code.handler.PagingHandler;
 import com.itwillbs.luna_code.security.CustomUserDetails;
 import com.itwillbs.luna_code.service.ClassService;
 import com.itwillbs.luna_code.service.CourseRegistrationService;
@@ -43,6 +44,7 @@ import com.itwillbs.luna_code.vo.ClassSessionVo;
 import com.itwillbs.luna_code.vo.ClassVo;
 import com.itwillbs.luna_code.vo.EpisodeVo;
 import com.itwillbs.luna_code.vo.MemoVo;
+import com.itwillbs.luna_code.vo.PageVO;
 import com.itwillbs.luna_code.vo.SessionVo;
 
 @Controller
@@ -73,50 +75,18 @@ public class ClassController {
     private MemoService memoService;
 
     @GetMapping("/OnlineClass")
-    public String onlineClass(Model model) {
+    public String onlineClass(@RequestParam(value = "episodeId", required = false) Integer episodeId, Model model) {
         List<EpisodeVo> episodeList = episodeService.selectEpisodeList();
         model.addAttribute("episodeList", episodeList);
+        
+        if (episodeId != null) {
+        	ClassEpisodeVo episode = episodeService.getEpisodeById(episodeId);
+        	model.addAttribute("episode", episode);
+        }
+        
         return "class/online_class";
     }
     
-    // 메모 페이지
-    @GetMapping("/memo")
-    public String memo() {
-        return "class/memo";
-    }
-
-    // 메모 저장
-    @PostMapping("/memo/save")
-    @ResponseBody
-    public Map<String, Object> saveMemo(@RequestBody List<MemoVo> memos, Principal principal) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            int userId = Integer.parseInt(principal.getName());
-            for (MemoVo memo : memos) {
-                memo.setUser_idx(userId);
-                memoService.addMemo(memo);
-            }
-            result.put("success", true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            result.put("success", false);
-            result.put("msg", "메모 저장 실패");
-        }
-        return result;
-    }
-    
-    @GetMapping("/memo/list/{classId}")
-    @ResponseBody
-    public List<MemoVo> listMemos(@PathVariable int classId, Principal principal) {
-        int userId = Integer.parseInt(principal.getName());
-        return memoService.getMemos(classId, userId);
-    }
-
-    
-    
-
-
-
 	@GetMapping("ClassRegist")
 	public String classregist() {
 		return "class/class_regist";
@@ -209,13 +179,35 @@ public class ClassController {
 	}
 	
 	//강의 목록
+//	@GetMapping("CourseRegistration")
+//	public String courseRegistration(Model model) {
+//		List<ClassVo> classList = courseRegistrationService.getClassList();
+//	    model.addAttribute("classList", classList);
+//		
+//		return "class/course_registration";
+//	}
+	
 	@GetMapping("CourseRegistration")
-	public String courseRegistration(Model model) {
-		List<ClassVo> classList = courseRegistrationService.getClassList();
-	    model.addAttribute("classList", classList);
+	public String courseRegistration(@RequestParam(defaultValue = "1")int pageNum,
+			Model model, Principal principal) {
 		
-		return "class/course_registration";
+		
+	    // 현재 로그인된 사용자 정보 가져오기
+	    Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+
+	    // 회원 PK 가져오기 (DB의 member.idx 같은 값)
+	    int userId = userDetails.getIdx();
+	    PageVO pageVo = PagingHandler.pageHandler(pageNum, ()->courseRegistrationService.countClassList(userId));
+	    
+	    // 해당 강사가 등록한 강의 목록 조회
+	    List<ClassVo> classList = courseRegistrationService.getClassListByUserId(userId, pageVo.getStartRow(), PagingHandler.LIST_LIMIT);
+	    model.addAttribute("classList", classList);
+	    model.addAttribute("pageVo", pageVo);
+	    
+	    return "class/course_registration";
 	}
+
 	
 	// 강의 목록 삭제
     @GetMapping("/deleteClass")

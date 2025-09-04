@@ -341,7 +341,7 @@ document.addEventListener("DOMContentLoaded", function() {
             console.log("퀴즈 답안:", answers);
             alert("제출되었습니다!");
             quizCompleted = true;
-            localStorage.setItem("quizCompleted", "true"); // ✅ 로컬스토리지 저장
+            localStorage.setItem("quizCompleted", "true"); 
             quizModal.hide();
         }
     });

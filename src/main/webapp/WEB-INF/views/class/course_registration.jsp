@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,7 @@
 	<title>CourseRegistration</title>
 	<jsp:include page="/WEB-INF/views/inc/common_head.jsp" />
 	<link href="${pageContext.request.contextPath}/resources/css/page/class/course_registration.css" rel="stylesheet" />
+	<link rel="icon" href="${pageContext.request.contextPath}/resources/images/favicon.ico" type="image/x-icon" />
 </head>
 <body>
 	<div class="page-base container">
@@ -60,17 +61,26 @@
 							    </c:forEach>
 							</ul>
 						</div>
-
-						<%-- 오른쪽 카테고리 태그 --%>
-<!-- 						<aside class="category-tags"> -->
-<!-- 							<div class="pointer-wrapper"> -->
-<!-- 								<div class="pointer"></div> -->
-<!-- 							</div> -->
-<!-- 							<span class="dot"></span> -->
-<!-- 							<a href="#" class="positive-button tag active">코딩</a> -->
-<!-- 							<a href="#" class="negative-button tag">게임</a> -->
-<!-- 							<a href="#" class="negative-button tag">머신러닝</a> -->
-<!-- 						</aside> -->
+		
+					    <div class="d-flex flex-row justify-content-center page-selector-layout">
+									
+							<button type="button" class="page-arrow" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum-1}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
+							
+							<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
+								<c:choose>
+									<c:when test="${i eq pageVo.pageNum }">
+										<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${i}'" disabled="disabled"><strong>${i}</strong></button>
+									</c:when>
+									<c:otherwise>
+										<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${i}'">${i}</button>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<button type="button" class="page-arrow" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum+1}'" 
+							<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
+					
+						</div>
 				
 				</div>
 				

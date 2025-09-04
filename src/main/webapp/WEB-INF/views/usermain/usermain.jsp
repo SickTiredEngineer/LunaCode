@@ -58,17 +58,17 @@
 								<%-- 실제 이미지 경로로 수정 필요 --%>
 								<div class="carousel-item active">
 									<img
-										src="${pageContext.request.contextPath}/resources/image/banner1.png"
+										src="${pageContext.request.contextPath}/resources/image/banner2.png"
 										class="d-block w-100" alt="배너1">
 								</div>
 								<div class="carousel-item">
 									<img
-										src="${pageContext.request.contextPath}/resources/image/banner3.png"
+										src="${pageContext.request.contextPath}/resources/image/banner1.png"
 										class="d-block w-100" alt="배너2">
 								</div>
 								<div class="carousel-item">
 									<img
-										src="${pageContext.request.contextPath}/resources/image/luna_logo_3.png"
+										src="${pageContext.request.contextPath}/resources/image/banner3.png"
 										class="d-block w-100" alt="배너3">
 								</div>
 							</div>

@@ -74,20 +74,20 @@
 
             <div class="d-flex flex-row justify-content-center page-selector-layout">
 						
-				<button type="button" class="page-arrow" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum-1}${qParam}${catParam}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
+				<button type="button" class="page-arrow" onclick="location.href='CourseRegistration?pageNum=${pageVo.pageNum-1}${qParam}${catParam}'" <c:if test="${pageVo.pageNum eq 1}">disabled</c:if>>&lt;</button> 
 				
 				<c:forEach var="i" begin="${pageVo.startPage }" end="${pageVo.endPage }">
 					<c:choose>
 						<c:when test="${i eq pageVo.pageNum }">
-							<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${i}${qParam}${catParam}'" disabled="disabled"><strong>${i}</strong></button>
+							<button type="button" class="page-selector" onclick="location.href='CourseRegistration?pageNum=${i}${qParam}${catParam}'" disabled="disabled"><strong>${i}</strong></button>
 						</c:when>
 						<c:otherwise>
-							<button type="button" class="page-selector" onclick="location.href='ClassDisplayStand?pageNum=${i}${qParam}${catParam}'">${i}</button>
+							<button type="button" class="page-selector" onclick="location.href='CourseRegistration?pageNum=${i}${qParam}${catParam}'">${i}</button>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				
-				<button type="button" class="page-arrow" onclick="location.href='ClassDisplayStand?pageNum=${pageVo.pageNum+1}${qParam}${catParam}'" 
+				<button type="button" class="page-arrow" onclick="location.href='CourseRegistration?pageNum=${pageVo.pageNum+1}${qParam}${catParam}'" 
 				<c:if test="${pageVo.pageNum eq pageVo.maxPage }">disabled</c:if>>&gt;</button>
 		
 			</div>

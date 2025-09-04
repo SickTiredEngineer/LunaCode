@@ -35,12 +35,12 @@
 	
 	<delete id="deleteClassEnrollmentByClassId" parameterType="int">
 		DELETE FROM class_enrollment 
-		WHERE class_idx = #{classId};
+		WHERE class_idx = #{class_idx};
 	</delete>
 	
 	<delete id="deleteClass" parameterType="int">
     	DELETE FROM class 
-    	WHERE class_idx = #{classId}
+    	WHERE class_idx = #{class_idx}
 	</delete>
 	
 	<select id="selectAllClasses" resultType="com.itwillbs.luna_code.vo.ClassVo">
@@ -81,7 +81,7 @@
 	    SELECT COUNT(*)
 	    FROM cart
 	    WHERE user_idx = #{userIdx}
-	      AND class_idx = #{classIdx}
+	      AND class_idx = #{class_idx}
 	</select>
 	
 	
