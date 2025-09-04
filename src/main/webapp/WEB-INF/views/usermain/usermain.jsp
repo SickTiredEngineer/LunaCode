@@ -154,7 +154,6 @@
 						<!-- 							            </div> -->
 						<%-- 							        </c:if> --%>
 
-						<!-- 								</div> -->
 						<!-- 							</li> -->
 					</ul>
 
@@ -168,7 +167,7 @@
 	</div>
 
 	<script>
-		const contextPath = "${pageContext.request.contextPath}";
+// 		const contextPath = "${pageContext.request.contextPath}";
 	</script>
 
 	<script
