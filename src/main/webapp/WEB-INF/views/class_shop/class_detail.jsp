@@ -33,7 +33,7 @@
                         <img src="${pageContext.request.contextPath}/resources/class_thumbnails/${lecture.class_thumbnail}" 
                              alt="<c:out value='${lecture.class_title}'/>" 
                              class="img-fluid rounded-3 shadow-sm"
-                             style="max-width: 600px; width: 600px; max-height: 300px; height: 300px"
+                             style="max-width: 400px; width: 600px; max-height: 255px; height: 300px"
                              />
                     </c:when>
                     <c:otherwise>
@@ -102,7 +102,8 @@
             <div class="course-intro-video my-3">
                 <iframe width="100%" height="300"
                         src="https://www.youtube.com/embed/${lecture.url}"
-                        title="강의 동영상" frameborder="0" allowfullscreen></iframe>
+                        title="강의 동영상" frameborder="0" allowfullscreen>
+                </iframe>
             </div>
             <p><c:out value="${lecture.class_intro}"/></p>
 

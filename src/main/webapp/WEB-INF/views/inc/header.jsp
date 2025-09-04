@@ -110,7 +110,6 @@
 	
 	    <sec:authorize access="hasAnyRole('INSTRUCTOR')">
 	      <a href="${pageContext.request.contextPath}/ClassStatistic" class="nav-link">강사 대시보드</a>
-	      <a href="${pageContext.request.contextPath}/Cart" class="nav-link">장바구니</a>
 	    </sec:authorize>
 	
 	    <!-- 일반 사용자(관리자/강사 제외) 메뉴가 필요하면: -->

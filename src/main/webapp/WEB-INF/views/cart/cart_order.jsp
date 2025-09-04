@@ -66,7 +66,7 @@
 	                        <div class="order-item-box">
 	                            <div class="item-cell product-info">
 	                                <div class="product-image">
-	                                    <img src="${pageContext.request.contextPath}/resources/class_thumbnail/${item.class_thumbnail}" alt="${item.class_title}">
+	                                    <img src="${pageContext.request.contextPath}/resources/class_thumbnails/${item.class_thumbnail}" alt="${item.class_title}">
 	                                </div>
 	                                <div class="product-details">
 	                                    <p class="product-name">${item.class_title}</p>

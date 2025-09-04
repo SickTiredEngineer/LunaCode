@@ -60,7 +60,7 @@
 		                            <div class="item-cell product-info">
 		                                <input type="checkbox" name="selectedItems" value="${item.cart_idx}" checked>
 		                                <div class="product-image">
-		                                    <img src="${pageContext.request.contextPath }/resources/upload/${item.class_thumbnail}" alt="${item.class_title}">
+		                                    <img src="${pageContext.request.contextPath}/resources/class_thumbnails/${item.class_thumbnail}">
 		                                </div>
 		                                <div class="product-details">
 		                                    <p class="product-name">${item.class_title}</p>

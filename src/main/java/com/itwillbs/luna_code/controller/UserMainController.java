@@ -275,8 +275,8 @@ public class UserMainController {
 		model.addAttribute("newStudents", newStudents);
 		
 		// 수강생 후기
-		List<NewReviewVO> reviewList = classStatisticService.getRecentReviews(instructorIdx);
-		model.addAttribute("newReviews", reviewList);
+//		List<NewReviewVO> reviewList = classStatisticService.getRecentReviews(instructorIdx);
+//		model.addAttribute("newReviews", reviewList);
 	    
 		return "usermain/class_statistic";
 	}

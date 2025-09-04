@@ -68,7 +68,7 @@
                         <div class="order-item-box">
                             <div class="item-cell product-info">
                                 <div class="product-image">
-                                    <img src="${pageContext.request.contextPath}/resources/upload/${item.class_thumbnail}" alt="${item.class_title}">
+                                    <img src="${pageContext.request.contextPath}/resources/class_thumbnails/${item.class_thumbnail}" alt="${item.class_title}">
                                 </div>
                                 <div class="product-details">
                                     <p class="product-name">${item.class_title}</p>
@@ -96,7 +96,7 @@
 								<span>네이버 페이</span>
 							</div>
 							<div class="payment-option">
-								<img src="" alt="신용 / 체크카드">
+								<img src="${pageContext.request.contextPath }/resources/image/creditcard.png" alt="신용 / 체크카드">
 								<span>신용 / 체크카드</span>
 							</div>
 						</div>
