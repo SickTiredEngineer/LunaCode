@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -126,5 +127,6 @@ public class MemberJoinController {
 	public Map<String, String> checkDuplication(@RequestParam("value") String value, @RequestParam("type") String type){
 		return memberService.checkDuplication(value, type);
 	}
-
+	
+	
 }
