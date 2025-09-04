@@ -57,20 +57,20 @@ public class UserMainController {
 		model.addAttribute("attendanceInfo", attendanceInfo);
 		
 		// 재생목록 조회
-		List<PlayListVO> allPlaylists = playListService.getPlayList(userIdx);
+//		List<PlayListVO> allPlaylists = playListService.getPlayList(userIdx);
+//		
+//		List<PlayListVO> recentPlaylists = allPlaylists.stream()
+//			.limit(2)
+//			.collect(Collectors.toList());
+//
+//		model.addAttribute("recentPlaylists", recentPlaylists);
 		
-		List<PlayListVO> recentPlaylists = allPlaylists.stream()
-			.limit(2)
-			.collect(Collectors.toList());
-
-		model.addAttribute("recentPlaylists", recentPlaylists);
-		
-		// 내 강의 조회
-		List<MyCourseVO> allInProgressCourses = myClassService.getInProgressCourses(userIdx);
-		List<MyCourseVO> limitedInProgressCourses = allInProgressCourses.stream()
-			.limit(2)
-			.collect(Collectors.toList());
-		model.addAttribute("inProgressCourses", limitedInProgressCourses);
+//		// 내 강의 조회
+//		List<MyCourseVO> allInProgressCourses = myClassService.getInProgressCourses(userIdx);
+//		List<MyCourseVO> limitedInProgressCourses = allInProgressCourses.stream()
+//			.limit(2)
+//			.collect(Collectors.toList());
+//		model.addAttribute("inProgressCourses", limitedInProgressCourses);
 		
 		return "usermain/usermain";
 	}
@@ -126,71 +126,71 @@ public class UserMainController {
 		return ResponseEntity.ok(courseList);
 	}
 	
-	@GetMapping("PlayList")
-	public String playList(Authentication auth, Model model) {
-		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx();
-		
-		List<PlayListVO> playlist = playListService.getPlayList(userIdx);
-		model.addAttribute("playlist", playlist);
-		
-		return "usermain/play_list";
-	}
+//	@GetMapping("PlayList")
+//	public String playList(Authentication auth, Model model) {
+//		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//		int userIdx = userDetails.getIdx();
+//		
+//		List<PlayListVO> playlist = playListService.getPlayList(userIdx);
+//		model.addAttribute("playlist", playlist);
+//		
+//		return "usermain/play_list";
+//	}
 
-	@GetMapping("PlayListPlus")
-	public String playListPlus(@RequestParam("id") int playlistId, Authentication auth, Model model) {
-		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx();
-	    
-		PlayListVO playlist = playListService.getPlaylistById(playlistId, userIdx);
-		model.addAttribute("playlist", playlist);
-	    
-		return "usermain/play_list_plus";
-	}
+//	@GetMapping("PlayListPlus")
+//	public String playListPlus(@RequestParam("id") int playlistId, Authentication auth, Model model) {
+//		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//		int userIdx = userDetails.getIdx();
+//	    
+//		PlayListVO playlist = playListService.getPlaylistById(playlistId, userIdx);
+//		model.addAttribute("playlist", playlist);
+//	    
+//		return "usermain/play_list_plus";
+//	}
 	
-	@PostMapping("ApiPlaylistAddItem")
-	@ResponseBody
-	public Map<String, Object> addVideoToPlaylist(
-		@RequestParam("playlist_idx") int playlist_idx, 
-		@RequestParam("episode_idx") int episode_idx,
-		Authentication auth) {
-        
-		Map<String, Object> response = new HashMap<>();
-		int result = playListService.addEpisodeToPlaylist(playlist_idx, episode_idx);
-        
-		if (result > 0) {
-			response.put("success", true);
-			response.put("message", "재생목록에 추가되었습니다.");
-		} else {
-			response.put("success", false);
-			response.put("message", "추가에 실패했거나, 이미 목록에 존재합니다.");
-		}
-        
-		return response;
-	}
+//	@PostMapping("ApiPlaylistAddItem")
+//	@ResponseBody
+//	public Map<String, Object> addVideoToPlaylist(
+//		@RequestParam("playlist_idx") int playlist_idx, 
+//		@RequestParam("episode_idx") int episode_idx,
+//		Authentication auth) {
+//        
+//		Map<String, Object> response = new HashMap<>();
+//		int result = playListService.addEpisodeToPlaylist(playlist_idx, episode_idx);
+//        
+//		if (result > 0) {
+//			response.put("success", true);
+//			response.put("message", "재생목록에 추가되었습니다.");
+//		} else {
+//			response.put("success", false);
+//			response.put("message", "추가에 실패했거나, 이미 목록에 존재합니다.");
+//		}
+//        
+//		return response;
+//	}
 	
-	@PostMapping("ApiPlaylistRemoveItem")
-	@ResponseBody
-	public Map<String, Object> removeVideoFromPlaylist(
-		@RequestParam("item_idx") int item_idx,
-		Authentication auth) {
-        
-		Map<String, Object> response = new HashMap<>();
-		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx();
-        
-		int result = playListService.deletePlaylistItem(item_idx, userIdx);
-        
-		if (result > 0) {
-			response.put("success", true);
-			response.put("message", "재생목록에서 삭제되었습니다.");
-		} else {
-			response.put("success", false);
-			response.put("message", "삭제에 실패했습니다. (권한이 없거나 이미 삭제된 항목)");
-		}
-        
-		return response;
-	}
+//	@PostMapping("ApiPlaylistRemoveItem")
+//	@ResponseBody
+//	public Map<String, Object> removeVideoFromPlaylist(
+//		@RequestParam("item_idx") int item_idx,
+//		Authentication auth) {
+//        
+//		Map<String, Object> response = new HashMap<>();
+//		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//		int userIdx = userDetails.getIdx();
+//        
+//		int result = playListService.deletePlaylistItem(item_idx, userIdx);
+//        
+//		if (result > 0) {
+//			response.put("success", true);
+//			response.put("message", "재생목록에서 삭제되었습니다.");
+//		} else {
+//			response.put("success", false);
+//			response.put("message", "삭제에 실패했습니다. (권한이 없거나 이미 삭제된 항목)");
+//		}
+//        
+//		return response;
+//	}
 
 	@GetMapping("Attendance")
 	public String attendance(Authentication auth, Model model) {
@@ -203,61 +203,61 @@ public class UserMainController {
 		return "usermain/attendance";
 	}
 	
-	@PostMapping("PlayListAdd")
-	@ResponseBody
-	public Map<String, Object> addPlaylist(
-		@RequestParam String playlist_name, 
-		Authentication auth) {
-	    
-		Map<String, Object> response = new HashMap<>();
-		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx();
-
-		PlayListVO newPlaylist = new PlayListVO();
-		newPlaylist.setUser_idx(userIdx);
-		newPlaylist.setPlaylist_name(playlist_name);
-
-		int result = playListService.addPlaylist(newPlaylist);
-
-		if (result > 0) {
-			response.put("success", true);
-			response.put("newPlaylist", newPlaylist); 
-		} else {
-			response.put("success", false);
-		}
-	    
-		return response;
-	}
+//	@PostMapping("PlayListAdd")
+//	@ResponseBody
+//	public Map<String, Object> addPlaylist(
+//		@RequestParam String playlist_name, 
+//		Authentication auth) {
+//	    
+//		Map<String, Object> response = new HashMap<>();
+//		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//		int userIdx = userDetails.getIdx();
+//
+//		PlayListVO newPlaylist = new PlayListVO();
+//		newPlaylist.setUser_idx(userIdx);
+//		newPlaylist.setPlaylist_name(playlist_name);
+//
+//		int result = playListService.addPlaylist(newPlaylist);
+//
+//		if (result > 0) {
+//			response.put("success", true);
+//			response.put("newPlaylist", newPlaylist); 
+//		} else {
+//			response.put("success", false);
+//		}
+//	    
+//		return response;
+//	}
 	
-	@PostMapping("PlayListDelete")
-	@ResponseBody
-	public Map<String, Object> deletePlaylist(@RequestParam int playlist_idx, Authentication auth) {
-		Map<String, Object> response = new HashMap<>();
-		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx();
-
-		int result = playListService.deletePlayList(playlist_idx, userIdx);
-
-		response.put("success", result > 0);
-		return response;
-	}
+//	@PostMapping("PlayListDelete")
+//	@ResponseBody
+//	public Map<String, Object> deletePlaylist(@RequestParam int playlist_idx, Authentication auth) {
+//		Map<String, Object> response = new HashMap<>();
+//		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//		int userIdx = userDetails.getIdx();
+//
+//		int result = playListService.deletePlayList(playlist_idx, userIdx);
+//
+//		response.put("success", result > 0);
+//		return response;
+//	}
 	
-	@PostMapping("PlayListUpdate")
-	@ResponseBody
-	public Map<String, Object> updatePlaylist(
-		@RequestParam int playlist_idx, 
-		@RequestParam String new_name, 
-		Authentication auth) {
-	    
-		Map<String, Object> response = new HashMap<>();
-		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
-		int userIdx = userDetails.getIdx();
-
-		int result = playListService.updatePlayList(playlist_idx, new_name, userIdx);
-	    
-		response.put("success", result > 0);
-		return response;
-	}
+//	@PostMapping("PlayListUpdate")
+//	@ResponseBody
+//	public Map<String, Object> updatePlaylist(
+//		@RequestParam int playlist_idx, 
+//		@RequestParam String new_name, 
+//		Authentication auth) {
+//	    
+//		Map<String, Object> response = new HashMap<>();
+//		CustomUserDetails userDetails = (CustomUserDetails) auth.getPrincipal();
+//		int userIdx = userDetails.getIdx();
+//
+//		int result = playListService.updatePlayList(playlist_idx, new_name, userIdx);
+//	    
+//		response.put("success", result > 0);
+//		return response;
+//	}
 	
 	@GetMapping("ClassStatistic")
 	public String classStatistic(Authentication auth, Model model) throws Exception {

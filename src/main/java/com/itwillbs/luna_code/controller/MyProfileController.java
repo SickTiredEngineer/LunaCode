@@ -47,14 +47,14 @@ public class MyProfileController {
         model.addAttribute("recentPosts", communityActivity.get("recentPosts"));
         model.addAttribute("recentComments", communityActivity.get("recentComments"));
         
-        List<MyCourseVO> inProgressCourses = myClassService.getInProgressCourses(userIdx);
-        List<MyCourseVO> completedCourses = myClassService.getCompletedCourses(userIdx);
+//        List<MyCourseVO> inProgressCourses = myClassService.getInProgressCourses(userIdx);
+//        List<MyCourseVO> completedCourses = myClassService.getCompletedCourses(userIdx);
         
-        List<MyCourseVO> allEnrolledCourses = new ArrayList<>();
-        allEnrolledCourses.addAll(inProgressCourses);
-        allEnrolledCourses.addAll(completedCourses);
+//        List<MyCourseVO> allEnrolledCourses = new ArrayList<>();
+//        allEnrolledCourses.addAll(inProgressCourses);
+//        allEnrolledCourses.addAll(completedCourses);
         
-        model.addAttribute("enrolledCourses", allEnrolledCourses);
+//        model.addAttribute("enrolledCourses", allEnrolledCourses);
 
 		
 		return "myprofile/my_profile";

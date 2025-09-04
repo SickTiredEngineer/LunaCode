@@ -14,7 +14,7 @@
 	
 	<!-- 모든 사용자에게 보이는 메뉴 -->
 	<a href="MyClass" class="common-category-element">내 강의</a>
-	<a href="PlayList" class="common-category-element">재생목록</a>
+<!-- 	<a href="PlayList" class="common-category-element">재생목록</a> -->
 	<a href="Attendance" class="common-category-element">출석</a>
 	<a href="ChatBot" class="common-category-element">챗봇</a>
 </aside>
