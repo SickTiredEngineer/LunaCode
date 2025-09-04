@@ -219,11 +219,21 @@ function renderCommentItem(c) {
 	const canEdit = (window.isAdmin === true) || (meIdx !== null && meIdx === Number(c.author_idx));
 	const canDelete = canEdit || (window.isAdmin === true);
 
+	/* 날짜 포매팅 */
+	let date = new Date(c.create_date);
+	
+	let y = date.getFullYear();
+	let m = ("0" + (date.getMonth() + 1)).slice(-2);
+	let d = ("0" + date.getDate()).slice(-2);
+	
+	let resDate = y + "." + m + "." + d;
+	/* ======================== */
+
   	const $row = $(`
 	    <div class="d-flex flex-row comment-row" data-comment-idx="${c.comment_idx}" data-author-idx="${c.author_idx}">
 	      <div class="d-flex flex-column writer-layout">
 	        <div class="d-flex flex-row justify-content-between">
-	          <p class="comment-writer-text"></p>
+	          <pre class="comment-writer-text"></pre>
 	          <div class="comment-actions"></div>
 	        </div>
 	        <textarea rows="3" cols="30" class="common-input-form comment-layout" readonly="readonly"></textarea>
@@ -232,8 +242,14 @@ function renderCommentItem(c) {
 	      </div>
 	    </div>
 	  `);
+	
+	let space = "";
 
-  	$row.find('.comment-writer-text').text('작성자: ' + (c.nickname ?? ''));
+	for(var i = 0; i < 20; i++){
+		space += '&nbsp;'		
+	}
+
+  	$row.find('.comment-writer-text').html('작성자: ' + (c.nickname ?? '') + space + '작성일: ' + (resDate ?? ''));
   	$row.find('textarea').text(c.content ?? '');
 
 	const $actions = $row.find('.comment-actions');

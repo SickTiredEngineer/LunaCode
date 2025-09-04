@@ -1,5 +1,6 @@
 package com.itwillbs.luna_code.service.community;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,14 @@ public class CommentService {
 	@Autowired
 	CommentMapper mapper;
 	
-	public int insertNewComment(CommentVO commentVo) {
-		mapper.insertNewComment(commentVo);	
-		return commentVo.getComment_idx();
+	public Timestamp insertNewComment(CommentVO commentVo) {
+		
+		int result = mapper.insertNewComment(commentVo);	
+		
+//		Timestamp createDate = );
+//		commentVo.setCreate_date(createDate);
+		
+		return mapper.selectCreateDate(commentVo.getComment_idx());
 	}
 	
 	public List<CommentVO> importAllComment(int post_idx){

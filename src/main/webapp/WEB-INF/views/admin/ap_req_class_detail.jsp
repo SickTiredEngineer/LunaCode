@@ -121,7 +121,7 @@
 
 							<div class="d-flex button-container">
 								<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
-								<button type="submit" class="positive-button">적용</button>
+								<button type="submit" onclick="confirm('적용 하시겠습니까?')" class="positive-button">적용</button>
 							</div>
 		
 						</form>
