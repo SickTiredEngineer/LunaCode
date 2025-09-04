@@ -127,7 +127,20 @@
 	        <sec:authentication property="principal.nickname" var="nickname"/>
 	        <sec:authentication property="principal.profileImg" var="profileImg"/>
 	        <div class="user-info">
-	          <img src="${pageContext.request.contextPath}${profileImg}" class="user-img" alt="사진">
+	        
+	        	<c:choose>
+	        		<c:when test="${not empty me.profileImg}">
+	        			<img style="width: 30px; height: 30px; margin-right: 10px;" src="${pageContext.request.contextPath}${me.profileImg}" class="user-img" alt="사진">
+	        		</c:when>
+	        		
+	        		<c:otherwise>
+	        			<img style="width: 30px; height: 30px; margin-right: 10px;" alt="" src="${pageContext.request.contextPath}/resources/icons/icon_profile.png">
+	        		</c:otherwise>
+	        	</c:choose>
+	        
+
+	        
+	          
 	          <span class="user-nickname"><c:out value="${nickname}"/></span>
 	        </div>
 	
