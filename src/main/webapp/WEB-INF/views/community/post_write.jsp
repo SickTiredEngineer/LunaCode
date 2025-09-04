@@ -26,7 +26,7 @@
 		<c:choose>
 			<c:when test="${isModify}">
 				<c:set var="formAction" value="ModifyPostForm"/>
-				<c:set var="submitLabel" value="수정 완료"/>
+`				<c:set var="submitLabel" value="수정 완료"/>
 				<c:set var="pageTitle" value="게시글 수정"/>
 				
 				<c:set var="postTitle" value="${post.title}"/>

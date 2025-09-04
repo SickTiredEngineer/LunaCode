@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
@@ -50,6 +52,7 @@
 									<div class="d-flex flex-row justify-content-between tmi-layout">
 										<p class="tmi-text">작성자: ${post.author}</p>
 										<p class="tmi-text">조회수: ${post.view_count}</p>
+										<p class="tmi-text">작성일: <fmt:formatDate value="${post.created_date}" pattern="yyyy.MM.dd"/></p>	
 										
 										<div class="d-flex flex-row">
 											
@@ -67,9 +70,13 @@
 										</div>	
 									</div>
 									
+<!-- 									<div class="d-flex flex-row content-layout">	 -->
+<%-- 										<p class="tmi-text">작성일: <fmt:formatDate value="${post.created_date}" pattern="yyyy.MM.dd"/></p>		 --%>
+<!-- 									</div> -->
+									
+
 									<div class="d-flex flex-row content-layout">
-										<p class="subject-text">${post.title}</p>
-										
+										<p class="subject-text" style="width: fit-content;">${post.title}</p>
 									</div>
 									
 									<div class="horizontal-line"></div>
@@ -79,21 +86,6 @@
 									</div>
 									
 									<br>
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="info-text">첨부 파일1: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="info-text">첨부 파일2: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
-									
-<!-- 									<div class="d-flex flex-row content-layout"> -->
-<!-- 										<p class="info-text">첨부 파일3: UUID + 날짜 + 파일이름</p> -->
-<!-- 										<a href="#" class="positive-button button-detail add-attachment-bt">다운로드</a> -->
-<!-- 									</div> -->
 								
 								
 									<div class="content-layout">
@@ -142,7 +134,8 @@
 												
 												<div class="d-flex flex-row justify-content-between">
 													
-													<p class="comment-writer-text">작성자: ${comment.nickname}</p>
+													<pre class="comment-writer-text">작성자: ${comment.nickname}                    작성일: <fmt:formatDate value="${comment.create_date}" pattern="yyyy.MM.dd"/></pre>
+															
 													
 													<div class="comment-actions">
 														<c:if test="${me.idx == comment.author_idx}">
@@ -156,6 +149,8 @@
 													</div>
 													
 												</div>	
+												
+														
 																						
 												<textarea rows="3" cols="30" class="common-input-form comment-layout" readonly="readonly">${comment.content}</textarea>
 												

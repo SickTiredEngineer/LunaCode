@@ -1,5 +1,6 @@
 package com.itwillbs.luna_code.mapper.community;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -12,6 +13,9 @@ public interface CommentMapper {
 	
 	/* 새로운 댓글 작성 */
 	int insertNewComment(CommentVO commentVo);
+	
+	Timestamp selectCreateDate(@Param("comment_idx") int comment_idx);
+	
 	
 	/* 해당 게시글의 모든 댓글 들고오기 */
 	List<CommentVO> importAllComment(int post_idx);

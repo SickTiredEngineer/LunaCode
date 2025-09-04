@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>   
 
 <!-- 본 JSP 파일은 헤더, 푸터와 body에 container 틀을 작성한 예시입니다. -->
 
@@ -43,7 +44,8 @@
 							<div class="d-flex flex-column write_main_layout">
 									
 									<div class="d-flex flex-row justify-content-between tmi-layout">
-										<p class="tmi-text">조회수: ${noticeVo.view_count}</p>
+										<p class="tmi-text"><strong>조회수: ${noticeVo.view_count}</strong></p>
+										<p class="tmi-text"><strong>작성일: <fmt:formatDate value="${noticeVo.notice_date}" pattern="yyyy.MM.dd"/></strong></p>
 										
 										<div class="d-flex flex-row">
 											
@@ -61,7 +63,7 @@
 									</div>
 	
 									<div class="d-flex flex-row write-layout">
-										<p class="info-text">${noticeVo.notice_subject}</p>
+										<p class="info-text" style="width: fit-content;">${noticeVo.notice_subject}</p>
 									</div>
 									
 									<div class="horizontal-line"></div>

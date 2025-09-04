@@ -1,5 +1,7 @@
 package com.itwillbs.luna_code.controller.community;
 
+import java.sql.Timestamp;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
@@ -32,17 +34,14 @@ public class CommentController {
 		
 		CustomUserDetails user =  (CustomUserDetails) auth.getPrincipal();
 		
-		
-		System.out.println("CommentVO: " + commentVo);
-		System.out.println("post_idx: " + commentVo.getPost_idx());
-		
 		commentVo.setAuthor_id(user.getUsername());
 		commentVo.setAuthor_idx(user.getIdx());
 		
-		int insertResult = service.insertNewComment(commentVo);
-		
+//		int insertResult = service.insertNewComment(commentVo);
+		Timestamp create_date = service.insertNewComment(commentVo);
 		
 		commentVo.setNickname(user.getNickname());
+		commentVo.setCreate_date(create_date);
 		
 		System.out.println(commentVo);
 		

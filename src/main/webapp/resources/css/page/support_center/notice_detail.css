@@ -17,6 +17,10 @@ body{
 	
 }
 
+
+
+
+
 .content-layout{
 	margin-top: var(--common-margin);
 	margin-left: var(--common-margin);
@@ -84,6 +88,15 @@ body{
 	height: 30px;
 	font-weight: bold;
 }
+
+.subject-text{
+	align-content:center;
+	color: var(--color-font) !important;
+	width: fit-content;
+	height: 30px;
+	font-weight: bold;
+}
+
 
 .info-text-content{
 	align-content:center;

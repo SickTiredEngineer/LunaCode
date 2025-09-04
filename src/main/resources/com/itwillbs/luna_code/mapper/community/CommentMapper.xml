@@ -30,6 +30,12 @@
 	</insert>
 	
 	
+	<select id="selectCreateDate">
+		select create_date from comment
+		where comment_idx = #{comment_idx}
+	</select>
+	
+	
 	
 	
 	<select id="importAllComment">
