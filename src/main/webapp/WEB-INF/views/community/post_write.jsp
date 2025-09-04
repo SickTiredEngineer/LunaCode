@@ -111,7 +111,7 @@
 									
 									<div class="d-flex flex-row button-container">
 										<button type="button" onclick="history.back()" class="negative-button">돌아가기</button>
-										<button type="submit" class="positive-button">${submitLabel}</button>
+										<button type="submit" onclick="confirm('작성 하시겠습니까?')" class="positive-button">${submitLabel}</button>
 									</div>
 
 								</form>
