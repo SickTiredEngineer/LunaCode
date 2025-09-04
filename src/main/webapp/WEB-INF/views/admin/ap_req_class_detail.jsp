@@ -47,7 +47,7 @@
 										<div class="d-flex flex-column justify-content-center">
 											
 											<div class="d-flex flex-column">
-												<img alt="" src="${pageContext.request.contextPath}/resources/icons/icon_class_video.png" class="thumbnail-image">
+												<img alt="" src="${pageContext.request.contextPath}/resources/class_thumbnails/${cls.class_thumbnail}" class="thumbnail-image">
 											</div>
 
 										</div>
